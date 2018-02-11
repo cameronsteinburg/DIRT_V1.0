@@ -157,7 +157,7 @@ public class Client {
         this.clientNotes = clientNotes;
     }
 
-    public boolean isIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 

@@ -3,12 +3,13 @@ package persistence;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import com.sun.security.ntlm.Client;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import problemDomain.Labourer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import problemDomain.*;
 
-import problemDomain.Project;
-import problemDomain.WorkOrder;
 
 /**
  * Queries, deletes, merges, and persists data from the databases
@@ -21,8 +22,8 @@ public class JDBCCommands {
 	/**
 	 * default JDBCCommands constructor
 	 */
-	public JDBCCommands(){
-		
+	public JDBCCommands(DBAccessor dbAccess){
+		this.conn = dbAccess.getConn();
 	}
 	
 	/**
@@ -31,8 +32,29 @@ public class JDBCCommands {
 	 * @return true if no error occurs
 	 */
 	public boolean persistClient(Client client){
-		return false;
-		
+            try {
+                // the mysql prepared insert statement
+                String query = " insert into clients (name, description, phone1, phone2, email, address, isActive) values (?, ?, ?, ?, ?, ?, ?)";
+                
+                // create the mysql insert preparedstatement
+                //should probably change the ints in client class to strings at somepoint or change db to use ints instead
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setString(1, client.getClientName());
+                preparedStmt.setString(2, client.getDescription());
+                preparedStmt.setString(3, ""+client.getPhone1());
+                preparedStmt.setString(4, ""+client.getPhone2());
+                preparedStmt.setString(5, client.getEmail());
+                preparedStmt.setString(6, client.getAddress());
+                preparedStmt.setBoolean(7, client.getIsActive());
+                
+                
+                // execute the preparedstatement
+                preparedStmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+		return true;
 	}
 	
 	/**
