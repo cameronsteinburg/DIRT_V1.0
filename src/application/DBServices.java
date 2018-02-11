@@ -7,7 +7,7 @@ import problemDomain.*;
 /**
  * Methods that have direct access and control to the databases
  */
-public class DataServices {
+public class DBServices {
 
 	/**
 	 * Sends a Client Object to be saved to the database
