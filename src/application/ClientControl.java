@@ -13,7 +13,7 @@ public class ClientControl {
 	 * @param client client Object to be saved to database
 	 * @return true if successful, false otherwise
 	 */
-	public boolean saveSQL(Client client) {
+	public boolean saveSQL(Client client) { // cam: i suggest rename to persistClient
 		return false;
 	}
 	
@@ -27,19 +27,20 @@ public class ClientControl {
 	
 	/**
 	 * Search through the database looking for matching entities
-	 * @param searchProject String parameter to search for
-	 * @return Project Object that matches the string
+	 * @param searchProject Porject target to search for in db
+	 * @return Project Return deep copy of Project object
 	 */
-	public Project searchProject(String searchProject) {
+	public Project searchProject(Project proj) {
 		return null;
+                //todo needs database querying
 	}
 	
 	/**
 	 * Create a new client Object
 	 * @return new client Object
 	 */
-	public Client createClient() {
-		return null;
+	public void createClient() {
+		saveSQL(new Client());
 	}
 	
 	/**
@@ -47,9 +48,10 @@ public class ClientControl {
 	 * @param client client to be deleted
 	 * @return true if successful, false otherwise
 	 */
-	public boolean deleteSQL(Client client) {
-		return false;
-	}
+	//public boolean deleteSQL(Client client) { //cam: we dont want to actually delete anything, ever. found
+        //                                          found redundant method in Client, did same happen for other entities?
+	//	return false;
+	//}
 	
 	/**
 	 * Create backup .sql file for clients

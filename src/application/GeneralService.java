@@ -5,13 +5,13 @@ import problemDomain.*;
  * Business logic that influences the application.
  */
 public class GeneralService {
-
+ ////cam: none of these should be here
 	/**
 	 * Send Client Object to be saved to the database
 	 * @param client Client Object to be saved
 	 * @return true if successful, false otherwise
 	 */
-	public boolean saveSQL(Client client) {
+	public boolean saveSQL(Client client) { //cam: ????
 		return false;
 	}
 	
@@ -19,7 +19,7 @@ public class GeneralService {
 	 * Create a new Project Object
 	 * @return new Project Object
 	 */
-	public Project createProject() {
+	public Project createProject() { //cam: ????
 		return null;
 	}
 	
@@ -28,7 +28,7 @@ public class GeneralService {
 	 * @param project Project object to be passed into apachePDF
 	 * @return true if successful, false otherwise
 	 */
-	public boolean export(Project project) {
+	public boolean export(Project project) { //cam: ???
 		return false;
 	}
 	
@@ -37,7 +37,7 @@ public class GeneralService {
 	 * @param searchString string used to search for Project Object
 	 * @return Project Object if found
 	 */
-	public Project searchProject(String searchString) {
+	public Project searchProject(String searchString) { //cam: ???
 		return null;
 	}
 	
@@ -46,7 +46,7 @@ public class GeneralService {
 	 * @param type type of WorkOrder to be created
 	 * @return new WorkOrder object
 	 */
-	public WorkOrder createWorkOrder(char type) {
+	public WorkOrder createWorkOrder(char type) { //cam: ???
 		return null;
 	}
 }

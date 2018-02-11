@@ -5,7 +5,7 @@ import problemDomain.WorkOrder;
 /**
  * Receives input from the GUI and pass control to the proper service
  */
-public class WorkOrdersControl {
+public class WorkOrderControl {
 	
 	/**
 	 * Delete specified Work Order from the database
