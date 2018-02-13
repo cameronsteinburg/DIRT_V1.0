@@ -16,17 +16,19 @@ import javafx.stage.Stage;
  *
  * @author 645011
  */
-public class AppDriver extends Application {
+public class Main extends Application {
+    
+    public static Stage stage;
     
     @Override
     public void start(Stage stage) throws Exception {
         
+       // AnchorPane root = (AnchorPane) FXMLLoader.load(Main.class.getResource("/application/homepage/HomePageGUI.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
-        
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
-        stage.show();
+        this.stage = stage;
+        stage.show();  
     }
 
     /**
@@ -34,5 +36,8 @@ public class AppDriver extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    public static void navigateTo(){
     }
 }

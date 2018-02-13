@@ -5,7 +5,7 @@
  */
 package application.homepage;
 
-import java.io.File;
+import application.Main;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -15,9 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -31,27 +32,43 @@ public class HomePageGUIController implements Initializable {
     private Button testBtn;
     @FXML
     private Button btn2;
-    
+
     @FXML
     private void btnTest(ActionEvent event) throws IOException, URISyntaxException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/ui/CreateClientGUI.fxml"));
+        Scene scene = new Scene(root);
+        Main.stage.setScene(scene);
+        Main.stage.show();
+      //  AnchorPane pane = (AnchorPane) blegh.getClass().getResource("/ui/CreateClientGUI.fxml").getContent();
+        //rootPane.getChildren().setAll(pane);
         
-        URL url = this.getClass().getResource("/src/ui/CreateClientGUI.fxml");
-        File file = new File(url.toURI());
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/src/ui/CreateClientGUI.fxml"));
-        rootPane.getChildren().setAll(pane);
+      //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateClientGUI.fxml"));  
+
+        
+        /*
+        *MainController mainController = new MainController(path);
+        Pane mainPane = FXMLLoader.load(getClass().getResource("main.fxml"));
+        
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));        
+        loader.setController(new MainController(path));
+        Pane mainPane = loader.load();
+        */
     }
-    
+
     @FXML
     private void testBtn2(ActionEvent event) throws IOException {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/capstoneguitest/CreateClientGUI.fxml"));
+
+       // Parent root = FXMLLoader.load(getClass().getResource("/capstoneguitest/CreateClientGUI.fxml"));
     }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }
