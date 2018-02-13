@@ -1,5 +1,9 @@
 package persistence;
 
+import entity.Project;
+import entity.WorkOrder;
+import entity.Client;
+import entity.Labourer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -8,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import problemDomain.*;
 
 
 /**

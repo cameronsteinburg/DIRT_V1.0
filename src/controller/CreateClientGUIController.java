@@ -1,11 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
+ *  This is the class that controls what happens when the user is on the page that lets them make a new client
  */
 package controller;
 
-import application.newclient.*;
 import application.Main;
 import java.io.IOException;
 import java.net.URL;
@@ -18,12 +16,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+
 
 /**
- * FXML Controller class
  *
- * @author 645011
+ * @author 645011, 734972
  */
 public class CreateClientGUIController implements Initializable {
 
@@ -53,7 +50,10 @@ public class CreateClientGUIController implements Initializable {
 
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException {
-       
+         System.out.println("--------------------------------HERE--------------------------------");
+        System.out.println(Object.class.getClass());
+         System.out.println(getClass());
+        
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
         Main.stage.setScene(scene);

@@ -1,8 +1,8 @@
-package application;
+package services;
 
+import entity.Project;
 import java.sql.ResultSet;
 
-import problemDomain.*;
 
 /**
  * Methods that have direct access and control to the databases
