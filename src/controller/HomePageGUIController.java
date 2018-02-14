@@ -38,21 +38,6 @@ public class HomePageGUIController implements Initializable {
         Scene scene = new Scene(root);
         Main.stage.setScene(scene);
         Main.stage.show();
-      //  AnchorPane pane = (AnchorPane) blegh.getClass().getResource("/ui/CreateClientGUI.fxml").getContent();
-        //rootPane.getChildren().setAll(pane);
-        
-      //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateClientGUI.fxml"));  
-
-        
-        /*
-        *MainController mainController = new MainController(path);
-        Pane mainPane = FXMLLoader.load(getClass().getResource("main.fxml"));
-        
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));        
-        loader.setController(new MainController(path));
-        Pane mainPane = loader.load();
-        */
     }
 
     @FXML
@@ -68,5 +53,4 @@ public class HomePageGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
 }

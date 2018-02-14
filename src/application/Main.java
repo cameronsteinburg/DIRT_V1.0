@@ -22,6 +22,7 @@ public class Main extends Application{
     
     @Override
     public void start(Stage stage) throws Exception { //gets this show on the road
+        FXMLLoader loaderr = new FXMLLoader();
         
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
