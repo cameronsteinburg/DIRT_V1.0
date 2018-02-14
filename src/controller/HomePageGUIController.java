@@ -35,6 +35,8 @@ public class HomePageGUIController implements Initializable {
     private void btnTest(ActionEvent event) throws IOException, URISyntaxException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/ui/CreateClientGUI.fxml"));
+        //FXMLLoader loader = new FXMLLoader();
+        
         Scene scene = new Scene(root);
         Main.stage.setScene(scene);
         Main.stage.show();
