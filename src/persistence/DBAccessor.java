@@ -18,7 +18,6 @@ public class DBAccessor {
 	 * default DBAccessor constructor
 	 */
 	public DBAccessor(){
-		
 	}
 	/**
 	 * creates MySQL connection and JDBCCommands instance
