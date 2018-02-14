@@ -5,6 +5,7 @@
 package controller;
 
 import application.Main;
+import entity.Client;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-
 
 /**
  *
@@ -50,10 +50,25 @@ public class CreateClientGUIController implements Initializable {
 
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException {
-         System.out.println("--------------------------------HERE--------------------------------");
-        System.out.println(Object.class.getClass());
-         System.out.println(getClass());
+     
+        String name = nameField.getText();
+        int phone1 =  Integer.parseInt(phone1Field.getText());
+        int phone2 =  Integer.parseInt(phone2Field.getText());
+        String email = emailField.getText();
+        String address = addressField.getText();
+        String description = descField.getText();
         
+        System.out.println("name: " + name);
+        System.out.println("phone1: " + phone1);
+        System.out.println("phone2: " + phone2);
+        System.out.println("email: " + email);
+        System.out.println("address: " + address);
+        System.out.println("description: " + description);
+        
+        Client eatMyAssKevin = new Client(name, description, phone1, phone2, email, address, true);
+        
+        Main.jdbcc.persistClient(eatMyAssKevin); //todo rename
+
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
         Main.stage.setScene(scene);
