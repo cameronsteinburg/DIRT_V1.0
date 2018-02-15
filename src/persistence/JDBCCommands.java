@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class JDBCCommands {
 
-	Connection conn;
+	private Connection conn;
 	
 	/**
 	 * default JDBCCommands constructor
