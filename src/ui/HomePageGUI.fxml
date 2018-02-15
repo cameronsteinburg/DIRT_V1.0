@@ -9,7 +9,7 @@
         <URL value="@homepagegui.css" />
     </stylesheets>
    <children>
-      <Button fx:id="testBtn" layoutX="142.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnTest" text="Button" />
-      <Button fx:id="btn2" layoutX="413.0" layoutY="188.0" mnemonicParsing="false" onAction="#testBtn2" text="Btn2" />
+      <Button fx:id="testBtn" layoutX="65.0" layoutY="74.0" mnemonicParsing="false" onAction="#btnTest" text="+ New Client" />
+      <Button fx:id="btn2" layoutX="566.0" layoutY="87.0" mnemonicParsing="false" onAction="#testBtn2" text="Btn2" />
    </children>
 </AnchorPane>

@@ -7,8 +7,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,45 +14,22 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateClientGUIController">
+<AnchorPane id="AnchorPane" prefHeight="643.0" prefWidth="915.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateClientGUIController">
     <stylesheets>
         <URL value="@createclientgui.css" />
     </stylesheets>
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0">
-         <top>
-            <GridPane prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.0" minWidth="10.0" prefWidth="103.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="497.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label prefHeight="30.0" prefWidth="131.0" text="New Client" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="60.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../res/vls.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </GridPane>
-         </top>
+      <BorderPane layoutX="41.0" layoutY="147.0" prefHeight="496.0" prefWidth="1048.0">
          <bottom>
-            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ToolBar prefHeight="45.0" prefWidth="991.0" BorderPane.alignment="CENTER">
               <items>
                 <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="35.0" prefWidth="65.0" text="Save" />
                   <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="35.0" prefWidth="65.0" text="Cancel" />
               </items>
             </ToolBar>
          </bottom>
-         <center>
-            <GridPane BorderPane.alignment="CENTER">
+         <left>
+            <GridPane prefHeight="443.0" prefWidth="989.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="141.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="359.0" />
@@ -65,29 +40,55 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="14.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Name*" />
-                  <Label text="Phone Number 1*" GridPane.rowIndex="1" />
-                  <Label text="Phone Number 2" GridPane.rowIndex="2" />
-                  <Label text="Email" GridPane.rowIndex="3" />
-                  <Label text="Address" GridPane.rowIndex="4" />
-                  <Label text="Additional Information" GridPane.rowIndex="5" />
+                  <Label text="Name*">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
+                  <Label text="Phone Number 1*" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
+                  <Label text="Phone Number 2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
+                  <Label text="Email" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
+                  <Label text="Address" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
+                  <Label text="Notes" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
                   <TextField fx:id="nameField" GridPane.columnIndex="1" />
                   <TextField fx:id="phone1Field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="phone2Field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextArea fx:id="descField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label text="* Required" textFill="#eb0000" GridPane.rowIndex="6" />
+                  <TextArea fx:id="descField" prefHeight="96.0" prefWidth="359.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="* Required" textFill="#eb0000" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
                </children>
                <BorderPane.margin>
                   <Insets bottom="25.0" left="50.0" right="50.0" top="10.0" />
                </BorderPane.margin>
             </GridPane>
-         </center>
+         </left>
       </BorderPane>
+      <Label layoutX="55.0" layoutY="28.0" text="Create New Client">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
