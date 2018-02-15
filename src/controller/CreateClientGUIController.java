@@ -52,22 +52,20 @@ public class CreateClientGUIController implements Initializable {
     private void saveBtnAction(ActionEvent event) throws IOException {
      
         String name = nameField.getText();
-        int phone1 =  Integer.parseInt(phone1Field.getText());
-        int phone2 =  Integer.parseInt(phone2Field.getText());
         String email = emailField.getText();
         String address = addressField.getText();
         String description = descField.getText();
         
         System.out.println("name: " + name);
-        System.out.println("phone1: " + phone1);
-        System.out.println("phone2: " + phone2);
+        System.out.println("phone1: " + phone1Field.getText());
+        System.out.println("phone2: " + phone2Field.getText());
         System.out.println("email: " + email);
         System.out.println("address: " + address);
         System.out.println("description: " + description);
         
-        Client eatMyAssKevin = new Client(name, description, phone1, phone2, email, address, true);
+        Client newCLient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
         
-        Main.jdbcc.persistClient(eatMyAssKevin); //todo rename
+        Main.jdbcc.persistClient(newCLient); 
 
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
