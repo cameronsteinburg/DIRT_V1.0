@@ -63,9 +63,9 @@ public class CreateClientGUIController implements Initializable {
         System.out.println("address: " + address);
         System.out.println("description: " + description);
         
-        Client newCLient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
+        Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
         
-        Main.jdbcc.persistClient(newCLient); 
+        Main.jdbcc.persistClient(newClient); 
 
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
