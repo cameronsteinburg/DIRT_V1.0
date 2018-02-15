@@ -18,8 +18,8 @@ public class Client {
 
     private String clientName; //definitely not-null
     private String description;// can be null
-    private int phone1; // null?
-    private int phone2; //can be null
+    private String phone1; // null?
+    private String phone2; //can be null
     private String email;// null?
     private String address;// null?
     private List<Project> ongoingProjects;//can be null
@@ -44,7 +44,7 @@ public class Client {
      *
      * for generation of brand new clients i.e createClient()
      */
-    public Client(String clientName, String description, int phone1, int phone2, String email, String address, boolean isActive) {
+    public Client(String clientName, String description, String phone1, String phone2, String email, String address, boolean isActive) {
         this.clientName = clientName;
         this.description = description;
         this.phone1 = phone1;
@@ -68,7 +68,7 @@ public class Client {
      *
      * for regenerating entity in Java object from db or Client object deep copy
      */
-    public Client(String clientName, String description, int phone1, int phone2, String email, String address, boolean isActive,
+    public Client(String clientName, String description, String phone1, String phone2, String email, String address, boolean isActive,
             List<Project> ongoingProjects, List<Project> completedProjects, List<String> clientNotes) {
         this.clientName = clientName;
         this.description = description;
@@ -101,19 +101,19 @@ public class Client {
         this.description = description;
     }
 
-    public int getPhone1() {
+    public String getPhone1() {
         return phone1;
     }
 
-    public void setPhone1(int phone1) {
+    public void setPhone1(String phone1) {
         this.phone1 = phone1;
     }
 
-    public int getPhone2() {
+    public String getPhone2() {
         return phone2;
     }
 
-    public void setPhone2(int phone2) {
+    public void setPhone2(String phone2) {
         this.phone2 = phone2;
     }
 

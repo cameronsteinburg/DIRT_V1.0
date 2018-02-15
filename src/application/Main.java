@@ -1,10 +1,8 @@
 /*
-
-    This is where the app begins, main calls start and istantiates the single global stage variable for all the control files to interact with
+ *  This is where the app begins, main calls start and istantiates the single global stage variable for all the control files to interact with
  */
 package application;
 
-import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
