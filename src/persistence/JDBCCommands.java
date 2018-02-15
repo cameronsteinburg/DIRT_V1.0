@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,6 +60,47 @@ public class JDBCCommands {
             }
 		return true;
 	}
+        
+        /**
+         * 
+         * Retrieves a client from the database from the name passed to the method
+         * @param clientName the name of the client to be searched for
+         * @return a client object created from the information found in the clients table
+         */
+        public Client getClient(String clientName){
+            
+            try {
+                Statement statement = conn.createStatement();
+                
+                // Result set contains the result of the SQL query
+                ResultSet results = statement.executeQuery("select * from clients where name = '" + clientName + "';");
+
+                //.next() retreives the next row, think of it like a cursor fetching
+                while (results.next()) { 
+                    String name = results.getString("name");
+                    String description = results.getString("description");
+                    String phone1 = results.getString("phone1");
+                    String phone2 = results.getString("phone2");
+                    String email = results.getString("email");
+                    String address = results.getString("address");
+                    char isActive = results.getString("isActive").charAt(0);
+                    boolean isActiveToBoolean = false;
+                    
+                    if (isActive == '1'){
+                        isActiveToBoolean = true;
+                    }
+                    
+                    Client client = new Client(name,description,phone1,phone2,email,address,isActiveToBoolean);
+                    return client;
+                    
+                }
+
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return null;
+        }
 	
 	/**
 	 * persists project to MySQL
