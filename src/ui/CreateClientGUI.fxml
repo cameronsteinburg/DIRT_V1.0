@@ -14,14 +14,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="643.0" prefWidth="915.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateClientGUIController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateClientGUIController">
     <stylesheets>
         <URL value="@createclientgui.css" />
     </stylesheets>
    <children>
       <BorderPane layoutX="41.0" layoutY="147.0" prefHeight="496.0" prefWidth="1048.0">
          <bottom>
-            <ToolBar prefHeight="45.0" prefWidth="991.0" BorderPane.alignment="CENTER">
+            <ToolBar prefHeight="45.0" prefWidth="991.0" BorderPane.alignment="BOTTOM_CENTER">
               <items>
                 <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="35.0" prefWidth="65.0" text="Save" />
                   <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="35.0" prefWidth="65.0" text="Cancel" />
@@ -29,7 +29,7 @@
             </ToolBar>
          </bottom>
          <left>
-            <GridPane prefHeight="443.0" prefWidth="989.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="443.0" prefWidth="989.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="141.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="359.0" />
@@ -88,6 +88,11 @@
       <Label layoutX="55.0" layoutY="28.0" text="Create New Client">
          <font>
             <Font size="35.0" />
+         </font>
+      </Label>
+      <Label id="errorMessage" layoutX="90.0" layoutY="106.0" prefHeight="43.0" prefWidth="493.0" text="Required Fields Cannot Be Left Blank" textFill="RED" visible="false">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
    </children>
