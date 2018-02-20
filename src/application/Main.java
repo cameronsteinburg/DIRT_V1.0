@@ -1,5 +1,5 @@
 /*
- *  This is where the app begins, main calls start and istantiates the single global stage variable for all the control files to interact with
+ *  This is where the app begins, main calls start and instantiates the single global stage variable for all the control files to interact with
  */
 package application;
 
@@ -14,7 +14,7 @@ import persistence.JDBCCommands;
 
 /**
  *
- * @author 645011, 734972
+ * @author Kevin Brown 645011, Cameron Steinburg 734972, Matthew MacDonald 728918, Kyle Hendrickson
  */
 public class Main extends Application {
 
