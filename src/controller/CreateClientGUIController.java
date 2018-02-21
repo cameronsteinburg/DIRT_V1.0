@@ -42,6 +42,8 @@ public class CreateClientGUIController implements Initializable {
     private TextArea descField;
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private Label errorMessage;
 
     @FXML
     private void cancelBtnAction(ActionEvent event) {
@@ -56,6 +58,11 @@ public class CreateClientGUIController implements Initializable {
         String address = addressField.getText();
         String description = descField.getText();
         
+        if(name.isEmpty() || phone1Field.getText().isEmpty()){
+            errorMessage.setVisible(true);
+            return;
+        }
+        
         System.out.println("name: " + name);
         System.out.println("phone1: " + phone1Field.getText());
         System.out.println("phone2: " + phone2Field.getText());
@@ -65,9 +72,9 @@ public class CreateClientGUIController implements Initializable {
         
         Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
         
-        Main.jdbcc.persistClient(newClient); 
+        Main.jdbcc.persistClient(newClient); //persist to db
 
-        Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml")); //reroute user to home page
         Scene scene = new Scene(root);
         Main.stage.setScene(scene);
         Main.stage.show();

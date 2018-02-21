@@ -14,7 +14,7 @@ import persistence.JDBCCommands;
 
 /**
  *
- * @author Kevin Brown 645011, Cameron Steinburg 734972, Matthew MacDonald 728918, Kyle Hendrickson
+ * @author Kevin Brown 645011, Cameron Steinburg 734972, Matthew MacDonald 728918, Kyle Hendrickson 628344 
  */
 public class Main extends Application {
 
@@ -35,6 +35,7 @@ public class Main extends Application {
         stage.setScene(scene);
         this.stage = stage;
         stage.show();
+        stage.setTitle("DIRT - Dynamic Interface Regarding Terrain");
     }
 
     /**
