@@ -40,17 +40,221 @@ public class Project {
     private double clientOwing;
     private boolean clientPaid;
     
-    //for quote math
+    //QUICK MATHS
     private double estimatedShoppingCost;
     private double estimatedLabourCost;
     private double estimatedDeliveryCost;
-    private double allowanceCost;
+    private double estimatedProfit;
+   
     private double actualShoppingCost;
     private double actualDeliveryCost;
-    private double extraneousExpenses;
-    private double estimatedProfit;
+    
+    
     private double actualProfit;
     private double actualLabourCost;
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public ArrayList<String> getProjectLog() {
+        return projectLog;
+    }
+
+    public void setProjectLog(ArrayList<String> projectLog) {
+        this.projectLog = projectLog;
+    }
+
+    public String getSiteAddress() {
+        return siteAddress;
+    }
+
+    public void setSiteAddress(String siteAddress) {
+        this.siteAddress = siteAddress;
+    }
+
+    public char getStatus() {
+        return status;
+    }
+
+    public void setStatus(char status) {
+        this.status = status;
+    }
+
+    public List<WorkOrder> getWorkOrders() {
+        return workOrders;
+    }
+
+    public void setWorkOrders(List<WorkOrder> workOrders) {
+        this.workOrders = workOrders;
+    }
+
+    public List<Labourer> getLaborers() {
+        return laborers;
+    }
+
+    public void setLaborers(List<Labourer> laborers) {
+        this.laborers = laborers;
+    }
+
+    public Date getPrelimStartDate() {
+        return prelimStartDate;
+    }
+
+    public void setPrelimStartDate(Date prelimStartDate) {
+        this.prelimStartDate = prelimStartDate;
+    }
+
+    public Date getActualStartDate() {
+        return actualStartDate;
+    }
+
+    public void setActualStartDate(Date actualStartDate) {
+        this.actualStartDate = actualStartDate;
+    }
+
+    public Date getEstimatedEndDate() {
+        return estimatedEndDate;
+    }
+
+    public void setEstimatedEndDate(Date estimatedEndDate) {
+        this.estimatedEndDate = estimatedEndDate;
+    }
+
+    public Date getActualEndDate() {
+        return actualEndDate;
+    }
+
+    public void setActualEndDate(Date actualEndDate) {
+        this.actualEndDate = actualEndDate;
+    }
+
+    public double getClientOwing() {
+        return clientOwing;
+    }
+
+    public void setClientOwing(double clientOwing) {
+        this.clientOwing = clientOwing;
+    }
+
+    public boolean isClientPaid() {
+        return clientPaid;
+    }
+
+    public void setClientPaid(boolean clientPaid) {
+        this.clientPaid = clientPaid;
+    }
+
+    public double getEstimatedShoppingCost() {
+        return estimatedShoppingCost;
+    }
+
+    public void setEstimatedShoppingCost(double estimatedShoppingCost) {
+        this.estimatedShoppingCost = estimatedShoppingCost;
+    }
+
+    public double getEstimatedLabourCost() {
+        return estimatedLabourCost;
+    }
+
+    public void setEstimatedLabourCost(double estimatedLabourCost) {
+        this.estimatedLabourCost = estimatedLabourCost;
+    }
+
+    public double getEstimatedDeliveryCost() {
+        return estimatedDeliveryCost;
+    }
+
+    public void setEstimatedDeliveryCost(double estimatedDeliveryCost) {
+        this.estimatedDeliveryCost = estimatedDeliveryCost;
+    }
+
+    public double getEstimatedProfit() {
+        return estimatedProfit;
+    }
+
+    public void setEstimatedProfit(double estimatedProfit) {
+        this.estimatedProfit = estimatedProfit;
+    }
+
+    public double getActualShoppingCost() {
+        return actualShoppingCost;
+    }
+
+    public void setActualShoppingCost(double actualShoppingCost) {
+        this.actualShoppingCost = actualShoppingCost;
+    }
+
+    public double getActualDeliveryCost() {
+        return actualDeliveryCost;
+    }
+
+    public void setActualDeliveryCost(double actualDeliveryCost) {
+        this.actualDeliveryCost = actualDeliveryCost;
+    }
+
+    public double getActualProfit() {
+        return actualProfit;
+    }
+
+    public void setActualProfit(double actualProfit) {
+        this.actualProfit = actualProfit;
+    }
+
+    public double getActualLabourCost() {
+        return actualLabourCost;
+    }
+
+    public void setActualLabourCost(double actualLabourCost) {
+        this.actualLabourCost = actualLabourCost;
+    }
+
+    public double getAllowanceCost() {
+        return allowanceCost;
+    }
+
+    public void setAllowanceCost(double allowanceCost) {
+        this.allowanceCost = allowanceCost;
+    }
+
+    public double getExtraneousExpenses() {
+        return extraneousExpenses;
+    }
+
+    public void setExtraneousExpenses(double extraneousExpenses) {
+        this.extraneousExpenses = extraneousExpenses;
+    }
+
+    public double getQuote() {
+        return quote;
+    }
+
+    public void setQuote(double quote) {
+        this.quote = quote;
+    }
+    
+     private double allowanceCost;
+    private double extraneousExpenses;
     
     //the actual quote
     private double quote; //NOT NULL
