@@ -62,6 +62,49 @@ public class JDBCCommands {
 		return true;
 	}
         
+        
+        /**
+         * 
+         * Retrieves all clients from the database and returns an array of them
+         * @return an arrayList of client objects
+         */
+        public ArrayList<Client> getClients(){
+            
+            try {
+                ArrayList<Client> clientList = new ArrayList();
+                Statement statement = conn.createStatement();
+                
+                // Result set contains the result of the SQL query
+                ResultSet results = statement.executeQuery("select * from clients;");
+
+                //.next() retreives the next row, think of it like a cursor fetching
+                while (results.next()) { 
+                    String name = results.getString("name");
+                    String description = results.getString("description");
+                    String phone1 = results.getString("phone1");
+                    String phone2 = results.getString("phone2");
+                    String email = results.getString("email");
+                    String address = results.getString("address");
+                    char isActive = results.getString("isActive").charAt(0);
+                    boolean isActiveToBoolean = false;
+                    
+                    if (isActive == '1'){
+                        isActiveToBoolean = true;
+                    }
+                    
+                    Client client = new Client(name,description,phone1,phone2,email,address,isActiveToBoolean);
+                    clientList.add(client);
+                }
+                return clientList;
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return null;
+        }
+        
+        
+        
         /**
          * 
          * Retrieves a client from the database from the name passed to the method

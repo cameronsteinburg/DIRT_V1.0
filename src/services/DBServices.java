@@ -4,6 +4,7 @@ import application.Main;
 import entity.Client;
 import entity.Project;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +29,15 @@ public class DBServices {
         public Client getClient(String name){
             return Main.jdbcc.getClient(name);
         }
+        
+        /**
+         * gets all the client objects from the database via jdbccommands
+         * @return a Client arraylist object
+         */
+        public ArrayList<Client> getClients(){
+            return Main.jdbcc.getClients();
+        }
+        
 	/**
 	 * Calls the Projects export method
 	 * @param project Project Object to export CSV
