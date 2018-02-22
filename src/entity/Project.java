@@ -34,7 +34,7 @@ public class Project {
     private Date prelimStartDate; //date entered by user when first making new peoject, used for quote calculation NOT NULL
     private Date actualStartDate; //that actual date things got rolling, different from date used for quote
     private Date estimatedEndDate; //estimated date of project end used in new project to calculate initial quote
-    private Date actualEndDate;
+    private Date actualEndDate; //the date the project actually ended
     
     //track clients payments
     private double clientOwing;
@@ -42,16 +42,14 @@ public class Project {
     
     //QUICK MATHS
     private double estimatedShoppingCost;
-    private double estimatedLabourCost;
     private double estimatedDeliveryCost;
+    private double estimatedLabourCost;
     private double estimatedProfit;
    
     private double actualShoppingCost;
     private double actualDeliveryCost;
-    
-    
-    private double actualProfit;
     private double actualLabourCost;
+    private double actualProfit;
 
     public String getProjectName() {
         return projectName;
