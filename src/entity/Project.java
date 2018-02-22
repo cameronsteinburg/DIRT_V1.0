@@ -16,15 +16,31 @@ import java.util.List;
  */
 public class Project {
     
-    private String projectDescription;
-    private Client client;
-    private ArrayList<String> projectLog;
-    private Date startDate;
-    private Date estimatedEndDate;
+    //* nothing gets saved to db until the user pucnhe sin all the info to get the the quote production
+    //once they have the number they will be asked to save this new project or to throw it away
+    
+    //details
+    private String projectName; //a name user will give to easily identify their project from others NOT NULL
+    private String projectDescription; //optional description for users personal reference on project
+    private Client client; //user has to make a client to assign to this project beforehand NOT NULL 
+    private ArrayList<String> projectLog;// notes user can add overtime as project progresses
+    private String siteAddress; //the site of the project
+    private char status; //has the user "deleted" this entity yet NOT NULL
+    
+    //dependent entitites
+    private List<WorkOrder> workOrders; 
+    private List<Labourer> laborers;
+    
+    private Date prelimStartDate; //date entered by user when first making new peoject, used for quote calculation NOT NULL
+    private Date actualStartDate; //that actual date things got rolling, different from date used for quote
+    private Date estimatedEndDate; //estimated date of project end used in new project to calculate initial quote
+    private Date actualEndDate;
+    
+    //track clients payments
     private double clientOwing;
     private boolean clientPaid;
-    private List<WorkOrder> workOrders;
-    private List<Labourer> laborers;
+    
+    //for quote math
     private double estimatedShoppingCost;
     private double estimatedLabourCost;
     private double estimatedDeliveryCost;
@@ -34,17 +50,19 @@ public class Project {
     private double extraneousExpenses;
     private double estimatedProfit;
     private double actualProfit;
-    private Date actualEndDate;
     private double actualLabourCost;
-    private double quote;
-    private String address;
-    private char status;
+    
+    //the actual quote
+    private double quote; //NOT NULL
+    
     
     /**
      * default Project constructor
      */
     public Project(){
-        
+    }
+    
+    public Project(String name, String desc){ //for new project use case
     }
  
    
@@ -56,24 +74,5 @@ public class Project {
     public boolean export(Project project){
         return false;
         
-    }
-    /**
-     * Sends itself to JDBCCommands to be deleted from the MySQL database
-     * @return true if no errors occur
-     */
-    public boolean deleteSQL(){
-        return false;
-        
-    }
-    
-    /**
-     * Creates a new WorkOrder object and adds it to the workOrders List
-     * @param type the type of WorkOrder to be created
-     * @return the created WorkOrder
-     */
-    public WorkOrder createWorkorder(char type){
-        return null;
-        
-    }
-    
+    }   
 }
