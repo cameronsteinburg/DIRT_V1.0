@@ -5,6 +5,7 @@ import entity.WorkOrder;
 import entity.Client;
 import entity.Labourer;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 
 import java.sql.PreparedStatement;
@@ -45,8 +46,8 @@ public class JDBCCommands {
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setString(1, client.getClientName());
                 preparedStmt.setString(2, client.getDescription());
-                preparedStmt.setString(3, ""+client.getPhone1());
-                preparedStmt.setString(4, ""+client.getPhone2());
+                preparedStmt.setString(3, client.getPhone1());
+                preparedStmt.setString(4, client.getPhone2());
                 preparedStmt.setString(5, client.getEmail());
                 preparedStmt.setString(6, client.getAddress());
                 preparedStmt.setBoolean(7, client.getIsActive());
@@ -101,6 +102,35 @@ public class JDBCCommands {
             }
             return null;
         }
+        
+        /**
+         * 
+         * Retrieves a clientNum from the database from the name passed to the method
+         * @param clientName the name of the client to be searched for
+         * @return clientNum from the information found in the clients table
+         */
+        public int getClientNum(String clientName){
+            
+            try {
+                Statement statement = conn.createStatement();
+                
+                // Result set contains the result of the SQL query
+                ResultSet results = statement.executeQuery("select * from clients where name = '" + clientName + "';");
+
+                //.next() retreives the next row, think of it like a cursor fetching
+                while (results.next()) { 
+                    int clientNum = results.getInt("clientNum");
+                    return clientNum;
+                    
+                    
+                }
+
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return -1;
+        }
 	
 	/**
 	 * persists project to MySQL
@@ -108,8 +138,42 @@ public class JDBCCommands {
 	 * @return true if no error occurs
 	 */
 	public boolean persistProject(Project project){
-		return false;
 		
+            try {
+                // the mysql prepared insert statement
+                String query = " insert into projects (clientNum, projectName, description, startDate, estimatedEndDate, clientOwing, clientPaid, estimatedShoppingCost, estimatedLabourCost, estimatedDeliveryCost, allowanceCost, actualShoppingCost, actualLabourCost, acutalDeliveryCost, extraneousExpenses, estimatedProfit, actualProfit, actualEndDate, isActive) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                
+                // create the mysql insert preparedstatement
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, getClientNum(project.getClient().getClientName()));
+                preparedStmt.setString(2, project.getProjectName());
+                preparedStmt.setString(3, project.getProjectDescription());
+                preparedStmt.setDate(4, (Date) project.getPrelimStartDate());
+                preparedStmt.setDate(5, (Date) project.getEstimatedEndDate());
+                preparedStmt.setDouble(6, project.getClientOwing());
+                preparedStmt.setBoolean(7, project.isClientPaid());
+                preparedStmt.setDouble(8, project.getEstimatedShoppingCost());
+                preparedStmt.setDouble(9, project.getEstimatedLabourCost());
+                preparedStmt.setDouble(10, project.getEstimatedDeliveryCost());
+                preparedStmt.setDouble(11, project.getAllowanceCost());
+                preparedStmt.setDouble(12, project.getActualShoppingCost());
+                preparedStmt.setDouble(13, project.getActualLabourCost());
+                preparedStmt.setDouble(14, project.getActualDeliveryCost());
+                preparedStmt.setDouble(15, project.getExtraneousExpenses());
+                preparedStmt.setDouble(16, project.getEstimatedProfit());
+                preparedStmt.setDouble(17, project.getActualProfit());
+                preparedStmt.setDate(18, (Date) project.getActualEndDate());
+                preparedStmt.setDouble(19, project.getStatus());
+                
+                
+                
+                // execute the preparedstatement
+                preparedStmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+		return true;
 	}
 	
 	/**

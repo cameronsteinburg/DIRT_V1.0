@@ -1,5 +1,7 @@
 package services;
 
+import application.Main;
+import entity.Client;
 import entity.Project;
 import java.sql.ResultSet;
 
@@ -18,7 +20,14 @@ public class DBServices {
 		return false;
 	}
 	
-
+        /**
+         * gets a client object from the database via jdbccommands based on name
+         * @param name the name of the client to retrieve
+         * @return the Client object
+         */
+        public Client getClient(String name){
+            return Main.jdbcc.getClient(name);
+        }
 	/**
 	 * Calls the Projects export method
 	 * @param project Project Object to export CSV
