@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class represents the project entity and communicates with the persistence layer
+ *
  */
 package entity;
 
@@ -9,11 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * This class represents the project entity and communicates with the persistence layer
- *
- */
 public class Project {
     
     //* nothing gets saved to db until the user pucnhe sin all the info to get the the quote production
@@ -31,25 +25,45 @@ public class Project {
     private List<WorkOrder> workOrders; 
     private List<Labourer> laborers;
     
+    //dates
     private Date prelimStartDate; //date entered by user when first making new peoject, used for quote calculation NOT NULL
     private Date actualStartDate; //that actual date things got rolling, different from date used for quote
-    private Date estimatedEndDate; //estimated date of project end used in new project to calculate initial quote
+    private Date estimatedEndDate; //estimated date of project end used in new project to calculate initial quote NOT NULL
     private Date actualEndDate; //the date the project actually ended
     
     //track clients payments
-    private double clientOwing;
-    private boolean clientPaid;
+    private double clientOwing; //what client still owes
+    private boolean clientPaid; //the amount the client has already paid 
     
     //QUICK MATHS
-    private double estimatedShoppingCost;
-    private double estimatedDeliveryCost;
-    private double estimatedLabourCost;
-    private double estimatedProfit;
+    private double estimatedShoppingCost; //estimated materials cost for quote NOT NULL
+    private double estimatedDeliveryCost; //estimated cost of transportation for quote NOT NULL
+    private double estimatedLabourCost; //estimated cost of labour for quote NOT NULL
+    private double estimatedProfit; //estimated amount in user's pocket upon completion NOT NULL
    
-    private double actualShoppingCost;
-    private double actualDeliveryCost;
-    private double actualLabourCost;
-    private double actualProfit;
+    private double actualShoppingCost; //final cost of materials for bill at project close
+    private double actualDeliveryCost; // final cost of transportation for bill at project close
+    private double actualLabourCost; //final cost of labour for bill at project close
+    private double actualProfit; //final cost going into user's pocket at project close
+    
+    //project expense outliers
+    private double allowanceCost; //wiggle room assigned for unexpected expenses
+    private double extraneousExpenses; //expenses beyond budget during quote period
+    
+    //the actual quote of project bill
+    private double quote; //NOT NULL
+    
+    //the actual bill
+    private double actualCost; //the bottom line at end of project for what the client paid in the end
+
+    public double getActualCost() {
+        return actualCost;
+    }
+
+    public void setActualCost(double actualCost) {
+        this.actualCost = actualCost;
+    }
+    
 
     public String getProjectName() {
         return projectName;
@@ -251,11 +265,7 @@ public class Project {
         this.quote = quote;
     }
     
-     private double allowanceCost;
-    private double extraneousExpenses;
     
-    //the actual quote
-    private double quote; //NOT NULL
     
     
     /**
