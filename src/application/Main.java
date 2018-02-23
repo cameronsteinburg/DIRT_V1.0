@@ -1,5 +1,6 @@
 /*
  * @author Kevin Brown 645011, Cameron Steinburg 734972, Matthew MacDonald 728918, Kyle Hendrickson 628344 
+ *
  * DIRT - Terms and conditions
 
 Preamble: This Agreement, signed on Feb 21, 2018 (hereinafter: Effective Date) governs the relationship between Visual Landscaping, a Business Entity, (hereinafter: Licensee) and AFT Solutions, a private person whose principal place of business is {location} (hereinafter: Licensor). This Agreement sets the terms, rights, restrictions and obligations on using DIRT (hereinafter: The Software) created and owned by Licensor, as detailed herein
@@ -40,6 +41,9 @@ Governing Law, Jurisdiction: Licensee hereby agrees not to initiate class-action
  */
 package application;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -57,16 +61,17 @@ public class Main extends Application {
 
     public static Stage stage;//singleton stage object i.e the apps window definied by fxml files controlled by controller files
     public static JDBCCommands jdbcc;
-    //  ArrayList<FXMLLoader> ugh; tentative
-
+   
     @Override
     public void start(Stage stage) throws Exception { //gets this show on the road
-        // FXMLLoader loaderr = new FXMLLoader();
 
+        //inistialize db communication
         DBAccessor dba = new DBAccessor();
         dba.connectToMySQL();
         this.jdbcc = new JDBCCommands(dba);
+        
 
+        //initialize main page
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -81,4 +86,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
 }

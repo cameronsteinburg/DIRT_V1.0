@@ -44,8 +44,9 @@ public class CreateClientGUIController implements Initializable {
     private Label invalidEmailMessage;
 
     @FXML
-    private void cancelBtnAction(ActionEvent event) {
-        System.out.println("testCancel");
+    private void cancelBtnAction(ActionEvent event) throws IOException {
+
+        StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
 
     @FXML
@@ -104,10 +105,7 @@ public class CreateClientGUIController implements Initializable {
 
         Main.jdbcc.persistClient(newClient); //persist to db
 
-        Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml")); //reroute user to home page
-        Scene scene = new Scene(root);
-        Main.stage.setScene(scene);
-        Main.stage.show();
+        StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
 
     /**
