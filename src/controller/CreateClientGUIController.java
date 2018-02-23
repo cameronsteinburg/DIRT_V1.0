@@ -11,10 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
@@ -62,6 +59,7 @@ public class CreateClientGUIController implements Initializable {
         //data validation commences 
         if (name.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
 
+            errorMessage.setText("* Required Fields Cannot Be Left Blank");
             errorMessage.setVisible(true);
             return;
         }

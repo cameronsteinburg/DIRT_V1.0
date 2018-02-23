@@ -41,9 +41,6 @@ Governing Law, Jurisdiction: Licensee hereby agrees not to initiate class-action
  */
 package application;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -60,17 +57,16 @@ import persistence.JDBCCommands;
 public class Main extends Application {
 
     public static Stage stage;//singleton stage object i.e the apps window definied by fxml files controlled by controller files
-    public static JDBCCommands jdbcc;
+    public static JDBCCommands jdbcc; //singleton jdcc object to be used by DBAccessor
    
     @Override
     public void start(Stage stage) throws Exception { //gets this show on the road
 
-        //inistialize db communication
+        //initialize db communication
         DBAccessor dba = new DBAccessor();
         dba.connectToMySQL();
         this.jdbcc = new JDBCCommands(dba);
         
-
         //initialize main page
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);

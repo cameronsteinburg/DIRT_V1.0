@@ -28,7 +28,7 @@ public class JDBCCommands {
 	 * default JDBCCommands constructor
 	 */
 	public JDBCCommands(DBAccessor dbAccess){
-		this.conn = dbAccess.getConn();
+            this.conn = dbAccess.getConn();
 	}
 	
 	/**
@@ -51,8 +51,7 @@ public class JDBCCommands {
                 preparedStmt.setString(5, client.getEmail());
                 preparedStmt.setString(6, client.getAddress());
                 preparedStmt.setBoolean(7, client.getIsActive());
-                
-                
+                             
                 // execute the preparedstatement
                 preparedStmt.execute();
             } catch (SQLException ex) {

@@ -1,31 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * 
+ * This class represents the client entity and communicates with the persistence
+ * layer
  */
 package entity;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This class represents the client entity and communicates with the persistence
- * layer
- *
- */
 public class Client {
 
-    private String clientName; //definitely not-null
-    private String description;// can be null
-    private String phone1; // null?
-    private String phone2; //can be null
-    private String email;// null?
-    private String address;// null?
-    private List<Project> ongoingProjects;//can be null
-    private List<Project> completedProjects;//can be null
-    private List<String> clientNotes;//can be null
-    private boolean isActive;//definitely not-null
+    private String clientName; //User's entered client's name, bisuness or personal, from CreateClientGUI screen.  NOT NULL
+    private String description; //User's optional description they entered at CreateClientGUI, notes on the current job
+    private String phone1; //Clients primary number entered by user at entered at CreateClientGUI NOT NULL 
+    private String phone2; //Secondary means to contact Client with a phone, entered by User at CreateClientGUI
+    private String email; //Client's email entered by User at CreateClientGUI
+    private String address; //Client's personal/business address entered by User at CreateClientGUI
+    private List<Project> ongoingProjects; //Projects this Client is affiliated with 
+    private List<Project> completedProjects; //Projects this Client was previously affiliated with that have already completed
+    private List<String> clientNotes; //Notes user wants to make about this particular client, either entered by User at CreateClientGUI or added at ClientProfileGUI
+    private boolean isActive; //false if user deleted this entity, true if he hasn't NOT NULL
 
     /**
      * default client constructor
