@@ -15,22 +15,38 @@ import javafx.fxml.Initializable;
 public class HomePageGUIController implements Initializable {
 
     //elements from the GUI.fxml page
+    
+    
+    
+    //Client actions
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
 
         StageController.control.navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client
     }
+    
+    @FXML
+    private void editClientAction(ActionEvent event) throws IOException {
 
+    }
+    
+    
+    //Project Actions
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
         StageController.control.navigateTo("/ui/CreateProjectGUI.fxml"); //takes user to page to make new Project
     }
+    
+    
 
+    //Labourer Actions
     @FXML
-    private void editClientAction(ActionEvent event) throws IOException {
+    private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
+       StageController.control.navigateTo("/ui/CreateLabourerGUI.fxml"); //takes user to page to make new Project
     }
+    
 
     public void initialize(URL url, ResourceBundle rb) {
         // put stuff in this method as if its the onLoad of the fxml page

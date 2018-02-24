@@ -35,18 +35,28 @@ public class CreateClientGUIController implements Initializable {
     private Label errorMessage;
 
 
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void cancelBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
 
         StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
 
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
-    private void saveBtnAction(ActionEvent event) throws IOException {
+    private void saveBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateClientGUI.fxml
 
         errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
-        String name = nameField.getText();
+        String name = nameField.getText(); //get the User;s data they entered into GUI fields
         String email = emailField.getText();
         String address = addressField.getText();
         String description = notesField.getText();
