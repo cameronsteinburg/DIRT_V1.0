@@ -50,7 +50,7 @@ public class JDBCCommands {
                 preparedStmt.setString(4, client.getPhone2());
                 preparedStmt.setString(5, client.getEmail());
                 preparedStmt.setString(6, client.getAddress());
-                preparedStmt.setBoolean(7, client.getIsActive());
+                preparedStmt.setBoolean(7, client.getStatus());
                              
                 // execute the preparedstatement
                 preparedStmt.execute();

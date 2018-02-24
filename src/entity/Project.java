@@ -1,6 +1,7 @@
 /**
- * This class represents the project entity and communicates with the persistence layer
  *
+ * 
+ * This class represents the project entity and communicates with the persistence layer
  */
 package entity;
 
@@ -19,7 +20,7 @@ public class Project {
     private Client client; //user has to make a client to assign to this project beforehand NOT NULL 
     private ArrayList<String> projectLog;// notes user can add overtime as project progresses
     private String siteAddress; //the site of the project
-    private char status; //has the user "deleted" this entity yet NOT NULL
+    private char status; //false if the user has deleted this entity, true if he hasn't NOT NULL
     
     //dependent entitites
     private List<WorkOrder> workOrders; //anything that costs User money

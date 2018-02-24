@@ -49,7 +49,7 @@ public class CreateClientGUIController implements Initializable {
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException {
 
-        errorMessage.setVisible(false); //reset messages for multiple attempts bu user to get their data correct
+        errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
         String name = nameField.getText();
         String email = emailField.getText();

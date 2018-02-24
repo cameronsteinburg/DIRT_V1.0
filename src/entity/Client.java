@@ -1,7 +1,6 @@
 /**
  * 
- * This class represents the client entity and communicates with the persistence
- * layer
+ * This class represents the client entity and communicates with the persistence layer
  */
 package entity;
 
@@ -150,12 +149,12 @@ public class Client {
         this.clientNotes = clientNotes;
     }
 
-    public boolean getIsActive() {
+    public boolean getStatus() {
         return isActive;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setStatus(boolean status) {
+        this.isActive = status;
     }
 
     /**
