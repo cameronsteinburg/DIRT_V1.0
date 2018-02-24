@@ -20,9 +20,9 @@ class StageController {
 
     private FXMLLoader loader;
 
-    protected void navigateTo(String url) throws IOException {
-
-        loader = new FXMLLoader();
+    protected void navigateTo(String url) throws IOException { // <--- call this method to change pages
+                                                               // StageController.control.navigateTo("/ui/name.fxml");
+        this.loader = new FXMLLoader();
         this.loader.setLocation(getClass().getResource(url));
         Parent parent = this.loader.load();
         Scene scene = new Scene(parent);

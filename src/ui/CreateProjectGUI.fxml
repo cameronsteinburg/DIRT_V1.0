@@ -66,7 +66,7 @@
             <TextArea fx:id="notesField" prefHeight="177.0" prefWidth="512.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <DatePicker prefHeight="25.0" prefWidth="231.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker prefHeight="25.0" prefWidth="231.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox prefHeight="25.0" prefWidth="231.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="clientDropdown" prefHeight="25.0" prefWidth="231.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Label layoutX="87.0" layoutY="79.0" text="* = Required" textFill="#eb0000">

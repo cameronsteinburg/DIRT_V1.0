@@ -52,13 +52,15 @@ import persistence.JDBCCommands;
 
 /**
  *
- * This is where the app begins, main calls start and instantiates the single global stage variable for all the control files to interact with
+ * This is where the app begins, main calls start and instantiates the single
+ * global stage variable for all the control files to interact with
  */
 public class Main extends Application {
 
     public static Stage stage;//singleton stage object i.e the apps window definied by fxml files controlled by controller files
     public static JDBCCommands jdbcc; //singleton jdcc object to be used by DBAccessor
-   
+    //DBServices - > JDBCCommands -> DBAccessor -> DB 
+
     @Override
     public void start(Stage stage) throws Exception { //gets this show on the road
 
@@ -66,7 +68,7 @@ public class Main extends Application {
         DBAccessor dba = new DBAccessor();
         dba.connectToMySQL();
         this.jdbcc = new JDBCCommands(dba);
-        
+
         //initialize main page
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
@@ -82,6 +84,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    
+
 }

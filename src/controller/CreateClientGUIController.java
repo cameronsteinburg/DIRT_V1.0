@@ -8,6 +8,7 @@ import application.Main;
 import entity.Client;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,12 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
+
 public class CreateClientGUIController implements Initializable {
 
-    @FXML
-    private Button cancelBtn;
-    @FXML
-    private Button saveBtn;
     @FXML
     private TextField nameField;
     @FXML
@@ -34,11 +32,8 @@ public class CreateClientGUIController implements Initializable {
     @FXML
     private TextArea notesField;
     @FXML
-    private AnchorPane rootPane;
-    @FXML
     private Label errorMessage;
-    @FXML
-    private Label invalidEmailMessage;
+
 
     @FXML
     private void cancelBtnAction(ActionEvent event) throws IOException {
@@ -91,19 +86,13 @@ public class CreateClientGUIController implements Initializable {
             errorMessage.setVisible(true);
             return;
         }
-
-        System.out.println("name: " + name);
-        System.out.println("phone1: " + phone1Field.getText());
-        System.out.println("phone2: " + phone2Field.getText());
-        System.out.println("email: " + email);
-        System.out.println("address: " + address);
-        System.out.println("description: " + description);
+        //data is valid at this point
 
         Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
 
         Main.jdbcc.persistClient(newClient); //persist to db
 
-        StageController.control.navigateTo("/ui/HomePageGui.fxml");
+        StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
     }
 
     /**
@@ -111,6 +100,6 @@ public class CreateClientGUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
 }

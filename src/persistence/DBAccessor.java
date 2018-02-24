@@ -12,18 +12,20 @@ import java.util.logging.Logger;
  */
 public class DBAccessor {
 
-    
     private Connection conn;
-	/**
-	 * default DBAccessor constructor
-	 */
-	public DBAccessor(){
-	}
-	/**
-	 * creates MySQL connection and JDBCCommands instance
-	 * @return true if no errors occur connecting to the database
-	 */
-	public boolean connectToMySQL(){
+
+    /**
+     * default DBAccessor constructor
+     */
+    public DBAccessor() {
+    }
+
+    /**
+     * creates MySQL connection and JDBCCommands instance
+     *
+     * @return true if no errors occur connecting to the database
+     */
+    public boolean connectToMySQL() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DIRT?user=root&password=password");
@@ -41,26 +43,25 @@ public class DBAccessor {
             return false;
         }
         return true;
-	}
-	
-	/**
-	 * disconnects MySQL connection and JDBCCommands instance
-	 * @return true if disconnect is successful
-	 */
-	public boolean disconnectToMySQL(){
-            
+    }
+
+    /**
+     * disconnects MySQL connection and JDBCCommands instance
+     *
+     * @return true if disconnect is successful
+     */
+    public boolean disconnectToMySQL() {
+
         try {
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(DBAccessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-            return true;
-	}
+        return true;
+    }
 
     public Connection getConn() {
         return conn;
     }
-        
-        
-	
+
 }

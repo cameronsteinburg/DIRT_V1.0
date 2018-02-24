@@ -22,11 +22,19 @@ public class HomePageGUIController implements Initializable {
     private Button newClientBtn;
     @FXML
     private Button btn2;
-
+    @FXML
+    private Button newProjectBtn;
+    
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
 
         StageController.control.navigateTo("/ui/CreateClientGUI.fxml");
+    }
+    
+    @FXML
+    private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
+
+        StageController.control.navigateTo("/ui/CreateProjectGUI.fxml");
     }
 
     @FXML
