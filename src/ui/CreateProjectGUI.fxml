@@ -63,8 +63,8 @@
             <TextField fx:id="nameField" maxWidth="500.0" prefHeight="21.0" prefWidth="200.0" GridPane.columnIndex="1" />
             <TextField fx:id="addressField" maxWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextArea fx:id="notesField" prefHeight="203.0" prefWidth="715.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <DatePicker prefHeight="25.0" prefWidth="274.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker prefHeight="25.0" prefWidth="272.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="prelimStart" prefHeight="25.0" prefWidth="274.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="estEnd" prefHeight="25.0" prefWidth="272.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="clientDropdown" prefHeight="25.0" prefWidth="275.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>

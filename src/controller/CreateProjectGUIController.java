@@ -7,8 +7,12 @@ package controller;
 import entity.Client;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,12 +22,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import services.DBServices;
 
-
 public class CreateProjectGUIController implements Initializable {
-    
+
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
@@ -37,67 +41,78 @@ public class CreateProjectGUIController implements Initializable {
     @FXML
     private TextField addressField;
     @FXML
-    private TextField notesField;
+    private TextArea notesField;
     @FXML
     private Label errorMessage;
-    
+
     /**
-     * 
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void cancelBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
         StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
-    
+
     /**
-     * 
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateProjectGUI.fxml
+
+        String name = nameField.getText(); //get the User's data they entered into GUI fields
+//        LocalDate prelim = prelimStart.getValue();
+        //       LocalDate end = estEnd.getValue();
         
-        String name = nameField.getText(); //get the User;s data they entered into GUI fields
-        LocalDate prelim = prelimStart.getValue();
-        LocalDate end = estEnd.getValue();
+        LocalDate localDate = prelimStart.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        Date date = Date.from(instant);
+        System.out.println(date);
+
         String address = addressField.getText();
         String description = notesField.getText();
-        
+
         System.out.println("=====START=====");
-        System.out.println(prelimStart);
+        System.out.println(prelimStart.getValue());
         System.out.println("=====END=====");
         
-        //data validation commences 
-        
-       // if (name.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
 
-            if(1 == 1){
-            
+        //data validation commences 
+         if (name.isEmpty() ) { //checking to see if the user entered blank data for not null fields
+  
+
             errorMessage.setText("* Required Fields Cannot Be Left Blank");
             errorMessage.setVisible(true);
             return;
         }
-        
+        System.out.println(prelimStart.getValue());
     }
+
     /**
-     * getting names for the dropdown menu so user can pick a Client to add to the project
+     * getting names for the dropdown menu so user can pick a Client to add to
+     * the project
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        DBServices dbs = new DBServices(); 
+
+        DBServices dbs = new DBServices();
         ArrayList<Client> clients = new ArrayList<Client>();
         clients.addAll(dbs.getClients());
         ObservableList<String> names = FXCollections.observableArrayList();
-        
-        for(int i = 0; i < clients.size(); i++){
+
+        for (int i = 0; i < clients.size(); i++) {
             names.add(clients.get(i).getClientName());
         }
-        
-        clientDropdown.setItems((ObservableList) names);
-    }    
+
+        clientDropdown.setItems((ObservableList) names); //produces list of Client names for the dropdown in the GUI
+   
+        prelimStart.setValue(LocalDate.now()); //set the DatePicker defaults to today in the GUI
+        estEnd.setValue(LocalDate.now());
+    }
 }
