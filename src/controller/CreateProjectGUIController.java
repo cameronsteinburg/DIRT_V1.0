@@ -81,12 +81,14 @@ public class CreateProjectGUIController implements Initializable {
         }
         
     }
-    
-    
-    
+    /**
+     * getting names for the dropdown menu so user can pick a Client to add to the project
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //getting names for the dropdown menu so user can pick a Client to add to the project
+        
         DBServices dbs = new DBServices(); 
         ArrayList<Client> clients = new ArrayList<Client>();
         clients.addAll(dbs.getClients());

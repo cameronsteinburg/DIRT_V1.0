@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
 class StageController { //only accessible in controller package
 
     protected static StageController control = new StageController(); //only the other controller classes in this pachage can access this singleton StageController
@@ -21,6 +20,7 @@ class StageController { //only accessible in controller package
     private FXMLLoader loader; //private so no one else can manipulate the loader but this class
 
     /**
+     * Allows for navigation between pages i.e changing the active Scene in the singleton Stage object in Main
      * 
      * @param url The local destination of the fxml page in the ui package
      * @throws IOException .load() needs to throw this

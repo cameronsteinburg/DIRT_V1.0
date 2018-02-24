@@ -1,18 +1,23 @@
+/**
+ * 
+ */
 package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-/**
- * FXML Controller class
- *
- * @author 734972
- */
+
 public class CreateLabourerGUIController implements Initializable {
 
+    //try to keeps this in the relative order they appear on the page
+    //elements from the GUI.fxml page
+    
+    
     /**
-     * Initializes the controller class.
+     * 
+     * @param url
+     * @param rb 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

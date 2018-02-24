@@ -19,19 +19,38 @@ public class HomePageGUIController implements Initializable {
     
     
     //Client actions
+    
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     * @throws URISyntaxException 
+     */
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
 
         StageController.control.navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client
     }
-    
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void editClientAction(ActionEvent event) throws IOException {
 
     }
     
     
+    
     //Project Actions
+    
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     * @throws URISyntaxException 
+     */
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
@@ -41,6 +60,13 @@ public class HomePageGUIController implements Initializable {
     
 
     //Labourer Actions
+    
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     * @throws URISyntaxException 
+     */
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
@@ -48,6 +74,11 @@ public class HomePageGUIController implements Initializable {
     }
     
 
+    /**
+     * 
+     * @param url
+     * @param rb 
+     */
     public void initialize(URL url, ResourceBundle rb) {
         // put stuff in this method as if its the onLoad of the fxml page
         //stuff we want to happen when the page opens like loading information from the db to the page
