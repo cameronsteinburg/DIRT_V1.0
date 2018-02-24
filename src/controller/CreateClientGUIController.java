@@ -8,17 +8,16 @@ import application.Main;
 import entity.Client;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 
 
 public class CreateClientGUIController implements Initializable {
 
+    //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
     private TextField nameField;

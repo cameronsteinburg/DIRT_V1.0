@@ -12,33 +12,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-
 public class HomePageGUIController implements Initializable {
 
     //elements from the GUI.fxml page
-    
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        StageController.control.navigateTo("/ui/CreateClientGUI.fxml");
+        StageController.control.navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client
     }
-    
+
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        StageController.control.navigateTo("/ui/CreateProjectGUI.fxml");
+        StageController.control.navigateTo("/ui/CreateProjectGUI.fxml"); //takes user to page to make new Project
     }
 
     @FXML
-    private void testBtn2(ActionEvent event) throws IOException {
+    private void editClientAction(ActionEvent event) throws IOException {
 
-       // Parent root = FXMLLoader.load(getClass().getResource("/capstoneguitest/CreateClientGUI.fxml"));
     }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // put stuff in this method as if its the onLoad of the fxml page
         //stuff we want to happen when the page opens like loading information from the db to the page

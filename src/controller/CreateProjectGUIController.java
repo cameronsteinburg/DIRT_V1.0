@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import services.DBServices;
 
 
@@ -18,10 +20,18 @@ public class CreateProjectGUIController implements Initializable {
     
     //elements from the GUI.fxml page
     @FXML
+    private TextField nameField;
+    @FXML
+    private DatePicker prelimStart;
+    @FXML
+    private DatePicker estEnd;
+    @FXML
     private ChoiceBox clientDropdown;
     
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException {
+        
+        
     }
     
     @FXML
