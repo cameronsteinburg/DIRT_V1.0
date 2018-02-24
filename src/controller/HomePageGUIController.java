@@ -11,19 +11,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+
 
 public class HomePageGUIController implements Initializable {
 
-    @FXML
-    private AnchorPane rootPane;
-    @FXML
-    private Button newClientBtn;
-    @FXML
-    private Button btn2;
-    @FXML
-    private Button newProjectBtn;
+    //elements from the GUI.fxml page
     
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
@@ -48,6 +40,7 @@ public class HomePageGUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // put stuff in this method as if its the onLoad of the fxml page
+        //stuff we want to happen when the page opens like loading information from the db to the page
     }
 }

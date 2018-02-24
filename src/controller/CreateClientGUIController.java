@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class CreateClientGUIController implements Initializable {
 
+    //elements from the GUI.fxml page
     @FXML
     private TextField nameField;
     @FXML
@@ -36,7 +37,7 @@ public class CreateClientGUIController implements Initializable {
 
 
     @FXML
-    private void cancelBtnAction(ActionEvent event) throws IOException {
+    private void cancelBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
 
         StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
@@ -72,8 +73,9 @@ public class CreateClientGUIController implements Initializable {
             errorMessage.setVisible(true);
             return;
         }
-
-        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { //if they are entering a second number, checking phone number isnt too long or short
+        
+        //if they are entering a second number, checking phone number isnt too long or short
+        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { 
 
             errorMessage.setText("Phone number must be 7 - 11 digits");
             errorMessage.setVisible(true);
@@ -95,11 +97,9 @@ public class CreateClientGUIController implements Initializable {
         StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
     }
 
-    /**
-     * Initializes the controller class.
-     */
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        //nothing to load
     }
 }

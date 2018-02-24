@@ -16,6 +16,7 @@ import services.DBServices;
 
 public class CreateProjectGUIController implements Initializable {
     
+    //elements from the GUI.fxml page
     @FXML
     private ChoiceBox clientDropdown;
     
@@ -31,8 +32,8 @@ public class CreateProjectGUIController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
-        DBServices dbs = new DBServices();
+        //getting names for the dropdown menu so user can pick a Client to add to the project
+        DBServices dbs = new DBServices(); 
         ArrayList<Client> clients = new ArrayList<Client>();
         clients.addAll(dbs.getClients());
         ObservableList<String> names = FXCollections.observableArrayList();
