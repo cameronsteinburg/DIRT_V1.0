@@ -80,8 +80,8 @@
       </Label>
       <ToolBar layoutY="582.0" prefHeight="45.0" prefWidth="1280.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0">
          <items>
-            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="42.0" prefWidth="81.0" text="Save" />
             <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="42.0" prefWidth="81.0" text="Cancel" />
+            <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#nextBtnAction" prefHeight="42.0" prefWidth="81.0" text="Next " />
             <Label id="errorMessage" fx:id="errorMessage" prefHeight="43.0" prefWidth="891.0" textFill="RED">
                <font>
                   <Font size="24.0" />

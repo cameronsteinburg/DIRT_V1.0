@@ -77,7 +77,7 @@ public class Client {
         this.clientNotes.addAll(clientNotes);
     }
 
-    public String getClientName() {
+    public String getName() {
         return clientName;
     }
 
