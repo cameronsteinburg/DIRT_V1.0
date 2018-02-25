@@ -51,8 +51,9 @@
          </top>
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-
-            </Pane>
+               <children>
+                  <AnchorPane prefHeight="526.0" prefWidth="1053.0" />
+               </children></Pane>
          </center>
          <left>
             <Accordion prefWidth="202.0" BorderPane.alignment="CENTER">
@@ -75,7 +76,7 @@
                                     <Button fx:id="newClientBtn" mnemonicParsing="false" onAction="#newClientAction" prefHeight="128.0" prefWidth="303.0" styleClass="navButton" text="New Client">
 
                                     </Button>
-                                    <Button fx:id="editClientBtn" mnemonicParsing="false" onAction="#editClientAction" prefHeight="111.0" prefWidth="338.0" styleClass="navButton" text="View / Edit Existing Client" GridPane.rowIndex="1">
+                                    <Button fx:id="editClientBtn" mnemonicParsing="false" onAction="#editClientAction" prefHeight="111.0" prefWidth="338.0" styleClass="navButton" text="Edit Existing Client" GridPane.rowIndex="1">
 
                                     </Button>
                                  </children>

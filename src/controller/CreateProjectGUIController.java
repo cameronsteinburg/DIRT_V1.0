@@ -1,4 +1,4 @@
-/*
+ /*
  * 
  *  This is the class that controls what happens when the user is on the page that lets them make a new client i.e /ui/CreateProjectGUI.fxml
     Also controls child pages of /ui/CreateProjectGUI.fxml
@@ -65,7 +65,7 @@ public class CreateProjectGUIController implements Initializable {
     @FXML
     private void nextBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateProjectGUI.fxml
 
-         //get the User's data they entered into GUI fields
+        //get the User's data they entered into GUI fields
         
         LocalDate rawPrelim = prelimStart.getValue();
         LocalDate rawEst = estEnd.getValue();

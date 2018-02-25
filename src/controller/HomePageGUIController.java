@@ -4,19 +4,28 @@
  */
 package controller;
 
+import entity.Client;
+import entity.Labourer;
+import entity.Project;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import services.DBServices;
 
 public class HomePageGUIController implements Initializable {
 
+    //Current Cleint's projects, labourers to be loaded
+    ArrayList<Client> curClients;
+    ArrayList<Labourer> curLabourers;
+    ArrayList<Project> curProjects;
+    
     //elements from the GUI.fxml page
-    
-    
+
     
     //Client actions
     
@@ -82,5 +91,9 @@ public class HomePageGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // put stuff in this method as if its the onLoad of the fxml page
         //stuff we want to happen when the page opens like loading information from the db to the page
+        
+        DBServices dbs = new DBServices(); //loading in db entity resources
+        
+        this.curClients = dbs.getClients();
     }
 }
