@@ -56,7 +56,7 @@ public class CreateClientGUIController implements Initializable {
 
         errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
-        String name = nameField.getText(); //get the User;s data they entered into GUI fields
+        String name = nameField.getText(); //get the User's data they entered into GUI fields
         String email = emailField.getText();
         String address = addressField.getText();
         String description = notesField.getText();
@@ -83,7 +83,7 @@ public class CreateClientGUIController implements Initializable {
             return;
         }
         
-        //if they are entering a second number, checking phone number isnt too long or short
+        //if User is entering a second number, checking phone number isnt too long or short
         if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { 
 
             errorMessage.setText("Phone number must be 7 - 11 digits");

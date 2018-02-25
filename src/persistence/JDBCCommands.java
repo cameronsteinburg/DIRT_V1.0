@@ -44,7 +44,7 @@ public class JDBCCommands {
                 // create the mysql insert preparedstatement
                 //should probably change the ints in client class to strings at somepoint or change db to use ints instead
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
-                preparedStmt.setString(1, client.getClientName());
+                preparedStmt.setString(1, client.getName());
                 preparedStmt.setString(2, client.getDescription());
                 preparedStmt.setString(3, client.getPhone1());
                 preparedStmt.setString(4, client.getPhone2());
@@ -187,7 +187,7 @@ public class JDBCCommands {
                 
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
-                preparedStmt.setInt(1, getClientNum(project.getClient().getClientName()));
+                preparedStmt.setInt(1, getClientNum(project.getClient().getName()));
                 preparedStmt.setString(2, project.getProjectName());
                 preparedStmt.setString(3, project.getProjectDescription());
                 preparedStmt.setString(4, project.getSiteAddress());

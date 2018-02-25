@@ -24,7 +24,7 @@ public class Project {
     
     //dependent entitites
     private List<WorkOrder> workOrders; //anything that costs User money
-    private List<Labourer> laborers; //User's employees he can 
+    private List<Labourer> labourers; //User's employees he can assign to projects 
     
     //dates
     private Date prelimStartDate; //date entered by user when first making new peoject, used for quote calculation NOT NULL
@@ -68,7 +68,24 @@ public class Project {
      * @param name
      * @param desc 
      */
-    public Project(String name, String desc){ //for new project use case
+    public Project(String name, Date prelim, Date estEnd, Client client){ //for new project use case, minimum
+         //todo
+        this.projectLog = new ArrayList<String>();
+        this.projectName = name;
+        this.prelimStartDate = prelim;
+        this.estimatedEndDate = estEnd;
+        this.client = client;
+    }
+    
+    public Project(String name, Date prelim, Date estEnd, Client client, String address, String notes){ //for new project use case, minimum   
+        //todo
+        this.projectLog = new ArrayList<String>();
+        this.projectName = name;
+        this.prelimStartDate = prelim;
+        this.estimatedEndDate = estEnd;
+        this.client = client;
+        this.siteAddress = address;
+        this.projectLog.add(notes);
     }
  
    
@@ -215,7 +232,7 @@ public class Project {
      * @return 
      */
     public List<Labourer> getLaborers() {
-        return laborers;
+        return labourers;
     }
 
     /**
@@ -223,7 +240,7 @@ public class Project {
      * @param laborers 
      */
     public void setLaborers(List<Labourer> laborers) {
-        this.laborers = laborers;
+        this.labourers = laborers;
     }
 
     /**
