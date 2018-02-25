@@ -69,7 +69,7 @@ public class Project {
      * @param desc 
      */
     public Project(String name, Date prelim, Date estEnd, Client client){ //for new project use case, minimum
-         //todo
+         
         this.projectLog = new ArrayList<String>();
         this.projectName = name;
         this.prelimStartDate = prelim;
@@ -77,8 +77,28 @@ public class Project {
         this.client = client;
     }
     
-    public Project(String name, Date prelim, Date estEnd, Client client, String address, String notes){ //for new project use case, minimum   
-        //todo
+    public Project(String name, Date prelim, Date estEnd, Client client, String notes){ 
+         
+        this.projectLog = new ArrayList<String>();
+        this.projectName = name;
+        this.prelimStartDate = prelim;
+        this.estimatedEndDate = estEnd;
+        this.client = client;
+        this.projectLog.add(notes);
+    }
+    
+    public Project(String siteAddress, String name, Date prelim, Date estEnd, Client client){ 
+         
+        this.projectLog = new ArrayList<String>();
+        this.projectName = name;
+        this.prelimStartDate = prelim;
+        this.estimatedEndDate = estEnd;
+        this.client = client;
+        this.siteAddress = siteAddress;
+    }
+    
+    public Project(String name, Date prelim, Date estEnd, Client client, String address, String notes){    
+        
         this.projectLog = new ArrayList<String>();
         this.projectName = name;
         this.prelimStartDate = prelim;

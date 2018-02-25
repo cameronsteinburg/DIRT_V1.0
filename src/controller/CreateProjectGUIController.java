@@ -6,6 +6,7 @@
 package controller;
 
 import entity.Client;
+import entity.Project;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
@@ -74,33 +75,61 @@ public class CreateProjectGUIController implements Initializable {
         String description = notesField.getText();
         String clientName = (String) clientDropdown.getValue();
         
-        Client newClient; //Getting client object 
+        Client theClient; //Getting client object 
         DBServices dbs = new DBServices();
-        newClient = dbs.getClient(clientName);
+        theClient = dbs.getClient(clientName);
         
         //data validation commences 
-         if (name.isEmpty() || newClient == null || rawPrelim == null || rawEst == null) { //checking to see if the user entered blank data for not null db attributes
+         if (name.isEmpty() || theClient == null || rawPrelim == null || rawEst == null) { //checking to see if the user entered blank data for not null db attributes
   
             errorMessage.setText("* Required Fields Cannot Be Left Blank");
             errorMessage.setVisible(true);
             return;
         }
          
-         if (name.length() > 50 || description.length() > 5000 || address.length() > 30 || address.length() > 50) {
+         if (name.length() > 50 || description.length() > 5000 || address.length() > 30 ) {
 
             errorMessage.setText("One or more text boxes have too many characters");
             errorMessage.setVisible(true);
             return;
         }
-         
+               
         Instant instant = Instant.from(rawPrelim.atStartOfDay(ZoneId.systemDefault()));//some hoop jumping to get the dates picked from the User in GUI
         Date prelimStartDate = Date.from(instant); 
         Instant instant2 = Instant.from(rawEst.atStartOfDay(ZoneId.systemDefault()));
         Date estEndDate = Date.from(instant2); 
          
-         System.out.println("====It didn't break====");
-        //Project newProject = new Project();
-    }
+        if(prelimStartDate.compareTo(estEndDate) > 0){ //in can user set the first date to be after the end date
+            
+            errorMessage.setText("Preliminary Date Must Be Before End Date");
+            errorMessage.setVisible(true);
+            return;
+        }
+        
+        //all data is valid at this point
+        
+        System.out.println("====It didn't break====");
+        
+        Project newProject;
+        
+        if(description.length() == 0 && address.length() == 0){ //if user didn't enter anything into the optional fields
+            newProject = new Project(name, prelimStartDate, estEndDate, theClient);
+        }
+        
+        if(description.length() > 0 && address.length() == 0){
+            newProject = new Project(name, prelimStartDate, estEndDate, theClient, description); //if user only put text in notes field
+        }
+        
+        if(address.length() > 0 && description.length() == 0){
+            newProject = new Project(address, name, prelimStartDate, estEndDate, theClient); //if user only puts text in address field
+        }
+        
+        if(description.length() > 0 && address.length() > 0){
+            newProject = new Project(name, prelimStartDate, estEndDate, theClient, description, address); //user puts text in both field
+        }
+        
+        System.out.println("====This works now====");
+    } //the project object is not committed to db until the quote has been produced after user clicks "Next" button
 
     /**
      * getting names for the dropdown menu so user can pick a Client to add to
@@ -121,9 +150,6 @@ public class CreateProjectGUIController implements Initializable {
             names.add(clients.get(i).getName());
         }
 
-        clientDropdown.setItems((ObservableList) names); 
-   
-      //  prelimStart.setValue(LocalDate.now()); //set the DatePicker defaults to today in the GUI
-      //  estEnd.setValue(LocalDate.now());
+        clientDropdown.setItems((ObservableList) names); //puts names in dropdown
     }
 }
