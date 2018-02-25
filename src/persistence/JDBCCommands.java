@@ -217,6 +217,40 @@ public class JDBCCommands {
             }
 		return true;
 	}
+        
+        
+        /**
+	 * persists labourer to MySQL
+	 * @param labourer labourer to be persisted
+	 * @return true if no error occurs
+	 */
+	public boolean persistLabourer(Labourer labourer){
+            try {
+                
+                //TODO Fix from client template once the labourer table is done
+                
+                // the mysql prepared insert statement
+                String query = " insert into labourers (name, description, phone1, phone2, email, address, isActive) values (?, ?, ?, ?, ?, ?, ?)";
+                
+                // create the mysql insert preparedstatement
+                //should probably change the ints in client class to strings at somepoint or change db to use ints instead
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+//                preparedStmt.setString(1, client.getClientName());
+//                preparedStmt.setString(2, client.getDescription());
+//                preparedStmt.setString(3, client.getPhone1());
+//                preparedStmt.setString(4, client.getPhone2());
+//                preparedStmt.setString(5, client.getEmail());
+//                preparedStmt.setString(6, client.getAddress());
+//                preparedStmt.setBoolean(7, client.getStatus());
+                             
+                // execute the preparedstatement
+                preparedStmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+		return true;
+	}
 	
 	/**
 	 * exports a project to QuickBooks
