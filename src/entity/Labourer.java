@@ -17,14 +17,14 @@ public class Labourer {
     private String firstName;
     private String lastName;
     private String title;
-    private int phone1;
-    private int phone2;
+    private String phone1;
+    private String phone2;
     private String email;
     private String address;
     private String emergContactName;
-    private int emergContactPhone1;
-    private int emergContactPhone2;
-    private int sin;
+    private String emergContactPhone1;
+    private String emergContactPhone2;
+    private String sin;
     private double wage;
     private ArrayList<String> skills;
     private boolean status;
@@ -53,19 +53,19 @@ public class Labourer {
         this.title = title;
     }
 
-    public int getPhone1() {
+    public String getPhone1() {
         return phone1;
     }
 
-    public void setPhone1(int phone1) {
+    public void setPhone1(String phone1) {
         this.phone1 = phone1;
     }
 
-    public int getPhone2() {
+    public String getPhone2() {
         return phone2;
     }
 
-    public void setPhone2(int phone2) {
+    public void setPhone2(String phone2) {
         this.phone2 = phone2;
     }
 
@@ -93,27 +93,27 @@ public class Labourer {
         this.emergContactName = emergContactName;
     }
 
-    public int getEmergContactPhone1() {
+    public String getEmergContactPhone1() {
         return emergContactPhone1;
     }
 
-    public void setEmergContactPhone1(int emergContactPhone1) {
+    public void setEmergContactPhone1(String emergContactPhone1) {
         this.emergContactPhone1 = emergContactPhone1;
     }
 
-    public int getEmergContactPhone2() {
+    public String getEmergContactPhone2() {
         return emergContactPhone2;
     }
 
-    public void setEmergContactPhone2(int emergContactPhone2) {
+    public void setEmergContactPhone2(String emergContactPhone2) {
         this.emergContactPhone2 = emergContactPhone2;
     }
 
-    public int getSin() {
+    public String getSin() {
         return sin;
     }
 
-    public void setSin(int sin) {
+    public void setSin(String sin) {
         this.sin = sin;
     }
 
@@ -146,6 +146,23 @@ public class Labourer {
      */
     public Labourer(){
     	
+    }
+
+    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, double wage, ArrayList<String> skills, boolean status) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.title = title;
+        this.phone1 = phone1;
+        this.phone2 = phone2;
+        this.email = email;
+        this.address = address;
+        this.emergContactName = emergContactName;
+        this.emergContactPhone1 = emergContactPhone1;
+        this.emergContactPhone2 = emergContactPhone2;
+        this.sin = sin;
+        this.wage = wage;
+        this.skills = skills;
+        this.status = status;
     }
     
 }
