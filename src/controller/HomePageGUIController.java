@@ -13,10 +13,16 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.TextFlow;
 import services.DBServices;
 
@@ -30,7 +36,16 @@ public class HomePageGUIController implements Initializable {
     //elements from the GUI.fxml page
     @FXML
     private TextField clientsNameField = new TextField();
-
+    @FXML
+    private BorderPane borderpane;
+    @FXML
+    private Button testBtn;
+    
+    //Test Buttons
+    @FXML
+    private void testCenter(ActionEvent event) {
+        
+    }
     //Client actions
     /**
      *
@@ -41,7 +56,15 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        StageController.control.navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client
+        Parent root = null;
+        System.out.println("TEst");
+        try {
+            root = FXMLLoader.load(getClass().getResource("/ui/CreateClientGUI.fxml"));
+        } catch (IOException ex) {
+            System.out.println("No Good");
+        }
+        borderpane.setCenter(root);
+        //StageController.control.navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client
     }
 
     /**
