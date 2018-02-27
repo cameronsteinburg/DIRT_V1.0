@@ -37,7 +37,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private TextField clientsNameField = new TextField();
     @FXML
-    private BorderPane borderpane;
+    private BorderPane borderpane; //the only thing that naviagtes pages
     @FXML
     private Button testBtn;
     
@@ -56,15 +56,8 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        Parent root = null;
-        System.out.println("TEst");
-        try {
-            root = FXMLLoader.load(getClass().getResource("/ui/CreateClientGUI.fxml"));
-        } catch (IOException ex) {
-            System.out.println("No Good");
-        }
-        borderpane.setCenter(root);
-        //StageController.control.navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client
+        navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client inside dynamic pane
+       
     }
 
     /**
@@ -88,7 +81,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        StageController.control.navigateTo("/ui/CreateProjectGUI.fxml"); //takes user to page to make new Project
+       // StageController.control.navigateTo("/ui/CreateProjectGUI.fxml"); //takes user to page to make new Project
     }
 
     //Labourer Actions
@@ -101,7 +94,21 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        StageController.control.navigateTo("/ui/CreateLabourerGUI.fxml"); //takes user to page to make new Project
+       // StageController.control.navigateTo("/ui/CreateLabourerGUI.fxml"); //takes user to page to make new Project
+    }
+    
+    
+    protected void navigateTo(String url) {
+        
+        Parent root = null;
+  
+        try {
+            root = FXMLLoader.load(getClass().getResource(url));
+        } catch (IOException ex) {
+            System.out.println("No Good");
+        }
+        this.borderpane.setCenter(root);
+
     }
 
     /**

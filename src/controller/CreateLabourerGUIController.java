@@ -75,16 +75,16 @@ public class CreateLabourerGUIController implements Initializable {
         Labourer newLabourer = new Labourer(fnameField.getText(),lnameField.getText(),titleField.getText(),phone1Field.getText(),phone2Field.getText(),emailField.getText(),addressField.getText(),emergencyNameField.getText(),emergencyPhone1Field.getText(), emergencyPhone2Field.getText(),sinField.getText(),Double.parseDouble(wageField.getText()), null /*arraylist of skills*/, true /*isActive*/);
 
         Main.jdbcc.persistLabourer(newLabourer); //persist to db
-        try {
-            StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
-        } catch (IOException ex) {
-            Logger.getLogger(CreateLabourerGUIController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     //   try { //this is not how we navigate
+       //     StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
+        //} catch (IOException ex) {
+          //  Logger.getLogger(CreateLabourerGUIController.class.getName()).log(Level.SEVERE, null, ex);
+        //}
     }
 
     @FXML
     private void cancelBtnAction(ActionEvent event) throws IOException {
-        StageController.control.navigateTo("/ui/HomePageGui.fxml");
+       // StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
     
 }

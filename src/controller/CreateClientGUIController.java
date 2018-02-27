@@ -43,7 +43,7 @@ public class CreateClientGUIController implements Initializable {
     @FXML
     private void cancelBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
 
-        StageController.control.navigateTo("/ui/HomePageGui.fxml");
+       // StageController.control.navigateTo("/ui/HomePageGui.fxml");
     }
 
     /**
@@ -103,7 +103,7 @@ public class CreateClientGUIController implements Initializable {
 
         Main.jdbcc.persistClient(newClient); //persist to db
 
-        StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
+        //StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
     }
 
  
