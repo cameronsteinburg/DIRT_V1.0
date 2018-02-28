@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="1050.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewClientGUIController">
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewClientGUIController">
    <children>
       <BorderPane layoutX="7.0" layoutY="23.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -24,13 +25,15 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="394.0" prefWidth="745.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                  <TableView fx:id="clientTable" layoutY="14.0" onMousePressed="#getClientFromTable" prefHeight="59.0" prefWidth="745.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <columns>
                       <TableColumn fx:id="nameCol" prefWidth="162.0" text="Name" />
                       <TableColumn fx:id="addressCol" prefWidth="189.0" text="Address" />
                         <TableColumn fx:id="numberCol" prefWidth="133.0" text="Contact Number" />
                     </columns>
                   </TableView>
+                  <Button layoutX="882.0" layoutY="342.0" mnemonicParsing="false" text="Edit Client" />
+                  <Button layoutX="871.0" layoutY="389.0" mnemonicParsing="false" text="Remove Client" />
                </children>
             </AnchorPane>
          </center>

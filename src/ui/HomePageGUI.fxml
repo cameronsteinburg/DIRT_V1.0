@@ -49,8 +49,11 @@
                </BorderPane.margin>
             </AnchorPane>
          </top>
+         <center>
+            <Pane style="-fx-background-color: #e9fcae;" BorderPane.alignment="CENTER" />
+         </center>
          <left>
-            <Accordion prefWidth="230.0" style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
+            <Accordion style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
                   <TitledPane fx:id="viewClientDropdown" text="Clients">
                      <content>
@@ -67,10 +70,10 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#newClientAction" prefHeight="128.0" prefWidth="303.0" styleClass="navButton" text="New Client" GridPane.rowIndex="1">
+                                    <Button mnemonicParsing="false" onAction="#newClientAction" prefHeight="131.0" prefWidth="247.0" styleClass="navButton" text="New Client" GridPane.rowIndex="1">
 
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#viewClientAction" prefHeight="111.0" prefWidth="338.0" styleClass="navButton" text="List Clients">
+                                    <Button mnemonicParsing="false" onAction="#viewClientAction" prefHeight="147.0" prefWidth="351.0" styleClass="navButton" text="List Clients">
 
                                     </Button>
                                  </children>
@@ -86,7 +89,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <GridPane prefHeight="385.0" prefWidth="201.0">
+                              <GridPane prefHeight="385.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
@@ -96,7 +99,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" />
+                                    <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="154.0" prefWidth="216.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -109,7 +112,7 @@
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <GridPane prefHeight="385.0" prefWidth="201.0">
+                              <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
@@ -137,9 +140,6 @@
                </opaqueInsets>
             </Accordion>
          </left>
-         <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e9fcae;" BorderPane.alignment="CENTER" />
-         </center>
       </BorderPane>
    </children>
 </AnchorPane>
