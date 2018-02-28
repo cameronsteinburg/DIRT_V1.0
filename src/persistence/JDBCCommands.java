@@ -115,7 +115,7 @@ public class JDBCCommands {
      * @return clientList List of clients in an observableList to populate
      * tables
      */
-    public ObservableList<Client> getClientsForTable() {
+    public ObservableList<Client> getClientsForTable(boolean getDeleted) {
         try {
             ObservableList<Client> clientList = FXCollections.observableArrayList();
             Statement statement = conn.createStatement();
@@ -134,12 +134,17 @@ public class JDBCCommands {
                 char isActive = results.getString("isActive").charAt(0);
                 boolean isActiveToBoolean = false;
 
-                if (isActive == '1') {
+               if (isActive == '1') {
                     isActiveToBoolean = true;
                 }
-
-                Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
-                clientList.add(client);
+                if (isActive == '0' && getDeleted == true){
+                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    clientList.add(client);
+                }
+                else if (isActive == '1'){
+                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    clientList.add(client);
+                }
             }
             return clientList;
 

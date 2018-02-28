@@ -9,12 +9,12 @@ import entity.Client;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import services.DBServices;
@@ -27,15 +27,28 @@ import services.DBServices;
 public class ViewClientGUIController implements Initializable {
 
     private ObservableList<Client> clientList;
+    private Client selectedClient;
 
     @FXML
     private TableView<Client> clientTable;
+    @FXML
+    private TextField searchBox;
+    @FXML
+    private Button viewClientBtn;
+    @FXML
+    private Button editClientBtn;
+    @FXML
+    private Button removeClientBtn;
     @FXML
     private TableColumn<?, ?> nameCol;
     @FXML
     private TableColumn<?, ?> addressCol;
     @FXML
-    private TableColumn<?, ?> numberCol;
+    private TableColumn<?, ?> firstNumCol;
+    @FXML
+    private TableColumn<?, ?> secondNumCol;
+    @FXML
+    private TableColumn<?, ?> emailCol;
 
     /**
      * Initializes the controller class.
@@ -48,7 +61,9 @@ public class ViewClientGUIController implements Initializable {
 
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
-        numberCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
+        firstNumCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
+        secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         DBServices dbs = new DBServices();
         this.clientList = dbs.getClientsForTable();
         clientTable.setItems(clientList);
@@ -58,8 +73,12 @@ public class ViewClientGUIController implements Initializable {
     @FXML
     private void getSelectedClient(MouseEvent event) {
         if (clientTable.getSelectionModel().getSelectedItem() != null) {
-            Client client = clientTable.getSelectionModel().getSelectedItem();
-            System.out.println(client.getName());
+            selectedClient = clientTable.getSelectionModel().getSelectedItem();
+            
+            //Enable buttons once client is selected
+            viewClientBtn.setDisable(false);
+            editClientBtn.setDisable(false);
+            removeClientBtn.setDisable(false);
         }
     }
 }

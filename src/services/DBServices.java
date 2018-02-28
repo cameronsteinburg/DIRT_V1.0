@@ -41,7 +41,7 @@ public class DBServices {
     }
 
     public ObservableList<Client> getClientsForTable() {
-        return Main.jdbcc.getClientsForTable();
+        return Main.jdbcc.getClientsForTable(false);
     }
     /**
      * Calls the Projects export method

@@ -21,7 +21,7 @@
                      </font>
                   </Label>
                   <Label layoutX="780.0" layoutY="70.0" prefHeight="17.0" prefWidth="49.0" text="Search: " AnchorPane.bottomAnchor="4.0" />
-                  <TextField layoutX="833.0" layoutY="46.0" prefHeight="25.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="20.0" />
+                  <TextField fx:id="searchBox" layoutX="833.0" layoutY="46.0" prefHeight="25.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="20.0" />
                </children>
             </AnchorPane>
          </top>
@@ -31,12 +31,15 @@
                   <TableView fx:id="clientTable" layoutY="14.0" onMousePressed="#getSelectedClient" prefHeight="323.0" prefWidth="1038.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <columns>
                       <TableColumn fx:id="nameCol" prefWidth="162.0" text="Name" />
+                        <TableColumn fx:id="firstNumCol" prefWidth="133.0" text="First Number" />
+                        <TableColumn fx:id="secondNumCol" prefWidth="133.0" text="Second Number" />
                       <TableColumn fx:id="addressCol" prefWidth="189.0" text="Address" />
-                        <TableColumn fx:id="numberCol" prefWidth="133.0" text="Contact Number" />
+                        <TableColumn fx:id="emailCol" prefWidth="133.0" text="Email" />
                     </columns>
                   </TableView>
-                  <Button layoutX="20.0" layoutY="389.0" mnemonicParsing="false" text="Edit Client" />
-                  <Button layoutX="115.0" layoutY="389.0" mnemonicParsing="false" text="Remove Client" />
+                  <Button fx:id="viewClientBtn" disable="true" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="View Client" />
+                  <Button fx:id="editClientBtn" disable="true" layoutX="188.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Edit Client" />
+                  <Button fx:id="removeClientBtn" disable="true" layoutX="360.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Remove Client" />
                </children>
             </AnchorPane>
          </center>
