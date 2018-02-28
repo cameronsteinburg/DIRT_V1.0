@@ -56,7 +56,7 @@ public class ViewClientGUIController implements Initializable {
     }
 
     @FXML
-    private void getClientFromTable(MouseEvent event) {
+    private void getSelectedClient(MouseEvent event) {
         if (clientTable.getSelectionModel().getSelectedItem() != null) {
             Client client = clientTable.getSelectionModel().getSelectedItem();
             System.out.println(client.getName());
