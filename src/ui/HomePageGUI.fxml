@@ -6,13 +6,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -23,14 +23,14 @@
    <children>
       <BorderPane fx:id="borderpane" layoutX="7.0" prefHeight="650.0" prefWidth="1273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="125.0" prefWidth="1280.0" style="-fx-background-color: d9ffd6;" styleClass="navButton" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="125.0" prefWidth="1280.0" style="-fx-background-color: d9ffd6; -fx-border-color: #24664e; -fx-border-width: 2px;" styleClass="navButton" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="125.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@images/vls.png" />
                      </image>
                   </ImageView>
-                  <GridPane layoutX="674.0" layoutY="46.0" prefHeight="30.0" prefWidth="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <GridPane layoutX="674.0" layoutY="46.0" prefHeight="30.0" prefWidth="168.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,23 +39,20 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Hyperlink text="Facebook" />
+                        <Hyperlink prefHeight="28.0" prefWidth="97.0" text="Facebook" />
                         <Hyperlink text="Website" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                </children>
-               <effect>
-                  <DropShadow />
-               </effect>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
             </AnchorPane>
          </top>
          <left>
-            <Accordion prefWidth="230.0" BorderPane.alignment="CENTER">
+            <Accordion prefWidth="230.0" style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
-                  <TitledPane fx:id="viewClientDropdown" onContextMenuRequested="#viewClientAction" onMouseClicked="#viewClientAction" style="-fx-background-color: 78e899;" text="Clients">
+                  <TitledPane fx:id="viewClientDropdown" onContextMenuRequested="#viewClientAction" onMouseClicked="#viewClientAction" text="Clients">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="187.0">
                            <children>
@@ -70,10 +67,10 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="newClientBtn" mnemonicParsing="false" onAction="#newClientAction" prefHeight="128.0" prefWidth="303.0" styleClass="navButton" text="New Client">
+                                    <Button mnemonicParsing="false" onAction="#newClientAction" prefHeight="128.0" prefWidth="303.0" styleClass="navButton" text="New Client" GridPane.rowIndex="1">
 
                                     </Button>
-                                    <Button fx:id="editClientBtn" mnemonicParsing="false" prefHeight="111.0" prefWidth="338.0" styleClass="navButton" text="Edit Client" GridPane.rowIndex="1">
+                                    <Button mnemonicParsing="false" onAction="#viewClientAction" prefHeight="111.0" prefWidth="338.0" styleClass="navButton" text="List Clients">
 
                                     </Button>
                                  </children>
@@ -135,8 +132,14 @@
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Accordion>
          </left>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e9fcae;" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

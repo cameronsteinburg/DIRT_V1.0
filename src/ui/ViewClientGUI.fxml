@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="1050.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewClientGUIController">
+   <children>
+      <BorderPane layoutX="7.0" layoutY="23.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="37.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Clients" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <right>
+            <TableView fx:id="clientTable" prefHeight="303.0" prefWidth="389.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

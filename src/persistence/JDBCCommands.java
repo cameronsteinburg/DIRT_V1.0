@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Queries, deletes, merges, and persists data from the databases
@@ -71,6 +73,44 @@ public class JDBCCommands {
 
         try {
             ArrayList<Client> clientList = new ArrayList();
+            Statement statement = conn.createStatement();
+
+            // Result set contains the result of the SQL query
+            ResultSet results = statement.executeQuery("select * from clients;");
+
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                String name = results.getString("name");
+                String description = results.getString("description");
+                String phone1 = results.getString("phone1");
+                String phone2 = results.getString("phone2");
+                String email = results.getString("email");
+                String address = results.getString("address");
+                char isActive = results.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+
+                Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                clientList.add(client);
+            }
+            return clientList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ObservableList<Client> getClientsForTable() {
+        try {
+            ObservableList<Client> clientList = FXCollections.observableArrayList();
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query

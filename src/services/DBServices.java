@@ -4,6 +4,7 @@ import application.Main;
 import entity.Client;
 import entity.Project;
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 /**
  * Methods that have direct access and control to the databases
@@ -39,6 +40,9 @@ public class DBServices {
         return Main.jdbcc.getClients();
     }
 
+    public ObservableList<Client> getClientsForTable() {
+        return Main.jdbcc.getClientsForTable();
+    }
     /**
      * Calls the Projects export method
      *

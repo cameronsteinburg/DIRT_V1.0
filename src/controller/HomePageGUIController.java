@@ -4,7 +4,6 @@
  */
 package controller;
 
-import application.Main;
 import entity.Client;
 import entity.Labourer;
 import entity.Project;
@@ -20,7 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.TextFlow;
@@ -38,15 +36,8 @@ public class HomePageGUIController implements Initializable {
     private TextField clientsNameField = new TextField();
     @FXML
     private BorderPane borderpane; //the only thing that naviagtes pages
-    @FXML
-    private Button testBtn;
-    
-    //Test Buttons
-    @FXML
-    private void testCenter(ActionEvent event) {
-        
-    }
-    //Client actions
+
+    /*==========================Client actions=============================*/
     /**
      *
      * @param event
@@ -54,10 +45,9 @@ public class HomePageGUIController implements Initializable {
      * @throws URISyntaxException
      */
     @FXML
-    private void newClientAction(ActionEvent event) throws IOException, URISyntaxException {
+    private void newClientAction(ActionEvent event) throws IOException {
 
         navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client inside dynamic pane
-       
     }
 
     /**
@@ -68,10 +58,10 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void viewClientAction(ActionEvent event) throws IOException {
 
-        System.out.println("Rocket Racoon");
+        navigateTo("/ui/ViewClientGUI.fxml");
     }
 
-    //Project Actions
+    /*==========================Project Actions==========================*/
     /**
      *
      * @param event
@@ -84,7 +74,7 @@ public class HomePageGUIController implements Initializable {
        // StageController.control.navigateTo("/ui/CreateProjectGUI.fxml"); //takes user to page to make new Project
     }
 
-    //Labourer Actions
+    /*==========================Labourer Actions==========================*/
     /**
      *
      * @param event
@@ -98,6 +88,10 @@ public class HomePageGUIController implements Initializable {
     }
     
     
+    /**
+     * 
+     * @param url 
+     */
     protected void navigateTo(String url) {
         
         Parent root = null;
@@ -105,8 +99,9 @@ public class HomePageGUIController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getResource(url));
         } catch (IOException ex) {
-            System.out.println("No Good");
+            Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         this.borderpane.setCenter(root);
 
     }
