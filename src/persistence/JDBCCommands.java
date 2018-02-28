@@ -105,8 +105,8 @@ public class JDBCCommands {
     }
 
     /**
-     *
-     * @return
+     * Retrieves client information from MySQL database
+     * @return clientList List of clients in an observableList to populate tables
      */
     public ObservableList<Client> getClientsForTable() {
         try {
