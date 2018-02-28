@@ -21,14 +21,19 @@
                </children>
             </AnchorPane>
          </top>
-         <right>
-            <TableView fx:id="clientTable" prefHeight="303.0" prefWidth="389.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
-            </TableView>
-         </right>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="394.0" prefWidth="745.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                    <columns>
+                      <TableColumn fx:id="nameCol" prefWidth="162.0" text="Name" />
+                      <TableColumn fx:id="addressCol" prefWidth="189.0" text="Address" />
+                        <TableColumn fx:id="numberCol" prefWidth="133.0" text="Contact Number" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

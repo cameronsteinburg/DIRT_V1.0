@@ -31,6 +31,10 @@ public class ViewClientGUIController implements Initializable {
     private TableView<Client> clientTable;
     @FXML
     private TableColumn<?, ?> nameCol;
+    @FXML
+    private TableColumn<?, ?> addressCol;
+    @FXML
+    private TableColumn<?, ?> numberCol;
     
     /**
      * Initializes the controller class.
@@ -41,6 +45,8 @@ public class ViewClientGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        numberCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
         DBServices dbs = new DBServices();
         this.clientList = dbs.getClientsForTable();
         clientTable.setItems(clientList);
