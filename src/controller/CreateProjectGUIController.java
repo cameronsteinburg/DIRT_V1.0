@@ -143,7 +143,7 @@ public class CreateProjectGUIController implements Initializable {
 
         DBServices dbs = new DBServices();     // load and producesproduces list of Client names for the dropdown in the GUI
         ArrayList<Client> clients = new ArrayList<Client>();
-        clients.addAll(dbs.getClients());
+        clients.addAll(dbs.getClients(false));
         ObservableList<String> names = FXCollections.observableArrayList();
 
         for (int i = 0; i < clients.size(); i++) {

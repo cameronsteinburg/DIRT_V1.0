@@ -117,7 +117,7 @@ public class HomePageGUIController implements Initializable {
 
         DBServices dbs = new DBServices(); //loading in db entity resources
 
-        this.curClients = dbs.getClients();
+        this.curClients = dbs.getClients(false);
 
         TextFlow tf;
         ArrayList<String> names = new ArrayList<String>();

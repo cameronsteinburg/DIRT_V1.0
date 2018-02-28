@@ -69,7 +69,7 @@ public class JDBCCommands {
      *
      * @return an arrayList of client objects
      */
-    public ArrayList<Client> getClients() {
+    public ArrayList<Client> getClients(boolean getDeleted) {
 
         try {
             ArrayList<Client> clientList = new ArrayList();
@@ -92,9 +92,14 @@ public class JDBCCommands {
                 if (isActive == '1') {
                     isActiveToBoolean = true;
                 }
-
-                Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
-                clientList.add(client);
+                if (isActive == '0' && getDeleted == true){
+                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    clientList.add(client);
+                }
+                else if (isActive == '1'){
+                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    clientList.add(client);
+                }
             }
             return clientList;
 

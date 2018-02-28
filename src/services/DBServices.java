@@ -36,8 +36,8 @@ public class DBServices {
      *
      * @return a Client arraylist object
      */
-    public ArrayList<Client> getClients() {
-        return Main.jdbcc.getClients();
+    public ArrayList<Client> getClients(boolean getDeleted) {
+        return Main.jdbcc.getClients(getDeleted);
     }
 
     public ObservableList<Client> getClientsForTable() {
