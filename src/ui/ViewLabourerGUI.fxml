@@ -30,7 +30,12 @@
                <children>
                   <TableView fx:id="labourerTable" layoutY="14.0" onMousePressed="#getSelectedLabourer" prefHeight="323.0" prefWidth="1038.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <columns>
-                      <TableColumn fx:id="nameCol" prefWidth="162.0" text="Name" />
+                      <TableColumn fx:id="fNameCol" prefWidth="162.0" text="First Name" />
+                        <TableColumn fx:id="lNameCol" prefWidth="162.0" text="Last Name" />
+                        <TableColumn fx:id="addressCol" prefWidth="162.0" text="Address" />
+                        <TableColumn fx:id="firstNumCol" prefWidth="162.0" text="Phone Number 1" />
+                        <TableColumn fx:id="secondNumCol" prefWidth="162.0" text="Phone Number 2" />
+                        <TableColumn fx:id="emailCol" prefWidth="162.0" text="Email" />
                     </columns>
                   </TableView>
                   <Button fx:id="viewLabourerBtn" disable="true" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Open Labourer Profile" />

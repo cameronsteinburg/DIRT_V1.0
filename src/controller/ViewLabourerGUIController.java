@@ -31,7 +31,9 @@ public class ViewLabourerGUIController implements Initializable {
     @FXML
     private Button removeLabourerBtn;
     @FXML
-    private TableColumn<?, ?> nameCol;
+    private TableColumn<?, ?> fNameCol;
+    @FXML
+    private TableColumn<?, ?> lNameCol;
     @FXML
     private TableColumn<?, ?> addressCol;
     @FXML
@@ -55,10 +57,10 @@ public class ViewLabourerGUIController implements Initializable {
             DBServices dbs = new DBServices();
             
             Labourer target = dbs.getLabourer(this.selectedLabourer.getFirstName());
-           // String name = target.getName();
-            //dbs.deleteClient(target);
-            //this.updateTable();
-            //HomePageGUIController.setBannerMessage("Client " + name + " Successfully Removed");
+//            String name = target.getName();
+//            dbs.deleteClient(target);
+//            this.updateTable();
+//            HomePageGUIController.setBannerMessage("Client " + name + " Successfully Removed");
         }
     }
     
@@ -78,12 +80,15 @@ public class ViewLabourerGUIController implements Initializable {
             viewLabourerBtn.setDisable(false);
             editLabourerBtn.setDisable(false);
             removeLabourerBtn.setDisable(false);
+            
+            System.out.println(selectedLabourer.getPhone2());
         }
     }
     
     private void updateTable(){
         
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        fNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         firstNumCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
         secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));

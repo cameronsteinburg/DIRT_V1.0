@@ -66,7 +66,7 @@ public class CreateLabourerGUIController implements Initializable {
 
     @FXML
     private void saveBtnAction(ActionEvent event) {
-        errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
+        //errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
         //TODO Data Validation
         String fname = fnameField.getText();// not null
@@ -74,11 +74,17 @@ public class CreateLabourerGUIController implements Initializable {
         String title = titleField.getText();
         String phone1 = phone1Field.getText();
         String phone2 = phone2Field.getText();
+        String email = emailField.getText();
+        String address = addressField.getText();
+        String emergName = emergencyNameField.getText();
+        String emergPhone1 = emergencyPhone1Field.getText();
+        String emergPhone2 = emergencyPhone2Field.getText();
+        String SIN = sinField.getText();
+        Double wage = Double.parseDouble(wageField.getText());
         
-        Labourer newLabourer = new Labourer(fnameField.getText(),lnameField.getText(),titleField.getText(),phone1Field.getText(),phone2Field.getText(),emailField.getText(),addressField.getText(),emergencyNameField.getText(),emergencyPhone1Field.getText(), emergencyPhone2Field.getText(),sinField.getText(),Double.parseDouble(wageField.getText()), null /*arraylist of skills*/, true /*isActive*/);
-
+        
+        Labourer newLabourer = new Labourer(fname,lname,title,phone1,phone2,email,address,emergName,emergPhone1, emergPhone2,SIN,wage, null /*arraylist of skills*/, true /*isActive*/);
         Main.jdbcc.persistLabourer(newLabourer); //persist to db
-     
     }
 
     @FXML

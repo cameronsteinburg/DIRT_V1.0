@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -31,7 +32,9 @@ public class HomePageGUIController implements Initializable {
     ArrayList<Client> curClients;
     ArrayList<Labourer> curLabourers;
     ArrayList<Project> curProjects;
-    
+
+    @FXML
+    private Button viewLabourerBtn;
     //for error messages or did indicate a client has completed an action. Sits in top banner
     @FXML
     private static Label actionPerformedLabel = new Label("");
@@ -76,7 +79,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
-       navigateTo("/ui/CreateProjectGUI.fxml");
+        navigateTo("/ui/CreateProjectGUI.fxml");
     }
 
     /*==========================Labourer Actions==========================*/
@@ -89,20 +92,24 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
-       navigateTo("/ui/CreateLabourerGUI.fxml");
+        navigateTo("/ui/CreateLabourerGUI.fxml");
     }
-   
-    
-    
+
+    @FXML
+    private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
+
+        navigateTo("/ui/ViewLabourerGUI.fxml");
+    }
+
     /*==========================Home Page Controls==========================*/
     /**
-     * 
-     * @param url 
+     *
+     * @param url
      */
     protected void navigateTo(String url) {
-        
+
         Parent root = null;
-  
+
         try {
             root = FXMLLoader.load(HomePageGUIController.class.getClass().getResource(url));
         } catch (IOException ex) {
@@ -112,14 +119,16 @@ public class HomePageGUIController implements Initializable {
         this.borderpane.setCenter(root);
 
     }
-    
+
     /**
-     * For changing the label to indicate to suer they have unsuccessfully/successfully performed an action, or to indicate an error has occurred 
-     * 
-     * @param message 
+     * For changing the label to indicate to suer they have
+     * unsuccessfully/successfully performed an action, or to indicate an error
+     * has occurred
+     *
+     * @param message
      */
-    public static void setBannerMessage(String message){
-        
+    public static void setBannerMessage(String message) {
+
         HomePageGUIController.actionPerformedLabel.setText(message);
     }
 
@@ -140,14 +149,14 @@ public class HomePageGUIController implements Initializable {
         ArrayList<String> names = new ArrayList<String>();
 
         for (int i = 0; i < curClients.size(); i++) {
-            
+
             names.add(curClients.get(i).getName());
             //clientsNameField.appendText(curClients.get(i).getName());
             //clientsNameArea.ap
         }
-        
+
         String fill;
-        
+
         //for (int i = 0; )
     }
 }
