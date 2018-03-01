@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -44,6 +45,8 @@ public class ViewClientGUIController implements Initializable {
     private TableColumn<?, ?> secondNumCol;
     @FXML
     private TableColumn<?, ?> emailCol;
+    @FXML 
+    private Label errorMessage;
 
     @FXML
     private void editClientAction(ActionEvent event) {
@@ -66,16 +69,22 @@ public class ViewClientGUIController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                
                 DBServices dbs = new DBServices();
 
                 Client target = dbs.getClient(this.selectedClient.getName());
                 String name = target.getName();
                 dbs.deleteClient(target);
                 this.updateTable();
+                
             } else {
                 alert.close();
             }
         }
+        
+        this.errorMessage.setText("Client Successfully Removed");
+        HomePageGUIController hpgc = new HomePageGUIController();
+        hpgc.navigateTo("/ui/ViewClientGUI.fxml");
     }
 
     /**
