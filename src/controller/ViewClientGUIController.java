@@ -43,6 +43,12 @@ public class ViewClientGUIController implements Initializable {
     
     
     
+    @FXML
+    private void editClientAction(ActionEvent event){
+        
+        
+    }
+    
     /**
      * 
      * @param event 

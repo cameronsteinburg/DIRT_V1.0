@@ -76,7 +76,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
-       // StageController.control.navigateTo("/ui/CreateProjectGUI.fxml"); //takes user to page to make new Project
+       navigateTo("/ui/CreateProjectGUI.fxml");
     }
 
     /*==========================Labourer Actions==========================*/
@@ -89,7 +89,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
-       // StageController.control.navigateTo("/ui/CreateLabourerGUI.fxml"); //takes user to page to make new Project
+       navigateTo("/ui/CreateLabourerGUI.fxml");
     }
     
     
@@ -105,7 +105,7 @@ public class HomePageGUIController implements Initializable {
         Parent root = null;
   
         try {
-            root = FXMLLoader.load(getClass().getResource(url));
+            root = FXMLLoader.load(HomePageGUIController.class.getClass().getResource(url));
         } catch (IOException ex) {
             Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
