@@ -43,6 +43,16 @@ public class DBServices {
     public ObservableList<Client> getClientsForTable() {
         return Main.jdbcc.getClientsForTable(false);
     }
+    
+    /**
+     * Logically deletes a client from the database
+     * @param client the client to be logically deleted
+     * @return true if no errors occur
+     */
+    public boolean deleteClient(Client client){
+        return Main.jdbcc.deleteClient(client);
+    }
+    
     /**
      * Calls the Projects export method
      *
