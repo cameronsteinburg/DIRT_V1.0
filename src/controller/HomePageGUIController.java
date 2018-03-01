@@ -22,9 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.text.TextFlow;
-import services.DBServices;
+import javafx.scene.layout.BorderPane;  
 
 public class HomePageGUIController implements Initializable {
 
@@ -37,13 +35,17 @@ public class HomePageGUIController implements Initializable {
     private Button viewLabourerBtn;
     //for error messages or did indicate a client has completed an action. Sits in top banner
     @FXML
-    private static Label actionPerformedLabel = new Label("");
+    private Label actionPerformedLabel = new Label();
 
     //elements from the GUI.fxml page
     @FXML
     private TextField clientsNameField = new TextField();
     @FXML
     private BorderPane borderpane; //the only thing that naviagtes pages
+   
+   public HomePageGUIController(){
+   
+   }
 
     /*==========================Client actions=============================*/
     /**
@@ -106,7 +108,9 @@ public class HomePageGUIController implements Initializable {
      *
      * @param url
      */
-    protected void navigateTo(String url) {
+
+    public void navigateTo(String url) {
+        
 
         Parent root = null;
 
@@ -115,23 +119,11 @@ public class HomePageGUIController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         this.borderpane.setCenter(root);
-
     }
-
-    /**
-     * For changing the label to indicate to suer they have
-     * unsuccessfully/successfully performed an action, or to indicate an error
-     * has occurred
-     *
-     * @param message
-     */
-    public static void setBannerMessage(String message) {
-
-        HomePageGUIController.actionPerformedLabel.setText(message);
-    }
-
+   
+    
     /**
      *
      * @param url
@@ -140,23 +132,5 @@ public class HomePageGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // put stuff in this method as if its the onLoad of the fxml page
         //stuff we want to happen when the page opens like loading information from the db to the page
-
-        DBServices dbs = new DBServices(); //loading in db entity resources
-
-        this.curClients = dbs.getClients(false);
-
-        TextFlow tf;
-        ArrayList<String> names = new ArrayList<String>();
-
-        for (int i = 0; i < curClients.size(); i++) {
-
-            names.add(curClients.get(i).getName());
-            //clientsNameField.appendText(curClients.get(i).getName());
-            //clientsNameArea.ap
-        }
-
-        String fill;
-
-        //for (int i = 0; )
     }
 }

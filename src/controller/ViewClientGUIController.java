@@ -72,7 +72,6 @@ public class ViewClientGUIController implements Initializable {
                 String name = target.getName();
                 dbs.deleteClient(target);
                 this.updateTable();
-                HomePageGUIController.setBannerMessage("Client " + name + " Successfully Removed");
             } else {
                 alert.close();
             }
