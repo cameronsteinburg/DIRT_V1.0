@@ -89,8 +89,8 @@ public class ViewLabourerGUIController implements Initializable {
         secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         DBServices dbs = new DBServices();
-     //todo //  this.labourerList = dbs.getLabourersForTable();
-       // clientTable.setItems(clientList);
+        this.labourerList = dbs.getLabourersForTable();
+        labourerTable.setItems(labourerList);
     }
 
     /**

@@ -64,6 +64,10 @@ public class DBServices {
         return Main.jdbcc.getLabourer(name);
     }
     
+    public ObservableList<Labourer> getLabourersForTable() {
+        return Main.jdbcc.getLabourersForTable(false);
+    }
+    
     /**
      * Calls the Projects export method
      *

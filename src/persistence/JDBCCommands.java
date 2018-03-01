@@ -376,6 +376,57 @@ public class JDBCCommands {
         }
         return null;
     }
+    
+    /**
+     * Retrieves labourer information from MySQL database
+     *
+     * @return labourerList List of labourers in an observableList to populate
+     * tables
+     */
+    public ObservableList<Labourer> getLabourersForTable(boolean getDeleted) {
+        try {
+            ObservableList<Labourer> labourerList = FXCollections.observableArrayList();
+            Statement statement = conn.createStatement();
+
+            // Result set contains the result of the SQL query
+            ResultSet results = statement.executeQuery("select * from labourers;");
+
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                String fname = results.getString("fname");
+                String lname = results.getString("lname");
+                String title = results.getString("title");
+                String phone1 = results.getString("phone1");
+                String phone2 = results.getString("phone2");
+                String email = results.getString("email");
+                String address = results.getString("address");
+                String emergContact = results.getString("emergcontact");
+                String emergContactPhone1 = results.getString("emergcontactphone1");
+                String emergContactPhone2 = results.getString("emergcontactphone2");
+                String sin = results.getString("sin");
+                double wage = results.getDouble("wage");
+                char isActive = results.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+
+               if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                if (isActive == '0' && getDeleted == true){
+                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
+                    labourerList.add(labourer);
+                }
+                else if (isActive == '1'){
+                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
+                    labourerList.add(labourer);
+                }
+            }
+            return labourerList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     /**
      * exports a project to QuickBooks
