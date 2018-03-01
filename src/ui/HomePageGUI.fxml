@@ -45,11 +45,6 @@
                         <Hyperlink text="Website" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <Label fx:id="actionPerformedLabel" layoutX="662.0" layoutY="79.0" textFill="#f80000">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="errorMessage" layoutX="701.0" layoutY="102.0" prefHeight="28.0" prefWidth="397.0" textFill="RED">
                      <font>
                         <Font size="19.0" />

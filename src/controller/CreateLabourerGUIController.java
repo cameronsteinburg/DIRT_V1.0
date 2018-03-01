@@ -64,7 +64,7 @@ public class CreateLabourerGUIController implements Initializable {
     private void saveBtnAction(ActionEvent event) {
         //errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
-        //TODO Data Validation
+        
         String fname = fnameField.getText();// not null
         String lname = lnameField.getText();//not null
         String title = titleField.getText();
@@ -77,6 +77,8 @@ public class CreateLabourerGUIController implements Initializable {
         String emergePhone1 = emergencyPhone1Field.getText();
         String emergePhone2 = emergencyPhone2Field.getText();
         String sin = sinField.getText();
+        
+        //data validation commences
 
         
         Labourer newLabourer = new Labourer(fname,lname,title,phone1,phone2,email,address,emergName,emergePhone1, emergePhone2,sin,wage, null /*arraylist of skills*/, true /*isActive*/);

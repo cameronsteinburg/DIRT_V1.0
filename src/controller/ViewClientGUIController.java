@@ -81,10 +81,9 @@ public class ViewClientGUIController implements Initializable {
                 alert.close();
             }
         }
-        
         this.errorMessage.setText("Client Successfully Removed");
-        HomePageGUIController hpgc = new HomePageGUIController();
-        hpgc.navigateTo("/ui/ViewClientGUI.fxml");
+        //HomePageGUIController hpgc = new HomePageGUIController();
+      //  hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");
     }
 
     /**

@@ -54,8 +54,7 @@ public class CreateClientGUIController implements Initializable {
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateClientGUI.fxml
 
-        errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
-
+ 
         String name = nameField.getText(); //get the User's data they entered into GUI fields
         String email = emailField.getText();
         String address = addressField.getText();
@@ -65,21 +64,18 @@ public class CreateClientGUIController implements Initializable {
         if (name.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
 
             errorMessage.setText("* Required Fields Cannot Be Left Blank");
-            errorMessage.setVisible(true);
             return;
         }
 
         if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
             errorMessage.setText("Not a valid Email address");
-            errorMessage.setVisible(true);
             return;
         }
 
         if (phone1Field.getText().length() > 11 || phone1Field.getText().length() < 7) { //checking phone number isnt too long or short
 
             errorMessage.setText("Phone number must be 7 - 11 digits");
-            errorMessage.setVisible(true);
             return;
         }
         
@@ -87,14 +83,12 @@ public class CreateClientGUIController implements Initializable {
         if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { 
 
             errorMessage.setText("Phone number must be 7 - 11 digits");
-            errorMessage.setVisible(true);
             return;
         }
 
         if (name.length() > 50 || phone2Field.getText().length() > 50 || phone1Field.getText().length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
 
             errorMessage.setText("One or more text boxes have too many characters");
-            errorMessage.setVisible(true);
             return;
         }
         //data is valid at this point
@@ -103,7 +97,8 @@ public class CreateClientGUIController implements Initializable {
 
         Main.jdbcc.persistClient(newClient); //persist to db
 
-        //StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
+        HomePageGUIController hpgc = new HomePageGUIController();
+        hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Created");
     }
 
  

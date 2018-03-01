@@ -31,17 +31,15 @@ public class HomePageGUIController implements Initializable {
     ArrayList<Labourer> curLabourers;
     ArrayList<Project> curProjects;
 
+    //elements from the GUI.fxml page
     @FXML
     private Button viewLabourerBtn;
-    //for error messages or did indicate a client has completed an action. Sits in top banner
-    @FXML
-    private Label actionPerformedLabel = new Label();
-
-    //elements from the GUI.fxml page
     @FXML
     private TextField clientsNameField = new TextField();
     @FXML
     private BorderPane borderpane; //the only thing that naviagtes pages
+    @FXML
+    private Label errorMessage;
    
    public HomePageGUIController(){
    
@@ -57,7 +55,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newClientAction(ActionEvent event) throws IOException {
 
-        navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client inside dynamic pane
+        navigateTo("/ui/CreateClientGUI.fxml", ""); //takes user to page to make new Client inside dynamic pane
     }
 
     /**
@@ -68,7 +66,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void viewClientAction(ActionEvent event) throws IOException {
 
-        navigateTo("/ui/ViewClientGUI.fxml");
+        navigateTo("/ui/ViewClientGUI.fxml", "");
     }
 
     /*==========================Project Actions==========================*/
@@ -81,7 +79,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        navigateTo("/ui/CreateProjectGUI.fxml");
+        navigateTo("/ui/CreateProjectGUI.fxml", "");
     }
 
     /*==========================Labourer Actions==========================*/
@@ -94,13 +92,13 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        navigateTo("/ui/CreateLabourerGUI.fxml");
+        navigateTo("/ui/CreateLabourerGUI.fxml", "");
     }
 
     @FXML
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        navigateTo("/ui/ViewLabourerGUI.fxml");
+        navigateTo("/ui/ViewLabourerGUI.fxml", "");
     }
 
     /*==========================Home Page Controls==========================*/
@@ -109,9 +107,8 @@ public class HomePageGUIController implements Initializable {
      * @param url
      */
 
-    public void navigateTo(String url) {
+    public void navigateTo(String url, String message) {
         
-
         Parent root = null;
 
         try {
@@ -121,6 +118,7 @@ public class HomePageGUIController implements Initializable {
         }
         
         this.borderpane.setCenter(root);
+        errorMessage.setText(message);
     }
    
     
