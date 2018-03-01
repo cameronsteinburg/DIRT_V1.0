@@ -1,6 +1,6 @@
 package controller;
 
-import entity.Client;
+import entity.Labourer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -15,21 +15,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import services.DBServices;
 
-public class ViewClientGUIController implements Initializable {
+public class ViewLabourerGUIController implements Initializable {
 
-    private ObservableList<Client> clientList;
-    private Client selectedClient;
+    private ObservableList<Labourer> labourerList;
+    private Labourer selectedLabourer;
 
     @FXML
-    private TableView<Client> clientTable;
+    private TableView<Labourer> labourerTable;
     @FXML
     private TextField searchBox;
     @FXML
-    private Button viewClientBtn;
+    private Button viewLabourerBtn;
     @FXML
-    private Button editClientBtn;
+    private Button editLabourerBtn;
     @FXML
-    private Button removeClientBtn;
+    private Button removeLabourerBtn;
     @FXML
     private TableColumn<?, ?> nameCol;
     @FXML
@@ -48,17 +48,17 @@ public class ViewClientGUIController implements Initializable {
      * @param event 
      */
     @FXML
-    private void removeClientAction(ActionEvent event){
+    private void removeLabourerAction(ActionEvent event){
         
-        if (this.selectedClient != null){
+        if (this.selectedLabourer != null){
         
             DBServices dbs = new DBServices();
             
-            Client target = dbs.getClient(this.selectedClient.getName());
-            String name = target.getName();
-            dbs.deleteClient(target); 
-            this.updateTable();
-            HomePageGUIController.setBannerMessage("Client " + name + " Successfully Removed");
+           //todo// Labourer target = dbs.getLabourer(this.selectedLabourer.getFirstName());
+           // String name = target.getName();
+            //dbs.deleteClient(target);
+            //this.updateTable();
+            //HomePageGUIController.setBannerMessage("Client " + name + " Successfully Removed");
         }
     }
     
@@ -68,16 +68,16 @@ public class ViewClientGUIController implements Initializable {
      * @param event 
      */
     @FXML
-    private void getSelectedClient(MouseEvent event) {
+    private void getSelectedLabourer(MouseEvent event) {
         
-        if (clientTable.getSelectionModel().getSelectedItem() != null) {
+        if (labourerTable.getSelectionModel().getSelectedItem() != null) {
             
-            this.selectedClient = clientTable.getSelectionModel().getSelectedItem();
+            this.selectedLabourer = labourerTable.getSelectionModel().getSelectedItem();
             
             //Enable buttons once client is selected
-            viewClientBtn.setDisable(false);
-            editClientBtn.setDisable(false);
-            removeClientBtn.setDisable(false);
+            viewLabourerBtn.setDisable(false);
+            editLabourerBtn.setDisable(false);
+            removeLabourerBtn.setDisable(false);
         }
     }
     
@@ -89,8 +89,8 @@ public class ViewClientGUIController implements Initializable {
         secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         DBServices dbs = new DBServices();
-        this.clientList = dbs.getClientsForTable();
-        clientTable.setItems(clientList);
+     //todo //  this.labourerList = dbs.getLabourersForTable();
+       // clientTable.setItems(clientList);
     }
 
     /**
