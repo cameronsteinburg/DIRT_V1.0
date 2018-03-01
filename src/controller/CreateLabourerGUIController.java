@@ -69,15 +69,16 @@ public class CreateLabourerGUIController implements Initializable {
         errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
         //TODO Data Validation
+        String fname = fnameField.getText();// not null
+        String lname = lnameField.getText();//not null
+        String title = titleField.getText();
+        String phone1 = phone1Field.getText();
+        String phone2 = phone2Field.getText();
         
         Labourer newLabourer = new Labourer(fnameField.getText(),lnameField.getText(),titleField.getText(),phone1Field.getText(),phone2Field.getText(),emailField.getText(),addressField.getText(),emergencyNameField.getText(),emergencyPhone1Field.getText(), emergencyPhone2Field.getText(),sinField.getText(),Double.parseDouble(wageField.getText()), null /*arraylist of skills*/, true /*isActive*/);
 
         Main.jdbcc.persistLabourer(newLabourer); //persist to db
-     //   try { //this is not how we navigate
-       //     StageController.control.navigateTo("/ui/HomePageGui.fxml");//back home now
-        //} catch (IOException ex) {
-          //  Logger.getLogger(CreateLabourerGUIController.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+     
     }
 
     @FXML

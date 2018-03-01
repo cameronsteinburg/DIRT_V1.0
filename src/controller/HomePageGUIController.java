@@ -91,8 +91,7 @@ public class HomePageGUIController implements Initializable {
 
        navigateTo("/ui/CreateLabourerGUI.fxml");
     }
-    
-    
+   
     
     
     /*==========================Home Page Controls==========================*/

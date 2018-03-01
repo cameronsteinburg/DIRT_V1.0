@@ -27,7 +27,7 @@ public class Labourer {
     private String sin;
     private double wage;
     private ArrayList<String> skills;
-    private boolean status;
+    private boolean isActive;
 
     public String getFirstName() {
         return firstName;
@@ -133,12 +133,12 @@ public class Labourer {
         this.skills = skills;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setIsActive(boolean status) {
+        this.isActive = status;
     }
     
     /**
@@ -162,7 +162,7 @@ public class Labourer {
         this.sin = sin;
         this.wage = wage;
         this.skills = skills;
-        this.status = status;
+        this.isActive = status;
     }
     
 }
