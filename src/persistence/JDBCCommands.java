@@ -328,6 +328,54 @@ public class JDBCCommands {
         }
         return true;
     }
+    
+    /**
+     *
+     * Retrieves a labourer from the database from the name passed to the method
+     *
+     * @param labourerName the name of the labourer to be searched for
+     * @return a labourer object created from the information found in the labourers table
+     * table
+     */
+    public Labourer getLabourer(String labourerName) {
+
+        try {
+            Statement statement = conn.createStatement();
+
+            // Result set contains the result of the SQL query
+            ResultSet results = statement.executeQuery("select * from labourers where fname = '" + labourerName + "';");
+
+            //todo Matthew, implement skills arraylist, in DB
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                String fname = results.getString("fname");
+                String lname = results.getString("lname");
+                String title = results.getString("title");
+                String phone1 = results.getString("phone1");
+                String phone2 = results.getString("phone2");
+                String email = results.getString("email");
+                String address = results.getString("address");
+                String emergContact = results.getString("emergcontact");
+                String emergContactPhone1 = results.getString("emergcontactphone1");
+                String emergContactPhone2 = results.getString("emergcontactphone2");
+                String sin = results.getString("sin");
+                double wage = results.getDouble("wage");
+                char isActive = results.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
+                    return labourer;
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     /**
      * exports a project to QuickBooks

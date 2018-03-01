@@ -2,6 +2,7 @@ package services;
 
 import application.Main;
 import entity.Client;
+import entity.Labourer;
 import entity.Project;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
@@ -51,6 +52,16 @@ public class DBServices {
      */
     public boolean deleteClient(Client client){
         return Main.jdbcc.deleteClient(client);
+    }
+    
+    /**
+     * gets a labourer object from the database via jdbccommands based on name
+     *
+     * @param name the name of the labourer to retrieve
+     * @return the Labourer object
+     */
+    public Labourer getLabourer(String name) {
+        return Main.jdbcc.getLabourer(name);
     }
     
     /**

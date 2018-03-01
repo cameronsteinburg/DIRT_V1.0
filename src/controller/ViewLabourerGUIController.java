@@ -54,7 +54,7 @@ public class ViewLabourerGUIController implements Initializable {
         
             DBServices dbs = new DBServices();
             
-           //todo// Labourer target = dbs.getLabourer(this.selectedLabourer.getFirstName());
+            Labourer target = dbs.getLabourer(this.selectedLabourer.getFirstName());
            // String name = target.getName();
             //dbs.deleteClient(target);
             //this.updateTable();
