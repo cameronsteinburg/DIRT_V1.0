@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import entity.Client;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,11 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import services.DBServices;
 
-/**
- * FXML Controller class
- *
- * @author 645011
- */
 public class ViewClientGUIController implements Initializable {
 
     private ObservableList<Client> clientList;
@@ -49,6 +40,58 @@ public class ViewClientGUIController implements Initializable {
     private TableColumn<?, ?> secondNumCol;
     @FXML
     private TableColumn<?, ?> emailCol;
+    
+    
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void removeClientAction(ActionEvent event){
+        
+        if (this.selectedClient != null){
+        
+            DBServices dbs = new DBServices();
+            
+            Client target = dbs.getClient(this.selectedClient.getName());
+            String name = target.getName();
+            dbs.deleteClient(target);
+            this.updateTable();
+            HomePageGUIController.setBannerMessage("Client " + name + " Successfully Removed");
+        }
+    }
+    
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void getSelectedClient(MouseEvent event) {
+        
+        if (clientTable.getSelectionModel().getSelectedItem() != null) {
+            
+            this.selectedClient = clientTable.getSelectionModel().getSelectedItem();
+            
+            //Enable buttons once client is selected
+            viewClientBtn.setDisable(false);
+            editClientBtn.setDisable(false);
+            removeClientBtn.setDisable(false);
+        }
+    }
+    
+    private void updateTable(){
+        
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        firstNumCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
+        secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        DBServices dbs = new DBServices();
+        this.clientList = dbs.getClientsForTable();
+        clientTable.setItems(clientList);
+    }
 
     /**
      * Initializes the controller class.
@@ -59,26 +102,8 @@ public class ViewClientGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
-        firstNumCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
-        secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        DBServices dbs = new DBServices();
-        this.clientList = dbs.getClientsForTable();
-        clientTable.setItems(clientList);
-
+        this.updateTable();
     }
 
-    @FXML
-    private void getSelectedClient(MouseEvent event) {
-        if (clientTable.getSelectionModel().getSelectedItem() != null) {
-            selectedClient = clientTable.getSelectionModel().getSelectedItem();
-            
-            //Enable buttons once client is selected
-            viewClientBtn.setDisable(false);
-            editClientBtn.setDisable(false);
-            removeClientBtn.setDisable(false);
-        }
-    }
+    
 }

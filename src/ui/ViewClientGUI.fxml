@@ -37,9 +37,9 @@
                         <TableColumn fx:id="emailCol" prefWidth="133.0" text="Email" />
                     </columns>
                   </TableView>
-                  <Button fx:id="viewClientBtn" disable="true" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="View Client" />
+                  <Button fx:id="viewClientBtn" disable="true" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Open Client Profile" />
                   <Button fx:id="editClientBtn" disable="true" layoutX="188.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Edit Client" />
-                  <Button fx:id="removeClientBtn" disable="true" layoutX="360.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Remove Client" />
+                  <Button fx:id="removeClientBtn" disable="true" layoutX="360.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeClientAction" prefHeight="25.0" prefWidth="180.0" text="Remove Client" />
                </children>
             </AnchorPane>
          </center>

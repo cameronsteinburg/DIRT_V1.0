@@ -1,16 +1,14 @@
-/**
+/*
  * 
+ *  This is the class that controls what happens when the user is on the page that lets them make a new labourer
  */
 package controller;
 
 import application.Main;
-import entity.Client;
 import entity.Labourer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

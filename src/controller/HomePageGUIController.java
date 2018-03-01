@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.TextFlow;
@@ -30,6 +31,10 @@ public class HomePageGUIController implements Initializable {
     ArrayList<Client> curClients;
     ArrayList<Labourer> curLabourers;
     ArrayList<Project> curProjects;
+    
+    //for error messages or did indicate a client has completed an action. Sits in top banner
+    @FXML
+    private static Label actionPerformedLabel = new Label("");
 
     //elements from the GUI.fxml page
     @FXML
@@ -88,6 +93,9 @@ public class HomePageGUIController implements Initializable {
     }
     
     
+    
+    
+    /*==========================Home Page Controls==========================*/
     /**
      * 
      * @param url 
@@ -104,6 +112,16 @@ public class HomePageGUIController implements Initializable {
 
         this.borderpane.setCenter(root);
 
+    }
+    
+    /**
+     * For changing the label to indicate to suer they have unsuccessfully/successfully performed an action, or to indicate an error has occurred 
+     * 
+     * @param message 
+     */
+    public static void setBannerMessage(String message){
+        
+        HomePageGUIController.actionPerformedLabel.setText(message);
     }
 
     /**
