@@ -302,18 +302,23 @@ public class JDBCCommands {
 
             //TODO Fix from client template once the labourer table is done
             // the mysql prepared insert statement
-            String query = " insert into labourers (name, description, phone1, phone2, email, address, isActive) values (?, ?, ?, ?, ?, ?, ?)";
+            String query = " insert into labourers (fname, lname, title, phone1, phone2, email, address, emergcontact, emergcontactphone1, emergcontactphone2, sin, wage, isActive) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             // create the mysql insert preparedstatement
-            //should probably change the ints in client class to strings at somepoint or change db to use ints instead
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-//                preparedStmt.setString(1, client.getClientName());
-//                preparedStmt.setString(2, client.getDescription());
-//                preparedStmt.setString(3, client.getPhone1());
-//                preparedStmt.setString(4, client.getPhone2());
-//                preparedStmt.setString(5, client.getEmail());
-//                preparedStmt.setString(6, client.getAddress());
-//                preparedStmt.setBoolean(7, client.getStatus());
+                preparedStmt.setString(1, labourer.getFirstName());
+                preparedStmt.setString(2, labourer.getLastName());
+                preparedStmt.setString(3, labourer.getTitle());
+                preparedStmt.setString(4, labourer.getPhone1());
+                preparedStmt.setString(5, labourer.getPhone2());
+                preparedStmt.setString(6, labourer.getEmail());
+                preparedStmt.setString(7, labourer.getAddress());
+                preparedStmt.setString(8, labourer.getEmergContactName());
+                preparedStmt.setString(9, labourer.getEmergContactPhone1());
+                preparedStmt.setString(10, labourer.getEmergContactPhone2());
+                preparedStmt.setString(11, labourer.getSin());
+                preparedStmt.setDouble(12, labourer.getWage());
+                preparedStmt.setBoolean(13, labourer.getIsActive());
 
             // execute the preparedstatement
             preparedStmt.execute();
