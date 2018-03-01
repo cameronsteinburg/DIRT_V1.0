@@ -9,6 +9,8 @@
 
 
 #Remove for update
+drop table projectlabourer;
+drop table labourers;
 drop table projects;
 drop table clients;
 drop database DIRT;
@@ -25,3 +27,9 @@ create table Clients (clientNum smallint unsigned not null auto_increment, name 
 
 #creates projects table
 create table Projects (projectNum smallint unsigned not null auto_increment, clientNum smallint unsigned not null, projectName varchar(50), description varchar(5000), siteAddress varchar(100), startDate Date, estimatedEndDate Date, clientOwing numeric(8,2), clientPaid boolean, estimatedShoppingCost numeric(8,2), estimatedLabourCost numeric(8,2), estimatedDeliveryCost numeric(8,2), allowanceCost numeric(8,2), actualShoppingCost numeric(8,2), actualLabourCost numeric(8,2), actualDeliveryCost numeric(8,2), extraneousExpenses numeric(8,2), estimatedProfit numeric(8,2), actualProfit numeric(8,2), actualEndDate Date, isActive boolean not null, constraint pk_Project primary key (projectNum), constraint fk_ProjectClient foreign key (clientNum) references Clients (clientNum));
+
+#creates labourers table
+create table Labourers (labourerNum smallint unsigned not null auto_increment, fname varchar(30), lname varchar(30), title varchar(30), phone1 varchar(11), phone2 varchar(11), email varchar(30), address varchar(50), emergcontact varchar(30), emergcontactphone1 varchar(11), emergcontactphone2 varchar(11), sin varchar(9), wage numeric(4,2), constraint pk_Labourer primary key (labourerNum));
+
+#creates Project-Labourer bridging table
+create table ProjectLabourer (projectNum smallint unsigned not null, labourerNum smallint unsigned not null, constraint fk_ProjectLabourerProject foreign key (projectNum) references Projects (projectNum), constraint fk_ProjectLabourerLabourer foreign key (labourerNum) references Labourers (labourerNum));
