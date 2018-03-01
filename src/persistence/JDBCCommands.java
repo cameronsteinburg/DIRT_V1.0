@@ -238,7 +238,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // statement to set the isActive value to zero
-            statement.executeQuery("update clients set isActive=0 where name = '" + client.getName() + "';");
+            statement.executeUpdate("update clients set isActive=0 where name = '" + client.getName() + "';");
             return true;
 
         } catch (SQLException ex) {
