@@ -22,7 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;  
+import javafx.scene.layout.BorderPane;
 
 public class HomePageGUIController implements Initializable {
 
@@ -37,13 +37,13 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private TextField clientsNameField = new TextField();
     @FXML
-    private BorderPane borderpane; //the only thing that naviagtes pages
+    private BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
     @FXML
-    private Label errorMessage;
-   
-   public HomePageGUIController(){
-   
-   }
+    private Label errorMessage = new Label();
+
+    public HomePageGUIController() {
+
+    }
 
     /*==========================Client actions=============================*/
     /**
@@ -106,9 +106,8 @@ public class HomePageGUIController implements Initializable {
      *
      * @param url
      */
-
     public void navigateTo(String url, String message) {
-        
+
         Parent root = null;
 
         try {
@@ -116,12 +115,18 @@ public class HomePageGUIController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         this.borderpane.setCenter(root);
-        errorMessage.setText(message);
+        this.errorMessage.setText(message);
     }
-   
     
+    public void setPane(BorderPane pane){
+        
+        this.borderpane = pane;
+    }
+    
+    
+
     /**
      *
      * @param url

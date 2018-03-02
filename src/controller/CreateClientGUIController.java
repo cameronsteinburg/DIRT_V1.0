@@ -96,9 +96,18 @@ public class CreateClientGUIController implements Initializable {
         Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
 
         Main.jdbcc.persistClient(newClient); //persist to db
-
+       
+        this.errorMessage.setText("Client Successfully Created!");
+        
+        nameField.clear();
+        emailField.clear();
+        addressField.clear();
+        notesField.clear();
+        phone1Field.clear();
+        phone2Field.clear();
+        
         HomePageGUIController hpgc = new HomePageGUIController();
-        hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Created");
+        hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Created"); //doesnt work todo?
     }
 
  
