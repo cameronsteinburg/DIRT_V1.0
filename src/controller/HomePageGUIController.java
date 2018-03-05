@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class HomePageGUIController implements Initializable {
@@ -99,6 +100,12 @@ public class HomePageGUIController implements Initializable {
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
 
         navigateTo("/ui/ViewLabourerGUI.fxml", "");
+    }
+    
+    @FXML
+    private void navigateHome(MouseEvent event) {
+        
+        navigateTo("/ui/HomePageGUI.fxml", "");
     }
 
     /*==========================Home Page Controls==========================*/
