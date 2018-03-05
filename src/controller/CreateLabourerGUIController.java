@@ -16,10 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-
 public class CreateLabourerGUIController implements Initializable {
 
-    
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
@@ -53,18 +51,36 @@ public class CreateLabourerGUIController implements Initializable {
     @FXML
     private Label errorMessage;
 
-    
-   
+    /**
+     *empties all fields in the form for User in case they want to start over
+     * 
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void clearBtnAction(ActionEvent event) throws IOException {
+        
+        addressField.clear();
+        emergencyNameField.clear();
+        emergencyPhone1Field.clear();
+        emergencyPhone2Field.clear();
+        wageField.clear();
+        sinField.clear();
+        emailField.clear();
+        phone2Field.clear();
+        phone1Field.clear();
+        titleField.clear();
+        lnameField.clear();
+        fnameField.clear();
+    }
 
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void saveBtnAction(ActionEvent event) {
-        //errorMessage.setVisible(false); //reset messages for multiple attempts by user to get their data correct
 
-        
         String fname = fnameField.getText();// not null
         String lname = lnameField.getText();//not null
         String title = titleField.getText();
@@ -77,33 +93,19 @@ public class CreateLabourerGUIController implements Initializable {
         String emergePhone1 = emergencyPhone1Field.getText();
         String emergePhone2 = emergencyPhone2Field.getText();
         String sin = sinField.getText();
-        
-        //data validation commences
 
-        
-        Labourer newLabourer = new Labourer(fname,lname,title,phone1,phone2,email,address,emergName,emergePhone1, emergePhone2,sin,wage, null /*arraylist of skills*/, true /*isActive*/);
+        //data validation commences
+        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergName, emergePhone1, emergePhone2, sin, wage, null /*arraylist of skills*/, true /*isActive*/);
         Main.jdbcc.persistLabourer(newLabourer); //persist to db
     }
 
     /**
-     * 
-     * @param event
-     * @throws IOException 
-     */
-    @FXML
-    private void cancelBtnAction(ActionEvent event) throws IOException {
-       // StageController.control.navigateTo("/ui/HomePageGui.fxml");
-    }
-    
-    
-     /**
-     * 
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }  
-    
+        // ntohinng to load to the page beforehand 
+    }
 }

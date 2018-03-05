@@ -16,7 +16,7 @@
       <URL value="@createclientgui.css" />
    </stylesheets>
    <children>
-      <Button layoutX="6.0" layoutY="476.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="138.0" text="+Save Labourer">
+      <Button layoutX="6.0" layoutY="476.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Save">
          <font>
             <Font size="15.0" />
          </font>
@@ -112,8 +112,8 @@
             <TextField fx:id="emergencyNameField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField fx:id="emergencyPhone1Field" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <TextField fx:id="emergencyPhone2Field" prefHeight="26.0" prefWidth="510.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField fx:id="sinField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="wageField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField fx:id="sinField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
          </children>
       </GridPane>
       <Label layoutX="385.0" layoutY="14.0" prefHeight="59.0" prefWidth="127.0" text="* = Required" textFill="#eb0000">
@@ -137,5 +137,10 @@
             <Insets bottom="20.0" right="20.0" />
          </padding>
       </Label>
+      <Button fx:id="clearBtn" layoutX="86.0" layoutY="476.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="31.0" prefWidth="71.0" text="Clear">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

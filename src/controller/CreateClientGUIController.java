@@ -36,6 +36,7 @@ public class CreateClientGUIController implements Initializable {
 
 
     /**
+     * empties all the form fields for the User if they want to start over
      * 
      * @param event
      * @throws IOException 
