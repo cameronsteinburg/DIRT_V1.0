@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.HomePageGUIController">
+   <children>
+      <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0">
+         <children>
+            <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TableView layoutX="7.0" layoutY="38.0" prefHeight="233.0" prefWidth="1038.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="38.0">
+               <columns>
+                  <TableColumn prefWidth="106.0" text="Project Name" />
+                  <TableColumn text="Client" />
+                  <TableColumn prefWidth="100.0" text="Project Address" />
+                  <TableColumn prefWidth="100.0" text="Start Date" />
+                  <TableColumn prefWidth="100.0" text="End Date" />
+               </columns>
+            </TableView>
+            <Label layoutX="7.0" layoutY="283.0" prefHeight="46.0" prefWidth="257.0" text="Previous Projects">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

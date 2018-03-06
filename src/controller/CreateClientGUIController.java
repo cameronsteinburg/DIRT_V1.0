@@ -112,7 +112,7 @@ public class CreateClientGUIController implements Initializable {
         phone2Field.clear();
         
         HomePageGUIController hpgc = new HomePageGUIController();
-        hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Created"); //doesnt work todo?
+        //hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Created"); //doesnt work todo?
     }
 
  

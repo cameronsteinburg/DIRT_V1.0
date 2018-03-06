@@ -72,6 +72,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#newClientAction" prefHeight="131.0" prefWidth="247.0" styleClass="navButton" text="New Client" GridPane.rowIndex="1">
@@ -80,6 +81,9 @@
                                     <Button mnemonicParsing="false" onAction="#viewClientAction" prefHeight="147.0" prefWidth="351.0" styleClass="navButton" text="List Clients">
 
                                     </Button>
+                                    <Button fx:id="removeClientBtn" mnemonicParsing="false" onAction="#removeClientAction" prefHeight="90.0" prefWidth="179.0" styleClass="navButton" text="Remove Client" GridPane.rowIndex="2" />
+                                    <Button fx:id="editClientBtn" mnemonicParsing="false" onAction="#editClientAction" prefHeight="93.0" prefWidth="192.0" styleClass="navButton" text="Edit Client" GridPane.rowIndex="3" />
+                                    <Button fx:id="viewClientBtn" mnemonicParsing="false" prefHeight="88.0" prefWidth="172.0" styleClass="navButton" text="View Client Profile" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children>
@@ -146,23 +150,27 @@
             </Accordion>
          </left>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+                  <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="20.0" layoutY="66.0" prefHeight="200.0" prefWidth="1038.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
-                    <columns>
-                      <TableColumn prefWidth="106.0" text="Project Name" />
-                      <TableColumn text="Client" />
+                  <TableView layoutX="7.0" layoutY="38.0" prefHeight="233.0" prefWidth="1038.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="38.0">
+                     <columns>
+                        <TableColumn prefWidth="106.0" text="Project Name" />
+                        <TableColumn text="Client" />
                         <TableColumn prefWidth="100.0" text="Project Address" />
                         <TableColumn prefWidth="100.0" text="Start Date" />
                         <TableColumn prefWidth="100.0" text="End Date" />
-                    </columns>
+                     </columns>
                   </TableView>
-                  <Button layoutX="20.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Project Info" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="260.0" />
+                  <Label layoutX="7.0" layoutY="283.0" prefHeight="46.0" prefWidth="257.0" text="Previous Projects">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>

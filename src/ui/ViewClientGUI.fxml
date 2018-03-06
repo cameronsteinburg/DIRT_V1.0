@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewClientGUIController">
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageGUIController">
    <children>
       <BorderPane layoutX="7.0" layoutY="23.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -33,7 +32,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="clientTable" layoutY="14.0" onMousePressed="#getSelectedClient" prefHeight="323.0" prefWidth="1038.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="323.0" prefWidth="1038.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <columns>
                       <TableColumn fx:id="nameCol" prefWidth="162.0" text="Name" />
                         <TableColumn fx:id="firstNumCol" prefWidth="133.0" text="First Number" />
@@ -42,9 +41,6 @@
                         <TableColumn fx:id="emailCol" prefWidth="133.0" text="Email" />
                     </columns>
                   </TableView>
-                  <Button fx:id="viewClientBtn" disable="true" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Open Client Profile" />
-                  <Button fx:id="editClientBtn" disable="true" layoutX="188.0" layoutY="389.0" mnemonicParsing="false" onAction="#editClientAction" prefHeight="25.0" prefWidth="153.0" text="Edit Client" />
-                  <Button fx:id="removeClientBtn" disable="true" layoutX="360.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeClientAction" prefHeight="25.0" prefWidth="180.0" text="Remove Client" />
                </children>
             </AnchorPane>
          </center>
