@@ -52,14 +52,14 @@ public class CreateLabourerGUIController implements Initializable {
     private Label errorMessage;
 
     /**
-     *empties all fields in the form for User in case they want to start over
-     * 
+     * empties all fields in the form for User in case they want to start over
+     *
      * @param event
      * @throws IOException
      */
     @FXML
     private void clearBtnAction(ActionEvent event) throws IOException {
-        
+
         addressField.clear();
         emergencyNameField.clear();
         emergencyPhone1Field.clear();
@@ -79,7 +79,7 @@ public class CreateLabourerGUIController implements Initializable {
      * @param event
      */
     @FXML
-    private void saveBtnAction(ActionEvent event) {
+    private void saveBtnAction(ActionEvent event) throws IOException {
 
         String fname = fnameField.getText();// not null
         String lname = lnameField.getText();//not null
@@ -88,15 +88,88 @@ public class CreateLabourerGUIController implements Initializable {
         String phone2 = phone2Field.getText();
         String email = emailField.getText();
         String address = addressField.getText();
-        Double wage = Double.parseDouble(wageField.getText());
+        String wage = wageField.getText();
         String emergName = emergencyNameField.getText();
         String emergePhone1 = emergencyPhone1Field.getText();
         String emergePhone2 = emergencyPhone2Field.getText();
         String sin = sinField.getText();
+        
+        Double wageDbl = null;
 
         //data validation commences
-        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergName, emergePhone1, emergePhone2, sin, wage, null /*arraylist of skills*/, true /*isActive*/);
+        if (fname.isEmpty() || lname.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
+
+            errorMessage.setText("* Required Fields Cannot Be Left Blank");
+            return;
+        }
+
+        if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
+
+            errorMessage.setText("Please enter a vlid E-mail address");
+            return;
+        }
+
+        if (phone1Field.getText().length() > 11 || phone1Field.getText().length() < 7) { //checking phone number isnt too long or short
+
+            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            return;
+        }
+
+        //if User is entering a second number, checking phone number isnt too long or short
+        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) {
+
+            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            return;
+        }
+
+        if ((emergencyPhone1Field.getText().length() > 11 || emergencyPhone1Field.getText().length() < 7) && emergencyPhone1Field.getText().length() > 0) {
+
+            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            return;
+        }
+
+        if ((emergencyPhone2Field.getText().length() > 11 || emergencyPhone2Field.getText().length() < 7) && emergencyPhone2Field.getText().length() > 0) {
+
+            errorMessage.setText("Phone numbers++ must be 7 - 11 digits");
+            return;
+        }
+
+        if ((sin.length() != 9 || sin.matches("[0-9]+")) && sin.length() > 0) {
+
+            errorMessage.setText("Please enter valid SIN");
+            return;
+        }
+
+        if (title.length() > 30 || emergName.length() > 30) {
+
+            errorMessage.setText("Title is too long");
+            return;
+        }
+
+        if (wage.length() > 0) {
+
+            if (wage.length() != 5 && wage.length() != 6) {
+
+                errorMessage.setText("Please enter a valid wage in XX.XX");
+                return;
+            }
+
+            try {
+
+                wageDbl = Double.parseDouble(wage);
+
+            } catch (Exception e) {
+
+                errorMessage.setText("Please enter a valid wage in XX.XX");
+                return;
+            }
+        }
+
+        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergName, emergePhone1, emergePhone2, sin, wageDbl, null /*arraylist of skills*/, true /*isActive*/);
         Main.jdbcc.persistLabourer(newLabourer); //persist to db
+        
+        clearBtnAction(null);
+        errorMessage.setText("Labourer Successfully Created!");
     }
 
     /**

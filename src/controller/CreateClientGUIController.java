@@ -74,20 +74,20 @@ public class CreateClientGUIController implements Initializable {
 
         if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-            errorMessage.setText("Not a valid Email address");
+            errorMessage.setText("Please enter a vlid E-mail address");
             return;
         }
 
         if (phone1Field.getText().length() > 11 || phone1Field.getText().length() < 7) { //checking phone number isnt too long or short
 
-            errorMessage.setText("Phone number must be 7 - 11 digits");
+            errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
         
         //if User is entering a second number, checking phone number isnt too long or short
         if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { 
 
-            errorMessage.setText("Phone number must be 7 - 11 digits");
+            errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
 

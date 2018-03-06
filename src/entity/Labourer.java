@@ -28,6 +28,33 @@ public class Labourer {
     private double wage;
     private ArrayList<String> skills;
     private boolean isActive;
+    
+    
+        /**
+     * default Laborer constructor
+     */
+    public Labourer(){
+    	
+    }
+
+    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, double wage, ArrayList<String> skills, boolean status) {
+        
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.title = title;
+        this.phone1 = phone1;
+        this.phone2 = phone2;
+        this.email = email;
+        this.address = address;
+        this.emergContactName = emergContactName;
+        this.emergContactPhone1 = emergContactPhone1;
+        this.emergContactPhone2 = emergContactPhone2;
+        this.sin = sin;
+        this.wage = wage;
+        this.skills = skills;
+        this.isActive = status;
+    }
+    
 
     public String getFirstName() {
         return firstName;
@@ -138,30 +165,6 @@ public class Labourer {
     }
 
     public void setIsActive(boolean status) {
-        this.isActive = status;
-    }
-    
-    /**
-     * default Laborer constructor
-     */
-    public Labourer(){
-    	
-    }
-
-    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, double wage, ArrayList<String> skills, boolean status) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.title = title;
-        this.phone1 = phone1;
-        this.phone2 = phone2;
-        this.email = email;
-        this.address = address;
-        this.emergContactName = emergContactName;
-        this.emergContactPhone1 = emergContactPhone1;
-        this.emergContactPhone2 = emergContactPhone2;
-        this.sin = sin;
-        this.wage = wage;
-        this.skills = skills;
         this.isActive = status;
     }
     

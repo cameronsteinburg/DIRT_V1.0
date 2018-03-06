@@ -127,7 +127,7 @@
                                  </rowConstraints>
                                  <children>
                                     <Button fx:id="newLabourerBtn" mnemonicParsing="false" onAction="#newLabourerAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="New Labourer" textAlignment="RIGHT" />
-                                    <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="View Labourers" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
