@@ -82,6 +82,7 @@ public class HomePageGUIController implements Initializable {
     private void newClientAction(ActionEvent event) throws IOException {
 
         navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client inside dynamic pane
+        disableButtons();
     }
 
     /**
