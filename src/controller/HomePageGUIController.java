@@ -154,9 +154,9 @@ public class HomePageGUIController implements Initializable {
             this.selectedClient = clientTable.getSelectionModel().getSelectedItem();
 
             //Enable buttons once client is selected
-            //  viewClientBtn.setDisable(false);
-            //  editClientBtn.setDisable(false);
-            //  removeClientBtn.setDisable(false);
+              viewClientBtn.setDisable(false);
+              editClientBtn.setDisable(false);
+              removeClientBtn.setDisable(false);
         }
     }
 
@@ -249,6 +249,8 @@ public class HomePageGUIController implements Initializable {
 
     private void reloadResources(Parent root) {
         //outer buttons
+        //if(root.lookup("")){
+        //}
 
         //client table for viewing all clients
         if (root.lookup("#clientTable") != null) {
@@ -261,6 +263,8 @@ public class HomePageGUIController implements Initializable {
                 }
             });
         }
+        
+        
 
         //client profile
         //edit client
@@ -268,11 +272,7 @@ public class HomePageGUIController implements Initializable {
         //labourer profile
         //edit labourer 
     }
-
-    public void setPane(BorderPane pane) {
-
-        this.borderpane = pane;
-    }
+    
 
     /**
      *
@@ -283,6 +283,5 @@ public class HomePageGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         this.updateTable(); //for viewing clients   
-
     }
 }
