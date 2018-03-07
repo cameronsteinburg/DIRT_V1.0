@@ -92,11 +92,10 @@ public class JDBCCommands {
                 if (isActive == '1') {
                     isActiveToBoolean = true;
                 }
-                if (isActive == '0' && getDeleted == true){
+                if (isActive == '0' && getDeleted == true) {
                     Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
-                }
-                else if (isActive == '1'){
+                } else if (isActive == '1') {
                     Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
                 }
@@ -134,14 +133,13 @@ public class JDBCCommands {
                 char isActive = results.getString("isActive").charAt(0);
                 boolean isActiveToBoolean = false;
 
-               if (isActive == '1') {
+                if (isActive == '1') {
                     isActiveToBoolean = true;
                 }
-                if (isActive == '0' && getDeleted == true){
+                if (isActive == '0' && getDeleted == true) {
                     Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
-                }
-                else if (isActive == '1'){
+                } else if (isActive == '1') {
                     Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
                 }
@@ -306,19 +304,19 @@ public class JDBCCommands {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-                preparedStmt.setString(1, labourer.getFirstName());
-                preparedStmt.setString(2, labourer.getLastName());
-                preparedStmt.setString(3, labourer.getTitle());
-                preparedStmt.setString(4, labourer.getPhone1());
-                preparedStmt.setString(5, labourer.getPhone2());
-                preparedStmt.setString(6, labourer.getEmail());
-                preparedStmt.setString(7, labourer.getAddress());
-                preparedStmt.setString(8, labourer.getEmergContactName());
-                preparedStmt.setString(9, labourer.getEmergContactPhone1());
-                preparedStmt.setString(10, labourer.getEmergContactPhone2());
-                preparedStmt.setString(11, labourer.getSin());
-                preparedStmt.setDouble(12, labourer.getWage());
-                preparedStmt.setBoolean(13, labourer.getIsActive());
+            preparedStmt.setString(1, labourer.getFirstName());
+            preparedStmt.setString(2, labourer.getLastName());
+            preparedStmt.setString(3, labourer.getTitle());
+            preparedStmt.setString(4, labourer.getPhone1());
+            preparedStmt.setString(5, labourer.getPhone2());
+            preparedStmt.setString(6, labourer.getEmail());
+            preparedStmt.setString(7, labourer.getAddress());
+            preparedStmt.setString(8, labourer.getEmergContactName());
+            preparedStmt.setString(9, labourer.getEmergContactPhone1());
+            preparedStmt.setString(10, labourer.getEmergContactPhone2());
+            preparedStmt.setString(11, labourer.getSin());
+            preparedStmt.setDouble(12, labourer.getWage());
+            preparedStmt.setBoolean(13, labourer.getIsActive());
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -328,14 +326,14 @@ public class JDBCCommands {
         }
         return true;
     }
-    
+
     /**
      *
      * Retrieves a labourer from the database from the name passed to the method
      *
      * @param labourerName the name of the labourer to be searched for
-     * @return a labourer object created from the information found in the labourers table
-     * table
+     * @return a labourer object created from the information found in the
+     * labourers table table
      */
     public Labourer getLabourer(String labourerName) {
 
@@ -376,7 +374,7 @@ public class JDBCCommands {
         }
         return null;
     }
-    
+
     /**
      * Retrieves labourer information from MySQL database
      *
@@ -408,14 +406,13 @@ public class JDBCCommands {
                 char isActive = results.getString("isActive").charAt(0);
                 boolean isActiveToBoolean = false;
 
-               if (isActive == '1') {
+                if (isActive == '1') {
                     isActiveToBoolean = true;
                 }
-                if (isActive == '0' && getDeleted == true){
+                if (isActive == '0' && getDeleted == true) {
                     Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
                     labourerList.add(labourer);
-                }
-                else if (isActive == '1'){
+                } else if (isActive == '1') {
                     Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
                     labourerList.add(labourer);
                 }

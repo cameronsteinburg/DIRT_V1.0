@@ -218,6 +218,16 @@ public class HomePageGUIController implements Initializable {
 
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
+    
+    @FXML
+    private void getSelectedLabourer(ActionEvent event){
+    
+    }
+    
+    @FXML
+    private void removeLabourerAction(ActionEvent event){
+    
+    }
 
     /**
      *
