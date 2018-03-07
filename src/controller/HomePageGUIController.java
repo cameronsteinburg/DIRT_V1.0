@@ -33,10 +33,39 @@ import services.DBServices;
 
 public class HomePageGUIController implements Initializable {
 
-    
-
-    
     /*==========================Client actions=============================*/
+ /*============Outer Frame Client Dropdown===============*/
+    @FXML
+    protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
+    @FXML
+    private Label errorMessage = new Label();
+    @FXML
+    private Button viewClientBtn;
+    @FXML
+    private Button editClientBtn;
+    @FXML
+    private Button removeClientBtn;
+
+    private Client selectedClient;
+
+    /*============Inner Frame Client Dropdown===============*/
+    @FXML
+    private TableView<Client> clientTable;
+    @FXML
+    private TextField searchBox;
+    @FXML
+    private TableColumn<?, ?> nameCol;
+    @FXML
+    private TableColumn<?, ?> addressCol;
+    @FXML
+    private TableColumn<?, ?> firstNumCol;
+    @FXML
+    private TableColumn<?, ?> secondNumCol;
+    @FXML
+    private TableColumn<?, ?> emailCol;
+
+    private ObservableList<Client> clientList;
+
     /**
      *
      * @param event
@@ -77,7 +106,6 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void removeClientAction(ActionEvent event) {
 
-        //    if (this.selectedClient != null) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Client Confirmation");
         alert.setHeaderText("Confirm Deletion");
@@ -96,48 +124,12 @@ public class HomePageGUIController implements Initializable {
         } else {
             alert.close();
         }
-        //  }
     }
-     /*============Outer Frame Client Dropdown===============*/
-    
-    @FXML
-    protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
-    @FXML
-    private Label errorMessage = new Label();
-    @FXML
-    private Button viewClientBtn;
-    @FXML
-    private Button editClientBtn;
-    @FXML
-    private Button removeClientBtn;
-
-    private Client selectedClient;
-    
-    
-
-    /*============Inner Frame Client Dropdown===============*/
-    @FXML
-    private TableView<Client> clientTable;
-    @FXML
-    private TextField searchBox;
-    @FXML
-    private TableColumn<?, ?> nameCol;
-    @FXML
-    private TableColumn<?, ?> addressCol;
-    @FXML
-    private TableColumn<?, ?> firstNumCol;
-    @FXML
-    private TableColumn<?, ?> secondNumCol;
-    @FXML
-    private TableColumn<?, ?> emailCol;
-
-    private ObservableList<Client> clientList;
 
     /**
      *
      * @param event
      */
-    //  @FXML
     private void getSelectedClient() {
 
         if (clientTable.getSelectionModel().getSelectedItem() != null) {
@@ -167,8 +159,7 @@ public class HomePageGUIController implements Initializable {
     }
 
     /*==========================Project Actions==========================*/
-    
-    /*============Outer Frame Project Dropdown===============*/
+ /*============Outer Frame Project Dropdown===============*/
     /**
      *
      * @param event
@@ -182,8 +173,7 @@ public class HomePageGUIController implements Initializable {
     }
 
     /*==========================Labourer Actions==========================*/
-    
-    /*============Outer Frame Labourer Dropwdown===============*/
+ /*============Outer Frame Labourer Dropwdown===============*/
     /**
      *
      * @param event
@@ -197,10 +187,10 @@ public class HomePageGUIController implements Initializable {
     }
 
     /**
-     * 
+     *
      * @param event
      * @throws IOException
-     * @throws URISyntaxException 
+     * @throws URISyntaxException
      */
     @FXML
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
@@ -208,12 +198,12 @@ public class HomePageGUIController implements Initializable {
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
-   
-
     /*==========================Home Page Controls==========================*/
     /**
+     * Primary means of changing pages of the inner panel of the app
      *
      * @param url
+     * @throws IOException
      */
     public void navigateTo(String url) throws IOException {
 
@@ -229,12 +219,12 @@ public class HomePageGUIController implements Initializable {
         this.borderpane.setCenter(root);
         // 
     }
-    
+
     /**
      * For when the User clicks on the Visual Landscaping logo
-     * 
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void navigateHome(MouseEvent event) throws IOException {
@@ -257,12 +247,11 @@ public class HomePageGUIController implements Initializable {
     }
 
     /**
-     * 
-     * @param root 
+     *
+     * @param root
      */
     private void reloadResources(Parent root) {
         //outer buttons
- 
 
         //client table for viewing all clients
         if (root.lookup("#clientTable") != null) {
@@ -284,8 +273,8 @@ public class HomePageGUIController implements Initializable {
     }
 
     /**
-     *Loading stuff into any given page the HomePageGUIController controls
-     * 
+     * Loading stuff into any given page the HomePageGUIController controls
+     *
      * @param url
      * @param rb
      */
