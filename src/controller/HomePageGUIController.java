@@ -33,7 +33,7 @@ import services.DBServices;
 
 public class HomePageGUIController implements Initializable {
 
-    /*==========================Client actions=============================*/
+    /*======================================Client actions/*======================================
  /*============Outer Frame Client Dropdown===============*/
     @FXML
     protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
@@ -119,7 +119,7 @@ public class HomePageGUIController implements Initializable {
             Client target = dbs.getClient(this.selectedClient.getName());
             String name = target.getName();
             dbs.deleteClient(target);
-            this.updateTable();
+            this.updateClientTable();
             this.errorMessage.setText("Client Successfully Removed");
         } else {
             alert.close();
@@ -143,7 +143,7 @@ public class HomePageGUIController implements Initializable {
         }
     }
 
-    private void updateTable() {
+    private void updateClientTable() {
 
         if (nameCol != null) {
 
@@ -158,8 +158,19 @@ public class HomePageGUIController implements Initializable {
         }
     }
 
-    /*==========================Project Actions==========================*/
+    /*======================================Project Actions======================================*/
+    
  /*============Outer Frame Project Dropdown===============*/
+
+    /**
+     * 
+     * @throws IOException 
+     */
+    @FXML 
+    private void viewProjectsAction() throws IOException{
+    
+        navigateTo("/ui/OngoingProjectsGUI.fxml");
+    }
     /**
      *
      * @param event
@@ -171,8 +182,22 @@ public class HomePageGUIController implements Initializable {
 
         navigateTo("/ui/CreateProjectGUI.fxml");
     }
+    
+    private void updateProjectTable() {
+    
+    }
 
-    /*==========================Labourer Actions==========================*/
+    /*============Inner Frame Project Dropdown===============*/
+    @FXML 
+    private TableView projectsTable; 
+
+    
+    /*======================================Labourer Actions======================================*/
+    
+/*============Inner Frame Labourer Dropdown===============*/
+    @FXML
+    private TableView labourerTable;
+    
  /*============Outer Frame Labourer Dropwdown===============*/
     /**
      *
@@ -198,7 +223,7 @@ public class HomePageGUIController implements Initializable {
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
-    /*==========================Home Page Controls==========================*/
+    /*======================================Home Page Controls/*======================================
     /**
      * Primary means of changing pages of the inner panel of the app
      *
@@ -215,21 +240,7 @@ public class HomePageGUIController implements Initializable {
         }
 
         reloadResources(root);
-
         this.borderpane.setCenter(root);
-        // 
-    }
-
-    /**
-     * For when the User clicks on the Visual Landscaping logo
-     *
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    private void navigateHome(MouseEvent event) throws IOException {
-
-        navigateTo("/ui/OngoingProjectsGUI.fxml");
     }
 
     /**
@@ -244,6 +255,18 @@ public class HomePageGUIController implements Initializable {
 
         navigateTo(url);
         this.errorMessage.setText(message);
+    }
+
+    /**
+     * For when the User clicks on the Visual Landscaping logo
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void navigateHome(MouseEvent event) throws IOException {
+
+        navigateTo("/ui/OngoingProjectsGUI.fxml");
     }
 
     /**
@@ -272,6 +295,15 @@ public class HomePageGUIController implements Initializable {
         //edit labourer 
     }
 
+    @FXML
+    private void disableButtons() {
+
+        //todo add more buttons here as the app grows, more will need to be made as we go
+        viewClientBtn.setDisable(true);
+        editClientBtn.setDisable(true);
+        removeClientBtn.setDisable(true);
+    }
+
     /**
      * Loading stuff into any given page the HomePageGUIController controls
      *
@@ -281,6 +313,7 @@ public class HomePageGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        this.updateTable(); //for viewing clients   
+        this.updateClientTable(); //for viewing clients   
+        this.updateProjectTable();
     }
 }

@@ -62,7 +62,7 @@ public class Main extends Application {
     //DBServices - > JDBCCommands -> DBAccessor -> DB 
 
     @Override
-    public void start(Stage stage) throws Exception { //gets this show on the road
+    public void start(Stage newstage) throws Exception { //gets this show on the road
 
         //initialize db communication
         DBAccessor dba = new DBAccessor();
@@ -72,8 +72,8 @@ public class Main extends Application {
         //initialize main page
         Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        this.stage = stage;
+        newstage.setScene(scene);
+        stage = newstage;
         stage.show();
         stage.setTitle("DIRT - Dynamic Interface Regarding Terrain");
     }

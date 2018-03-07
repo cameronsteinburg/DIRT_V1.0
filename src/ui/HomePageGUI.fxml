@@ -23,7 +23,7 @@
         <URL value="@homepagegui.css" />
     </stylesheets>
    <children>
-      <BorderPane fx:id="borderpane" layoutX="7.0" prefHeight="650.0" prefWidth="1273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="borderpane" layoutX="-14.0" prefHeight="650.0" prefWidth="1273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="125.0" prefWidth="1280.0" style="-fx-background-color: d9ffd6; -fx-border-color: #24664e; -fx-border-width: 2px;" styleClass="navButton" BorderPane.alignment="CENTER">
                <children>
@@ -59,7 +59,7 @@
          <left>
             <Accordion style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
-                  <TitledPane fx:id="viewClientDropdown" onContextMenuRequested="#disableButtons" text="Clients">
+                  <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" text="Clients">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="187.0">
                            <children>
@@ -93,7 +93,7 @@
                         <Font size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane onContextMenuRequested="#disableButtons" text="Projects">
+                  <TitledPane onMouseClicked="#disableButtons" text="Projects">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -107,7 +107,8 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="154.0" prefWidth="216.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" />
+                                    <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="154.0" prefWidth="216.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Button mnemonicParsing="false" onAction="#viewProjectsAction" prefHeight="127.0" prefWidth="182.0" styleClass="navButton" text="List Projects" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -116,7 +117,7 @@
                         <Font size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane onContextMenuRequested="#disableButtons" text="Labourers">
+                  <TitledPane onMouseClicked="#disableButtons" text="Labourers">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -130,8 +131,8 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="newLabourerBtn" mnemonicParsing="false" onAction="#newLabourerAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="New Labourer" textAlignment="RIGHT" />
-                                    <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Button fx:id="newLabourerBtn" mnemonicParsing="false" onAction="#newLabourerAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="New Labourer" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -150,27 +151,31 @@
             </Accordion>
          </left>
          <center>
-            <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
+            <AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TableView layoutX="7.0" layoutY="38.0" prefHeight="233.0" prefWidth="1038.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="38.0">
-                     <columns>
-                        <TableColumn prefWidth="106.0" text="Project Name" />
-                        <TableColumn text="Client" />
-                        <TableColumn prefWidth="100.0" text="Project Address" />
-                        <TableColumn prefWidth="100.0" text="Start Date" />
-                        <TableColumn prefWidth="100.0" text="End Date" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="7.0" layoutY="283.0" prefHeight="46.0" prefWidth="257.0" text="Previous Projects">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0">
+                     <children>
+                        <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="projectsTable" layoutX="7.0" layoutY="38.0" prefHeight="233.0" prefWidth="1038.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="38.0">
+                           <columns>
+                              <TableColumn prefWidth="106.0" text="Project Name" />
+                              <TableColumn text="Client" />
+                              <TableColumn prefWidth="100.0" text="Project Address" />
+                              <TableColumn prefWidth="100.0" text="Start Date" />
+                              <TableColumn prefWidth="100.0" text="End Date" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="7.0" layoutY="283.0" prefHeight="46.0" prefWidth="257.0" text="Previous Projects">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
