@@ -4,7 +4,6 @@
  */
 package controller;
 
-import application.Main;
 import entity.Client;
 import entity.Labourer;
 import java.io.IOException;
@@ -38,6 +37,10 @@ public class HomePageGUIController implements Initializable {
 
     /*======================================Client actions======================================*/
  /*============Outer Frame Client Dropdown===============*/
+    
+    private boolean editFlagClient = false; //in case user clicks edit
+     private boolean viewProfileFlagClient = false; //in case user wants to see a clients profile page
+     
     @FXML
     protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
     @FXML
@@ -90,6 +93,13 @@ public class HomePageGUIController implements Initializable {
     private void viewClientAction(ActionEvent event) throws IOException {
 
         navigateTo("/ui/ViewClientGUI.fxml");
+    }
+    
+    @FXML
+    private void viewClientProfilePage(ActionEvent event) throws IOException{
+        
+        viewProfileFlagClient = true;
+        navigateTo("/ui/ClientProfileGUI.fxml");
     }
 
     /**
@@ -266,7 +276,7 @@ public class HomePageGUIController implements Initializable {
     /*======================================Home Page Controls======================================*/
     
     
-    private boolean editFlagClient = false;
+   
     
     @FXML
     private Label selectedField;
@@ -297,6 +307,13 @@ public class HomePageGUIController implements Initializable {
             ecgc.setAddressField(selectedClient.getAddress());
             ecgc.setNotesField(selectedClient.getDescription());
             editFlagClient = false;
+        }
+        
+        if(viewProfileFlagClient == true){
+        
+            ClientProfileGUIController cpgc = loader.getController();
+            //cpgc
+            viewProfileFlagClient = false;
         }
 
         reloadResources(root);
