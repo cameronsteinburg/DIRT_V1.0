@@ -59,9 +59,9 @@
          <left>
             <Accordion style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
-                  <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" text="Clients">
+                  <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" prefHeight="420.0" prefWidth="179.0" text="Clients">
                      <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="187.0">
+                        <AnchorPane prefHeight="372.0" prefWidth="171.0">
                            <children>
                               <GridPane layoutX="12.0" layoutY="13.0" styleClass="navButton" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>

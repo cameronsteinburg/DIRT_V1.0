@@ -4,7 +4,9 @@
  */
 package controller;
 
+import application.Main;
 import entity.Client;
+import entity.Labourer;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -18,6 +20,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -33,7 +36,7 @@ import services.DBServices;
 
 public class HomePageGUIController implements Initializable {
 
-    /*======================================Client actions/*======================================
+    /*======================================Client actions======================================*/
  /*============Outer Frame Client Dropdown===============*/
     @FXML
     protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
@@ -96,7 +99,8 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void editClientAction(ActionEvent event) throws IOException {
 
-        navigateTo("/ui/CreateClientGUI.fxml");
+        editFlagClient = true;
+        navigateTo("/ui/EditClientGUI.fxml");
     }
 
     /**
@@ -126,6 +130,7 @@ public class HomePageGUIController implements Initializable {
         }
     }
 
+    /*============Controls===============*/
     /**
      *
      * @param event
@@ -159,18 +164,17 @@ public class HomePageGUIController implements Initializable {
     }
 
     /*======================================Project Actions======================================*/
-    
  /*============Outer Frame Project Dropdown===============*/
-
     /**
-     * 
-     * @throws IOException 
+     *
+     * @throws IOException
      */
-    @FXML 
-    private void viewProjectsAction() throws IOException{
-    
+    @FXML
+    private void viewProjectsAction() throws IOException {
+
         navigateTo("/ui/OngoingProjectsGUI.fxml");
     }
+
     /**
      *
      * @param event
@@ -182,22 +186,16 @@ public class HomePageGUIController implements Initializable {
 
         navigateTo("/ui/CreateProjectGUI.fxml");
     }
-    
+
     private void updateProjectTable() {
-    
+
     }
 
     /*============Inner Frame Project Dropdown===============*/
-    @FXML 
-    private TableView projectsTable; 
-
-    
-    /*======================================Labourer Actions======================================*/
-    
-/*============Inner Frame Labourer Dropdown===============*/
     @FXML
-    private TableView labourerTable;
-    
+    private TableView projectsTable;
+
+    /*======================================Labourer Actions======================================*/
  /*============Outer Frame Labourer Dropwdown===============*/
     /**
      *
@@ -223,7 +221,55 @@ public class HomePageGUIController implements Initializable {
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
-    /*======================================Home Page Controls/*======================================
+    /*============Inner Frame Labourer Dropdown===============*/
+    @FXML
+    private TableView<Labourer> labourerTable;
+
+    private ObservableList<Labourer> labourerList;
+
+    private Labourer selectedLabourer;
+
+    private Button viewLabourerBtn;
+    @FXML
+    private Button editLabourerBtn;
+    @FXML
+    private Button removeLabourerBtn;
+    @FXML
+    private TableColumn<?, ?> fNameColLab;
+    @FXML
+    private TableColumn<?, ?> lNameColLab;
+    @FXML
+    private TableColumn<?, ?> addressColLab;
+    @FXML
+    private TableColumn<?, ?> firstNumColLab;
+    @FXML
+    private TableColumn<?, ?> secondNumColLab;
+    @FXML
+    private TableColumn<?, ?> emailColLab;
+
+    /*============Controls===============*/
+    private void updateLabourerTable() {
+
+        if (fNameColLab != null) {
+            fNameColLab.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            lNameColLab.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+            addressColLab.setCellValueFactory(new PropertyValueFactory<>("address"));
+            firstNumColLab.setCellValueFactory(new PropertyValueFactory<>("phone1"));
+            secondNumColLab.setCellValueFactory(new PropertyValueFactory<>("phone2"));
+            emailColLab.setCellValueFactory(new PropertyValueFactory<>("email"));
+            DBServices dbs = new DBServices();
+            this.labourerList = dbs.getLabourersForTable();
+            labourerTable.setItems(labourerList);
+        }
+    }
+
+    /*======================================Home Page Controls======================================*/
+    
+    
+    private boolean editFlagClient = false;
+    
+    @FXML
+    private Label selectedField;
     /**
      * Primary means of changing pages of the inner panel of the app
      *
@@ -232,11 +278,25 @@ public class HomePageGUIController implements Initializable {
      */
     public void navigateTo(String url) throws IOException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url)); 
+        
         Parent root = null;
         try {
-            root = FXMLLoader.load(HomePageGUIController.class.getClass().getResource(url));
+            root = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(editFlagClient == true){
+        
+            EditClientGUIController ecgc = loader.getController();
+            ecgc.setNameField(selectedClient.getName());
+            ecgc.setPhone1Field(selectedClient.getPhone1());
+            ecgc.setPhone2Field(selectedClient.getPhone2());
+            ecgc.setEmailField(selectedClient.getEmail());
+            ecgc.setAddressField(selectedClient.getAddress());
+            ecgc.setNotesField(selectedClient.getDescription());
+            editFlagClient = false;
         }
 
         reloadResources(root);
@@ -276,8 +336,14 @@ public class HomePageGUIController implements Initializable {
     private void reloadResources(Parent root) {
         //outer buttons
 
+        Node node = null;
+        try {
+            node = root.lookup("#clientTable");
+        } catch (NullPointerException e) {
+            //ignore
+        }
         //client table for viewing all clients
-        if (root.lookup("#clientTable") != null) {
+        if (node != null) {
 
             this.clientTable = (TableView<Client>) root.lookup("#clientTable");
             this.clientTable.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -289,7 +355,10 @@ public class HomePageGUIController implements Initializable {
         }
 
         //client profile
+        
         //edit client
+        
+        
         //labourer table
         //labourer profile
         //edit labourer 
@@ -314,6 +383,6 @@ public class HomePageGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         this.updateClientTable(); //for viewing clients   
-        this.updateProjectTable();
+        this.updateLabourerTable();
     }
 }
