@@ -316,6 +316,7 @@ public class HomePageGUIController implements Initializable {
             ecgc.setEmailField(selectedClient.getEmail());
             ecgc.setAddressField(selectedClient.getAddress());
             ecgc.setNotesField(selectedClient.getDescription());
+            ecgc.setSelected(selectedClient);
             editFlagClient = false;
         }
         

@@ -14,7 +14,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import services.DBServices;
 
-
 public class EditClientGUIController implements Initializable {
 
     //try to keeps this in the relative order they appear on the page
@@ -33,36 +32,32 @@ public class EditClientGUIController implements Initializable {
     private TextArea notesField;
     @FXML
     private Label errorMessage;
-    
-    
-    
-    
-    
- //  public EditClientGUIController(){
-       
-   // }
 
+    private Client selected;
+
+    //  public EditClientGUIController(){
+    // }
     /**
      * empties all the form fields for the User if they want to start over
-     * 
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void clearBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
 
-       nameField.clear();
-       phone1Field.clear();
-       phone2Field.clear();
-       emailField.clear();
-       addressField.clear();
-       notesField.clear();
+        nameField.clear();
+        phone1Field.clear();
+        phone2Field.clear();
+        emailField.clear();
+        addressField.clear();
+        notesField.clear();
     }
-    
+
     /**
-     * 
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateClientGUI.fxml
@@ -90,9 +85,9 @@ public class EditClientGUIController implements Initializable {
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
-        
+
         //if User is entering a second number, checking phone number isnt too long or short
-        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { 
+        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) {
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
@@ -105,12 +100,11 @@ public class EditClientGUIController implements Initializable {
         }
         //data is valid at this point
 
-      //  Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
-      //todo update client
-     //   Main.jdbcc.persistClient(newClient); //persist to db
-       
+        //  Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
+        //todo update client
+        //   Main.jdbcc.persistClient(newClient); //persist to db
         this.errorMessage.setText("Client Information Successfully Updated!");
-        
+
         nameField.clear();
         emailField.clear();
         addressField.clear();
@@ -118,22 +112,17 @@ public class EditClientGUIController implements Initializable {
         phone1Field.clear();
         phone2Field.clear();
     }
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        
-        
+
         //DBServices dbs = new DBServices();
-        
-      //  selected = 
-      //  nameField.setText(selected.getName());
-    }    
-    
+        //  selected = 
+        //  nameField.setText(selected.getName());
+    }
 
     public TextField getNameField() {
         return nameField;
@@ -183,5 +172,9 @@ public class EditClientGUIController implements Initializable {
         this.notesField.setText(value);
     }
 
-    
+    public void setSelected(Client sel) {
+
+        this.selected = sel;
+    }
+
 }
