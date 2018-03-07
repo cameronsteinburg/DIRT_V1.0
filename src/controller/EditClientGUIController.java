@@ -100,9 +100,8 @@ public class EditClientGUIController implements Initializable {
         }
         //data is valid at this point
 
-        //  Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
-        //todo update client
-        //   Main.jdbcc.persistClient(newClient); //persist to db
+        Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
+        Main.jdbcc.updateClient(selected,newClient); //persist to db
         this.errorMessage.setText("Client Information Successfully Updated!");
 
         nameField.clear();

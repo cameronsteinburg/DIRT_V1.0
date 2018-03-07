@@ -62,6 +62,38 @@ public class JDBCCommands {
         }
         return true;
     }
+    
+    /**
+    * 
+    * Updates a client in mysql
+    * 
+    * @param clientOld The old client to be updated, this info is used to find it.
+    * @param clientNew The new information to update the old client with.
+    * @return true if no errors occur
+    */
+    public boolean updateClient(Client clientOld, Client clientNew) {
+        try {
+            // the mysql prepared update statement
+            String query = "update clients set name=?,description=?, phone1=?, phone2=?, email=?, address=? where clientNum = ?";
+
+            // create the mysql update preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString(1, clientNew.getName());
+            preparedStmt.setString(2, clientNew.getDescription());
+            preparedStmt.setString(3, clientNew.getPhone1());
+            preparedStmt.setString(4, clientNew.getPhone2());
+            preparedStmt.setString(5, clientNew.getEmail());
+            preparedStmt.setString(6, clientNew.getAddress());
+            preparedStmt.setInt(7, getClientNum(clientOld.getName()));
+
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
 
     /**
      *
@@ -298,7 +330,6 @@ public class JDBCCommands {
     public boolean persistLabourer(Labourer labourer) {
         try {
 
-            //TODO Fix from client template once the labourer table is done
             // the mysql prepared insert statement
             String query = " insert into labourers (fname, lname, title, phone1, phone2, email, address, emergcontact, emergcontactphone1, emergcontactphone2, sin, wage, isActive) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
