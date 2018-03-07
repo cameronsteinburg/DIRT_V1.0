@@ -59,7 +59,7 @@
          <left>
             <Accordion style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
-                  <TitledPane fx:id="viewClientDropdown" text="Clients">
+                  <TitledPane fx:id="viewClientDropdown" onContextMenuRequested="#disableButtons" text="Clients">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="187.0">
                            <children>
@@ -93,7 +93,7 @@
                         <Font size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane text="Projects">
+                  <TitledPane onContextMenuRequested="#disableButtons" text="Projects">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -116,7 +116,7 @@
                         <Font size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane text="Labourers">
+                  <TitledPane onContextMenuRequested="#disableButtons" text="Labourers">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>

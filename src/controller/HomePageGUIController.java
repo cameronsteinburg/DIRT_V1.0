@@ -5,13 +5,9 @@
 package controller;
 
 import entity.Client;
-import entity.Labourer;
-import entity.Project;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -37,31 +33,10 @@ import services.DBServices;
 
 public class HomePageGUIController implements Initializable {
 
-    //Current Cleint's projects, labourers to be loaded
-    ArrayList<Client> curClients;
-    ArrayList<Labourer> curLabourers;
-    ArrayList<Project> curProjects;
+    
 
-    //elements from the GUI.fxml page
-    @FXML
-    private Button viewLabourerBtn;
-    @FXML
-    private TextField clientsNameField = new TextField();
-    @FXML
-    protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
-    @FXML
-    private Label errorMessage = new Label();
-    @FXML
-    private Button viewClientBtn;
-    @FXML
-    private Button editClientBtn;
-    @FXML
-    private Button removeClientBtn;
-
-    private Client selectedClient;
-
+    
     /*==========================Client actions=============================*/
- /*============Outer Frame===============*/
     /**
      *
      * @param event
@@ -123,8 +98,24 @@ public class HomePageGUIController implements Initializable {
         }
         //  }
     }
+     /*============Outer Frame Client Dropdown===============*/
+    
+    @FXML
+    protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
+    @FXML
+    private Label errorMessage = new Label();
+    @FXML
+    private Button viewClientBtn;
+    @FXML
+    private Button editClientBtn;
+    @FXML
+    private Button removeClientBtn;
 
-    /*============Inner Frame===============*/
+    private Client selectedClient;
+    
+    
+
+    /*============Inner Frame Client Dropdown===============*/
     @FXML
     private TableView<Client> clientTable;
     @FXML
@@ -154,9 +145,9 @@ public class HomePageGUIController implements Initializable {
             this.selectedClient = clientTable.getSelectionModel().getSelectedItem();
 
             //Enable buttons once client is selected
-              viewClientBtn.setDisable(false);
-              editClientBtn.setDisable(false);
-              removeClientBtn.setDisable(false);
+            viewClientBtn.setDisable(false);
+            editClientBtn.setDisable(false);
+            removeClientBtn.setDisable(false);
         }
     }
 
@@ -176,6 +167,8 @@ public class HomePageGUIController implements Initializable {
     }
 
     /*==========================Project Actions==========================*/
+    
+    /*============Outer Frame Project Dropdown===============*/
     /**
      *
      * @param event
@@ -189,6 +182,8 @@ public class HomePageGUIController implements Initializable {
     }
 
     /*==========================Labourer Actions==========================*/
+    
+    /*============Outer Frame Labourer Dropwdown===============*/
     /**
      *
      * @param event
@@ -201,17 +196,19 @@ public class HomePageGUIController implements Initializable {
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
 
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     * @throws URISyntaxException 
+     */
     @FXML
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
 
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
-    @FXML
-    private void navigateHome(MouseEvent event) throws IOException {
-
-        navigateTo("/ui/OngoingProjectsGUI.fxml");
-    }
+   
 
     /*==========================Home Page Controls==========================*/
     /**
@@ -232,6 +229,18 @@ public class HomePageGUIController implements Initializable {
         this.borderpane.setCenter(root);
         // 
     }
+    
+    /**
+     * For when the User clicks on the Visual Landscaping logo
+     * 
+     * @param event
+     * @throws IOException 
+     */
+    @FXML
+    private void navigateHome(MouseEvent event) throws IOException {
+
+        navigateTo("/ui/OngoingProjectsGUI.fxml");
+    }
 
     /**
      * when user is redirected to another page and a message to the user is
@@ -247,10 +256,13 @@ public class HomePageGUIController implements Initializable {
         this.errorMessage.setText(message);
     }
 
+    /**
+     * 
+     * @param root 
+     */
     private void reloadResources(Parent root) {
         //outer buttons
-        //if(root.lookup("")){
-        //}
+ 
 
         //client table for viewing all clients
         if (root.lookup("#clientTable") != null) {
@@ -263,8 +275,6 @@ public class HomePageGUIController implements Initializable {
                 }
             });
         }
-        
-        
 
         //client profile
         //edit client
@@ -272,10 +282,10 @@ public class HomePageGUIController implements Initializable {
         //labourer profile
         //edit labourer 
     }
-    
 
     /**
-     *
+     *Loading stuff into any given page the HomePageGUIController controls
+     * 
      * @param url
      * @param rb
      */
