@@ -76,22 +76,17 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TableView layoutX="637.0" layoutY="316.0" prefHeight="198.0" prefWidth="436.0">
+      <TableView fx:id="ongoing" layoutX="637.0" layoutY="316.0" prefHeight="198.0" prefWidth="436.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <TableView layoutX="637.0" layoutY="35.0" prefHeight="247.0" prefWidth="436.0">
+      <TableView fx:id="completed" layoutX="637.0" layoutY="35.0" prefHeight="247.0" prefWidth="436.0">
          <columns>
             <TableColumn prefWidth="75.0" text="C1" />
             <TableColumn prefWidth="75.0" text="C2" />
          </columns>
       </TableView>
-      <Label layoutX="43.0" layoutY="35.0">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
