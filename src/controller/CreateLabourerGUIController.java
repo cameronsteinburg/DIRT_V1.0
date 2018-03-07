@@ -134,7 +134,7 @@ public class CreateLabourerGUIController implements Initializable {
             return;
         }
 
-        if ((sin.length() != 9 || sin.matches("[0-9]+")) && sin.length() > 0) {
+        if ((sin.length() != 9 || !sin.matches("[0-9]+")) && sin.length() > 0) {
 
             errorMessage.setText("Please enter valid SIN");
             return;
