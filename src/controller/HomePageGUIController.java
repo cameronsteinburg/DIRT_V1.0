@@ -229,6 +229,16 @@ public class HomePageGUIController implements Initializable {
     private void removeLabourerAction(ActionEvent event){
     
     }
+    
+    @FXML
+    private void editLabourerAction(){
+    
+    }
+    
+    @FXML
+    private void viewLabourerProfilePage(){
+    
+    }
 
     /**
      *

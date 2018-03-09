@@ -37,13 +37,13 @@ public class CreateLabourerGUIController implements Initializable {
     @FXML
     private TextField phone2Field;
     @FXML
-    private TextField phone1Field;
+    private TextField phone1Field; //not null
     @FXML
     private TextField titleField;
     @FXML
-    private TextField lnameField;
+    private TextField lnameField; //not null
     @FXML
-    private TextField fnameField;
+    private TextField fnameField; //not null
     @FXML
     private Button saveBtn;
     @FXML
@@ -89,7 +89,7 @@ public class CreateLabourerGUIController implements Initializable {
         String email = emailField.getText();
         String address = addressField.getText();
         String wage = wageField.getText();
-        String emergName = emergencyNameField.getText();
+        String emergeName = emergencyNameField.getText();
         String emergePhone1 = emergencyPhone1Field.getText();
         String emergePhone2 = emergencyPhone2Field.getText();
         String sin = sinField.getText();
@@ -140,7 +140,7 @@ public class CreateLabourerGUIController implements Initializable {
             return;
         }
 
-        if (title.length() > 30 || emergName.length() > 30) {
+        if (title.length() > 30 || emergeName.length() > 30) {
 
             errorMessage.setText("Title is too long");
             return;
@@ -164,10 +164,44 @@ public class CreateLabourerGUIController implements Initializable {
                 return;
             }
         }
-
-        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergName, emergePhone1, emergePhone2, sin, wageDbl, null /*arraylist of skills*/, true /*isActive*/);
-        Main.jdbcc.persistLabourer(newLabourer); //persist to db
         
+        /*
+        if(title.length() < 1){
+            title = "";
+        }
+        
+        if(phone2.length() < 1){
+            phone2 = "";
+        }
+        
+        if(email.length() < 1){
+            email = "";
+        }
+        
+        if(address.length() < 1){
+            address = "";
+        }
+        
+        if(emergeName.length() < 1){
+            emergeName = "";
+        }
+        
+        if(emergePhone1.length() < 1){
+            emergePhone1 = "";
+        }
+        
+        if(emergePhone2.length() < 1){
+            emergePhone2 = "";
+        }
+        */
+        if(wageDbl == null){ //prevents nullpointerexception incase user enters nothing for wage
+            wageDbl = 00.00;
+        }
+        
+//        Labourer newLabourer = null;
+        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wageDbl);
+        Main.jdbcc.persistLabourer(newLabourer); //persist to db
+
         clearBtnAction(null);
         errorMessage.setText("Labourer Successfully Created!");
     }
