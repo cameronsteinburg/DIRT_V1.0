@@ -220,15 +220,15 @@ public class HomePageGUIController implements Initializable {
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
     
-    @FXML
-    private void getSelectedLabourer(ActionEvent event){
+    
+    private void getSelectedLabourer(){
         
         if (labourerTable.getSelectionModel().getSelectedItem() != null) {
 
             this.selectedLabourer = labourerTable.getSelectionModel().getSelectedItem();
 
             //Enable buttons once client is selected
-            viewLabourerBtn.setDisable(false);
+            viewLabourerProfileBtn.setDisable(false);
             editLabourerBtn.setDisable(false);
             removeLabourerBtn.setDisable(false);
         }
@@ -270,7 +270,8 @@ public class HomePageGUIController implements Initializable {
 
     private Labourer selectedLabourer;
 
-    private Button viewLabourerBtn;
+    @FXML
+    private Button viewLabourerProfileBtn;
     @FXML
     private Button editLabourerBtn;
     @FXML
@@ -399,6 +400,23 @@ public class HomePageGUIController implements Initializable {
                 @Override
                 public void handle(MouseEvent event) {
                     getSelectedClient();
+                }
+            });
+        }
+        
+         try {
+            node = root.lookup("#labourerTable");
+        } catch (NullPointerException e) {
+            //ignore
+        }
+        //client table for viewing all clients
+        if (node != null) {
+
+            this.labourerTable = (TableView<Labourer>) root.lookup("#labourerTable");
+            this.labourerTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    getSelectedLabourer();
                 }
             });
         }
