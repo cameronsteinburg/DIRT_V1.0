@@ -41,18 +41,20 @@ public class JDBCCommands {
     public boolean persistClient(Client client) {
         try {
             // the mysql prepared insert statement
-            String query = " insert into clients (name, description, phone1, phone2, email, address, isActive) values (?, ?, ?, ?, ?, ?, ?)";
+            String query = " insert into clients (fname, lname, company, description, phone1, phone2, email, address, isActive) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             // create the mysql insert preparedstatement
             //should probably change the ints in client class to strings at somepoint or change db to use ints instead
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setString(1, client.getName());
-            preparedStmt.setString(2, client.getDescription());
-            preparedStmt.setString(3, client.getPhone1());
-            preparedStmt.setString(4, client.getPhone2());
-            preparedStmt.setString(5, client.getEmail());
-            preparedStmt.setString(6, client.getAddress());
-            preparedStmt.setBoolean(7, client.getStatus());
+            preparedStmt.setString(2, client.getClientLastName());
+            preparedStmt.setString(3, client.getCompany());
+            preparedStmt.setString(4, client.getDescription());
+            preparedStmt.setString(5, client.getPhone1());
+            preparedStmt.setString(6, client.getPhone2());
+            preparedStmt.setString(7, client.getEmail());
+            preparedStmt.setString(8, client.getAddress());
+            preparedStmt.setBoolean(9, client.getStatus());
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -74,17 +76,19 @@ public class JDBCCommands {
     public boolean updateClient(Client clientOld, Client clientNew) {
         try {
             // the mysql prepared update statement
-            String query = "update clients set name=?,description=?, phone1=?, phone2=?, email=?, address=? where clientNum = ?";
+            String query = "update clients set fname=?, lname=?, company=?, description=?, phone1=?, phone2=?, email=?, address=? where clientNum = ?";
 
             // create the mysql update preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setString(1, clientNew.getName());
-            preparedStmt.setString(2, clientNew.getDescription());
-            preparedStmt.setString(3, clientNew.getPhone1());
-            preparedStmt.setString(4, clientNew.getPhone2());
-            preparedStmt.setString(5, clientNew.getEmail());
-            preparedStmt.setString(6, clientNew.getAddress());
-            preparedStmt.setInt(7, getClientNum(clientOld.getName()));
+            preparedStmt.setString(2, clientNew.getClientLastName());
+            preparedStmt.setString(3, clientNew.getCompany());
+            preparedStmt.setString(4, clientNew.getDescription());
+            preparedStmt.setString(5, clientNew.getPhone1());
+            preparedStmt.setString(6, clientNew.getPhone2());
+            preparedStmt.setString(7, clientNew.getEmail());
+            preparedStmt.setString(8, clientNew.getAddress());
+            preparedStmt.setInt(9, getClientNum(clientOld.getName()));
 
             // execute the preparedstatement
             preparedStmt.executeUpdate();
@@ -112,7 +116,9 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                String name = results.getString("name");
+                String fname = results.getString("fname");
+                String lname = results.getString("lname");
+                String company = results.getString("company");
                 String description = results.getString("description");
                 String phone1 = results.getString("phone1");
                 String phone2 = results.getString("phone2");
@@ -125,10 +131,10 @@ public class JDBCCommands {
                     isActiveToBoolean = true;
                 }
                 if (isActive == '0' && getDeleted == true) {
-                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
                 } else if (isActive == '1') {
-                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
                 }
             }
@@ -156,7 +162,9 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                String name = results.getString("name");
+                String fname = results.getString("fname");
+                String lname = results.getString("lname");
+                String company = results.getString("company");
                 String description = results.getString("description");
                 String phone1 = results.getString("phone1");
                 String phone2 = results.getString("phone2");
@@ -169,10 +177,10 @@ public class JDBCCommands {
                     isActiveToBoolean = true;
                 }
                 if (isActive == '0' && getDeleted == true) {
-                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
                 } else if (isActive == '1') {
-                    Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                    Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean);
                     clientList.add(client);
                 }
             }
@@ -202,7 +210,9 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                String name = results.getString("name");
+                String fname = results.getString("fname");
+                String lname = results.getString("lname");
+                String company = results.getString("company");
                 String description = results.getString("description");
                 String phone1 = results.getString("phone1");
                 String phone2 = results.getString("phone2");
@@ -215,7 +225,7 @@ public class JDBCCommands {
                     isActiveToBoolean = true;
                 }
 
-                Client client = new Client(name, description, phone1, phone2, email, address, isActiveToBoolean);
+                Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean);
                 return client;
 
             }

@@ -9,6 +9,8 @@ import java.util.List;
 public class Client {
 
     private String clientName; //User's entered client's name, bisuness or personal, from CreateClientGUI screen.  NOT NULL
+    private String clientLastName; //User's entered client's last name, required.
+    private String company; //User's entered client's company, if they are employed by one (optional)
     private String description; //User's optional description they entered at CreateClientGUI, notes on the current job
     private String phone1; //Clients primary number entered by user at entered at CreateClientGUI NOT NULL 
     private String phone2; //Secondary means to contact Client with a phone, entered by User at CreateClientGUI
@@ -27,6 +29,8 @@ public class Client {
 
     /**
      * @param clientName
+     * @param clientLastName
+     * @param company
      * @param description
      * @param phone1
      * @param phone2
@@ -36,8 +40,10 @@ public class Client {
      *
      * for generation of brand new clients i.e createClient()
      */
-    public Client(String clientName, String description, String phone1, String phone2, String email, String address, boolean isActive) {
+    public Client(String clientName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive) {
         this.clientName = clientName;
+        this.clientLastName = clientLastName;
+        this.company = company;
         this.description = description;
         this.phone1 = phone1;
         this.phone2 = phone2;
@@ -48,6 +54,8 @@ public class Client {
 
     /**
      * @param clientName
+     * @param clientLastName
+     * @param company
      * @param description
      * @param phone1
      * @param phone2
@@ -60,9 +68,11 @@ public class Client {
      *
      * for regenerating entity in Java object from db or Client object deep copy
      */
-    public Client(String clientName, String description, String phone1, String phone2, String email, String address, boolean isActive,
+    public Client(String clientName,String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive,
             List<Project> ongoingProjects, List<Project> completedProjects, List<String> clientNotes) {
         this.clientName = clientName;
+        this.clientLastName = clientLastName;
+        this.company = company;
         this.description = description;
         this.phone1 = phone1;
         this.phone2 = phone2;
@@ -155,6 +165,22 @@ public class Client {
 
     public void setStatus(boolean status) {
         this.isActive = status;
+    }
+
+    public String getClientLastName() {
+        return clientLastName;
+    }
+
+    public void setClientLastName(String clientLastName) {
+        this.clientLastName = clientLastName;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     /**
