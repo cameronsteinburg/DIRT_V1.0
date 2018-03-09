@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package entity.WO;
 
 /**
  * This class represents the workorderitem entity and communicates with the persistence layer

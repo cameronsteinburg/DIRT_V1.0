@@ -1,7 +1,7 @@
 package persistence;
 
 import entity.Project;
-import entity.WorkOrder;
+import entity.WO.WorkOrder;
 import entity.Client;
 import entity.Labourer;
 import java.sql.Connection;
