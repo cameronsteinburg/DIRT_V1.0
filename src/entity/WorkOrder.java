@@ -3,7 +3,7 @@ package entity;
 import java.util.ArrayList;
 
 /**
- * This class represents the workorder entity and communicates with the persistence layer
+ * This class represents the work order entity and communicates with the persistence layer
  *
  */
 public class WorkOrder {
@@ -14,10 +14,5 @@ public class WorkOrder {
     private char id;
     private char type; //'s' for service, like a mulch bed, 't' for transportation, like gas expenses, and 
     
-    /**
-     * default WorkOrder constructor
-     */
-    public WorkOrder(){
-        
-    }   
+ 
 }
