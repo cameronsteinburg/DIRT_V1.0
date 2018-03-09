@@ -20,7 +20,11 @@ public class CreateClientGUIController implements Initializable {
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
-    private TextField nameField;
+    private TextField fNameField;
+    @FXML
+    private TextField lNameField;
+    @FXML
+    private TextField companyField;
     @FXML
     private TextField phone1Field;
     @FXML
@@ -44,7 +48,9 @@ public class CreateClientGUIController implements Initializable {
     @FXML
     private void clearBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
 
-       nameField.clear();
+       fNameField.clear();
+       lNameField.clear();
+       companyField.clear();
        phone1Field.clear();
        phone2Field.clear();
        emailField.clear();
@@ -60,13 +66,17 @@ public class CreateClientGUIController implements Initializable {
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateClientGUI.fxml
 
-        String name = nameField.getText(); //get the User's data they entered into GUI fields
+        String firstName = fNameField.getText(); //get the User's data they entered into GUI fields
+        String lastName = lNameField.getText(); 
+        String company = companyField.getText();
+        String phone1 = phone1Field.getText();
+        String phone2 = phone2Field.getText();
         String email = emailField.getText();
         String address = addressField.getText();
         String description = notesField.getText();
 
         //data validation commences 
-        if (name.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
+        if (firstName.isEmpty() || lastName.isEmpty() || phone1.isEmpty()) { //checking to see if the user entered blank data for not null fields
 
             errorMessage.setText("* Required Fields Cannot Be Left Blank");
             return;
@@ -74,37 +84,39 @@ public class CreateClientGUIController implements Initializable {
 
         if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-            errorMessage.setText("Please enter a vlid E-mail address");
+            errorMessage.setText("Please enter a valid E-mail address");
             return;
         }
 
-        if (phone1Field.getText().length() > 11 || phone1Field.getText().length() < 7) { //checking phone number isnt too long or short
+        if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
         
         //if User is entering a second number, checking phone number isnt too long or short
-        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) { 
+        if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) { 
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
 
-        if (name.length() > 50 || phone2Field.getText().length() > 50 || phone1Field.getText().length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
+        if (firstName.length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
 
             errorMessage.setText("One or more text boxes have too many characters");
             return;
         }
         //data is valid at this point
 
-        Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
+        Client newClient = new Client(firstName, lastName, company, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
 
         Main.jdbcc.persistClient(newClient); //persist to db
        
         this.errorMessage.setText("Client Successfully Created!");
         
-        nameField.clear();
+        fNameField.clear();
+        lNameField.clear();
+        companyField.clear();
         emailField.clear();
         addressField.clear();
         notesField.clear();

@@ -207,7 +207,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
-            ResultSet results = statement.executeQuery("select * from clients where name = '" + clientName + "';");
+            ResultSet results = statement.executeQuery("select * from clients where fname = '" + clientName + "';");
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
@@ -251,7 +251,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
-            ResultSet results = statement.executeQuery("select * from clients where name = '" + clientName + "';");
+            ResultSet results = statement.executeQuery("select * from clients where fname = '" + clientName + "';");
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
@@ -279,7 +279,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // statement to set the isActive value to zero
-            statement.executeUpdate("update clients set isActive=0 where name = '" + client.getName() + "';");
+            statement.executeUpdate("update clients set isActive=0 where fname = '" + client.getName() + "';");
             return true;
 
         } catch (SQLException ex) {

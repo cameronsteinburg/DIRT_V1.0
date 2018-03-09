@@ -133,7 +133,7 @@ public class HomePageGUIController implements Initializable {
             DBServices dbs = new DBServices();
 
             Client target = dbs.getClient(this.selectedClient.getName());
-            String name = target.getName();
+            //String name = target.getName();
             dbs.deleteClient(target);
 
             navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");
