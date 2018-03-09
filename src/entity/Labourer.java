@@ -7,13 +7,13 @@ package entity;
 
 import java.util.ArrayList;
 
-
 /**
- * This class represents the laborer entity and communicates with the persistence layer
+ * This class represents the laborer entity and communicates with the
+ * persistence layer
  *
  */
 public class Labourer {
-   
+
     private String firstName;
     private String lastName;
     private String title;
@@ -28,17 +28,20 @@ public class Labourer {
     private double wage;
     private ArrayList<String> skills;
     private boolean isActive;
-    
-    
-        /**
+
+    /**
      * default Laborer constructor
      */
-    public Labourer(){
-    	
+    public Labourer() {
+
     }
 
-    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, double wage, ArrayList<String> skills, boolean status) {
-        
+    public Labourer(String firstname) {
+        this.firstName = firstname;
+    }
+
+    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, double wage) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
@@ -51,10 +54,9 @@ public class Labourer {
         this.emergContactPhone2 = emergContactPhone2;
         this.sin = sin;
         this.wage = wage;
-        this.skills = skills;
-        this.isActive = status;
+        this.skills = null;
+        this.isActive = true;
     }
-    
 
     public String getFirstName() {
         return firstName;
@@ -167,5 +169,5 @@ public class Labourer {
     public void setIsActive(boolean status) {
         this.isActive = status;
     }
-    
+
 }

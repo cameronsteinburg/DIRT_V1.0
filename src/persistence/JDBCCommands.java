@@ -1,7 +1,7 @@
 package persistence;
 
 import entity.Project;
-import entity.WorkOrder;
+import entity.WO.WorkOrder;
 import entity.Client;
 import entity.Labourer;
 import java.sql.Connection;
@@ -399,14 +399,12 @@ public class JDBCCommands {
                 String emergContactPhone2 = results.getString("emergcontactphone2");
                 String sin = results.getString("sin");
                 double wage = results.getDouble("wage");
-                char isActive = results.getString("isActive").charAt(0);
-                boolean isActiveToBoolean = false;
 
-                if (isActive == '1') {
-                    isActiveToBoolean = true;
-                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
+
+     
+                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
                     return labourer;
-                }
+                
 
             }
 
@@ -417,9 +415,9 @@ public class JDBCCommands {
     }
 
     /**
-     * Retrieves labourer information from MySQL database
+     * Retrieves laborer information from MySQL database
      *
-     * @return labourerList List of labourers in an observableList to populate
+     * @return labourerList List of laborers in an observableList to populate
      * tables
      */
     public ObservableList<Labourer> getLabourersForTable(boolean getDeleted) {
@@ -447,16 +445,10 @@ public class JDBCCommands {
                 char isActive = results.getString("isActive").charAt(0);
                 boolean isActiveToBoolean = false;
 
-                if (isActive == '1') {
-                    isActiveToBoolean = true;
-                }
-                if (isActive == '0' && getDeleted == true) {
-                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
+
+                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
                     labourerList.add(labourer);
-                } else if (isActive == '1') {
-                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, null, isActiveToBoolean);
-                    labourerList.add(labourer);
-                }
+
             }
             return labourerList;
 

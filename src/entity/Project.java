@@ -5,6 +5,7 @@
  */
 package entity;
 
+import entity.WO.WorkOrder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
