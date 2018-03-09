@@ -33,3 +33,9 @@ create table Labourers (labourerNum smallint unsigned not null auto_increment, f
 
 #creates Project-Labourer bridging table
 create table ProjectLabourer (projectNum smallint unsigned not null, labourerNum smallint unsigned not null, constraint fk_ProjectLabourerProject foreign key (projectNum) references Projects (projectNum), constraint fk_ProjectLabourerLabourer foreign key (labourerNum) references Labourers (labourerNum));
+
+insert into Clients (name, phone1, isActive) values ('John Smith', 4035551234, 1);
+insert into Clients (name, phone1, isActive) values ('Dana Longwang', 2284568452, 1);
+insert into Clients (name, phone1, phone2, isActive) values ('Mike Hawk', 4038648645, 5874586475, 1);
+insert into Clients (name, phone1, description, isActive) values ('Mike Hunt', 4038648645, 'Kind of a cunt', 1);
+insert into Clients (name, phone1, phone2, description, isActive) values ('Drew Peacock', 4038648645, 5874586475,'Guy still owes me 50 bucks' , 1);
