@@ -64,15 +64,16 @@ public class JDBCCommands {
         }
         return true;
     }
-    
+
     /**
-    * 
-    * Updates a client in mysql
-    * 
-    * @param clientOld The old client to be updated, this info is used to find it.
-    * @param clientNew The new information to update the old client with.
-    * @return true if no errors occur
-    */
+     *
+     * Updates a client in mysql
+     *
+     * @param clientOld The old client to be updated, this info is used to find
+     * it.
+     * @param clientNew The new information to update the old client with.
+     * @return true if no errors occur
+     */
     public boolean updateClient(Client clientOld, Client clientNew) {
         try {
             // the mysql prepared update statement
@@ -400,11 +401,8 @@ public class JDBCCommands {
                 String sin = results.getString("sin");
                 double wage = results.getDouble("wage");
 
-
-     
-                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
-                    return labourer;
-                
+                Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
+                return labourer;
 
             }
 
@@ -445,9 +443,8 @@ public class JDBCCommands {
                 char isActive = results.getString("isActive").charAt(0);
                 boolean isActiveToBoolean = false;
 
-
-                    Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
-                    labourerList.add(labourer);
+                Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
+                labourerList.add(labourer);
 
             }
             return labourerList;

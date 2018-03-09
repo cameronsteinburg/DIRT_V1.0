@@ -138,7 +138,7 @@
                                     <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" />
                                     <Button fx:id="removeLabourerBtn" disable="true" mnemonicParsing="false" onAction="#removeLabourerAction" prefHeight="90.0" prefWidth="179.0" styleClass="navButton" text="Remove Labourer" GridPane.rowIndex="2" />
                                     <Button fx:id="editLabourerBtn" disable="true" mnemonicParsing="false" onAction="#editLabourerAction" prefHeight="93.0" prefWidth="192.0" styleClass="navButton" text="Edit Labourer" GridPane.rowIndex="3" />
-                                    <Button fx:id="viewLabourerProfileBtn" disable="true" mnemonicParsing="false" onAction="#viewLabourerProfilePage" prefHeight="88.0" prefWidth="172.0" styleClass="navButton" text="View Client Labourer" GridPane.rowIndex="4" />
+                                    <Button fx:id="viewLabourerProfileBtn" disable="true" mnemonicParsing="false" onAction="#viewLabourerProfilePage" prefHeight="88.0" prefWidth="172.0" styleClass="navButton" text="View Labourer" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>

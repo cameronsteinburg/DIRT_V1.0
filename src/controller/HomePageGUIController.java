@@ -7,6 +7,7 @@ package controller;
 import entity.Client;
 import entity.Labourer;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
@@ -37,10 +38,9 @@ public class HomePageGUIController implements Initializable {
 
     /*======================================Client actions======================================*/
  /*============Outer Frame Client Dropdown===============*/
-    
     private boolean editFlagClient = false; //in case user clicks edit
-     private boolean viewProfileFlagClient = false; //in case user wants to see a clients profile page
-     
+    private boolean viewProfileFlagClient = false; //in case user wants to see a clients profile page
+
     @FXML
     protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
     @FXML
@@ -93,12 +93,13 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void viewClientAction(ActionEvent event) throws IOException {
 
+        disableButtons();
         navigateTo("/ui/ViewClientGUI.fxml");
     }
-    
+
     @FXML
-    private void viewClientProfilePage(ActionEvent event) throws IOException{
-        
+    private void viewClientProfilePage(ActionEvent event) throws IOException {
+
         viewProfileFlagClient = true;
         navigateTo("/ui/ClientProfileGUI.fxml");
     }
@@ -119,7 +120,7 @@ public class HomePageGUIController implements Initializable {
      * @param event
      */
     @FXML
-    private void removeClientAction(ActionEvent event) {
+    private void removeClientAction(ActionEvent event) throws MalformedURLException, IOException {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Client Confirmation");
@@ -134,8 +135,10 @@ public class HomePageGUIController implements Initializable {
             Client target = dbs.getClient(this.selectedClient.getName());
             String name = target.getName();
             dbs.deleteClient(target);
-            this.updateClientTable();
-            this.errorMessage.setText("Client Successfully Removed");
+
+            navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");
+           
+            //this.errorMessage.setText("Client Successfully Removed");
         } else {
             alert.close();
         }
@@ -217,27 +220,37 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
+        disableButtons();
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
-    
-    @FXML
-    private void getSelectedLabourer(ActionEvent event){
-    
+
+    private void getSelectedLabourer() {
+
+        if (labourerTable.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedLabourer = labourerTable.getSelectionModel().getSelectedItem();
+
+            //Enable buttons once client is selected
+            viewLabourerProfileBtn.setDisable(false);
+            editLabourerBtn.setDisable(false);
+            removeLabourerBtn.setDisable(false);
+        }
+
     }
-    
+
     @FXML
-    private void removeLabourerAction(ActionEvent event){
-    
+    private void removeLabourerAction(ActionEvent event) {
+
     }
-    
+
     @FXML
-    private void editLabourerAction(){
-    
+    private void editLabourerAction() {
+
     }
-    
+
     @FXML
-    private void viewLabourerProfilePage(){
-    
+    private void viewLabourerProfilePage() {
+
     }
 
     /**
@@ -249,6 +262,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
 
+        disableButtons();
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
@@ -260,7 +274,8 @@ public class HomePageGUIController implements Initializable {
 
     private Labourer selectedLabourer;
 
-    private Button viewLabourerBtn;
+    @FXML
+    private Button viewLabourerProfileBtn;
     @FXML
     private Button editLabourerBtn;
     @FXML
@@ -295,12 +310,9 @@ public class HomePageGUIController implements Initializable {
     }
 
     /*======================================Home Page Controls======================================*/
-    
-    
-   
-    
     @FXML
     private Label selectedField;
+
     /**
      * Primary means of changing pages of the inner panel of the app
      *
@@ -309,17 +321,17 @@ public class HomePageGUIController implements Initializable {
      */
     public void navigateTo(String url) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(url)); 
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+
         Parent root = null;
         try {
             root = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if(editFlagClient == true){
-        
+
+        if (editFlagClient == true) {
+
             EditClientGUIController ecgc = loader.getController();
             ecgc.setNameField(selectedClient.getName());
             ecgc.setPhone1Field(selectedClient.getPhone1());
@@ -330,15 +342,15 @@ public class HomePageGUIController implements Initializable {
             ecgc.setSelected(selectedClient);
             editFlagClient = false;
         }
-        
-        if(viewProfileFlagClient == true){
-        
+
+        if (viewProfileFlagClient == true) {
+
             ClientProfileGUIController cpgc = loader.getController();
             //cpgc
             viewProfileFlagClient = false;
         }
 
-        reloadResources(root);
+        reloadTables(root);
         this.borderpane.setCenter(root);
     }
 
@@ -372,16 +384,17 @@ public class HomePageGUIController implements Initializable {
      *
      * @param root
      */
-    private void reloadResources(Parent root) {
-        //outer buttons
+    private void reloadTables(Parent root) {
 
         Node node = null;
+
+        //client table for viewing all clients currently in existance
         try {
             node = root.lookup("#clientTable");
         } catch (NullPointerException e) {
             //ignore
         }
-        //client table for viewing all clients
+
         if (node != null) {
 
             this.clientTable = (TableView<Client>) root.lookup("#clientTable");
@@ -393,12 +406,27 @@ public class HomePageGUIController implements Initializable {
             });
         }
 
+        //labourer table for viewing all labourers currently in existance
+        try {
+            node = root.lookup("#labourerTable");
+        } catch (NullPointerException e) {
+            //ignore
+        }
+
+        if (node != null) {
+
+            this.labourerTable = (TableView<Labourer>) root.lookup("#labourerTable");
+            this.labourerTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    getSelectedLabourer();
+                }
+            });
+        }
+
         //client profile
-        
         //edit client
-        
-        
-        //labourer table
+        //
         //labourer profile
         //edit labourer 
     }
@@ -410,6 +438,11 @@ public class HomePageGUIController implements Initializable {
         viewClientBtn.setDisable(true);
         editClientBtn.setDisable(true);
         removeClientBtn.setDisable(true);
+        
+        viewLabourerProfileBtn.setDisable(true);
+        editLabourerBtn.setDisable(true);
+        removeLabourerBtn.setDisable(true);
+        
     }
 
     /**
@@ -422,6 +455,7 @@ public class HomePageGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         this.updateClientTable(); //for viewing clients   
+
         this.updateLabourerTable();
     }
 }
