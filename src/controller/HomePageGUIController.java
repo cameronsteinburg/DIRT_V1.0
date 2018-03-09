@@ -222,6 +222,16 @@ public class HomePageGUIController implements Initializable {
     
     @FXML
     private void getSelectedLabourer(ActionEvent event){
+        
+        if (labourerTable.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedLabourer = labourerTable.getSelectionModel().getSelectedItem();
+
+            //Enable buttons once client is selected
+            viewLabourerBtn.setDisable(false);
+            editLabourerBtn.setDisable(false);
+            removeLabourerBtn.setDisable(false);
+        }
     
     }
     
