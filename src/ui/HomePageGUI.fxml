@@ -58,7 +58,7 @@
             </AnchorPane>
          </top>
          <left>
-            <Accordion style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
+            <Accordion prefHeight="513.0" prefWidth="201.0" style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
                   <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" prefHeight="420.0" prefWidth="179.0" text="Clients">
                      <content>
@@ -94,7 +94,7 @@
                         <Font size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane onMouseClicked="#disableButtons" text="Projects">
+                  <TitledPane onMouseClicked="#disableButtons" prefHeight="420.0" prefWidth="174.0" text="Projects">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -130,10 +130,15 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
                                     <Button fx:id="newLabourerBtn" mnemonicParsing="false" onAction="#newLabourerAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="New Labourer" textAlignment="RIGHT" GridPane.rowIndex="1" />
                                     <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" />
+                                    <Button fx:id="removeLabourerBtn" disable="true" mnemonicParsing="false" onAction="#removeLabourerAction" prefHeight="90.0" prefWidth="179.0" styleClass="navButton" text="Remove Labourer" GridPane.rowIndex="2" />
+                                    <Button fx:id="editLabourerBtn" disable="true" mnemonicParsing="false" onAction="#editLabourerAction" prefHeight="93.0" prefWidth="192.0" styleClass="navButton" text="Edit Labourer" GridPane.rowIndex="3" />
+                                    <Button fx:id="viewLabourerProfileBtn" disable="true" mnemonicParsing="false" onAction="#viewLabourerProfilePage" prefHeight="88.0" prefWidth="172.0" styleClass="navButton" text="View Client Labourer" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
