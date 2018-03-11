@@ -17,7 +17,11 @@ public class EditClientGUIController implements Initializable {
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
-    private TextField nameField;
+    private TextField firstNameField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private TextField companyField;
     @FXML
     private TextField phone1Field;
     @FXML
@@ -33,8 +37,6 @@ public class EditClientGUIController implements Initializable {
 
     private Client selected;
 
-    //  public EditClientGUIController(){
-    // }
     /**
      * empties all the form fields for the User if they want to start over
      *
@@ -44,7 +46,9 @@ public class EditClientGUIController implements Initializable {
     @FXML
     private void clearBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
 
-        nameField.clear();
+        firstNameField.clear();
+        lastNameField.clear();
+        companyField.clear();
         phone1Field.clear();
         phone2Field.clear();
         emailField.clear();
@@ -60,54 +64,73 @@ public class EditClientGUIController implements Initializable {
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateClientGUI.fxml
 
-        String name = nameField.getText(); //get the User's data they entered into GUI fields
+        String first = firstNameField.getText(); //get the User's data they entered into GUI fields
+        String last = lastNameField.getText();
+        String comp = companyField.getText();
         String email = emailField.getText();
         String address = addressField.getText();
         String description = notesField.getText();
+        String phone1 = phone1Field.getText();
+        String phone2 = phone2Field.getText();
+
+        //if optional stuff comes back null, set it to "" to avoid NullPointerExceptions
+        if (comp == null) 
+            comp = "";
+        
+        if (email == null)
+            email = "";
+        
+        if (address == null)
+            address = "";
+        
+        if(description == null)
+            description = "";
+        
+        if(phone2 == null)
+            phone2 = "";
 
         //data validation commences 
-        if (name.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
+        if (first.isEmpty() || last.isEmpty() || phone1.isEmpty()) { //checking to see if the user entered blank data for not null fields
 
             errorMessage.setText("* Required Fields Cannot Be Left Blank");
             return;
         }
+        if (email != null) {
+            if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-        if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
-
-            errorMessage.setText("Please enter a vlid E-mail address");
-            return;
+                errorMessage.setText("Please enter a vlid E-mail address");
+                return;
+            }
         }
 
-        if (phone1Field.getText().length() > 11 || phone1Field.getText().length() < 7) { //checking phone number isnt too long or short
+        if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
 
         //if User is entering a second number, checking phone number isnt too long or short
-        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) {
+        if (phone2 != null) {
 
-            errorMessage.setText("Phone numbers must be 7 - 11 digits");
-            return;
+            if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
+
+                errorMessage.setText("Phone numbers must be 7 - 11 digits");
+                return;
+            }
+
         }
 
-        if (name.length() > 50 || phone2Field.getText().length() > 50 || phone1Field.getText().length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
+        if (first.length() > 50 || last.length() > 50 || comp.length() > 50 || phone2.length() > 50 || phone1.length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
 
             errorMessage.setText("One or more text boxes have too many characters");
             return;
         }
         //data is valid at this point
 
-        Client newClient = new Client(name, description, phone1Field.getText(), phone2Field.getText(), email, address, true);
-        Main.jdbcc.updateClient(selected,newClient); //persist to db
+        Client newClient = new Client(first, last, comp, description, phone1, phone2, email, address, true);
+        Main.jdbcc.updateClient(selected, newClient); //persist to db
         this.errorMessage.setText("Client Information Successfully Updated!");
 
-        nameField.clear();
-        emailField.clear();
-        addressField.clear();
-        notesField.clear();
-        phone1Field.clear();
-        phone2Field.clear();
     }
 
     /**
@@ -115,18 +138,30 @@ public class EditClientGUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        //DBServices dbs = new DBServices();
-        //  selected = 
-        //  nameField.setText(selected.getName());
     }
 
-    public TextField getNameField() {
-        return nameField;
+    public TextField getFirstName() {
+        return firstNameField;
     }
 
-    public void setNameField(String value) {
-        this.nameField.setText(value);
+    public void setFirstName(String value) {
+        this.firstNameField.setText(value);
+    }
+
+    public TextField getLastName() {
+        return lastNameField;
+    }
+
+    public void setLastName(String value) {
+        this.lastNameField.setText(value);
+    }
+
+    public TextField getCompanyName() {
+        return companyField;
+    }
+
+    public void setCompanyName(String value) {
+        this.companyField.setText(value);
     }
 
     public TextField getPhone1Field() {

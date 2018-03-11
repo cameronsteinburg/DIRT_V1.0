@@ -46,7 +46,7 @@ public class JDBCCommands {
             // create the mysql insert preparedstatement
             //should probably change the ints in client class to strings at somepoint or change db to use ints instead
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setString(1, client.getName());
+            preparedStmt.setString(1, client.getFirstName());
             preparedStmt.setString(2, client.getClientLastName());
             preparedStmt.setString(3, client.getCompany());
             preparedStmt.setString(4, client.getDescription());
@@ -81,7 +81,7 @@ public class JDBCCommands {
 
             // create the mysql update preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setString(1, clientNew.getName());
+            preparedStmt.setString(1, clientNew.getFirstName());
             preparedStmt.setString(2, clientNew.getClientLastName());
             preparedStmt.setString(3, clientNew.getCompany());
             preparedStmt.setString(4, clientNew.getDescription());
@@ -89,7 +89,7 @@ public class JDBCCommands {
             preparedStmt.setString(6, clientNew.getPhone2());
             preparedStmt.setString(7, clientNew.getEmail());
             preparedStmt.setString(8, clientNew.getAddress());
-            preparedStmt.setInt(9, getClientNum(clientOld.getName()));
+            preparedStmt.setInt(9, getClientNum(clientOld.getFirstName()));
 
             // execute the preparedstatement
             preparedStmt.executeUpdate();
@@ -279,7 +279,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // statement to set the isActive value to zero
-            statement.executeUpdate("update clients set isActive=0 where fname = '" + client.getName() + "';");
+            statement.executeUpdate("update clients set isActive=0 where fname = '" + client.getFirstName() + "';");
             return true;
 
         } catch (SQLException ex) {
@@ -302,7 +302,7 @@ public class JDBCCommands {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, getClientNum(project.getClient().getName()));
+            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName()));
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getProjectDescription());
             preparedStmt.setString(4, project.getSiteAddress());

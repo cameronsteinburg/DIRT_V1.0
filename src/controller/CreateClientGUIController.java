@@ -74,6 +74,21 @@ public class CreateClientGUIController implements Initializable {
         String email = emailField.getText();
         String address = addressField.getText();
         String description = notesField.getText();
+        
+        if (company == null) 
+            company = "";
+        
+        if (email == null)
+            email = "";
+        
+        if (address == null)
+            address = "";
+        
+        if(description == null)
+            description = "";
+        
+        if(phone2 == null)
+            phone2 = "";
 
         //data validation commences 
         if (firstName.isEmpty() || lastName.isEmpty() || phone1.isEmpty()) { //checking to see if the user entered blank data for not null fields
@@ -122,9 +137,6 @@ public class CreateClientGUIController implements Initializable {
         notesField.clear();
         phone1Field.clear();
         phone2Field.clear();
-        
-        HomePageGUIController hpgc = new HomePageGUIController();
-        //hpgc.navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Created"); //doesnt work todo?
     }
 
  

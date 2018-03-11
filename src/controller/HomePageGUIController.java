@@ -60,7 +60,11 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private TextField searchBox;
     @FXML
-    private TableColumn<?, ?> nameCol;
+    private TableColumn<?, ?> firstNameCol;
+    @FXML
+    private TableColumn<?, ?> lastNameCol;
+    @FXML
+    private TableColumn<?, ?> companyNameCol;
     @FXML
     private TableColumn<?, ?> addressCol;
     @FXML
@@ -125,23 +129,24 @@ public class HomePageGUIController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Client Confirmation");
         alert.setHeaderText("Confirm Deletion");
-        alert.setContentText("Delete client with the name: " + selectedClient.getName() + "?");
+        alert.setContentText("Delete client with the name: " + selectedClient.getFirstName() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
 
             DBServices dbs = new DBServices();
 
-            Client target = dbs.getClient(this.selectedClient.getName());
-            //String name = target.getName();
+            Client target = dbs.getClient(this.selectedClient.getFirstName());
+            
             dbs.deleteClient(target);
-
-            navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");
-           
-            //this.errorMessage.setText("Client Successfully Removed");
+            
+            navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");   
+            disableButtons();
         } else {
             alert.close();
         }
+        
+        
     }
 
     /*============Controls===============*/
@@ -164,9 +169,11 @@ public class HomePageGUIController implements Initializable {
 
     private void updateClientTable() {
 
-        if (nameCol != null) {
+        if (firstNameCol != null) {
 
-            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            firstNameCol.setCellValueFactory(new PropertyValueFactory<>("clientFirstName"));
+            lastNameCol.setCellValueFactory(new PropertyValueFactory<>("clientLastName"));
+            companyNameCol.setCellValueFactory(new PropertyValueFactory<>("company"));
             addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
             firstNumCol.setCellValueFactory(new PropertyValueFactory<>("phone1"));
             secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
@@ -333,7 +340,9 @@ public class HomePageGUIController implements Initializable {
         if (editFlagClient == true) {
 
             EditClientGUIController ecgc = loader.getController();
-            ecgc.setNameField(selectedClient.getName());
+            ecgc.setFirstName(selectedClient.getFirstName());
+            ecgc.setLastName(selectedClient.getLastName());
+            ecgc.setCompanyName(selectedClient.getCompany());
             ecgc.setPhone1Field(selectedClient.getPhone1());
             ecgc.setPhone2Field(selectedClient.getPhone2());
             ecgc.setEmailField(selectedClient.getEmail());
@@ -346,7 +355,6 @@ public class HomePageGUIController implements Initializable {
         if (viewProfileFlagClient == true) {
 
             ClientProfileGUIController cpgc = loader.getController();
-            //cpgc
             viewProfileFlagClient = false;
         }
 

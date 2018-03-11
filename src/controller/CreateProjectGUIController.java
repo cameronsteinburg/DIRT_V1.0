@@ -147,7 +147,7 @@ public class CreateProjectGUIController implements Initializable {
         ObservableList<String> names = FXCollections.observableArrayList();
 
         for (int i = 0; i < clients.size(); i++) {
-            names.add(clients.get(i).getName());
+            names.add(clients.get(i).getFirstName());
         }
 
         clientDropdown.setItems((ObservableList) names); //puts names in dropdown

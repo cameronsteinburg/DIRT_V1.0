@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Client {
 
-    private String clientName; //User's entered client's name, bisuness or personal, from CreateClientGUI screen.  NOT NULL
+    private String clientFirstName; //User's entered client's name, bisuness or personal, from CreateClientGUI screen.  NOT NULL
     private String clientLastName; //User's entered client's last name, required.
     private String company; //User's entered client's company, if they are employed by one (optional)
     private String description; //User's optional description they entered at CreateClientGUI, notes on the current job
@@ -28,7 +28,7 @@ public class Client {
     }
 
     /**
-     * @param clientName
+     * @param clientFirstName
      * @param clientLastName
      * @param company
      * @param description
@@ -40,8 +40,8 @@ public class Client {
      *
      * for generation of brand new clients i.e createClient()
      */
-    public Client(String clientName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive) {
-        this.clientName = clientName;
+    public Client(String clientFirstName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive) {
+        this.clientFirstName = clientFirstName;
         this.clientLastName = clientLastName;
         this.company = company;
         this.description = description;
@@ -70,7 +70,7 @@ public class Client {
      */
     public Client(String clientName,String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive,
             List<Project> ongoingProjects, List<Project> completedProjects, List<String> clientNotes) {
-        this.clientName = clientName;
+        this.clientFirstName = clientName;
         this.clientLastName = clientLastName;
         this.company = company;
         this.description = description;
@@ -86,13 +86,35 @@ public class Client {
         this.clientNotes.clear();
         this.clientNotes.addAll(clientNotes);
     }
-
-    public String getName() {
-        return clientName;
+    
+    public String getLastName(){
+        return clientLastName;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public String getClientFirstName() {
+        return clientFirstName;
+    }
+
+    public void setClientFirstName(String clientFirstName) {
+        this.clientFirstName = clientFirstName;
+    }
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+    
+  
+
+    public String getFirstName() {
+        return clientFirstName;
+    }
+
+    public void setFirstName(String clientName) {
+        this.clientFirstName = clientName;
     }
 
     public String getDescription() {
