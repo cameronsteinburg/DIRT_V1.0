@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * This class represents the client entity and communicates with the persistence layer
  */
 package entity;
@@ -18,7 +18,6 @@ public class Client {
     private String address; //Client's personal/business address entered by User at CreateClientGUI
     private List<Project> ongoingProjects; //Projects this Client is affiliated with 
     private List<Project> completedProjects; //Projects this Client was previously affiliated with that have already completed
-    private List<String> clientNotes; //Notes user wants to make about this particular client, either entered by User at CreateClientGUI or added at ClientProfileGUI
     private boolean isActive; //false if user deleted this entity, true if he hasn't NOT NULL
 
     /**
@@ -68,7 +67,7 @@ public class Client {
      *
      * for regenerating entity in Java object from db or Client object deep copy
      */
-    public Client(String clientName,String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive,
+    public Client(String clientName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive,
             List<Project> ongoingProjects, List<Project> completedProjects, List<String> clientNotes) {
         this.clientFirstName = clientName;
         this.clientLastName = clientLastName;
@@ -83,11 +82,9 @@ public class Client {
         this.ongoingProjects.addAll(ongoingProjects);
         this.completedProjects.clear();
         this.completedProjects.addAll(completedProjects);
-        this.clientNotes.clear();
-        this.clientNotes.addAll(clientNotes);
     }
-    
-    public String getLastName(){
+
+    public String getLastName() {
         return clientLastName;
     }
 
@@ -106,8 +103,6 @@ public class Client {
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
-    
-  
 
     public String getFirstName() {
         return clientFirstName;
@@ -173,14 +168,6 @@ public class Client {
         this.completedProjects = completedProjects;
     }
 
-    public List<String> getClientNotes() {
-        return clientNotes;
-    }
-
-    public void setClientNotes(List<String> clientNotes) {
-        this.clientNotes = clientNotes;
-    }
-
     public boolean getStatus() {
         return isActive;
     }
@@ -205,65 +192,10 @@ public class Client {
         this.company = company;
     }
 
-    /**
-     * Instantiates a new project and adds it to the ongoing List
-     *
-     * @return the instantiated project added to the ongoingProjects List
-     */
-    //public Project createProject() {
-    //return null;
-    //} cam: i feel like this doesnt need to be here
-    
-    
-    
-    /**
-     * Sends itself to JDBCCommands to be saved into the database
-     *
-     * @param o the object to be merged with the MySQL database
-     * @return true if no errors occurred
-     */
-    //public boolean saveSQL(Object o) { //cam: should only be general services	
-    //	return false;
-    //}
-    /**
-     * Sends Itself to JDBCCommands to be deleted from the database
-     *
-     * cam: i think we agreed to not remove anythign fromt he db but ill leave
-     * this here anyway
-     *
-     * @return true if no errors occur
-     */
-    
-    
-    //public boolean deleteSQL() {
-    //return false;
-    //}
-    
-    
-    /**
-     * calls the backup method of JDBCCommands
-     *
-     * @return the result set object received from JDBCCommands
-     */
-  //  public ResultSet backup() { //cam: why is this here? backups apply to the whole db
-      //  return null;
-   // }
 
     /**
-     * @param proj The project object to be added to this clients ongoing
-     * projects
-     *
-     * For the first time a project is created with this Client
-     */
-    public void projectCreated(Project proj) {
-
-        this.ongoingProjects.add(proj);
-    }
-
-    /**
-     * @param proj The project that has officially been completed
-     *
-     * when a project with this client is completed
+     * 
+     * @param proj 
      */
     public void projectCompleted(Project proj) {
 

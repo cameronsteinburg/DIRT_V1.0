@@ -1,110 +1,96 @@
 package controller;
 
+import application.Main;
+import entity.Client;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 
 public class ClientProfileGUIController implements Initializable {
 
     //FXML elements
     @FXML
-    private Label nameFill;
+    private Label nameField;
+    @FXML
+    private Label companyField;
+    @FXML
+    private Label phone1Field;
+    @FXML
+    private Label phone2Field;
+    @FXML
+    private Label emailField;
+    @FXML
+    private Label addressField;
+    @FXML
+    private TextArea notesField;
+    @FXML
+    private Label errorMessage;
+
+    private Client selected;
 
     @FXML
-    private TextArea notesFillArea;
+    private void saveBtnAction(ActionEvent event) {
 
-    @FXML
-    private TableView completed;
+        String desc = notesField.getText();
 
-    @FXML
-    private TableView ongoing;
+        if (desc.length() > 5000) {
 
-    @FXML
-    private Text phone1Fill;
+            this.errorMessage.setText("Too many characters!");
 
-    @FXML
-    private Text phone2Fill;
+        } else {
+            
+            String first = selected.getClientFirstName();
+            String second = selected.getClientLastName();
+            String company = selected.getCompany();
+            String phone1 = selected.getPhone1();
+            String phone2 = selected.getPhone2();
+            String email = selected.getEmail();
+            String address = selected.getAddress();
+            
+            Client updated = new Client(first, second, company, desc, phone1, phone2, email, address, true);
+            Main.jdbcc.updateClient(selected, updated);
+            this.errorMessage.setText("Notes Updated!");
+        }
+    }
 
-    @FXML
-    private Text emailFill;
+    public void setSelected(Client sel) {
+        this.selected = sel;
+    }
 
-    @FXML
-    private Text addressFill;
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
-    public Label getNameFill() {
-        return nameFill;
+    public void setCompanyName(String value) {
+        this.companyField.setText(value);
     }
 
-    public void setNameFill(String value) {
-        this.nameFill.setText(value);
+    public void setName(String value) {
+        this.nameField.setText(value);
     }
 
-    public TextArea getNotesFillArea() {
-        return notesFillArea;
+    public void setNotesField(String value) {
+        this.notesField.setText(value);
     }
 
-    public void setNotesFillArea(String value) {
-        this.notesFillArea.setText(value);
+    public void setPhone1Field(String value) {
+        this.phone1Field.setText(value);
     }
 
-    //public TableView getCompleted() {
-    //    return completed;
-    //}
-
-    //public void setCompleted(String value) {
-      //  this.completed.setText(value);
-    //}
-
-    //public TableView getOngoing() {
-      //  return ongoing;
-    //}
-
-    //public void setOngoing(TableView ongoing) {
-      //  this.ongoing = ongoing;
-    //}
-
-    public Text getPhone1Fill() {
-        return phone1Fill;
+    public void setPhone2Field(String value) {
+        this.phone2Field.setText(value);
     }
 
-    public void setPhone1Fill(String value) {
-        this.phone1Fill.setText(value);
+    public void setEmailField(String value) {
+        this.emailField.setText(value);
     }
 
-    public Text getPhone2Fill() {
-        return phone2Fill;
-    }
-
-    public void setPhone2Fill(String value) {
-        this.phone2Fill.setText(value);
-    }
-
-    public Text getEmailFill() {
-        return emailFill;
-    }
-
-    public void setEmailFill(String value) {
-        this.emailFill.setText(value);
-    }
-
-    public Text getAddressFill() {
-        return addressFill;
-    }
-
-    public void setAddressFill(String value) {
-        this.addressFill.setText(value);
+    public void setAddressField(String value) {
+        this.addressField.setText(value);
     }
 }

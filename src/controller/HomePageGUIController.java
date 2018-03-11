@@ -354,7 +354,22 @@ public class HomePageGUIController implements Initializable {
 
         if (viewProfileFlagClient == true) {
 
-            ClientProfileGUIController cpgc = loader.getController();
+            ClientProfileGUIController cpgc = loader.getController(); 
+            String name = selectedClient.getFirstName() + " " + selectedClient.getLastName();
+            cpgc.setName(name);
+            String company = selectedClient.getCompany();
+            cpgc.setCompanyName(company);
+            String phone1 = selectedClient.getPhone1();
+            cpgc.setPhone1Field(phone1);
+            String phone2 = selectedClient.getPhone2();
+            cpgc.setPhone2Field(phone2);
+            String email = selectedClient.getEmail();
+            cpgc.setEmailField(email);
+            String address = selectedClient.getAddress();           
+            cpgc.setAddressField(address);
+            String notes = selectedClient.getDescription();
+            cpgc.setNotesField(notes);    
+            cpgc.setSelected(selectedClient);
             viewProfileFlagClient = false;
         }
 

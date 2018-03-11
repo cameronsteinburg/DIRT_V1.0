@@ -74,20 +74,25 @@ public class EditClientGUIController implements Initializable {
         String phone2 = phone2Field.getText();
 
         //if optional stuff comes back null, set it to "" to avoid NullPointerExceptions
-        if (comp == null) 
+        if (comp == null) {
             comp = "";
-        
-        if (email == null)
+        }
+
+        if (email == null) {
             email = "";
-        
-        if (address == null)
+        }
+
+        if (address == null) {
             address = "";
-        
-        if(description == null)
+        }
+
+        if (description == null) {
             description = "";
-        
-        if(phone2 == null)
+        }
+
+        if (phone2 == null) {
             phone2 = "";
+        }
 
         //data validation commences 
         if (first.isEmpty() || last.isEmpty() || phone1.isEmpty()) { //checking to see if the user entered blank data for not null fields
@@ -95,12 +100,11 @@ public class EditClientGUIController implements Initializable {
             errorMessage.setText("* Required Fields Cannot Be Left Blank");
             return;
         }
-        if (email != null) {
-            if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-                errorMessage.setText("Please enter a vlid E-mail address");
-                return;
-            }
+        if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
+
+            errorMessage.setText("Please enter a vlid E-mail address");
+            return;
         }
 
         if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
@@ -110,14 +114,10 @@ public class EditClientGUIController implements Initializable {
         }
 
         //if User is entering a second number, checking phone number isnt too long or short
-        if (phone2 != null) {
+        if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
 
-            if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
-
-                errorMessage.setText("Phone numbers must be 7 - 11 digits");
-                return;
-            }
-
+            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            return;
         }
 
         if (first.length() > 50 || last.length() > 50 || comp.length() > 50 || phone2.length() > 50 || phone1.length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
@@ -133,9 +133,6 @@ public class EditClientGUIController implements Initializable {
 
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
