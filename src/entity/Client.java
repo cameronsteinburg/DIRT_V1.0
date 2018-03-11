@@ -88,12 +88,8 @@ public class Client {
         this.clientFirstName = clientFirstName;
     }
 
-    public boolean isIsActive() {
+    public boolean isActive() {
         return isActive;
-    }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
     }
 
     public String getFirstName() {
