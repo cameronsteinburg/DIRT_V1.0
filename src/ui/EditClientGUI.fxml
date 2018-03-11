@@ -34,7 +34,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <GridPane layoutX="50.0" layoutY="72.0" prefHeight="459.0" prefWidth="1004.0">
+      <GridPane layoutX="46.0" layoutY="79.0" prefHeight="459.0" prefWidth="1004.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="319.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="512.0" />
@@ -86,7 +86,7 @@
             <TextField fx:id="phone2Field" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="emailField" maxWidth="400.0" prefHeight="18.0" prefWidth="508.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="addressField" maxWidth="400.0" minWidth="200.0" prefHeight="18.0" prefWidth="508.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextArea fx:id="notesField" prefHeight="145.0" prefWidth="685.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <TextArea fx:id="notesField" prefHeight="144.0" prefWidth="685.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets top="5.0" />
                </GridPane.margin>
@@ -110,7 +110,7 @@
             <TextField fx:id="companyField" maxWidth="400.0" prefHeight="27.0" prefWidth="605.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <AnchorPane layoutY="471.0" prefHeight="50.0" prefWidth="1078.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane layoutY="471.0" prefHeight="43.0" prefWidth="1078.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Button fx:id="saveBtn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="40.0" prefWidth="80.0" text="Save" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="10.0" />
             <Button fx:id="clearBtn" layoutX="105.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="40.0" prefWidth="80.0" text="Clear" AnchorPane.bottomAnchor="7.0" />

@@ -21,12 +21,7 @@ public class Client {
     private boolean isActive; //false if user deleted this entity, true if he hasn't NOT NULL
 
     /**
-     * default client constructor
-     */
-    public Client() {
-    }
-
-    /**
+     * 
      * @param clientFirstName
      * @param clientLastName
      * @param company
@@ -35,9 +30,7 @@ public class Client {
      * @param phone2
      * @param email
      * @param address
-     * @param isActive
-     *
-     * for generation of brand new clients i.e createClient()
+     * @param isActive 
      */
     public Client(String clientFirstName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive) {
         this.clientFirstName = clientFirstName;
@@ -52,6 +45,7 @@ public class Client {
     }
 
     /**
+     * 
      * @param clientName
      * @param clientLastName
      * @param company
@@ -63,9 +57,7 @@ public class Client {
      * @param isActive
      * @param ongoingProjects
      * @param completedProjects
-     * @param clientNotes
-     *
-     * for regenerating entity in Java object from db or Client object deep copy
+     * @param clientNotes 
      */
     public Client(String clientName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive,
             List<Project> ongoingProjects, List<Project> completedProjects, List<String> clientNotes) {
