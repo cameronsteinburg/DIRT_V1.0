@@ -7,114 +7,241 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditClientGUIController">
-   <stylesheets>
-      <URL value="@createclientgui.css" />
-   </stylesheets>
-   <children>
-      <AnchorPane prefHeight="0.0" prefWidth="1050.0">
-         <children>
-            <Label prefHeight="51.0" prefWidth="369.0" text="Edit Client" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
-               <font>
-                  <Font size="35.0" />
-               </font>
-            </Label>
-            <Label id="errorMessage" fx:id="errorMessage" layoutX="462.0" layoutY="24.0" prefHeight="43.0" prefWidth="610.0" textFill="RED" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="462.0" AnchorPane.rightAnchor="-22.0">
-               <font>
-                  <Font size="19.0" />
-               </font>
-               <padding>
-                  <Insets left="180.0" />
-               </padding>
-            </Label>
-         </children>
-      </AnchorPane>
-      <GridPane layoutX="46.0" layoutY="79.0" prefHeight="459.0" prefWidth="1004.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="319.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="512.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="117.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label alignment="TOP_LEFT" prefHeight="181.0" prefWidth="265.0" text="Notes (max 5000 characters)" GridPane.rowIndex="8">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label maxHeight="10.0" text="First Name *" GridPane.rowIndex="1">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label text="Phone Number 1*" GridPane.rowIndex="4">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label text="Phone Number 2" GridPane.rowIndex="5">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label text="Email" GridPane.rowIndex="6">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label text="Address" GridPane.rowIndex="7">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <TextField fx:id="firstNameField" maxWidth="400.0" prefHeight="21.0" prefWidth="512.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="phone1Field" maxHeight="300.0" maxWidth="400.0" prefHeight="34.0" prefWidth="508.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="phone2Field" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="emailField" maxWidth="400.0" prefHeight="18.0" prefWidth="508.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="addressField" maxWidth="400.0" minWidth="200.0" prefHeight="18.0" prefWidth="508.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextArea fx:id="notesField" prefHeight="144.0" prefWidth="685.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <GridPane.margin>
-                  <Insets top="5.0" />
-               </GridPane.margin>
-            </TextArea>
-            <Label text="* = Required" textFill="#eb0000">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label maxHeight="10.0" text="Last Name *" GridPane.rowIndex="2">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <TextField fx:id="lastNameField" maxWidth="400.0" prefHeight="21.0" prefWidth="512.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label maxHeight="10.0" text="Company" GridPane.rowIndex="3">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <TextField fx:id="companyField" maxWidth="400.0" prefHeight="27.0" prefWidth="605.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-         </children>
-      </GridPane>
-      <AnchorPane layoutY="471.0" prefHeight="43.0" prefWidth="1078.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Button fx:id="saveBtn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="40.0" prefWidth="80.0" text="Save" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="10.0" />
-            <Button fx:id="clearBtn" layoutX="105.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="40.0" prefWidth="80.0" text="Clear" AnchorPane.bottomAnchor="7.0" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditClientGUIController">
+    <stylesheets>
+        <URL value="@createclientgui.css" />
+    </stylesheets>
+    <children>
+        <BorderPane layoutX="41.0" layoutY="106.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <AnchorPane prefHeight="50.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
+               <children>
+                      <Button fx:id="saveBtn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Edit" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
+                      <Button fx:id="clearBtn" layoutX="105.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="red_button" text="Clear" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </bottom>
+         <top>
+            <AnchorPane prefHeight="0.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
+               <children>
+                    <Label layoutX="14.0" layoutY="14.0" text="Edit Client" underline="true" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="20.0">
+                        <font>
+                            <Font size="30.0" />
+                        </font>
+                    </Label>
+                      <Label id="errorMessage" fx:id="errorMessage" layoutX="410.0" layoutY="14.0" prefHeight="43.0" prefWidth="657.0" textFill="RED">
+                          <font>
+                              <Font size="19.0" />
+                          </font>
+                          <padding>
+                              <Insets left="180.0" />
+                          </padding>
+                      </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="384.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane layoutX="14.0" layoutY="14.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                              <Label text="First Name *">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="firstNameField" prefWidth="300.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="150.0" layoutY="53.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Last Name *">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lastNameField" prefWidth="300.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="150.0" layoutY="83.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="130.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Company">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="companyField" prefWidth="250.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="150.0" layoutY="113.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="180.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                              <Label text="Phone Number 1*">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="phone1Field" prefHeight="30.0" prefWidth="171.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="150.0" layoutY="143.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="230.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" prefWidth="200.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                              <Label text="Phone Number 2">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="phone2Field" prefHeight="30.0" prefWidth="204.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="150.0" layoutY="173.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="280.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                              <Label text="Address">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="addressField" prefHeight="30.0" prefWidth="280.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="150.0" layoutY="203.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="330.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                              <Label text="Email">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="emailField" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="585.0" layoutY="30.0" prefHeight="330.0" prefWidth="500.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="314.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                              <Label alignment="TOP_LEFT" text="Notes (max 5000 characters)">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <TextArea fx:id="notesField" wrapText="true" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </center>
+        </BorderPane>
+    </children>
 </AnchorPane>
