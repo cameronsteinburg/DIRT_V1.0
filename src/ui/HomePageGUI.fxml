@@ -58,7 +58,7 @@
             </AnchorPane>
          </top>
          <left>
-            <Accordion prefHeight="513.0" prefWidth="201.0" style="-fx-border-color: #24664e;" BorderPane.alignment="CENTER">
+            <Accordion prefHeight="513.0" prefWidth="201.0" style="-fx-border-color: #24664e; -fx-background-color: black;" BorderPane.alignment="CENTER">
                <panes>
                   <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" prefHeight="420.0" prefWidth="179.0" text="Clients">
                      <content>
