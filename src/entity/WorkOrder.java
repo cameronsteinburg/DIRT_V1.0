@@ -1,4 +1,4 @@
-package entity.WO;
+package entity;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class WorkOrder {
    
-    private ArrayList<WorkOrderItem> expenses;
     private String description;
     private double total;
     private char id;

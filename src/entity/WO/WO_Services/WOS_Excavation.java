@@ -6,6 +6,6 @@ package entity.WO.WO_Services;
 import entity.WO.WorkOrder_Service;
 import entity.WO.WorkOrder_Service;
 
-public class WorkOrder_Service_Bed extends WorkOrder_Service{
+public class WOS_Excavation extends WorkOrder_Service{
     
 }

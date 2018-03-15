@@ -4,6 +4,8 @@
  */
 package entity.WO;
 
+import entity.WorkOrder;
+
 public class WorkOrder_Service extends WorkOrder{
     
 }

@@ -454,6 +454,9 @@ public class HomePageGUIController implements Initializable {
         //edit labourer 
     }
 
+    /**
+     * 
+     */
     @FXML
     private void disableButtons() {
 
