@@ -57,8 +57,6 @@ isActive boolean not null, constraint pk_Labourer primary key (labourerNum));
 create table ProjectLabourer (projectNum smallint unsigned not null, labourerNum smallint unsigned not null, constraint fk_ProjectLabourerProject foreign key (projectNum) references Projects (projectNum), constraint fk_ProjectLabourerLabourer foreign key (labourerNum) references Labourers (labourerNum));
 
 #dummy test data
-
-
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, 18.25, 'Phillip DeFranco', 403568521, 684525655, 1);
 insert into Labourers (fname, lname, title, phone1, address,  emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Keifer', 'Hicks', 'Contracter', 587456852, '4242 Riverbend Rd SE', 'Shaizans Sister', 5874456888, 4036855477, 1);
 insert into Labourers (fname, lname, title, phone1, phone2, address,  emergcontact, emergcontactphone1, isActive) values ('Jeff', 'Jefferson', ' PT Contracter', 55526589525, 4356526555, 'Homeless Weaboo', 'Al Gore', 5648264955, 1);

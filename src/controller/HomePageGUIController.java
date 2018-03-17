@@ -137,16 +137,14 @@ public class HomePageGUIController implements Initializable {
             DBServices dbs = new DBServices();
 
             Client target = dbs.getClient(this.selectedClient.getFirstName());
-            
+
             dbs.deleteClient(target);
-            
-            navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");   
+
+            navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");
             disableButtons();
         } else {
             alert.close();
         }
-        
-        
     }
 
     /*============Controls===============*/
@@ -205,7 +203,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        navigateTo("/ui/CreateProjectGUI.fxml");
+        navigateTo("/ui/CreateProjectGUI_1.fxml");
     }
 
     private void updateProjectTable() {
@@ -246,7 +244,27 @@ public class HomePageGUIController implements Initializable {
     }
 
     @FXML
-    private void removeLabourerAction(ActionEvent event) {
+    private void removeLabourerAction(ActionEvent event) throws IOException {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Labourer Confirmation");
+        alert.setHeaderText("Confirm Deletion");
+        alert.setContentText("Delete labourer with the name: " + selectedLabourer.getFirstName() + "?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+
+            DBServices dbs = new DBServices();
+
+            Labourer target = dbs.getLabourer(this.selectedLabourer.getFirstName());
+
+            dbs.deleteLabourer(target);
+
+            navigateTo("/ui/ViewLabourerGUI.fxml", "Labourer Successfully Removed");
+            disableButtons();
+        } else {
+            alert.close();
+        }
 
     }
 
@@ -354,7 +372,7 @@ public class HomePageGUIController implements Initializable {
 
         if (viewProfileFlagClient == true) {
 
-            ClientProfileGUIController cpgc = loader.getController(); 
+            ClientProfileGUIController cpgc = loader.getController();
             String name = selectedClient.getFirstName() + " " + selectedClient.getLastName();
             cpgc.setName(name);
             String company = selectedClient.getCompany();
@@ -365,10 +383,10 @@ public class HomePageGUIController implements Initializable {
             cpgc.setPhone2Field(phone2);
             String email = selectedClient.getEmail();
             cpgc.setEmailField(email);
-            String address = selectedClient.getAddress();           
+            String address = selectedClient.getAddress();
             cpgc.setAddressField(address);
             String notes = selectedClient.getDescription();
-            cpgc.setNotesField(notes);    
+            cpgc.setNotesField(notes);
             cpgc.setSelected(selectedClient);
             viewProfileFlagClient = false;
         }
@@ -455,7 +473,7 @@ public class HomePageGUIController implements Initializable {
     }
 
     /**
-     * 
+     *
      */
     @FXML
     private void disableButtons() {
@@ -464,11 +482,11 @@ public class HomePageGUIController implements Initializable {
         viewClientBtn.setDisable(true);
         editClientBtn.setDisable(true);
         removeClientBtn.setDisable(true);
-        
+
         viewLabourerProfileBtn.setDisable(true);
         editLabourerBtn.setDisable(true);
         removeLabourerBtn.setDisable(true);
-        
+
     }
 
     /**

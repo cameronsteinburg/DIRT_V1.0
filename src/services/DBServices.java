@@ -44,16 +44,21 @@ public class DBServices {
     public ObservableList<Client> getClientsForTable() {
         return Main.jdbcc.getClientsForTable(false);
     }
-    
+
     /**
      * Logically deletes a client from the database
+     *
      * @param client the client to be logically deleted
      * @return true if no errors occur
      */
-    public boolean deleteClient(Client client){
+    public boolean deleteClient(Client client) {
         return Main.jdbcc.deleteClient(client);
     }
-    
+
+    public boolean deleteLabourer(Labourer lab) {
+        return Main.jdbcc.deleteLabourer(lab);
+    }
+
     /**
      * gets a labourer object from the database via jdbccommands based on name
      *
@@ -63,11 +68,11 @@ public class DBServices {
     public Labourer getLabourer(String name) {
         return Main.jdbcc.getLabourer(name);
     }
-    
+
     public ObservableList<Labourer> getLabourersForTable() {
         return Main.jdbcc.getLabourersForTable(false);
     }
-    
+
     /**
      * Calls the Projects export method
      *

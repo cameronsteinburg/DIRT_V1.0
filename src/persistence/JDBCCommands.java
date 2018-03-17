@@ -287,6 +287,28 @@ public class JDBCCommands {
         }
         return false;
     }
+    
+    /**
+     * Logically deletes client from the app by setting the isActive value to
+     * false/0
+     *
+     * @param client the client to be logically deleted
+     * @return true if no errors occur
+     */
+    public boolean deleteLabourer(Labourer lab) {
+
+        try {
+            Statement statement = conn.createStatement();
+
+            // statement to set the isActive value to zero
+            statement.executeUpdate("update labourers set isActive=0 where fname = '" + lab.getFirstName() + "';");
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     /**
      * persists project to MySQL
@@ -424,7 +446,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
-            ResultSet results = statement.executeQuery("select * from labourers;");
+            ResultSet results = statement.executeQuery("select * from labourers where isActive = 1;");
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
