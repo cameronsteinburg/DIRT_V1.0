@@ -89,7 +89,7 @@ public class JDBCCommands {
             preparedStmt.setString(6, clientNew.getPhone2());
             preparedStmt.setString(7, clientNew.getEmail());
             preparedStmt.setString(8, clientNew.getAddress());
-            preparedStmt.setInt(9, getClientNum(clientOld.getFirstName()));
+            preparedStmt.setInt(9, getClientNum(clientOld.getFirstName(),clientOld.getLastName()));
 
             // execute the preparedstatement
             preparedStmt.executeUpdate();
@@ -239,24 +239,28 @@ public class JDBCCommands {
 
     /**
      *
-     * Retrieves a clientNum from the database from the name passed to the
-     * method
+     * Retrieves a clientNum from the database from the name passed to the method
      *
-     * @param clientName the name of the client to be searched for
+     * @param fname the first name of the client to be searched for
+     * @param lname the last name of the client to be searched for
      * @return clientNum from the information found in the clients table
      */
-    public int getClientNum(String clientName) {
+    public int getClientNum(String fname, String lname) {
 
         try {
-            Statement statement = conn.createStatement();
-
+           String query = "select clientNum from clients where fname = ? and lname = ?";
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            
+            preparedStmt.setString(1, fname);
+            preparedStmt.setString(2, lname);
+            
             // Result set contains the result of the SQL query
-            ResultSet results = statement.executeQuery("select * from clients where fname = '" + clientName + "';");
+            ResultSet results = preparedStmt.executeQuery();
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                int clientNum = results.getInt("clientNum");
-                return clientNum;
+                int labourerNum = results.getInt("clientNum");
+                return labourerNum;
 
             }
 
@@ -324,7 +328,7 @@ public class JDBCCommands {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName()));
+            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(),project.getClient().getLastName()));
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getProjectDescription());
             preparedStmt.setString(4, project.getSiteAddress());
@@ -482,7 +486,7 @@ public class JDBCCommands {
             preparedStmt.setString(2, lname);
             
             // Result set contains the result of the SQL query
-            ResultSet results = preparedStmt.executeQuery(query);
+            ResultSet results = preparedStmt.executeQuery();
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
