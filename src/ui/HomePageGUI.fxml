@@ -60,7 +60,7 @@
          <left>
             <Accordion prefHeight="513.0" prefWidth="201.0" style="-fx-border-color: #24664e; -fx-background-color: #24664e;" BorderPane.alignment="CENTER">
                <panes>
-                  <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" prefHeight="420.0" prefWidth="179.0" text="Clients">
+                  <TitledPane fx:id="viewClientDropdown" onMouseClicked="#disableButtons" text="Clients">
                      <content>
                         <AnchorPane prefHeight="372.0" prefWidth="171.0">
                            <children>
@@ -76,15 +76,15 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#newClientAction" prefHeight="131.0" prefWidth="247.0" styleClass="navButton" text="New Client" GridPane.rowIndex="1">
+                                    <Button mnemonicParsing="false" onAction="#newClientAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Client" GridPane.rowIndex="1">
 
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#viewClientAction" prefHeight="147.0" prefWidth="351.0" styleClass="navButton" text="List Clients">
+                                    <Button mnemonicParsing="false" onAction="#viewClientAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="List Clients">
 
                                     </Button>
-                                    <Button fx:id="removeClientBtn" disable="true" mnemonicParsing="false" onAction="#removeClientAction" prefHeight="90.0" prefWidth="179.0" styleClass="navButton" text="Remove Client" GridPane.rowIndex="2" />
-                                    <Button fx:id="editClientBtn" disable="true" mnemonicParsing="false" onAction="#editClientAction" prefHeight="93.0" prefWidth="192.0" styleClass="navButton" text="Edit Client" GridPane.rowIndex="3" />
-                                    <Button fx:id="viewClientBtn" disable="true" mnemonicParsing="false" onAction="#viewClientProfilePage" prefHeight="88.0" prefWidth="172.0" styleClass="navButton" text="View Client Profile" GridPane.rowIndex="4" />
+                                    <Button fx:id="removeClientBtn" disable="true" mnemonicParsing="false" onAction="#removeClientAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Remove Client" GridPane.rowIndex="2" />
+                                    <Button fx:id="editClientBtn" disable="true" mnemonicParsing="false" onAction="#editClientAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Edit Client" GridPane.rowIndex="3" />
+                                    <Button fx:id="viewClientBtn" disable="true" mnemonicParsing="false" onAction="#viewClientProfilePage" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="View Client Profile" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children>
@@ -94,7 +94,7 @@
                         <Font size="16.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane onMouseClicked="#disableButtons" prefHeight="420.0" prefWidth="174.0" text="Projects">
+                  <TitledPane onMouseClicked="#disableButtons" text="Projects">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -108,8 +108,8 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="154.0" prefWidth="216.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" GridPane.rowIndex="1" />
-                                    <Button mnemonicParsing="false" onAction="#viewProjectsAction" prefHeight="127.0" prefWidth="182.0" styleClass="navButton" text="List Projects" />
+                                    <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Button mnemonicParsing="false" onAction="#viewProjectsAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="List Projects" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -134,11 +134,11 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="newLabourerBtn" mnemonicParsing="false" onAction="#newLabourerAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="New Labourer" textAlignment="RIGHT" GridPane.rowIndex="1" />
-                                    <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="126.0" prefWidth="201.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" />
-                                    <Button fx:id="removeLabourerBtn" disable="true" mnemonicParsing="false" onAction="#removeLabourerAction" prefHeight="90.0" prefWidth="179.0" styleClass="navButton" text="Remove Labourer" GridPane.rowIndex="2" />
-                                    <Button fx:id="editLabourerBtn" disable="true" mnemonicParsing="false" onAction="#editLabourerAction" prefHeight="93.0" prefWidth="192.0" styleClass="navButton" text="Edit Labourer" GridPane.rowIndex="3" />
-                                    <Button fx:id="viewLabourerProfileBtn" disable="true" mnemonicParsing="false" onAction="#viewLabourerProfilePage" prefHeight="88.0" prefWidth="172.0" styleClass="navButton" text="View Labourer" GridPane.rowIndex="4" />
+                                    <Button fx:id="newLabourerBtn" mnemonicParsing="false" onAction="#newLabourerAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Labourer" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <Button fx:id="viewLabourersBtn" mnemonicParsing="false" onAction="#viewLabourersAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="List Labourers" textAlignment="RIGHT" />
+                                    <Button fx:id="removeLabourerBtn" disable="true" mnemonicParsing="false" onAction="#removeLabourerAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Remove Labourer" GridPane.rowIndex="2" />
+                                    <Button fx:id="editLabourerBtn" disable="true" mnemonicParsing="false" onAction="#editLabourerAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Edit Labourer" GridPane.rowIndex="3" />
+                                    <Button fx:id="viewLabourerProfileBtn" disable="true" mnemonicParsing="false" onAction="#viewLabourerProfilePage" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="View Labourer" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -159,7 +159,7 @@
          <center>
             <AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;">
+                  <AnchorPane fx:id="innnerAnchor" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;">
                      <children>
                         <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
                            <font>

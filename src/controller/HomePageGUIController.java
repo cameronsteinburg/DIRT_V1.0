@@ -294,8 +294,10 @@ public class HomePageGUIController extends Controller implements Initializable {
      *
      */
     @FXML
-    private void viewLabourerProfilePage() {
+    private void viewLabourerProfilePage() throws IOException {
 
+       viewLabourerProfileFlag = true;
+       navigateTo("/ui/LabourerProfileGUI.fxml");
     }
 
     /**
