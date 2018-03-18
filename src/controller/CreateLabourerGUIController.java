@@ -47,6 +47,10 @@ public class CreateLabourerGUIController implements Initializable {
     @FXML
     private Label errorMessage;
 
+    private Labourer selected;
+
+    private boolean editFlag;
+
     /**
      * empties all fields in the form for User in case they want to start over
      *
@@ -89,7 +93,7 @@ public class CreateLabourerGUIController implements Initializable {
         String emergePhone1 = emergencyPhone1Field.getText();
         String emergePhone2 = emergencyPhone2Field.getText();
         String sin = sinField.getText();
-        
+
         Double wageDbl = null;
 
         //data validation commences
@@ -160,20 +164,19 @@ public class CreateLabourerGUIController implements Initializable {
                 return;
             }
         }
-        
-        
-        if(wageDbl == null){ //prevents nullpointerexception incase user enters nothing for wage
+
+        if (wageDbl == null) { //prevents nullpointerexception incase user enters nothing for wage
             wageDbl = 00.00;
         }
         // data is valid at this point
-        
 
         Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wageDbl);
         DBServices dbs = new DBServices();
-        
-        if()
+
+        if (editFlag == false) {
             dbs.persistLabourer(newLabourer);
-   
+        } else {
+        }
 
         clearBtnAction(null);
         errorMessage.setText("Labourer Successfully Created!");
