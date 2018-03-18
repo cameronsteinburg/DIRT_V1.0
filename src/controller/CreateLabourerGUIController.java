@@ -78,6 +78,7 @@ public class CreateLabourerGUIController implements Initializable {
         phone1Field.clear();
         lnameField.clear();
         fnameField.clear();
+        titleField.clear();
     }
 
     @FXML
@@ -107,7 +108,6 @@ public class CreateLabourerGUIController implements Initializable {
         String emergePhone2 = emergencyPhone2Field.getText();
         String sin = sinField.getText();
 
-        Double wageDbl = null;
 
         if (title == null) { //elimates possibility of NullPointerException
             title = "";
@@ -127,7 +127,6 @@ public class CreateLabourerGUIController implements Initializable {
 
         if (wage == null) {
             wage = "";
-            wageDbl = 00.00;
         }
 
         if (emergeName == null) {

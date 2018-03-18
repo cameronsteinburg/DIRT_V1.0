@@ -40,7 +40,7 @@ public class HomePageGUIController implements Initializable {
     /*======================================Client actions======================================*/
  /*============Outer Frame Client Dropdown===============*/
     private boolean editFlagClient = false; //in case user clicks edit
-    private boolean viewProfileFlagClient = false; //in case user wants to see a clients profile page
+    private boolean viewClientProfileFlag = false; //in case user wants to see a clients profile page
 
     @FXML
     protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
@@ -105,7 +105,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     private void viewClientProfilePage(ActionEvent event) throws IOException {
 
-        viewProfileFlagClient = true;
+        viewClientProfileFlag = true;
         navigateTo("/ui/ClientProfileGUI.fxml");
     }
 
@@ -185,9 +185,6 @@ public class HomePageGUIController implements Initializable {
 
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
-    private boolean editLabourerFlag = false;
-    private boolean viewLabourerProfileFlag = false;
-
     /**
      *
      * @throws IOException
@@ -220,6 +217,9 @@ public class HomePageGUIController implements Initializable {
 
     /*======================================Labourer Actions======================================*/
  /*============Outer Frame Labourer Dropdown===============*/
+    private boolean editLabourerFlag = false;
+    private boolean viewLabourerProfileFlag = false;
+
     /**
      *
      * @param event
@@ -415,7 +415,11 @@ public class HomePageGUIController implements Initializable {
             editLabourerFlag = false;
         }
 
-        if (viewProfileFlagClient == true) {
+        if (viewLabourerProfileFlag == true) {
+
+        }
+
+        if (viewClientProfileFlag == true) {
 
             ClientProfileGUIController cpgc = loader.getController();
             String name = selectedClient.getFirstName() + " " + selectedClient.getLastName();
@@ -433,7 +437,7 @@ public class HomePageGUIController implements Initializable {
             String notes = selectedClient.getDescription();
             cpgc.setNotesField(notes);
             cpgc.setSelected(selectedClient);
-            viewProfileFlagClient = false;
+            viewClientProfileFlag = false;
         }
 
         reloadTables(root);
