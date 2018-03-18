@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -383,7 +384,7 @@ public class JDBCCommands {
             preparedStmt.setString(9, labourer.getEmergContactPhone1());
             preparedStmt.setString(10, labourer.getEmergContactPhone2());
             preparedStmt.setString(11, labourer.getSin());
-            preparedStmt.setDouble(12, labourer.getWage());
+            preparedStmt.setString(12, labourer.getWage());
             preparedStmt.setBoolean(13, labourer.getIsActive());
 
             // execute the preparedstatement
@@ -415,7 +416,7 @@ public class JDBCCommands {
             preparedStmt.setString(9, labourerNew.getEmergContactPhone1());
             preparedStmt.setString(10, labourerNew.getEmergContactPhone2());
             preparedStmt.setString(11, labourerNew.getSin());
-            preparedStmt.setDouble(12, labourerNew.getWage());
+            preparedStmt.setString(12, labourerNew.getWage());
             preparedStmt.setInt(13, getLabourerNum(labourerOld.getFirstName(),labourerOld.getLastName()));
 
             // execute the preparedstatement
@@ -457,8 +458,9 @@ public class JDBCCommands {
                 String emergContactPhone1 = results.getString("emergcontactphone1");
                 String emergContactPhone2 = results.getString("emergcontactphone2");
                 String sin = results.getString("sin");
-                double wage = results.getDouble("wage");
-
+                String wage = results.getString("wage");
+                
+                
                 Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
                 return labourer;
 
@@ -528,7 +530,7 @@ public class JDBCCommands {
                 String emergContactPhone1 = results.getString("emergcontactphone1");
                 String emergContactPhone2 = results.getString("emergcontactphone2");
                 String sin = results.getString("sin");
-                double wage = results.getDouble("wage");
+                String wage = results.getString("wage");
                 char isActive = results.getString("isActive").charAt(0);
                 boolean isActiveToBoolean = false;
 

@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.DBServices;
@@ -46,6 +47,12 @@ public class CreateLabourerGUIController implements Initializable {
     private TextField fnameField; //not null
     @FXML
     private Label errorMessage;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button editBtn;
+    @FXML
+    private Label titleLabel;
 
     private Labourer selected;
 
@@ -69,9 +76,15 @@ public class CreateLabourerGUIController implements Initializable {
         emailField.clear();
         phone2Field.clear();
         phone1Field.clear();
-        titleField.clear();
         lnameField.clear();
         fnameField.clear();
+    }
+
+    @FXML
+    private void editBtnAction(ActionEvent event) throws IOException {
+
+        editFlag = true;
+        saveBtnAction(null);
     }
 
     /**
@@ -84,7 +97,7 @@ public class CreateLabourerGUIController implements Initializable {
         String fname = fnameField.getText();// not null
         String lname = lnameField.getText();//not null
         String title = titleField.getText();
-        String phone1 = phone1Field.getText();
+        String phone1 = phone1Field.getText(); //not null
         String phone2 = phone2Field.getText();
         String email = emailField.getText();
         String address = addressField.getText();
@@ -95,6 +108,43 @@ public class CreateLabourerGUIController implements Initializable {
         String sin = sinField.getText();
 
         Double wageDbl = null;
+
+        if (title == null) { //elimates possibility of NullPointerException
+            title = "";
+        }
+
+        if (phone2 == null) {
+            phone2 = "";
+        }
+
+        if (email == null) {
+            email = "";
+        }
+
+        if (address == null) {
+            address = "";
+        }
+
+        if (wage == null) {
+            wage = "";
+            wageDbl = 00.00;
+        }
+
+        if (emergeName == null) {
+            emergeName = "";
+        }
+        
+        if(emergePhone1 == null){
+            emergePhone1 = "";
+        }
+        
+        if(sin == null){
+            sin = "";
+        }
+        
+        if(emergePhone2 == null){
+            emergePhone2 = "";
+        }
 
         //data validation commences
         if (fname.isEmpty() || lname.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
@@ -109,26 +159,26 @@ public class CreateLabourerGUIController implements Initializable {
             return;
         }
 
-        if (phone1Field.getText().length() > 11 || phone1Field.getText().length() < 7) { //checking phone number isnt too long or short
+        if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
 
         //if User is entering a second number, checking phone number isnt too long or short
-        if ((phone2Field.getText().length() > 11 || phone2Field.getText().length() < 7) && phone2Field.getText().length() > 0) {
+        if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
 
-        if ((emergencyPhone1Field.getText().length() > 11 || emergencyPhone1Field.getText().length() < 7) && emergencyPhone1Field.getText().length() > 0) {
+        if ((emergePhone1.length() > 11 || emergePhone1.length() < 7) && emergePhone1.length() > 0) {
 
             errorMessage.setText("Phone numbers must be 7 - 11 digits");
             return;
         }
 
-        if ((emergencyPhone2Field.getText().length() > 11 || emergencyPhone2Field.getText().length() < 7) && emergencyPhone2Field.getText().length() > 0) {
+        if ((emergePhone2.length() > 11 || emergePhone2.length() < 7) && emergePhone2.length() > 0) {
 
             errorMessage.setText("Phone numbers++ must be 7 - 11 digits");
             return;
@@ -153,33 +203,145 @@ public class CreateLabourerGUIController implements Initializable {
                 errorMessage.setText("Please enter a valid wage in XX.XX");
                 return;
             }
-
-            try {
-
-                wageDbl = Double.parseDouble(wage);
-
-            } catch (Exception e) {
-
-                errorMessage.setText("Please enter a valid wage in XX.XX");
-                return;
-            }
-        }
-
-        if (wageDbl == null) { //prevents nullpointerexception incase user enters nothing for wage
-            wageDbl = 00.00;
         }
         // data is valid at this point
+        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wage);;
 
-        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wageDbl);
+        
+
+
         DBServices dbs = new DBServices();
 
         if (editFlag == false) {
+
             dbs.persistLabourer(newLabourer);
+            clearBtnAction(null);
+            this.errorMessage.setText("Labourer Successfully Created!");
+
         } else {
+
+            dbs.updateLabourer(selected, newLabourer);
+            this.errorMessage.setText("Labourer Successfully Updated!");
         }
 
-        clearBtnAction(null);
-        errorMessage.setText("Labourer Successfully Created!");
+    }
+
+    public TextField getAddressField() {
+        return addressField;
+    }
+
+    public void setAddressField(String value) {
+        this.addressField.setText(value);
+    }
+
+    public TextField getEmergencyNameField() {
+        return emergencyNameField;
+    }
+
+    public void setEmergencyNameField(String value) {
+        this.emergencyNameField.setText(value);
+    }
+
+    public TextField getEmergencyPhone1Field() {
+        return emergencyPhone1Field;
+    }
+
+    public void setEmergencyPhone1Field(String value) {
+        this.emergencyPhone1Field.setText(value);
+    }
+
+    public TextField getEmergencyPhone2Field() {
+        return emergencyPhone2Field;
+    }
+
+    public void setEmergencyPhone2Field(String value) {
+        this.emergencyPhone2Field.setText(value);
+    }
+
+    public TextField getWageField() {
+        return wageField;
+    }
+
+    public void setWageField(String value) {
+        this.wageField.setText(value);
+    }
+
+    public TextField getSinField() {
+        return sinField;
+    }
+
+    public void setSinField(String value) {
+        this.sinField.setText(value);
+    }
+
+    public TextField getEmailField() {
+        return emailField;
+    }
+
+    public void setEmailField(String value) {
+        this.emailField.setText(value);
+    }
+
+    public TextField getPhone2Field() {
+        return phone2Field;
+    }
+
+    public void setTitleLable(String value) {
+        this.titleLabel.setText(value);
+    }
+
+    public void setPhone2Field(String value) {
+        this.phone2Field.setText(value);
+    }
+
+    public TextField getPhone1Field() {
+        return phone1Field;
+    }
+
+    public void setPhone1Field(String value) {
+        this.phone1Field.setText(value);
+    }
+
+    public void setTitleField(String value) {
+        this.titleField.setText(value);
+    }
+
+    public TextField getLnameField() {
+        return lnameField;
+    }
+
+    public void setLnameField(String value) {
+        this.lnameField.setText(value);
+    }
+
+    public TextField getFnameField() {
+        return fnameField;
+    }
+
+    public void setFnameField(String value) {
+        this.fnameField.setText(value);
+    }
+
+    public void setErrorMessage(String value) {
+        this.errorMessage.setText(value);
+    }
+
+    public Labourer getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Labourer selected) {
+        this.selected = selected;
+    }
+
+    public void setEditFlag(boolean editFlag) {
+        this.editFlag = editFlag;
+    }
+
+    public void switchButtons() {
+
+        this.saveBtn.setVisible(false);
+        this.editBtn.setVisible(true);
     }
 
     /**

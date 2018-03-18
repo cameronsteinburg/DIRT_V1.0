@@ -4,7 +4,6 @@
  */
 package controller;
 
-import application.Main;
 import entity.Client;
 import java.io.IOException;
 import java.net.URL;
@@ -43,6 +42,7 @@ public class CreateClientGUIController implements Initializable {
     private Button saveBtn;
     @FXML
     private Button editBtn;
+    
 
     Client selected;
 
@@ -91,7 +91,7 @@ public class CreateClientGUIController implements Initializable {
         String address = addressField.getText();
         String description = notesField.getText();
 
-        if (company == null) {
+        if (company == null) { //eliminates possibility of NullPointerException
             company = "";
         }
 
@@ -154,7 +154,7 @@ public class CreateClientGUIController implements Initializable {
             clearBtnAction(null);
 
         } else {
-
+            
             dbs.updateClient(this.selected, newClient);
             this.errorMessage.setText("Client Successfully Updated!");
         }
@@ -164,7 +164,6 @@ public class CreateClientGUIController implements Initializable {
     public void switchButtons() {
 
         this.saveBtn.setVisible(false);
-
         this.editBtn.setVisible(true);
     }
 

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -44,7 +45,7 @@ public class HomePageGUIController implements Initializable {
     @FXML
     protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
     @FXML
-    private Label errorMessage = new Label();
+    private Label errorMessage;
     @FXML
     private Button viewClientBtn;
     @FXML
@@ -184,9 +185,9 @@ public class HomePageGUIController implements Initializable {
 
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
-    
     private boolean editLabourerFlag = false;
     private boolean viewLabourerProfileFlag = false;
+
     /**
      *
      * @throws IOException
@@ -246,7 +247,6 @@ public class HomePageGUIController implements Initializable {
             editLabourerBtn.setDisable(false);
             removeLabourerBtn.setDisable(false);
         }
-
     }
 
     /**
@@ -394,9 +394,25 @@ public class HomePageGUIController implements Initializable {
         }
 
         if (editLabourerFlag == true) {
-            
+
             CreateLabourerGUIController clgc = loader.getController();
-            
+            clgc.setSelected(selectedLabourer);
+            clgc.setTitleLable("Edit Labourer");
+            clgc.switchButtons();
+            clgc.setFnameField(selectedLabourer.getFirstName());
+            clgc.setLnameField(selectedLabourer.getLastName());
+            clgc.setTitleField(selectedLabourer.getTitle());
+            clgc.setPhone1Field(selectedLabourer.getPhone1());
+            clgc.setPhone2Field(selectedLabourer.getPhone2());
+            clgc.setEmailField(selectedLabourer.getEmail());
+            clgc.setAddressField(selectedLabourer.getAddress());
+            clgc.setEmergencyNameField(selectedLabourer.getEmergContactName());
+            clgc.setEmergencyPhone1Field(selectedLabourer.getEmergContactPhone1());
+            clgc.setEmergencyPhone2Field(selectedLabourer.getEmergContactPhone2());
+            clgc.setSinField(selectedLabourer.getSin());
+            clgc.setWageField(selectedLabourer.getWage());
+
+            editLabourerFlag = false;
         }
 
         if (viewProfileFlagClient == true) {
@@ -493,6 +509,14 @@ public class HomePageGUIController implements Initializable {
                 }
             });
         }
+    }
+
+    /**
+     *
+     * @param value
+     */
+    public void setMessage(String value) {
+        this.errorMessage.setText(value);
     }
 
     /**

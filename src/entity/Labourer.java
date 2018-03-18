@@ -25,7 +25,7 @@ public class Labourer {
     private String emergContactPhone1;
     private String emergContactPhone2;
     private String sin;
-    private double wage;
+    private String wage;
     private ArrayList<String> skills;
     private boolean isActive;
 
@@ -40,7 +40,7 @@ public class Labourer {
         this.firstName = firstname;
     }
 
-    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, double wage) {
+    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, String wage) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -146,11 +146,11 @@ public class Labourer {
         this.sin = sin;
     }
 
-    public double getWage() {
+    public String getWage() {
         return wage;
     }
 
-    public void setWage(double wage) {
+    public void setWage(String wage) {
         this.wage = wage;
     }
 

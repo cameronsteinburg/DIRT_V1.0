@@ -50,19 +50,19 @@ emergcontact varchar(30),
 emergcontactphone1 varchar(11), 
 emergcontactphone2 varchar(11), 
 sin varchar(9), 
-wage numeric(4,2), 
+wage varchar(5), 
 isActive boolean not null, constraint pk_Labourer primary key (labourerNum));
 
 #creates Project-Labourer bridging table
 create table ProjectLabourer (projectNum smallint unsigned not null, labourerNum smallint unsigned not null, constraint fk_ProjectLabourerProject foreign key (projectNum) references Projects (projectNum), constraint fk_ProjectLabourerLabourer foreign key (labourerNum) references Labourers (labourerNum));
 
 #dummy test data
-insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, 18.25, 'Phillip DeFranco', 403568521, 684525655, 1);
+insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
 insert into Labourers (fname, lname, title, phone1, address,  emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Keifer', 'Hicks', 'Contracter', 587456852, '4242 Riverbend Rd SE', 'Shaizans Sister', 5874456888, 4036855477, 1);
 insert into Labourers (fname, lname, title, phone1, phone2, address,  emergcontact, emergcontactphone1, isActive) values ('Jeff', 'Jefferson', ' PT Contracter', 55526589525, 4356526555, 'Homeless Weaboo', 'Al Gore', 5648264955, 1);
 insert into Labourers (fname, lname, phone1, isActive) values ('Sweaty', 'Taint',  4035428977, 1);
 insert into Labourers (fname, lname, title, phone1,  emergcontact, isActive) values ('Ryuji', 'Sakamoto', ' PT Punk', 55526589525, 'Ann Takamaki',  1);
-insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Johnny', 'Pottsmokr', 'PT Bitch', 5876658942, 4035688566, 'eatassandskatefast@hotmail.com', 'P.O Box #1433', 596795325, 15.00, 'Ethan Klein', 4036754216, 5874522588, 1);
+insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Johnny', 'Pottsmokr', 'PT Bitch', 5876658942, 4035688566, 'eatassandskatefast@hotmail.com', 'P.O Box #1433', 596795325, '15.00', 'Ethan Klein', 4036754216, 5874522588, 1);
 insert into Labourers (fname, lname, title, phone1, email, address,  emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Smoky', 'McPot', 'Contracter', 4035428977, 'blzitfgt@yahoo.ca', '23 Bradberry Ln NW', 'Hila Klein', 4036754216, 5874522588, 1);
 
 insert into Clients (fname, lname, phone1, isActive) values ('John', 'Smith', 4035551234, 1);
