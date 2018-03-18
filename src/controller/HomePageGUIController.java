@@ -362,6 +362,10 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /**
      * Primary means of changing pages of the inner panel of the app
+     * 
+     * Controllers of fxml pages in the inner frame cannot access Home Controller
+     * so we set the variables the user is loading on to the page here as opposed to 
+     * loading scenes inside of the already outer scene, which isn't possible
      *
      * @param url
      * @throws IOException
@@ -377,6 +381,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        //if user is editing a client
         if (editFlagClient == true) {
 
             CreateClientGUIController ccgc = loader.getController();
@@ -395,6 +400,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             editFlagClient = false;
         }
 
+        //if user is editing a labourer
         if (editLabourerFlag == true) {
 
             CreateLabourerGUIController clgc = loader.getController();
@@ -417,12 +423,28 @@ public class HomePageGUIController extends Controller implements Initializable {
             editLabourerFlag = false;
         }
 
+        //if the user is viewing the profile page of a labourer
         if (viewLabourerProfileFlag == true) {
 
+            LabourerProfileGUIController lpgc = loader.getController();
+            lpgc.setTitleLable(selectedLabourer.getFirstName() + " " + selectedLabourer.getLastName());
+            lpgc.setTitleField(selectedLabourer.getTitle());
+            lpgc.setPhone1Field(selectedLabourer.getPhone1());
+            lpgc.setPhone2Field(selectedLabourer.getPhone2());
+            lpgc.setEmailField(selectedLabourer.getEmail());
+            lpgc.setAddressField(selectedLabourer.getAddress());
+            lpgc.setEmergencyNameField(selectedLabourer.getEmergContactName());
+            lpgc.setEmergencyPhone1Field(selectedLabourer.getEmergContactPhone1());
+            lpgc.setEmergencyPhone2Field(selectedLabourer.getEmergContactPhone2());
+            lpgc.setSinField(selectedLabourer.getSin());
+            lpgc.setWageField(selectedLabourer.getWage());
+            
+            viewLabourerProfileFlag = false;
         }
 
         if (viewClientProfileFlag == true) {
 
+            //if the user is viewing the profile page of a client
             ClientProfileGUIController cpgc = loader.getController();
             String name = selectedClient.getFirstName() + " " + selectedClient.getLastName();
             cpgc.setName(name);
@@ -442,21 +464,12 @@ public class HomePageGUIController extends Controller implements Initializable {
             viewClientProfileFlag = false;
         }
 
+        //need the view client/labourer tables to be reloaded duringt all page navigation to keep the data fresh
         reloadTables(root);
         this.borderpane.setCenter(root);
     }
 
-    /**
-     * when user is redirected to another page and a message to the user is
-     * necessary to indicate action
-     *
-     * @param url
-     * @param message
-     * @throws IOException
-     */
-    // public void navigateTo(String url, String message) throws IOException {
-    //   navigateTo(url);
-    // }
+  
     /**
      * For when the User clicks on the Visual Landscaping logo
      *
@@ -470,7 +483,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     *  Refreshes and builds the data of clients and labourers in tables
      * @param root
      */
     private void reloadTables(Parent root) {

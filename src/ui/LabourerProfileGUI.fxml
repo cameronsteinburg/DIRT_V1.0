@@ -31,7 +31,7 @@
                   <TableColumn prefWidth="75.0" text="C2" />
                </columns>
             </TableView>
-            <Label fx:id="nameField" layoutY="7.0" prefHeight="47.0" prefWidth="446.0">
+            <Label fx:id="nameField" layoutX="6.0" layoutY="12.0" prefHeight="47.0" prefWidth="446.0">
                <font>
                   <Font size="32.0" />
                </font>
