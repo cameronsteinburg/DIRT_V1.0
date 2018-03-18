@@ -41,14 +41,27 @@ public class DBServices {
         return Main.jdbcc.getClients(getDeleted);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ObservableList<Client> getClientsForTable() {
         return Main.jdbcc.getClientsForTable(false);
     }
 
+    /**
+     * 
+     * @param client 
+     */
     public void persistClient(Client client){
         Main.jdbcc.persistClient(client);
     }
     
+    /**
+     * 
+     * @param clientOld
+     * @param clientNew 
+     */
     public void updateClient(Client clientOld, Client clientNew){
         Main.jdbcc.updateClient(clientOld, clientNew);
     }
@@ -62,6 +75,11 @@ public class DBServices {
         return Main.jdbcc.deleteClient(client);
     }
 
+    /**
+     * 
+     * @param lab
+     * @return 
+     */
     public boolean deleteLabourer(Labourer lab) {
         return Main.jdbcc.deleteLabourer(lab);
     }
@@ -75,7 +93,15 @@ public class DBServices {
     public Labourer getLabourer(String name) {
         return Main.jdbcc.getLabourer(name);
     }
+    
+    public boolean persistLabourer(Labourer lab){
+         return Main.jdbcc.persistLabourer(lab);
+    }
 
+    /**
+     * 
+     * @return 
+     */
     public ObservableList<Labourer> getLabourersForTable() {
         return Main.jdbcc.getLabourersForTable(false);
     }

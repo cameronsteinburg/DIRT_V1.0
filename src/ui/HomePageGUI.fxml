@@ -159,7 +159,7 @@
          <center>
             <AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0">
+                  <AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;">
                      <children>
                         <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -175,7 +175,7 @@
                               <TableColumn prefWidth="100.0" text="End Date" />
                            </columns>
                         </TableView>
-                        <Label layoutX="7.0" layoutY="283.0" prefHeight="46.0" prefWidth="257.0" text="Previous Projects">
+                        <Label layoutX="7.0" layoutY="283.0" prefHeight="46.0" prefWidth="257.0" text="Previous Projects" AnchorPane.leftAnchor="7.0">
                            <font>
                               <Font size="20.0" />
                            </font>

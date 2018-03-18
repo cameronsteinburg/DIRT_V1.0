@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import services.DBServices;
 
 public class CreateLabourerGUIController implements Initializable {
 
@@ -160,42 +161,19 @@ public class CreateLabourerGUIController implements Initializable {
             }
         }
         
-        /*
-        if(title.length() < 1){
-            title = "";
-        }
         
-        if(phone2.length() < 1){
-            phone2 = "";
-        }
-        
-        if(email.length() < 1){
-            email = "";
-        }
-        
-        if(address.length() < 1){
-            address = "";
-        }
-        
-        if(emergeName.length() < 1){
-            emergeName = "";
-        }
-        
-        if(emergePhone1.length() < 1){
-            emergePhone1 = "";
-        }
-        
-        if(emergePhone2.length() < 1){
-            emergePhone2 = "";
-        }
-        */
         if(wageDbl == null){ //prevents nullpointerexception incase user enters nothing for wage
             wageDbl = 00.00;
         }
+        // data is valid at this point
         
-//        Labourer newLabourer = null;
+
         Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wageDbl);
-        Main.jdbcc.persistLabourer(newLabourer); //persist to db
+        DBServices dbs = new DBServices();
+        
+        if()
+            dbs.persistLabourer(newLabourer);
+   
 
         clearBtnAction(null);
         errorMessage.setText("Labourer Successfully Created!");

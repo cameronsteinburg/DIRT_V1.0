@@ -184,6 +184,9 @@ public class HomePageGUIController implements Initializable {
 
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
+    
+    private boolean editLabourerFlag = false;
+    private boolean viewLabourerProfileFlag = false;
     /**
      *
      * @throws IOException
@@ -215,7 +218,7 @@ public class HomePageGUIController implements Initializable {
     private TableView projectsTable;
 
     /*======================================Labourer Actions======================================*/
- /*============Outer Frame Labourer Dropwdown===============*/
+ /*============Outer Frame Labourer Dropdown===============*/
     /**
      *
      * @param event
@@ -229,6 +232,9 @@ public class HomePageGUIController implements Initializable {
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
 
+    /**
+     *
+     */
     private void getSelectedLabourer() {
 
         if (labourerTable.getSelectionModel().getSelectedItem() != null) {
@@ -243,6 +249,11 @@ public class HomePageGUIController implements Initializable {
 
     }
 
+    /**
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void removeLabourerAction(ActionEvent event) throws IOException {
 
@@ -268,14 +279,20 @@ public class HomePageGUIController implements Initializable {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @FXML
     private void editLabourerAction() throws IOException {
 
-        editFlagClient = true;
-        navigateTo("/ui/EditLabourerGUI.fxml");
-
+        editLabourerFlag = true;
+        navigateTo("/ui/CreateLabourerGUI.fxml");
     }
 
+    /**
+     *
+     */
     @FXML
     private void viewLabourerProfilePage() {
 
@@ -376,6 +393,12 @@ public class HomePageGUIController implements Initializable {
             editFlagClient = false;
         }
 
+        if (editLabourerFlag == true) {
+            
+            CreateLabourerGUIController clgc = loader.getController();
+            
+        }
+
         if (viewProfileFlagClient == true) {
 
             ClientProfileGUIController cpgc = loader.getController();
@@ -473,7 +496,8 @@ public class HomePageGUIController implements Initializable {
     }
 
     /**
-     * When user navigates app out of scope of edit/remove/view buttons for any entity
+     * When user navigates app out of scope of edit/remove/view buttons for any
+     * entity
      */
     @FXML
     private void disableButtons() {
