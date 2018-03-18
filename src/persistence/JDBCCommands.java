@@ -390,6 +390,38 @@ public class JDBCCommands {
         }
         return true;
     }
+    
+    
+    public boolean updateLabourer(Labourer labourerOld, Labourer labourerNew){
+        
+        try {    
+            // the mysql prepared update statement
+            String query = "update labourers set fname = ?, lname = ?, title = ?, phone1 = ?, phone2 = ?, email = ?, address = ?, emergcontact = ?, emergcontactphone1 = ?, emergcontactphone2 = ?, sin = ?, wage = ? where labourerNum = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString(1, labourerNew.getFirstName());
+            preparedStmt.setString(2, labourerNew.getLastName());
+            preparedStmt.setString(3, labourerNew.getTitle());
+            preparedStmt.setString(4, labourerNew.getPhone1());
+            preparedStmt.setString(5, labourerNew.getPhone2());
+            preparedStmt.setString(6, labourerNew.getEmail());
+            preparedStmt.setString(7, labourerNew.getAddress());
+            preparedStmt.setString(8, labourerNew.getEmergContactName());
+            preparedStmt.setString(9, labourerNew.getEmergContactPhone1());
+            preparedStmt.setString(10, labourerNew.getEmergContactPhone2());
+            preparedStmt.setString(11, labourerNew.getSin());
+            preparedStmt.setDouble(12, labourerNew.getWage());
+            preparedStmt.setInt(13, getLabourerNum(labourerOld.getFirstName(),labourerOld.getLastName()));
+
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
 
     /**
      *
@@ -432,6 +464,37 @@ public class JDBCCommands {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    /**
+     * Retrieves a labourerNum from the database from the name passed to the method
+     * @param fname first name of the labourer to search for
+     * @param lname last name of the labourer to search for
+     * @return the labourerNum if found
+     */
+    public int getLabourerNum(String fname, String lname) {
+
+        try {
+            String query = "select labourerNum from labourers where fname = ? and lname = ?";
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            
+            preparedStmt.setString(1, fname);
+            preparedStmt.setString(2, lname);
+            
+            // Result set contains the result of the SQL query
+            ResultSet results = preparedStmt.executeQuery(query);
+
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                int labourerNum = results.getInt("labourerNum");
+                return labourerNum;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 
     /**

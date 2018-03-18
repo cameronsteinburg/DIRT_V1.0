@@ -97,6 +97,16 @@ public class DBServices {
     public boolean persistLabourer(Labourer lab){
          return Main.jdbcc.persistLabourer(lab);
     }
+    
+    /**
+     * Updates the labourer passed (new and old info), and updates changes in the database
+     * @param labourerOld old instance of labourer object (pre change)
+     * @param labourerNew new instance of labourer object (post change)
+     * @return true if no errors occur
+     */
+    public boolean updateLabourer(Labourer labourerOld, Labourer labourerNew){
+        return Main.jdbcc.updateLabourer(labourerOld, labourerNew);
+    }
 
     /**
      * 
