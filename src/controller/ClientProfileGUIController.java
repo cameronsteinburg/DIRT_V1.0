@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class ClientProfileGUIController implements Initializable {
+public class ClientProfileGUIController extends Controller implements Initializable {
 
     //FXML elements
     @FXML
@@ -39,7 +39,7 @@ public class ClientProfileGUIController implements Initializable {
 
         if (desc.length() > 5000) {
 
-            this.errorMessage.setText("Too many characters!");
+            setMessage("Too many characters!", this.errorMessage);
 
         } else {
             
@@ -53,7 +53,7 @@ public class ClientProfileGUIController implements Initializable {
             
             Client updated = new Client(first, second, company, desc, phone1, phone2, email, address, true);
             Main.jdbcc.updateClient(selected, updated);
-            this.errorMessage.setText("Notes Updated!");
+            setMessage("Notes Updated!", this.errorMessage);
         }
     }
 

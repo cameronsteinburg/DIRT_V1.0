@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import services.DBServices;
 
-public class CreateClientGUIController implements Initializable {
+public class CreateClientGUIController extends Controller implements Initializable {
 
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
@@ -114,32 +114,32 @@ public class CreateClientGUIController implements Initializable {
         //data validation commences 
         if (firstName.isEmpty() || lastName.isEmpty() || phone1.isEmpty()) { //checking to see if the user entered blank data for not null fields
 
-            errorMessage.setText("* Required Fields Cannot Be Left Blank");
+            setMessage("* Required Fields Cannot Be Left Blank", this.errorMessage);
             return;
         }
 
         if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-            errorMessage.setText("Please enter a valid E-mail address");
+            setMessage("Please enter a valid E-mail address", this.errorMessage);
             return;
         }
 
         if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
 
-            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
             return;
         }
 
         //if User is entering a second number, checking phone number isnt too long or short
         if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
 
-            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
             return;
         }
 
         if (firstName.length() > 50 || description.length() > 5000 || email.length() > 30 || address.length() > 50) {
 
-            errorMessage.setText("One or more text boxes have too many characters");
+            setMessage("One or more text boxes have too many characters", this.errorMessage);
             return;
         }
         //data is valid at this point
@@ -150,13 +150,13 @@ public class CreateClientGUIController implements Initializable {
         if (editFlag == false) {
 
             dbs.persistClient(newClient);
-            this.errorMessage.setText("Client Successfully Created!");
+            setMessage("Client Successfully Created!", this.errorMessage);
             clearBtnAction(null);
 
         } else {
             
             dbs.updateClient(this.selected, newClient);
-            this.errorMessage.setText("Client Successfully Updated!");
+            setMessage("Client Successfully Updated!", this.errorMessage);
         }
 
     }

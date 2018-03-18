@@ -4,7 +4,7 @@
  */
 package controller;
 
-import application.Main;
+
 import entity.Labourer;
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.DBServices;
 
-public class CreateLabourerGUIController implements Initializable {
+public class CreateLabourerGUIController extends Controller implements Initializable {
 
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
@@ -148,50 +148,50 @@ public class CreateLabourerGUIController implements Initializable {
         //data validation commences
         if (fname.isEmpty() || lname.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
 
-            errorMessage.setText("* Required Fields Cannot Be Left Blank");
+            setMessage("* Required Fields Cannot Be Left Blank", this.errorMessage);
             return;
         }
 
         if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-            errorMessage.setText("Please enter a vlid E-mail address");
+            setMessage("Please enter a vlid E-mail address", this.errorMessage);
             return;
         }
 
         if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
 
-            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
             return;
         }
 
         //if User is entering a second number, checking phone number isnt too long or short
         if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
 
-            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
             return;
         }
 
         if ((emergePhone1.length() > 11 || emergePhone1.length() < 7) && emergePhone1.length() > 0) {
 
-            errorMessage.setText("Phone numbers must be 7 - 11 digits");
+            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
             return;
         }
 
         if ((emergePhone2.length() > 11 || emergePhone2.length() < 7) && emergePhone2.length() > 0) {
 
-            errorMessage.setText("Phone numbers++ must be 7 - 11 digits");
+            setMessage("Phone numbers++ must be 7 - 11 digits", this.errorMessage);
             return;
         }
 
         if ((sin.length() != 9 || !sin.matches("[0-9]+")) && sin.length() > 0) {
 
-            errorMessage.setText("Please enter valid SIN");
+            setMessage("Please enter valid SIN", this.errorMessage);
             return;
         }
 
         if (title.length() > 30 || emergeName.length() > 30) {
 
-            errorMessage.setText("Title is too long");
+            setMessage("Title is too long", this.errorMessage);
             return;
         }
 
@@ -199,28 +199,25 @@ public class CreateLabourerGUIController implements Initializable {
 
             if (wage.length() != 5 && wage.length() != 6) {
 
-                errorMessage.setText("Please enter a valid wage in XX.XX");
+                setMessage("Please enter a valid wage in XX.XX", this.errorMessage);
                 return;
             }
         }
         // data is valid at this point
         Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wage);;
-
         
-
-
         DBServices dbs = new DBServices();
 
         if (editFlag == false) {
 
             dbs.persistLabourer(newLabourer);
             clearBtnAction(null);
-            this.errorMessage.setText("Labourer Successfully Created!");
+            setMessage("Labourer Successfully Created!", this.errorMessage);
 
         } else {
 
             dbs.updateLabourer(selected, newLabourer);
-            this.errorMessage.setText("Labourer Successfully Updated!");
+            setMessage("Labourer Successfully Updated!", this.errorMessage);
         }
 
     }
@@ -321,9 +318,6 @@ public class CreateLabourerGUIController implements Initializable {
         this.fnameField.setText(value);
     }
 
-    public void setErrorMessage(String value) {
-        this.errorMessage.setText(value);
-    }
 
     public Labourer getSelected() {
         return selected;

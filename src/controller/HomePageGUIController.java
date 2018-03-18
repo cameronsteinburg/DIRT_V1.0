@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -35,7 +34,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import services.DBServices;
 
-public class HomePageGUIController implements Initializable {
+public class HomePageGUIController extends Controller implements Initializable {
 
     /*======================================Client actions======================================*/
  /*============Outer Frame Client Dropdown===============*/
@@ -141,7 +140,8 @@ public class HomePageGUIController implements Initializable {
 
             dbs.deleteClient(target);
 
-            navigateTo("/ui/ViewClientGUI.fxml", "Client Successfully Removed");
+            setMessage("Cllient Successfully Removed", this.errorMessage);
+            navigateTo("/ui/ViewClientGUI.fxml");
             disableButtons();
         } else {
             alert.close();
@@ -270,8 +270,8 @@ public class HomePageGUIController implements Initializable {
             Labourer target = dbs.getLabourer(this.selectedLabourer.getFirstName());
 
             dbs.deleteLabourer(target);
-
-            navigateTo("/ui/ViewLabourerGUI.fxml", "Labourer Successfully Removed");
+            setMessage("Labourer Successfully Removed", this.errorMessage);
+            navigateTo("/ui/ViewLabourerGUI.fxml");
             disableButtons();
         } else {
             alert.close();
@@ -452,12 +452,9 @@ public class HomePageGUIController implements Initializable {
      * @param message
      * @throws IOException
      */
-    public void navigateTo(String url, String message) throws IOException {
-
-        navigateTo(url);
-        this.errorMessage.setText(message);
-    }
-
+    // public void navigateTo(String url, String message) throws IOException {
+    //   navigateTo(url);
+    // }
     /**
      * For when the User clicks on the Visual Landscaping logo
      *
@@ -515,13 +512,7 @@ public class HomePageGUIController implements Initializable {
         }
     }
 
-    /**
-     *
-     * @param value
-     */
-    public void setMessage(String value) {
-        this.errorMessage.setText(value);
-    }
+    
 
     /**
      * When user navigates app out of scope of edit/remove/view buttons for any

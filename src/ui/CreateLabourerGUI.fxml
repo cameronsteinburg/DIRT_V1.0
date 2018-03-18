@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateLabourerGUIController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateLabourerGUIController">
    <stylesheets>
       <URL value="@createclientgui.css" />
    </stylesheets>
@@ -87,12 +87,12 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label text="Social Insurance Number" GridPane.rowIndex="11">
+            <Label text="Social Insurance Number (no spaces)" GridPane.rowIndex="11">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label text="Wage (per hour)" GridPane.rowIndex="12">
+            <Label text="Wage (per hour, XX.XX)" GridPane.rowIndex="12">
                <font>
                   <Font size="19.0" />
                </font>
