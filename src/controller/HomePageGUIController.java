@@ -270,7 +270,7 @@ public class HomePageGUIController implements Initializable {
 
     @FXML
     private void editLabourerAction() throws IOException {
-        
+
         editFlagClient = true;
         navigateTo("/ui/EditLabourerGUI.fxml");
 
@@ -359,7 +359,7 @@ public class HomePageGUIController implements Initializable {
         }
 
         if (editFlagClient == true) {
-                 
+
             CreateClientGUIController ccgc = loader.getController();
             ccgc.setTitleField("Edit Client");
             ccgc.setSelected(selectedClient);
@@ -470,16 +470,10 @@ public class HomePageGUIController implements Initializable {
                 }
             });
         }
-
-        //client profile
-        //edit client
-        //
-        //labourer profile
-        //edit labourer 
     }
 
     /**
-     *
+     * When user navigates app out of scope of edit/remove/view buttons for any entity
      */
     @FXML
     private void disableButtons() {
@@ -492,7 +486,6 @@ public class HomePageGUIController implements Initializable {
         viewLabourerProfileBtn.setDisable(true);
         editLabourerBtn.setDisable(true);
         removeLabourerBtn.setDisable(true);
-
     }
 
     /**
@@ -504,8 +497,7 @@ public class HomePageGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        this.updateClientTable(); //for viewing clients   
-
-        this.updateLabourerTable();
+        this.updateClientTable(); //for viewing all clients in a table   
+        this.updateLabourerTable(); //for viewing all labourer in a table
     }
 }
