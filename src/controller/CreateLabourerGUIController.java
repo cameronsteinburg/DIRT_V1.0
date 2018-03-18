@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -44,10 +43,6 @@ public class CreateLabourerGUIController implements Initializable {
     private TextField lnameField; //not null
     @FXML
     private TextField fnameField; //not null
-    @FXML
-    private Button saveBtn;
-    @FXML
-    private Button cancelBtn;
     @FXML
     private Label errorMessage;
 
@@ -213,6 +208,6 @@ public class CreateLabourerGUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // ntohinng to load to the page beforehand 
+        // nothing to load to the page beforehand 
     }
 }

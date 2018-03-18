@@ -116,7 +116,7 @@ public class HomePageGUIController implements Initializable {
     private void editClientAction(ActionEvent event) throws IOException {
 
         editFlagClient = true;
-        navigateTo("/ui/EditClientGUI.fxml");
+        navigateTo("/ui/CreateClientGUI.fxml");
     }
 
     /**
@@ -269,7 +269,10 @@ public class HomePageGUIController implements Initializable {
     }
 
     @FXML
-    private void editLabourerAction() {
+    private void editLabourerAction() throws IOException {
+        
+        editFlagClient = true;
+        navigateTo("/ui/EditLabourerGUI.fxml");
 
     }
 
@@ -356,17 +359,20 @@ public class HomePageGUIController implements Initializable {
         }
 
         if (editFlagClient == true) {
-
-            EditClientGUIController ecgc = loader.getController();
-            ecgc.setFirstName(selectedClient.getFirstName());
-            ecgc.setLastName(selectedClient.getLastName());
-            ecgc.setCompanyName(selectedClient.getCompany());
-            ecgc.setPhone1Field(selectedClient.getPhone1());
-            ecgc.setPhone2Field(selectedClient.getPhone2());
-            ecgc.setEmailField(selectedClient.getEmail());
-            ecgc.setAddressField(selectedClient.getAddress());
-            ecgc.setNotesField(selectedClient.getDescription());
-            ecgc.setSelected(selectedClient);
+                 
+            CreateClientGUIController ccgc = loader.getController();
+            ccgc.setTitleField("Edit Client");
+            ccgc.setSelected(selectedClient);
+            ccgc.switchButtons();
+            ccgc.setFirstName(selectedClient.getFirstName());
+            ccgc.setLastName(selectedClient.getLastName());
+            ccgc.setCompanyName(selectedClient.getCompany());
+            ccgc.setPhone1Field(selectedClient.getPhone1());
+            ccgc.setPhone2Field(selectedClient.getPhone2());
+            ccgc.setEmailField(selectedClient.getEmail());
+            ccgc.setAddressField(selectedClient.getAddress());
+            ccgc.setNotesField(selectedClient.getDescription());
+            ccgc.setSelected(selectedClient);
             editFlagClient = false;
         }
 

@@ -45,6 +45,13 @@ public class DBServices {
         return Main.jdbcc.getClientsForTable(false);
     }
 
+    public void persistClient(Client client){
+        Main.jdbcc.persistClient(client);
+    }
+    
+    public void updateClient(Client clientOld, Client clientNew){
+        Main.jdbcc.updateClient(clientOld, clientNew);
+    }
     /**
      * Logically deletes a client from the database
      *
