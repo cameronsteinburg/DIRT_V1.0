@@ -109,7 +109,7 @@ public class CreateLabourerGUIController implements Initializable {
         String sin = sinField.getText();
 
 
-        if (title == null) { //elimates possibility of NullPointerException
+        if (title == null) { //eliminates possibility of NullPointerException
             title = "";
         }
 
