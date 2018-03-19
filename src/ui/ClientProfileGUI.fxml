@@ -18,13 +18,13 @@
       <URL value="@createclientgui.css" />
    </stylesheets>
    <children>
-      <TableView fx:id="ongoing" layoutX="637.0" layoutY="316.0" prefHeight="198.0" prefWidth="436.0" AnchorPane.rightAnchor="5.0">
+      <TableView fx:id="ongoing" layoutX="637.0" layoutY="316.0" prefHeight="178.0" prefWidth="419.0" AnchorPane.leftAnchor="637.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <TableView fx:id="completed" layoutX="637.0" layoutY="35.0" prefHeight="247.0" prefWidth="436.0" AnchorPane.rightAnchor="5.0">
+      <TableView fx:id="completed" layoutX="637.0" layoutY="35.0" prefHeight="247.0" prefWidth="419.0" AnchorPane.leftAnchor="637.0">
          <columns>
             <TableColumn prefWidth="75.0" text="C1" />
             <TableColumn prefWidth="75.0" text="C2" />
@@ -99,7 +99,7 @@
             </Label>
          </children>
       </GridPane>
-      <Label fx:id="nameField" layoutY="7.0" prefHeight="47.0" prefWidth="446.0">
+      <Label fx:id="nameField" layoutX="44.0" layoutY="12.0" prefHeight="47.0" prefWidth="446.0">
          <font>
             <Font size="32.0" />
          </font>
@@ -119,7 +119,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextArea fx:id="notesField" layoutX="43.0" layoutY="296.0" prefHeight="219.0" prefWidth="580.0" wrapText="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="43.0">
+      <TextArea fx:id="notesField" layoutX="43.0" layoutY="296.0" prefHeight="198.0" prefWidth="580.0" wrapText="true" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="43.0">
          <font>
             <Font size="16.0" />
          </font>

@@ -14,13 +14,13 @@
          <top>
             <AnchorPane prefHeight="37.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Labourers" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                  <Label layoutX="34.0" layoutY="20.0" text="Labourers" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="20.0">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Label>
                   <Label layoutX="780.0" layoutY="70.0" prefHeight="17.0" prefWidth="49.0" text="Search: " AnchorPane.bottomAnchor="4.0" />
-                  <TextField fx:id="searchBox" layoutX="833.0" layoutY="46.0" prefHeight="25.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="20.0" />
+                  <TextField fx:id="searchBox" layoutX="833.0" layoutY="46.0" prefHeight="25.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="39.0" />
                   <Label fx:id="errorMessage" layoutX="337.0" layoutY="58.0" prefHeight="17.0" prefWidth="420.0" textFill="RED">
                      <font>
                         <Font size="19.0" />
@@ -32,7 +32,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="labourerTable" layoutY="14.0" prefHeight="323.0" prefWidth="1038.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                  <TableView fx:id="labourerTable" layoutX="34.0" layoutY="14.0" prefHeight="350.0" prefWidth="1012.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="20.0">
                     <columns>
                       <TableColumn fx:id="fNameColLab" prefWidth="162.0" text="First Name" />
                         <TableColumn fx:id="lNameColLab" prefWidth="162.0" text="Last Name" />
