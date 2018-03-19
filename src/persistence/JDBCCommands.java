@@ -571,7 +571,7 @@ public class JDBCCommands {
     }
 
     /**
-     * retreives database information to be backed up
+     * retrieves database information to be backed up
      *
      * @return data to back up
      */
@@ -581,7 +581,7 @@ public class JDBCCommands {
     }
 
     /**
-     * deletes a workorder from MySQL
+     * deletes a work order from MySQL
      *
      * @param wk the WorkOrder to be found and deleted
      * @return true if no error occurs
@@ -592,9 +592,9 @@ public class JDBCCommands {
     }
 
     /**
-     * fetchs all of the labourers from the MySQL database
+     * fetches all of the labourers from the MySQL database
      *
-     * @return an arraylist of the labourers
+     * @return an array list of the labourers
      */
     public ArrayList<Labourer> fetchLabourers() {
         return null;
