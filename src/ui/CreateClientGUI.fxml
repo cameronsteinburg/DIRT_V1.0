@@ -24,7 +24,7 @@
                <children>
                       <Button fx:id="saveBtn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Create" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
                       <Button fx:id="clearBtn" layoutX="105.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="red_button" text="Clear" textFill="#c4d7c4" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0" />
-                  <Button fx:id="editBtn" layoutX="100.0" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Edit" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="editBtn" layoutX="100.0" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Edit" visible="false" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </bottom>

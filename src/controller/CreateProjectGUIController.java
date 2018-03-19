@@ -46,15 +46,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private Label errorMessage;
 
-    /**
-     *
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    private void cancelBtnAction(ActionEvent event) throws IOException { //User doesn't want to complete the action, takes them back to home page
-        // StageController.control.navigateTo("/ui/HomePageGui.fxml");
-    }
 
     /**
      *

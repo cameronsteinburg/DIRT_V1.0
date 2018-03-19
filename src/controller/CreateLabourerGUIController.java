@@ -4,15 +4,17 @@
  */
 package controller;
 
-
 import entity.Labourer;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.DBServices;
@@ -67,18 +69,28 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     @FXML
     private void clearBtnAction(ActionEvent event) throws IOException {
 
-        addressField.clear();
-        emergencyNameField.clear();
-        emergencyPhone1Field.clear();
-        emergencyPhone2Field.clear();
-        wageField.clear();
-        sinField.clear();
-        emailField.clear();
-        phone2Field.clear();
-        phone1Field.clear();
-        lnameField.clear();
-        fnameField.clear();
-        titleField.clear();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Clear Form?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+
+            addressField.clear();
+            emergencyNameField.clear();
+            emergencyPhone1Field.clear();
+            emergencyPhone2Field.clear();
+            wageField.clear();
+            sinField.clear();
+            emailField.clear();
+            phone2Field.clear();
+            phone1Field.clear();
+            lnameField.clear();
+            fnameField.clear();
+            titleField.clear();
+
+        } else {
+            alert.close();
+        }
     }
 
     @FXML
@@ -95,131 +107,160 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException {
 
-        String fname = fnameField.getText();// not null
-        String lname = lnameField.getText();//not null
-        String title = titleField.getText();
-        String phone1 = phone1Field.getText(); //not null
-        String phone2 = phone2Field.getText();
-        String email = emailField.getText();
-        String address = addressField.getText();
-        String wage = wageField.getText();
-        String emergeName = emergencyNameField.getText();
-        String emergePhone1 = emergencyPhone1Field.getText();
-        String emergePhone2 = emergencyPhone2Field.getText();
-        String sin = sinField.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
+        alert.setTitle("Confirm Action");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Press OK to confrim this actions");
 
-        if (title == null) { //eliminates possibility of NullPointerException
-            title = "";
-        }
+        Optional<ButtonType> result = alert.showAndWait();
 
-        if (phone2 == null) {
-            phone2 = "";
-        }
+        if (result.get() == ButtonType.OK) {
 
-        if (email == null) {
-            email = "";
-        }
+            String fname = fnameField.getText();// not null
+            String lname = lnameField.getText();//not null
+            String title = titleField.getText();
+            String phone1 = phone1Field.getText(); //not null
+            String phone2 = phone2Field.getText();
+            String email = emailField.getText();
+            String address = addressField.getText();
+            String wage = wageField.getText();
+            String emergeName = emergencyNameField.getText();
+            String emergePhone1 = emergencyPhone1Field.getText();
+            String emergePhone2 = emergencyPhone2Field.getText();
+            String sin = sinField.getText();
 
-        if (address == null) {
-            address = "";
-        }
+            if (title == null) { //eliminates possibility of NullPointerException
+                title = "";
+            }
 
-        if (wage == null) {
-            wage = "";
-        }
+            if (phone2 == null) {
+                phone2 = "";
+            }
 
-        if (emergeName == null) {
-            emergeName = "";
-        }
-        
-        if(emergePhone1 == null){
-            emergePhone1 = "";
-        }
-        
-        if(sin == null){
-            sin = "";
-        }
-        
-        if(emergePhone2 == null){
-            emergePhone2 = "";
-        }
+            if (email == null) {
+                email = "";
+            }
 
-        //data validation commences
-        if (fname.isEmpty() || lname.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
+            if (address == null) {
+                address = "";
+            }
 
-            setMessage("* Required Fields Cannot Be Left Blank", this.errorMessage);
-            return;
-        }
+            if (wage == null) {
+                wage = "";
+            }
 
-        if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
+            if (emergeName == null) {
+                emergeName = "";
+            }
 
-            setMessage("Please enter a vlid E-mail address", this.errorMessage);
-            return;
-        }
+            if (emergePhone1 == null) {
+                emergePhone1 = "";
+            }
 
-        if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
+            if (sin == null) {
+                sin = "";
+            }
 
-            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
-            return;
-        }
+            if (emergePhone2 == null) {
+                emergePhone2 = "";
+            }
 
-        //if User is entering a second number, checking phone number isnt too long or short
-        if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
+            //data validation commences
+            if (fname.isEmpty() || lname.isEmpty() || phone1Field.getText().isEmpty()) { //checking to see if the user entered blank data for not null fields
 
-            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
-            return;
-        }
-
-        if ((emergePhone1.length() > 11 || emergePhone1.length() < 7) && emergePhone1.length() > 0) {
-
-            setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
-            return;
-        }
-
-        if ((emergePhone2.length() > 11 || emergePhone2.length() < 7) && emergePhone2.length() > 0) {
-
-            setMessage("Phone numbers++ must be 7 - 11 digits", this.errorMessage);
-            return;
-        }
-
-        if ((sin.length() != 9 || !sin.matches("[0-9]+")) && sin.length() > 0) {
-
-            setMessage("Please enter valid SIN", this.errorMessage);
-            return;
-        }
-
-        if (title.length() > 30 || emergeName.length() > 30) {
-
-            setMessage("Title is too long", this.errorMessage);
-            return;
-        }
-
-        if (wage.length() > 0) {
-
-            if (wage.length() != 5 && wage.length() != 6) {
-
-                setMessage("Please enter a valid wage in XX.XX", this.errorMessage);
+                setMessage("* Required Fields Cannot Be Left Blank", this.errorMessage);
                 return;
             }
-        }
-        // data is valid at this point
-        Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wage);;
-        
-        DBServices dbs = new DBServices();
 
-        if (editFlag == false) {
+            if (email.isEmpty() == false && (email.contains("@") == false || email.contains(".") == false)) { //checking that user entered valid email address format
 
-            dbs.persistLabourer(newLabourer);
-            clearBtnAction(null);
-            setMessage("Labourer Successfully Created!", this.errorMessage);
+                setMessage("Please enter a vlid E-mail address", this.errorMessage);
+                return;
+            }
+
+            if (phone1.length() > 11 || phone1.length() < 7) { //checking phone number isnt too long or short
+
+                setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
+                return;
+            }
+
+            //if User is entering a second number, checking phone number isnt too long or short
+            if ((phone2.length() > 11 || phone2.length() < 7) && phone2.length() > 0) {
+
+                setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
+                return;
+            }
+
+            if ((emergePhone1.length() > 11 || emergePhone1.length() < 7) && emergePhone1.length() > 0) {
+
+                setMessage("Phone numbers must be 7 - 11 digits", this.errorMessage);
+                return;
+            }
+
+            if ((emergePhone2.length() > 11 || emergePhone2.length() < 7) && emergePhone2.length() > 0) {
+
+                setMessage("Phone numbers++ must be 7 - 11 digits", this.errorMessage);
+                return;
+            }
+
+            if ((sin.length() != 9 || !sin.matches("[0-9]+")) && sin.length() > 0) {
+
+                setMessage("Please enter valid SIN", this.errorMessage);
+                return;
+            }
+
+            if (title.length() > 30 || emergeName.length() > 30) {
+
+                setMessage("Title is too long", this.errorMessage);
+                return;
+            }
+
+            if (wage.length() > 0) {
+
+                if (wage.length() != 5 && wage.length() != 6) {
+
+                    setMessage("Please enter a valid wage in XX.XX", this.errorMessage);
+                    return;
+                }
+            }
+            // data is valid at this point
+            Labourer newLabourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergeName, emergePhone1, emergePhone2, sin, wage);;
+
+            DBServices dbs = new DBServices();
+
+            if (editFlag == false) {
+
+                dbs.persistLabourer(newLabourer);
+                clearFields();
+                setMessage("Labourer Successfully Created!", this.errorMessage);
+
+            } else {
+
+                dbs.updateLabourer(selected, newLabourer);
+                setMessage("Labourer Successfully Updated!", this.errorMessage);
+            }
 
         } else {
-
-            dbs.updateLabourer(selected, newLabourer);
-            setMessage("Labourer Successfully Updated!", this.errorMessage);
+            alert.close();
         }
 
+    }
+
+    private void clearFields() {
+        
+        addressField.clear();
+        emergencyNameField.clear();
+        emergencyPhone1Field.clear();
+        emergencyPhone2Field.clear();
+        wageField.clear();
+        sinField.clear();
+        emailField.clear();
+        phone2Field.clear();
+        phone1Field.clear();
+        lnameField.clear();
+        fnameField.clear();
+        titleField.clear();
     }
 
     public TextField getAddressField() {
@@ -317,7 +358,6 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     public void setFnameField(String value) {
         this.fnameField.setText(value);
     }
-
 
     public Labourer getSelected() {
         return selected;
