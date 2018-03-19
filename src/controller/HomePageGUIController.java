@@ -458,13 +458,47 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             for (int i = 0; i < labourerList.size(); i++) {
 
-                if (labourerList.get(i).getFirstName().toLowerCase().contains(input.toLowerCase())
-                        || labourerList.get(i).getLastName().toLowerCase().contains(input.toLowerCase())
-                        || labourerList.get(i).getEmail().toLowerCase().contains(input.toLowerCase())
-                        || labourerList.get(i).getAddress().toLowerCase().contains(input.toLowerCase())) {
+                input = input.toLowerCase();
+                
+                String first = labourerList.get(i).getFirstName().toLowerCase();
+                String last = labourerList.get(i).getLastName().toLowerCase();
+                String address = labourerList.get(i).getAddress();
+                String email = labourerList.get(i).getEmail();
+                String phone1 = labourerList.get(i).getPhone1();
+                String phone2 = labourerList.get(i).getPhone2();
+                
+                if (address == null) {
+                    address = "";
+                } else {
+                    address = address.toLowerCase();
+                }
+
+                if (email == null) {
+                    email = "";
+                } else{
+                    email = email.toLowerCase();
+                }
+
+                if (phone1 == null) {
+                    phone1 = "";
+                }
+
+                if (phone2 == null) {
+                    phone2 = "";
+                }
+                
+                if (first.contains(input)
+                        || last.contains(input)
+                        || address.contains(input)
+                        || email.contains(input)
+                        || phone1.contains(last)
+                        || phone2.contains(input)) {
 
                     matches.add(labourerList.get(i));
                 }
+
+                    //matches.add(labourerList.get(i));
+                
             }
 
             updateLabourerTable(matches);
@@ -488,9 +522,9 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             if (labs != null) {
 
-            } else {
-
                 labourerTable.setItems(labs);
+                
+            } else {
 
                 this.labourerList = dbs.getLabourersForTable();
                 labourerTable.setItems(labourerList);
