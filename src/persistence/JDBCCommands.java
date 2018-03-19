@@ -90,7 +90,7 @@ public class JDBCCommands {
             preparedStmt.setString(6, clientNew.getPhone2());
             preparedStmt.setString(7, clientNew.getEmail());
             preparedStmt.setString(8, clientNew.getAddress());
-            preparedStmt.setInt(9, getClientNum(clientOld.getFirstName(),clientOld.getLastName()));
+            preparedStmt.setInt(9, getClientNum(clientOld.getFirstName(), clientOld.getLastName()));
 
             // execute the preparedstatement
             preparedStmt.executeUpdate();
@@ -240,7 +240,8 @@ public class JDBCCommands {
 
     /**
      *
-     * Retrieves a clientNum from the database from the name passed to the method
+     * Retrieves a clientNum from the database from the name passed to the
+     * method
      *
      * @param fname the first name of the client to be searched for
      * @param lname the last name of the client to be searched for
@@ -249,12 +250,12 @@ public class JDBCCommands {
     public int getClientNum(String fname, String lname) {
 
         try {
-           String query = "select clientNum from clients where fname = ? and lname = ?";
+            String query = "select clientNum from clients where fname = ? and lname = ?";
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            
+
             preparedStmt.setString(1, fname);
             preparedStmt.setString(2, lname);
-            
+
             // Result set contains the result of the SQL query
             ResultSet results = preparedStmt.executeQuery();
 
@@ -292,7 +293,7 @@ public class JDBCCommands {
         }
         return false;
     }
-    
+
     /**
      * Logically deletes client from the app by setting the isActive value to
      * false/0
@@ -329,7 +330,7 @@ public class JDBCCommands {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(),project.getClient().getLastName()));
+            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getProjectDescription());
             preparedStmt.setString(4, project.getSiteAddress());
@@ -395,11 +396,10 @@ public class JDBCCommands {
         }
         return true;
     }
-    
-    
-    public boolean updateLabourer(Labourer labourerOld, Labourer labourerNew){
-        
-        try {    
+
+    public boolean updateLabourer(Labourer labourerOld, Labourer labourerNew) {
+
+        try {
             // the mysql prepared update statement
             String query = "update labourers set fname = ?, lname = ?, title = ?, phone1 = ?, phone2 = ?, email = ?, address = ?, emergcontact = ?, emergcontactphone1 = ?, emergcontactphone2 = ?, sin = ?, wage = ? where labourerNum = ?";
 
@@ -417,7 +417,7 @@ public class JDBCCommands {
             preparedStmt.setString(10, labourerNew.getEmergContactPhone2());
             preparedStmt.setString(11, labourerNew.getSin());
             preparedStmt.setString(12, labourerNew.getWage());
-            preparedStmt.setInt(13, getLabourerNum(labourerOld.getFirstName(),labourerOld.getLastName()));
+            preparedStmt.setInt(13, getLabourerNum(labourerOld.getFirstName(), labourerOld.getLastName()));
 
             // execute the preparedstatement
             preparedStmt.executeUpdate();
@@ -439,14 +439,15 @@ public class JDBCCommands {
     public Labourer getLabourer(String labourerName) {
 
         try {
+            
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
             ResultSet results = statement.executeQuery("select * from labourers where fname = '" + labourerName + "';");
 
-            //todo Matthew, implement skills arraylist, in DB
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
+                
                 String fname = results.getString("fname");
                 String lname = results.getString("lname");
                 String title = results.getString("title");
@@ -459,21 +460,22 @@ public class JDBCCommands {
                 String emergContactPhone2 = results.getString("emergcontactphone2");
                 String sin = results.getString("sin");
                 String wage = results.getString("wage");
-                
-                
+
                 Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
                 return labourer;
-
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return null;
     }
-    
+
     /**
-     * Retrieves a labourerNum from the database from the name passed to the method
+     * Retrieves a labourerNum from the database from the name passed to the
+     * method
+     *
      * @param fname first name of the labourer to search for
      * @param lname last name of the labourer to search for
      * @return the labourerNum if found
@@ -483,10 +485,10 @@ public class JDBCCommands {
         try {
             String query = "select labourerNum from labourers where fname = ? and lname = ?";
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            
+
             preparedStmt.setString(1, fname);
             preparedStmt.setString(2, lname);
-            
+
             // Result set contains the result of the SQL query
             ResultSet results = preparedStmt.executeQuery();
 

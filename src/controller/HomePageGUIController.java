@@ -33,16 +33,31 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import services.DBServices;
-
+/**
+ * 
+ * This controller handles the actions and data of the outer frame of the Stage, as well as some of the pages loaded via
+ * border pane into the inner frame this includes:
+ * ViewLabourerGUI.fxml
+ * ViewClientGUI.fxml
+ * HomePageGUI.fxml
+ * OngoingProjectsGUI.fxml
+ * 
+ * Pages with different controllers but still have data loaded into them while data is still in scope of HomePage (outer data controller is not visible to inner data controller
+ * The pages this class provides data for, but is not the controller for, includes:
+ * CreateClientProfile.fxml when it is being used to Edit a client as opposed to making a new one
+ * CreateLabourerProfile.fxml when it is being used to Edit a labourer as opposed to making a new one
+ * ClientProfileGUI.fxml
+ * LabourerProfileGUI.fxml
+ */
 public class HomePageGUIController extends Controller implements Initializable {
 
     /*======================================Client actions======================================*/
  /*============Outer Frame Client Dropdown===============*/
-    private boolean editFlagClient = false; //in case user clicks edit
-    private boolean viewClientProfileFlag = false; //in case user wants to see a clients profile page
+    private boolean editFlagClient = false; //indicatse user clicks edit client instead of new in outer gui, after picking from table
+    private boolean viewClientProfileFlag = false; //indicates user has clicked view client in outer gui, after picking from table
 
     @FXML
-    protected BorderPane borderpane = new BorderPane(); //the only thing that naviagtes pages
+    protected BorderPane borderpane = new BorderPane(); //this pane is morphed to hold all inner fram pages, as opposed to changing scenes inside of a scene, which isn't possible
     @FXML
     private Label errorMessage;
     @FXML
@@ -101,6 +116,11 @@ public class HomePageGUIController extends Controller implements Initializable {
         navigateTo("/ui/ViewClientGUI.fxml");
     }
 
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void viewClientProfilePage(ActionEvent event) throws IOException {
 
@@ -233,21 +253,6 @@ public class HomePageGUIController extends Controller implements Initializable {
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
 
-    /**
-     *
-     */
-    private void getSelectedLabourer() {
-
-        if (labourerTable.getSelectionModel().getSelectedItem() != null) {
-
-            this.selectedLabourer = labourerTable.getSelectionModel().getSelectedItem();
-
-            //Enable buttons once client is selected
-            viewLabourerProfileBtn.setDisable(false);
-            editLabourerBtn.setDisable(false);
-            removeLabourerBtn.setDisable(false);
-        }
-    }
 
     /**
      *
@@ -296,8 +301,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void viewLabourerProfilePage() throws IOException {
 
-       viewLabourerProfileFlag = true;
-       navigateTo("/ui/LabourerProfileGUI.fxml");
+        viewLabourerProfileFlag = true;
+        navigateTo("/ui/LabourerProfileGUI.fxml");
     }
 
     /**
@@ -315,11 +320,11 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*============Inner Frame Labourer Dropdown===============*/
     @FXML
-    private TableView<Labourer> labourerTable;
+    private TableView<Labourer> labourerTable; //the table loading the attributes of the labourers
 
-    private ObservableList<Labourer> labourerList;
+    private ObservableList<Labourer> labourerList; //all active labourers from database
 
-    private Labourer selectedLabourer;
+    private Labourer selectedLabourer; //a labourer from the table the user has clicked on
 
     @FXML
     private Button viewLabourerProfileBtn;
@@ -341,6 +346,26 @@ public class HomePageGUIController extends Controller implements Initializable {
     private TableColumn<?, ?> emailColLab;
 
     /*============Controls===============*/
+    
+    /**
+     * gets the labourer objects based on what user clicked in labourers table
+     */
+    private void getSelectedLabourer() {
+
+        if (labourerTable.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedLabourer = labourerTable.getSelectionModel().getSelectedItem();
+
+            //Enable buttons once client is selected
+            viewLabourerProfileBtn.setDisable(false);
+            editLabourerBtn.setDisable(false);
+            removeLabourerBtn.setDisable(false);
+        }
+    }
+    
+    /**
+     * loads the data of the labourer objects into a table
+     */
     private void updateLabourerTable() {
 
         if (fNameColLab != null) {
@@ -357,15 +382,13 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /*======================================Home Page Controls======================================*/
-    @FXML
-    private Label selectedField;
 
     /**
-     * Primary means of changing pages of the inner panel of the app
-     * 
-     * Controllers of fxml pages in the inner frame cannot access Home Controller
-     * so we set the variables the user is loading on to the page here as opposed to 
-     * loading scenes inside of the already outer scene, which isn't possible
+     * Primary means of changing pages of the inner panel of the app.
+     * Controllers of FXML pages in the inner frame cannot access Home
+     * Controller so we set the variables the user is loading on to the inner page
+     * here as opposed to loading scenes inside of the already outer scene
+     * from the inner controller, which isn't possible.
      *
      * @param url
      * @throws IOException
@@ -438,7 +461,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             lpgc.setEmergencyPhone2Field(selectedLabourer.getEmergContactPhone2());
             lpgc.setSinField(selectedLabourer.getSin());
             lpgc.setWageField(selectedLabourer.getWage());
-            
+
             viewLabourerProfileFlag = false;
         }
 
@@ -469,7 +492,6 @@ public class HomePageGUIController extends Controller implements Initializable {
         this.borderpane.setCenter(root);
     }
 
-  
     /**
      * For when the User clicks on the Visual Landscaping logo
      *
@@ -483,7 +505,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *  Refreshes and builds the data of clients and labourers in tables
+     * Refreshes and builds the data of clients and labourers in tables
+     *
      * @param root
      */
     private void reloadTables(Parent root) {
@@ -527,8 +550,6 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
-    
-
     /**
      * When user navigates app out of scope of edit/remove/view buttons for any
      * entity
@@ -547,7 +568,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * Loading stuff into any given page the HomePageGUIController controls
+     * Loading data into any given page that the HomePageGUIController controls
      *
      * @param url
      * @param rb
