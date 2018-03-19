@@ -14,6 +14,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,21 +34,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import services.DBServices;
+
 /**
- * 
- * This controller handles the actions and data of the outer frame of the Stage, as well as some of the pages loaded via
- * border pane into the inner frame this includes:
- * ViewLabourerGUI.fxml
- * ViewClientGUI.fxml
- * HomePageGUI.fxml
+ *
+ * This controller handles the actions and data of the outer frame of the Stage,
+ * as well as some of the pages loaded via border pane into the inner frame this
+ * includes: ViewLabourerGUI.fxml ViewClientGUI.fxml HomePageGUI.fxml
  * OngoingProjectsGUI.fxml
- * 
- * Pages with different controllers but still have data loaded into them while data is still in scope of HomePage (outer data controller is not visible to inner data controller
- * The pages this class provides data for, but is not the controller for, includes:
- * CreateClientProfile.fxml when it is being used to Edit a client as opposed to making a new one
- * CreateLabourerProfile.fxml when it is being used to Edit a labourer as opposed to making a new one
- * ClientProfileGUI.fxml
- * LabourerProfileGUI.fxml
+ *
+ * Pages with different controllers but still have data loaded into them while
+ * data is still in scope of HomePage (outer data controller is not visible to
+ * inner data controller The pages this class provides data for, but is not the
+ * controller for, includes: CreateClientProfile.fxml when it is being used to
+ * Edit a client as opposed to making a new one CreateLabourerProfile.fxml when
+ * it is being used to Edit a labourer as opposed to making a new one
+ * ClientProfileGUI.fxml LabourerProfileGUI.fxml
  */
 public class HomePageGUIController extends Controller implements Initializable {
 
@@ -68,28 +69,6 @@ public class HomePageGUIController extends Controller implements Initializable {
     private Button removeClientBtn;
 
     private Client selectedClient;
-
-    /*============Inner Frame Client Dropdown===============*/
-    @FXML
-    private TableView<Client> clientTable;
-    @FXML
-    private TextField searchBox;
-    @FXML
-    private TableColumn<?, ?> firstNameCol;
-    @FXML
-    private TableColumn<?, ?> lastNameCol;
-    @FXML
-    private TableColumn<?, ?> companyNameCol;
-    @FXML
-    private TableColumn<?, ?> addressCol;
-    @FXML
-    private TableColumn<?, ?> firstNumCol;
-    @FXML
-    private TableColumn<?, ?> secondNumCol;
-    @FXML
-    private TableColumn<?, ?> emailCol;
-
-    private ObservableList<Client> clientList;
 
     /**
      *
@@ -114,12 +93,13 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         disableButtons();
         navigateTo("/ui/ViewClientGUI.fxml");
+
     }
 
     /**
-     * 
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void viewClientProfilePage(ActionEvent event) throws IOException {
@@ -152,6 +132,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         alert.setContentText("Delete client with the name: " + selectedClient.getFirstName() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
+
         if (result.get() == ButtonType.OK) {
 
             DBServices dbs = new DBServices();
@@ -163,8 +144,100 @@ public class HomePageGUIController extends Controller implements Initializable {
             setMessage("Cllient Successfully Removed", this.errorMessage);
             navigateTo("/ui/ViewClientGUI.fxml");
             disableButtons();
+
         } else {
             alert.close();
+        }
+    }
+
+
+    /*============Inner Frame Client Dropdown===============*/
+    @FXML
+    private TableView<Client> clientTable;
+    @FXML
+    private TextField searchBox;
+    @FXML
+    private TableColumn<?, ?> firstNameCol;
+    @FXML
+    private TableColumn<?, ?> lastNameCol;
+    @FXML
+    private TableColumn<?, ?> companyNameCol;
+    @FXML
+    private TableColumn<?, ?> addressCol;
+    @FXML
+    private TableColumn<?, ?> firstNumCol;
+    @FXML
+    private TableColumn<?, ?> secondNumCol;
+    @FXML
+    private TableColumn<?, ?> emailCol;
+
+    private ObservableList<Client> clientList;
+
+    /**
+     * Search active clients from DB
+     *
+     * @param event
+     */
+    @FXML
+    private void searchClients(ActionEvent event) {
+
+        String input = searchBox.getText();
+
+        if (input != null) {
+
+            ObservableList<Client> matches = FXCollections.observableArrayList();;
+
+            for (int i = 0; i < clientList.size(); i++) {
+
+                input = input.toLowerCase();
+
+                String first = clientList.get(i).getFirstName().toLowerCase();
+                String last = clientList.get(i).getLastName().toLowerCase();
+                String company = clientList.get(i).getCompany();
+                String address = clientList.get(i).getAddress();
+                String email = clientList.get(i).getEmail();
+                String phone1 = clientList.get(i).getPhone1();
+                String phone2 = clientList.get(i).getPhone2();
+
+                if (company == null) {
+                    company = "";
+                } else {
+                    company = company.toLowerCase();
+                }
+
+                if (address == null) {
+                    address = "";
+                } else {
+                    address = address.toLowerCase();
+                }
+
+                if (email == null) {
+                    email = "";
+                } else{
+                    email = email.toLowerCase();
+                }
+
+                if (phone1 == null) {
+                    phone1 = "";
+                }
+
+                if (phone2 == null) {
+                    phone2 = "";
+                }
+
+                if (first.contains(input)
+                        || last.contains(input)
+                        || company.contains(input)
+                        || address.contains(input)
+                        || email.contains(input)
+                        || phone1.contains(last)
+                        || phone2.contains(input)) {
+
+                    matches.add(clientList.get(i));
+                }
+            }
+
+            updateClientTable(matches);
         }
     }
 
@@ -186,7 +259,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
-    private void updateClientTable() {
+    private void updateClientTable(ObservableList<Client> clients) {
 
         if (firstNameCol != null) {
 
@@ -198,8 +271,16 @@ public class HomePageGUIController extends Controller implements Initializable {
             secondNumCol.setCellValueFactory(new PropertyValueFactory<>("phone2"));
             emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
             DBServices dbs = new DBServices();
-            this.clientList = dbs.getClientsForTable();
-            clientTable.setItems(clientList);
+
+            if (clients != null) {
+
+                clientTable.setItems(clients);
+
+            } else {
+
+                this.clientList = dbs.getClientsForTable();
+                clientTable.setItems(clientList);
+            }
         }
     }
 
@@ -252,7 +333,6 @@ public class HomePageGUIController extends Controller implements Initializable {
         disableButtons();
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
-
 
     /**
      *
@@ -344,9 +424,10 @@ public class HomePageGUIController extends Controller implements Initializable {
     private TableColumn<?, ?> secondNumColLab;
     @FXML
     private TableColumn<?, ?> emailColLab;
+    @FXML
+    private TextField labSearchBox;
 
     /*============Controls===============*/
-    
     /**
      * gets the labourer objects based on what user clicked in labourers table
      */
@@ -362,11 +443,39 @@ public class HomePageGUIController extends Controller implements Initializable {
             removeLabourerBtn.setDisable(false);
         }
     }
-    
+
+    /**
+     *
+     */
+    @FXML
+    private void searchLabourers(ActionEvent event) {
+
+        String input = labSearchBox.getText();
+
+        if (input != null) {
+
+            ObservableList<Labourer> matches = FXCollections.observableArrayList();;
+
+            for (int i = 0; i < labourerList.size(); i++) {
+
+                if (labourerList.get(i).getFirstName().toLowerCase().contains(input.toLowerCase())
+                        || labourerList.get(i).getLastName().toLowerCase().contains(input.toLowerCase())
+                        || labourerList.get(i).getEmail().toLowerCase().contains(input.toLowerCase())
+                        || labourerList.get(i).getAddress().toLowerCase().contains(input.toLowerCase())) {
+
+                    matches.add(labourerList.get(i));
+                }
+            }
+
+            updateLabourerTable(matches);
+        }
+
+    }
+
     /**
      * loads the data of the labourer objects into a table
      */
-    private void updateLabourerTable() {
+    private void updateLabourerTable(ObservableList<Labourer> labs) {
 
         if (fNameColLab != null) {
             fNameColLab.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -376,18 +485,25 @@ public class HomePageGUIController extends Controller implements Initializable {
             secondNumColLab.setCellValueFactory(new PropertyValueFactory<>("phone2"));
             emailColLab.setCellValueFactory(new PropertyValueFactory<>("email"));
             DBServices dbs = new DBServices();
-            this.labourerList = dbs.getLabourersForTable();
-            labourerTable.setItems(labourerList);
+
+            if (labs != null) {
+
+            } else {
+
+                labourerTable.setItems(labs);
+
+                this.labourerList = dbs.getLabourersForTable();
+                labourerTable.setItems(labourerList);
+            }
         }
     }
 
     /*======================================Home Page Controls======================================*/
-
     /**
      * Primary means of changing pages of the inner panel of the app.
      * Controllers of FXML pages in the inner frame cannot access Home
-     * Controller so we set the variables the user is loading on to the inner page
-     * here as opposed to loading scenes inside of the already outer scene
+     * Controller so we set the variables the user is loading on to the inner
+     * page here as opposed to loading scenes inside of the already outer scene
      * from the inner controller, which isn't possible.
      *
      * @param url
@@ -576,7 +692,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        this.updateClientTable(); //for viewing all clients in a table   
-        this.updateLabourerTable(); //for viewing all labourer in a table
+        this.updateClientTable(null); //for viewing all clients in a table   
+        this.updateLabourerTable(null); //for viewing all labourer in a table
+
     }
 }
