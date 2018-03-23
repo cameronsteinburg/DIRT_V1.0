@@ -15,16 +15,21 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import services.DBServices;
 
 public class CreateProjectGUIController extends Controller implements Initializable {
@@ -43,9 +48,17 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private TextField addressField;
     @FXML
     private TextArea notesField;
-    @FXML
+
     private Label errorMessage;
 
+    private BorderPane outerPane;
+    
+    private Project inProgress;
+    
+    
+    public Label getErrorMessage(){
+        return this.errorMessage;
+    }
 
     /**
      *
@@ -55,6 +68,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private void nextBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateProjectGUI.fxml
 
+
         //get the User's data they entered into GUI fields
         LocalDate rawPrelim = prelimStart.getValue();
         LocalDate rawEst = estEnd.getValue();
@@ -62,22 +76,18 @@ public class CreateProjectGUIController extends Controller implements Initializa
         String name = nameField.getText();
         String address = addressField.getText();
         String description = notesField.getText();
-        String clientName = (String) clientDropdown.getValue();
-
-        Client theClient; //Getting client object 
-        DBServices dbs = new DBServices();
-        theClient = dbs.getClient(clientName);
 
         //data validation commences 
-        if (name.isEmpty() || theClient == null || rawPrelim == null || rawEst == null) { //checking to see if the user entered blank data for not null db attributes
+        if (name.isEmpty() || rawPrelim == null || rawEst == null) { //checking to see if the user entered blank data for not null db attributes
 
-            setMessage("* Required Fields Cannot Be Left Blank", this.errorMessage);
+            setMessage("* Required Fields Cannot Be Left Blank", errorMessage);
+
             return;
         }
 
         if (name.length() > 50 || description.length() > 5000 || address.length() > 30) {
 
-            setMessage("One or more text boxes have too many characters", this.errorMessage);
+            setMessage("One or more text boxes have too many characters", errorMessage);
             return;
         }
 
@@ -88,32 +98,32 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
         if (prelimStartDate.compareTo(estEndDate) > 0) { //in can user set the first date to be after the end date
 
-            setMessage("Preliminary Date Must Be Before End Date", this.errorMessage);
+            setMessage("Preliminary Date Must Be Before End Date", errorMessage);
             return;
         }
 
         //all data is valid at this point
-
-        Project newProject;
+       
 
         if (description.length() == 0 && address.length() == 0) { //if user didn't enter anything into the optional fields
-            newProject = new Project(name, prelimStartDate, estEndDate, theClient);
+            inProgress = new Project(name, prelimStartDate, estEndDate);
         }
 
         if (description.length() > 0 && address.length() == 0) {
-            newProject = new Project(name, prelimStartDate, estEndDate, theClient, description); //if user only put text in notes field
+            inProgress = new Project(name, prelimStartDate, estEndDate, description); //if user only put text in notes field
         }
 
         if (address.length() > 0 && description.length() == 0) {
-            newProject = new Project(address, name, prelimStartDate, estEndDate, theClient); //if user only puts text in address field
+            inProgress = new Project(address, name, prelimStartDate, estEndDate); //if user only puts text in address field
         }
 
         if (description.length() > 0 && address.length() > 0) {
-            newProject = new Project(name, prelimStartDate, estEndDate, theClient, description, address); //user puts text in both field
+            inProgress = new Project(name, prelimStartDate, estEndDate, description, address); //user puts text in both field
         }
 
-        System.out.println("====This works now====");
-    } //the project object is not committed to db until the quote has been produced after user clicks "Next" button
+        navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
+        
+    } //the project object is not committed to db until the quote has been produced
 
     /**
      * getting names for the dropdown menu so user can pick a Client to add to
@@ -125,15 +135,27 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        DBServices dbs = new DBServices();     // load and producesproduces list of Client names for the dropdown in the GUI
-        ArrayList<Client> clients = new ArrayList<Client>();
-        clients.addAll(dbs.getClients(false));
-        ObservableList<String> names = FXCollections.observableArrayList();
+        //DBServices dbs = new DBServices();     // load and producesproduces list of Client names for the dropdown in the GUI
+        // ArrayList<Client> clients = new ArrayList<Client>();
+        //clients.addAll(dbs.getClients(false));
+        //ObservableList<String> names = FXCollections.observableArrayList();
 
-        for (int i = 0; i < clients.size(); i++) {
-            names.add(clients.get(i).getFirstName());
-        }
-
-        clientDropdown.setItems((ObservableList) names); //puts names in dropdown
+        // for (int i = 0; i < clients.size(); i++) {
+        //   names.add(clients.get(i).getFirstName());
+        // }
+        //clientDropdown.setItems((ObservableList) names); //puts names in dropdown
+    }
+    
+    protected BorderPane getOuterPane(){
+       return this.outerPane;
+    }
+    
+    protected void setOuterPane(BorderPane pane){
+        this.outerPane = pane;
+    }
+    
+   
+    protected void setErrorMessage (Label error){
+        this.errorMessage = error;
     }
 }

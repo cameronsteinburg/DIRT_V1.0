@@ -35,7 +35,7 @@ public class CreateClientGUIController extends Controller implements Initializab
     private TextField addressField;
     @FXML
     private TextArea notesField;
-    @FXML
+    
     private Label errorMessage;
     @FXML
     private Label titleField;
@@ -244,8 +244,11 @@ public class CreateClientGUIController extends Controller implements Initializab
     }
 
     public void setSelected(Client sel) {
-
         this.selected = sel;
+    }
+
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 
     @Override

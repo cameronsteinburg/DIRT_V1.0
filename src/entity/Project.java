@@ -21,6 +21,7 @@ public class Project {
     private ArrayList<String> projectLog;// notes user can add overtime as project progresses
     private String siteAddress; //the site of the project
     private char status; //false if the user has deleted this entity, true if he hasn't NOT NULL
+    private Date dateConstructed; //date project was made
     
     //dependent entitites
     private List<WorkOrder> workOrders; //anything that costs User money
@@ -68,42 +69,61 @@ public class Project {
      * @param name
      * @param desc 
      */
-    public Project(String name, Date prelim, Date estEnd, Client client){ //for new project use case, minimum
+    public Project(String name, Date prelim, Date estEnd){ //for new project use case, minimum
          
         this.projectLog = new ArrayList<String>();
         this.projectName = name;
         this.prelimStartDate = prelim;
         this.estimatedEndDate = estEnd;
-        this.client = client;
     }
     
-    public Project(String name, Date prelim, Date estEnd, Client client, String notes){ 
+   
+   /**
+    * 
+    * @param name
+    * @param prelim
+    * @param estEnd
+    * @param notes 
+    */
+    public Project(String name, Date prelim, Date estEnd, String notes){ 
          
         this.projectLog = new ArrayList<String>();
         this.projectName = name;
         this.prelimStartDate = prelim;
         this.estimatedEndDate = estEnd;
-        this.client = client;
         this.projectLog.add(notes);
     }
     
-    public Project(String siteAddress, String name, Date prelim, Date estEnd, Client client){ 
+    /**
+     * 
+     * @param siteAddress
+     * @param name
+     * @param prelim
+     * @param estEnd
+     */
+    public Project(String siteAddress, String name, Date prelim, Date estEnd){ 
          
         this.projectLog = new ArrayList<String>();
         this.projectName = name;
         this.prelimStartDate = prelim;
         this.estimatedEndDate = estEnd;
-        this.client = client;
         this.siteAddress = siteAddress;
     }
     
-    public Project(String name, Date prelim, Date estEnd, Client client, String address, String notes){    
+    /**
+     * 
+     * @param name
+     * @param prelim
+     * @param estEnd
+     * @param address
+     * @param notes 
+     */
+    public Project(String name, Date prelim, Date estEnd, String address, String notes){    
         
         this.projectLog = new ArrayList<String>();
         this.projectName = name;
         this.prelimStartDate = prelim;
         this.estimatedEndDate = estEnd;
-        this.client = client;
         this.siteAddress = address;
         this.projectLog.add(notes);
     }

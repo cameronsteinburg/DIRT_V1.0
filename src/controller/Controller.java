@@ -1,26 +1,31 @@
 package controller;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 /**
  *
  * @author 734972
  */
-public abstract class Controller {
+abstract class Controller {
 
     /**
      *
      * @param value
      */
-    public void setMessage(String value, Label errorMessage) {
+    protected void setMessage(String value, Label errorMessage) {
 
         errorMessage.setText(value);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4), ev -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), ev -> {
             errorMessage.setText(" ");
         }));
 
@@ -28,5 +33,19 @@ public abstract class Controller {
         timeline.play();
     }
 
+    protected void navigateTo(String url, BorderPane pane) {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        pane.setCenter(root);
+    }
+    
+    protected abstract void setErrorMessage(Label error);
 }

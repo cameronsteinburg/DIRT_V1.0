@@ -27,7 +27,7 @@ public class ClientProfileGUIController extends Controller implements Initializa
     private Label addressField;
     @FXML
     private TextArea notesField;
-    @FXML
+   
     private Label errorMessage;
 
     private Client selected;
@@ -42,7 +42,7 @@ public class ClientProfileGUIController extends Controller implements Initializa
             setMessage("Too many characters!", this.errorMessage);
 
         } else {
-            
+
             String first = selected.getClientFirstName();
             String second = selected.getClientLastName();
             String company = selected.getCompany();
@@ -50,7 +50,7 @@ public class ClientProfileGUIController extends Controller implements Initializa
             String phone2 = selected.getPhone2();
             String email = selected.getEmail();
             String address = selected.getAddress();
-            
+
             Client updated = new Client(first, second, company, desc, phone1, phone2, email, address, true);
             Main.jdbcc.updateClient(selected, updated);
             setMessage("Notes Updated!", this.errorMessage);
@@ -91,5 +91,9 @@ public class ClientProfileGUIController extends Controller implements Initializa
 
     public void setAddressField(String value) {
         this.addressField.setText(value);
+    }
+
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 }

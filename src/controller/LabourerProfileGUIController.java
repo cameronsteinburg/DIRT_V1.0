@@ -39,6 +39,8 @@ public class LabourerProfileGUIController extends Controller implements Initiali
     @FXML
     private Label nameField;
 
+    private Label errorMessage;
+    
     public void setAddressField(String value) {
         this.addressField.setText(value);
     }
@@ -75,13 +77,16 @@ public class LabourerProfileGUIController extends Controller implements Initiali
         this.phone2Field.setText(value);
     }
 
-
     public void setPhone1Field(String value) {
         this.phone1Field.setText(value);
     }
 
     public void setTitleField(String value) {
         this.titleField.setText(value);
+    }
+
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 
     @Override

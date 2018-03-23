@@ -47,7 +47,7 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     private TextField lnameField; //not null
     @FXML
     private TextField fnameField; //not null
-    @FXML
+    
     private Label errorMessage;
     @FXML
     private Button saveBtn;
@@ -248,7 +248,7 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     }
 
     private void clearFields() {
-        
+
         addressField.clear();
         emergencyNameField.clear();
         emergencyPhone1Field.clear();
@@ -375,6 +375,10 @@ public class CreateLabourerGUIController extends Controller implements Initializ
 
         this.saveBtn.setVisible(false);
         this.editBtn.setVisible(true);
+    }
+
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 
     /**

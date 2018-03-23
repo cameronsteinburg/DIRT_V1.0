@@ -59,7 +59,7 @@ public class Main extends Application {
 
     public static Stage stage;//singleton stage object i.e the apps window definied by fxml files controlled by controller files
     public static JDBCCommands jdbcc; //singleton jdcc object to be used by DBAccessor
-    //DBServices - > JDBCCommands -> DBAccessor -> DB 
+        //DBServices - > JDBCCommands -> DBAccessor -> DB 
 
     @Override
     public void start(Stage newstage) throws Exception { //gets this show on the road

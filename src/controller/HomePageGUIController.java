@@ -213,7 +213,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
                 if (email == null) {
                     email = "";
-                } else{
+                } else {
                     email = email.toLowerCase();
                 }
 
@@ -305,6 +305,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
 
+        newProjectFlag = true;
         navigateTo("/ui/CreateProjectGUI_1.fxml");
     }
 
@@ -313,6 +314,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /*============Inner Frame Project Dropdown===============*/
+    boolean newProjectFlag = false;
+
     @FXML
     private TableView projectsTable;
 
@@ -459,14 +462,14 @@ public class HomePageGUIController extends Controller implements Initializable {
             for (int i = 0; i < labourerList.size(); i++) {
 
                 input = input.toLowerCase();
-                
+
                 String first = labourerList.get(i).getFirstName().toLowerCase();
                 String last = labourerList.get(i).getLastName().toLowerCase();
                 String address = labourerList.get(i).getAddress();
                 String email = labourerList.get(i).getEmail();
                 String phone1 = labourerList.get(i).getPhone1();
                 String phone2 = labourerList.get(i).getPhone2();
-                
+
                 if (address == null) {
                     address = "";
                 } else {
@@ -475,7 +478,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
                 if (email == null) {
                     email = "";
-                } else{
+                } else {
                     email = email.toLowerCase();
                 }
 
@@ -486,7 +489,7 @@ public class HomePageGUIController extends Controller implements Initializable {
                 if (phone2 == null) {
                     phone2 = "";
                 }
-                
+
                 if (first.contains(input)
                         || last.contains(input)
                         || address.contains(input)
@@ -497,8 +500,7 @@ public class HomePageGUIController extends Controller implements Initializable {
                     matches.add(labourerList.get(i));
                 }
 
-                    //matches.add(labourerList.get(i));
-                
+                //matches.add(labourerList.get(i));
             }
 
             updateLabourerTable(matches);
@@ -523,7 +525,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             if (labs != null) {
 
                 labourerTable.setItems(labs);
-                
+
             } else {
 
                 this.labourerList = dbs.getLabourersForTable();
@@ -560,7 +562,6 @@ public class HomePageGUIController extends Controller implements Initializable {
             CreateClientGUIController ccgc = loader.getController();
             ccgc.setTitleField("Edit Client");
             ccgc.setSelected(selectedClient);
-            ccgc.switchButtons();
             ccgc.setFirstName(selectedClient.getFirstName());
             ccgc.setLastName(selectedClient.getLastName());
             ccgc.setCompanyName(selectedClient.getCompany());
@@ -634,10 +635,21 @@ public class HomePageGUIController extends Controller implements Initializable {
             String notes = selectedClient.getDescription();
             cpgc.setNotesField(notes);
             cpgc.setSelected(selectedClient);
+            
             viewClientProfileFlag = false;
         }
 
+        if (newProjectFlag == true) {
+            
+            CreateProjectGUIController cpgc = loader.getController();
+            cpgc.setOuterPane(this.borderpane);
+            newProjectFlag = false;
+        }
+
         //need the view client/labourer tables to be reloaded duringt all page navigation to keep the data fresh
+        
+        Controller cont = loader.getController();
+        cont.setErrorMessage(errorMessage);
         reloadTables(root);
         this.borderpane.setCenter(root);
     }
@@ -729,5 +741,13 @@ public class HomePageGUIController extends Controller implements Initializable {
         this.updateClientTable(null); //for viewing all clients in a table   
         this.updateLabourerTable(null); //for viewing all labourer in a table
 
+    }
+
+    /**
+     * 
+     * @param error 
+     */
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 }
