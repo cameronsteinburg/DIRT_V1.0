@@ -19,8 +19,8 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="775.0" minWidth="10.0" prefWidth="630.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="64.0" minHeight="40.0" prefHeight="64.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="16.0" prefHeight="26.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.0" minHeight="40.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="49.0" minHeight="19.0" prefHeight="35.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="196.0" vgrow="SOMETIMES" />
@@ -31,17 +31,12 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label prefHeight="34.0" prefWidth="451.0" text="Preliminary Start Date (for Quote calculation) *" wrapText="true" GridPane.rowIndex="1">
+            <Label prefHeight="34.0" prefWidth="451.0" text="Preliminary Start Date (for Quote calculation) *" wrapText="true" GridPane.rowIndex="2">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label prefHeight="28.0" prefWidth="455.0" text="Estimated End Date (for Quote calculation) *" GridPane.rowIndex="2">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label text="Site Address" GridPane.rowIndex="3">
+            <Label prefHeight="28.0" prefWidth="455.0" text="Estimated End Date (for Quote calculation) *" GridPane.rowIndex="3">
                <font>
                   <Font size="19.0" />
                </font>
@@ -51,11 +46,16 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="nameField" prefHeight="14.0" prefWidth="584.0" stylesheets="@createclientgui.css" GridPane.columnIndex="1" />
-            <TextField fx:id="addressField" stylesheets="@createclientgui.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="nameField" maxWidth="300.0" prefHeight="14.0" prefWidth="300.0" stylesheets="@createclientgui.css" GridPane.columnIndex="1" />
             <TextArea fx:id="notesField" prefHeight="179.0" prefWidth="584.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker fx:id="prelimStart" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="estEnd" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="prelimStart" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="estEnd" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="0.0" prefWidth="104.0" text="Site Address" GridPane.rowIndex="1">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="addressField" maxWidth="300.0" prefHeight="25.0" prefWidth="300.0" stylesheets="@createclientgui.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label layoutX="83.0" layoutY="88.0" text="* = Required">

@@ -5,16 +5,13 @@
  */
 package controller;
 
-import entity.Client;
 import entity.Project;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -23,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -36,6 +32,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
+    @FXML
+    private Button removeBtn;
     @FXML
     private TextField nameField;
     @FXML
@@ -50,6 +48,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private TableView<String> table;
     @FXML
     private TableColumn<String, String> servCol;
+    @FXML 
+    private Button nextBtn2;
 
     private Label errorMessage;
 
@@ -58,6 +58,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private Project inProgress; //is actually used
 
     private int customsAdded;
+
+    private String selectedItem;
 
     private ObservableList allItems = FXCollections.observableArrayList();
 
@@ -129,10 +131,43 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private void nextBtnAction2(ActionEvent event) {
 
-        if (allItems.size() > 0) {
+        
 
-        } else {
-            setMessage("Must add at least one service", errorMessage);
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void removeServiceAction(ActionEvent event){
+        
+        for(int i = 0; i < allItems.size();i++){
+            
+            selectServiceFromList();
+            
+            String sel = (String) allItems.get(i);
+            
+            if(sel.contains(selectedItem)){
+                allItems.remove(i);
+            }
+        }
+        
+        updateTable(allItems);
+    }
+
+    /**
+     *
+     * @param event
+     */
+
+    private void selectServiceFromList() {
+
+        if (table.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedItem = table.getSelectionModel().getSelectedItem();
+            System.out.println(selectedItem);
+            removeBtn.setDisable(false);
         }
 
     }
@@ -193,6 +228,18 @@ public class CreateProjectGUIController extends Controller implements Initializa
             table.setItems(items);
 
         }
+        
+        if(allItems.size() > 0 || customsAdded > 0){
+            
+            selectServiceFromList();
+            removeBtn.setDisable(false);
+            nextBtn2.setDisable(false);
+            
+        } else {
+        
+            removeBtn.setDisable(true);
+            nextBtn2.setDisable(true);
+        }
     }
 
     /**
@@ -222,5 +269,4 @@ public class CreateProjectGUIController extends Controller implements Initializa
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
     }
-
 }

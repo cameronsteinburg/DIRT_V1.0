@@ -92,6 +92,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private void viewClientAction(ActionEvent event) throws IOException {
 
         disableButtons();
+        tableFlag = true;
         navigateTo("/ui/ViewClientGUI.fxml");
 
     }
@@ -398,6 +399,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
 
         disableButtons();
+        tableFlag = true;
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
@@ -535,6 +537,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /*======================================Home Page Controls======================================*/
+    
+    private boolean tableFlag = false;
     /**
      * Primary means of changing pages of the inner panel of the app.
      * Controllers of FXML pages in the inner frame cannot access Home
@@ -645,12 +649,19 @@ public class HomePageGUIController extends Controller implements Initializable {
             cpgc.setOuterPane(this.borderpane);
             newProjectFlag = false;
         }
+        
+        if(tableFlag == true){
+        
+            
+            reloadTables(root);
+            tableFlag = false;
+        }
 
         //need the view client/labourer tables to be reloaded duringt all page navigation to keep the data fresh
         
-        Controller cont = loader.getController();
-        cont.setErrorMessage(errorMessage);
-        reloadTables(root);
+        //Controller cont = loader.getController(); //cant remember why I have this here
+        //cont.setErrorMessage(errorMessage);
+       
         this.borderpane.setCenter(root);
     }
 
