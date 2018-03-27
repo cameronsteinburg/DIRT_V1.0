@@ -14,23 +14,23 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import services.DBServices;
 
 public class CreateProjectGUIController extends Controller implements Initializable {
 
@@ -43,22 +43,23 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private DatePicker estEnd;
     @FXML
-    private ChoiceBox clientDropdown;
-    @FXML
     private TextField addressField;
     @FXML
     private TextArea notesField;
+    @FXML
+    private TableView<String> table;
+    @FXML
+    private TableColumn<String, String> servCol;
 
     private Label errorMessage;
 
     private BorderPane outerPane;
-    
-    private Project inProgress;
-    
-    
-    public Label getErrorMessage(){
-        return this.errorMessage;
-    }
+
+    private Project inProgress; //is actually used
+
+    private int customsAdded;
+
+    private ObservableList allItems = FXCollections.observableArrayList();
 
     /**
      *
@@ -67,7 +68,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
      */
     @FXML
     private void nextBtnAction(ActionEvent event) throws IOException { //User attempts to save their details entered in fields in CreateProjectGUI.fxml
-
 
         //get the User's data they entered into GUI fields
         LocalDate rawPrelim = prelimStart.getValue();
@@ -100,30 +100,100 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
             setMessage("Preliminary Date Must Be Before End Date", errorMessage);
             return;
-        }
-
-        //all data is valid at this point
-       
+        }//all data is valid at this point
 
         if (description.length() == 0 && address.length() == 0) { //if user didn't enter anything into the optional fields
-            inProgress = new Project(name, prelimStartDate, estEndDate);
+            this.inProgress = new Project(name, prelimStartDate, estEndDate);
         }
 
         if (description.length() > 0 && address.length() == 0) {
-            inProgress = new Project(name, prelimStartDate, estEndDate, description); //if user only put text in notes field
+            this.inProgress = new Project(name, prelimStartDate, estEndDate, description); //if user only put text in notes field
         }
 
         if (address.length() > 0 && description.length() == 0) {
-            inProgress = new Project(address, name, prelimStartDate, estEndDate); //if user only puts text in address field
+            this.inProgress = new Project(address, name, prelimStartDate, estEndDate); //if user only puts text in address field
         }
 
         if (description.length() > 0 && address.length() > 0) {
-            inProgress = new Project(name, prelimStartDate, estEndDate, description, address); //user puts text in both field
+            this.inProgress = new Project(name, prelimStartDate, estEndDate, description, address); //user puts text in both field
         }
 
         navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
-        
+
     } //the project object is not committed to db until the quote has been produced
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void nextBtnAction2(ActionEvent event) {
+
+        if (allItems.size() > 0) {
+
+        } else {
+            setMessage("Must add at least one service", errorMessage);
+        }
+
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void byHandAction(ActionEvent event) {
+
+        allItems.add("Excavation by Hand");
+        updateTable(allItems);
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void bySkidAction(ActionEvent event) {
+
+        allItems.add("Excavation by Skid");
+        updateTable(allItems);
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void bedAction(ActionEvent event) {
+
+        allItems.add("Bed");
+        updateTable(allItems);
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void addCustomAction(ActionEvent event) {
+
+        this.customsAdded++;
+        allItems.add("Custom Service #" + customsAdded);
+        updateTable(allItems);
+    }
+
+    /**
+     * updates the table of services when the user clicks buttons of services
+     */
+    private void updateTable(ObservableList items) {
+
+        if (servCol != null) {
+
+            servCol.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()));
+            table.setItems(items);
+
+        }
+    }
 
     /**
      * getting names for the dropdown menu so user can pick a Client to add to
@@ -136,26 +206,21 @@ public class CreateProjectGUIController extends Controller implements Initializa
     public void initialize(URL url, ResourceBundle rb) {
 
         //DBServices dbs = new DBServices();     // load and producesproduces list of Client names for the dropdown in the GUI
-        // ArrayList<Client> clients = new ArrayList<Client>();
+        //ArrayList<Client> clients = new ArrayList<Client>();
         //clients.addAll(dbs.getClients(false));
         //ObservableList<String> names = FXCollections.observableArrayList();
-
         // for (int i = 0; i < clients.size(); i++) {
         //   names.add(clients.get(i).getFirstName());
         // }
         //clientDropdown.setItems((ObservableList) names); //puts names in dropdown
     }
-    
-    protected BorderPane getOuterPane(){
-       return this.outerPane;
-    }
-    
-    protected void setOuterPane(BorderPane pane){
+
+    protected void setOuterPane(BorderPane pane) {
         this.outerPane = pane;
     }
-    
-   
-    protected void setErrorMessage (Label error){
+
+    protected void setErrorMessage(Label error) {
         this.errorMessage = error;
     }
+
 }

@@ -185,7 +185,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         if (input != null) {
 
-            ObservableList<Client> matches = FXCollections.observableArrayList();;
+            ObservableList<Client> matches = FXCollections.observableArrayList();
 
             for (int i = 0; i < clientList.size(); i++) {
 

@@ -28,11 +28,11 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <GridPane layoutX="3.0" layoutY="96.0" prefHeight="349.0" prefWidth="638.0">
+      <GridPane layoutX="14.0" layoutY="95.0" prefHeight="350.0" prefWidth="618.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="317.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="0.0" prefWidth="13.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="425.0" minWidth="10.0" prefWidth="317.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="0.0" prefWidth="14.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -45,24 +45,24 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="530.0" styleClass="blue-button" text="Excavation by Hand" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Excavation by Skid" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Snow Removal" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Bed (Soil/Mulch/Aggregate/Rock)" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Underground Irrigation" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="314.0" styleClass="blue-button" text="Top Soil" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="328.0" styleClass="blue-button" text="Retaining Wall" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="byHandBtn" mnemonicParsing="false" onAction="#byHandAction" prefHeight="40.0" prefWidth="530.0" styleClass="blue-button" text="Excavation by Hand" />
+            <Button fx:id="bySkidBtn" mnemonicParsing="false" onAction="#bySkidAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Excavation by Skid" GridPane.rowIndex="1" />
+            <Button fx:id="snowRemovalBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Snow Removal" GridPane.rowIndex="2" />
+            <Button fx:id="bedBtn" mnemonicParsing="false" onAction="#bedAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Bed (Soil/Mulch/Aggregate/Rock)" GridPane.rowIndex="3" />
+            <Button fx:id="barrierBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="4" />
+            <Button fx:id="walkwayBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="irrigationBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Underground Irrigation" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="sodBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="topSoilBtn" disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="314.0" styleClass="blue-button" text="Top Soil" GridPane.columnIndex="2" />
+            <Button fx:id="wallBtn" disable="true" mnemonicParsing="false" prefHeight="42.0" prefWidth="328.0" styleClass="blue-button" text="Retaining Wall" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TableView layoutX="647.0" layoutY="14.0" prefHeight="445.0" prefWidth="417.0">
+      <TableView fx:id="table" layoutX="647.0" layoutY="14.0" prefHeight="445.0" prefWidth="417.0">
         <columns>
-          <TableColumn prefWidth="415.0" text="Services for Project" />
+          <TableColumn fx:id="servCol" prefWidth="415.0" text="Services for Project" />
         </columns>
       </TableView>
-      <Button layoutX="139.0" layoutY="468.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="410.0" styleClass="blue-button" text="Add Custom" />
+      <Button fx:id="customBtn" layoutX="139.0" layoutY="468.0" mnemonicParsing="false" onAction="#addCustomAction" prefHeight="40.0" prefWidth="410.0" styleClass="blue-button" text="Add Custom" />
       <Button disable="true" layoutX="659.0" layoutY="468.0" mnemonicParsing="false" styleClass="red_button" text="Remove Service" />
    </children>
 </AnchorPane>
