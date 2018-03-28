@@ -48,14 +48,14 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private TableView<String> table;
     @FXML
     private TableColumn<String, String> servCol;
-    @FXML 
+    @FXML
     private Button nextBtn2;
 
     private Label errorMessage;
 
     private BorderPane outerPane;
 
-    private Project inProgress; //is actually used
+    private Project inProgress; //is actually used. netbeans is a liar
 
     private int customsAdded;
 
@@ -103,6 +103,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
             setMessage("Preliminary Date Must Be Before End Date", errorMessage);
             return;
         }//all data is valid at this point
+        
 
         if (description.length() == 0 && address.length() == 0) { //if user didn't enter anything into the optional fields
             this.inProgress = new Project(name, prelimStartDate, estEndDate);
@@ -131,28 +132,26 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private void nextBtnAction2(ActionEvent event) {
 
-        
-
     }
-    
+
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
-    private void removeServiceAction(ActionEvent event){
-        
-        for(int i = 0; i < allItems.size();i++){
-            
+    private void removeServiceAction(ActionEvent event) {
+
+        for (int i = 0; i < allItems.size(); i++) {
+
             selectServiceFromList();
-            
+
             String sel = (String) allItems.get(i);
-            
-            if(sel.contains(selectedItem)){
+
+            if (sel.contains(selectedItem)) {
                 allItems.remove(i);
             }
         }
-        
+
         updateTable(allItems);
     }
 
@@ -160,7 +159,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
      *
      * @param event
      */
-
     private void selectServiceFromList() {
 
         if (table.getSelectionModel().getSelectedItem() != null) {
@@ -228,18 +226,34 @@ public class CreateProjectGUIController extends Controller implements Initializa
             table.setItems(items);
 
         }
-        
-        if(allItems.size() > 0 || customsAdded > 0){
-            
+
+        if (allItems.size() > 0 || customsAdded > 0) {
+
             selectServiceFromList();
             removeBtn.setDisable(false);
             nextBtn2.setDisable(false);
-            
+
         } else {
-        
+
             removeBtn.setDisable(true);
             nextBtn2.setDisable(true);
         }
+    }
+
+    /**
+     * 
+     * @param pane 
+     */
+    protected void setOuterPane(BorderPane pane) {
+        this.outerPane = pane;
+    }
+
+    /**
+     * 
+     * @param error 
+     */
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 
     /**
@@ -262,11 +276,4 @@ public class CreateProjectGUIController extends Controller implements Initializa
         //clientDropdown.setItems((ObservableList) names); //puts names in dropdown
     }
 
-    protected void setOuterPane(BorderPane pane) {
-        this.outerPane = pane;
-    }
-
-    protected void setErrorMessage(Label error) {
-        this.errorMessage = error;
-    }
 }
