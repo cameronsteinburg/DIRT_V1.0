@@ -535,6 +535,21 @@ public class HomePageGUIController extends Controller implements Initializable {
             }
         }
     }
+    
+    /*======================================Menu Bar  Controls======================================*/
+    
+    /**
+     * Under File in menu bar, set rates of value that are used repeatedly in calculations
+     * @param event 
+     */
+    @FXML
+    private void constantsAction(ActionEvent event) throws IOException{
+        
+        disableButtons();
+        navigateTo("");
+    
+        
+    }
 
     /*======================================Home Page Controls======================================*/
     

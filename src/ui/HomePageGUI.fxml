@@ -59,7 +59,7 @@
                       <Menu mnemonicParsing="false" text="File" />
                         <Menu mnemonicParsing="false" text="Edit">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Values" />
+                              <MenuItem mnemonicParsing="false" onAction="#constantsAction" text="User Constants" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Database">
