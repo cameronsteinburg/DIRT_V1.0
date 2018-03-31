@@ -13,6 +13,7 @@ drop table projectlabourer;
 drop table labourers;
 drop table projects;
 drop table clients;
+drop table serviceconstants;
 drop database DIRT;
 
 #creates db
@@ -56,6 +57,13 @@ isActive boolean not null, constraint pk_Labourer primary key (labourerNum));
 #creates Project-Labourer bridging table
 create table ProjectLabourer (projectNum smallint unsigned not null, labourerNum smallint unsigned not null, constraint fk_ProjectLabourerProject foreign key (projectNum) references Projects (projectNum), constraint fk_ProjectLabourerLabourer foreign key (labourerNum) references Labourers (labourerNum));
 
+#creates Service constants table for the most used values for a given service/product
+create table ServiceConstants (
+superService varchar(30) not null, 
+subService varchar(200) not null, 
+constantLow numeric(5,2) not null,
+constantHigh numeric(5,2));
+
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
 insert into Labourers (fname, lname, title, phone1, address,  emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Keifer', 'Hicks', 'Contracter', 587456852, '4242 Riverbend Rd SE', 'Shaizans Sister', 5874456888, 4036855477, 1);
@@ -83,3 +91,52 @@ insert into Clients (fname, lname, phone1, description, email, isActive) values 
 insert into Clients (fname, lname, phone1, address, isActive) values ('Bill', 'gates', 55555555, '1234 Super Rich Rd', 1);
 insert into Clients (fname, lname, phone1, email, address, isActive) values ('Oliver', 'Sykes', 64512437659, 'welsh@dropdead.com', '666 vegan st', 1);
 insert into Clients (fname, lname, phone1, phone2, email, address, isActive) values ('Patrick', 'Stump', 5642568759, 5556894258, 'fedora@fob.com' ,'88 Coopersonte Way NE', 1);
+
+insert into serviceconstants values('excavation','trucking /2 yards',78,null);
+insert into serviceconstants values('excavation','disposal',60,null);
+insert into serviceconstants values('excavation','man hours by hand /yards',3,null);
+insert into serviceconstants values('excavation','man hours by skid /yards',0.5,null);
+insert into serviceconstants values('excavation','labour cost by hand /hours',55,null);
+insert into serviceconstants values('excavation','labour cost by skid /hours',150,null);
+
+insert into serviceconstants values('bed','hours /yards',1,null);
+insert into serviceconstants values('bed','install /hours',55,null);
+
+insert into serviceconstants values('stonewalkway','estimated man hours',4,null);
+insert into serviceconstants values('stonewalkway','install rate /hours',55,null);
+
+insert into serviceconstants values('geotextilewalkway','weed barrier cost /sq. ft',0.15,null);
+insert into serviceconstants values('geotextilewalkway','fabric staples qty /1/5 sq. ft',5,null);
+insert into serviceconstants values('geotextilewalkway','fabric staples cost /staple',0.15,null);
+insert into serviceconstants values('geotextilewalkway','fabric man hours /100 sq ft',200,null);
+insert into serviceconstants values('geotextilewalkway','fabric install rate /hours',55,null);
+
+insert into serviceconstants values('walkwaybase','crushed base sq. ft/inch/yard',243,null);
+insert into serviceconstants values('walkwaybase','crasued cost /yard',75,null);
+insert into serviceconstants values('walkwaybase','man hours /yard',3,null);
+insert into serviceconstants values('walkwaybase','install rate / hours',55,null);
+
+insert into serviceconstants values('screedsand','depth sq.ft / yard',324,null);
+insert into serviceconstants values('screedsand','cost /yard',85,null);
+insert into serviceconstants values('screedsand','man hours / yard',3,null);
+insert into serviceconstants values('screedsand','install /hours',55,null);
+
+insert into serviceconstants values('edgerestraint','cost /8 ft',20,null);
+insert into serviceconstants values('edgerestraint','nails /1nail',1,null);
+insert into serviceconstants values('edgerestraint','man hours',50,null);
+insert into serviceconstants values('edgerestraint','install /hours',55,null);
+
+insert into serviceconstants values('jointingsand','QTY (kg/sf) @ 1/4 inch',0.6,null);
+insert into serviceconstants values('jointingsand','cost /kg',1.5,null);
+insert into serviceconstants values('jointingsand','hours /kg',0.1,null);
+insert into serviceconstants values('jointingsand','install /hours',55,null);
+
+insert into serviceconstants values('materials','Crushed Rock',53.10,59.00);
+insert into serviceconstants values('materials','Pea Rock',58.50,65.00);
+insert into serviceconstants values('materials','River Rock',58.50,65.00);
+insert into serviceconstants values('materials','Mulch: Western Red Cedar',47.45,52.72);
+insert into serviceconstants values('materials','Top Soil: Premium mix',35.10,39.00);
+insert into serviceconstants values('materials','Crusher Dust',44.21,50.84);
+insert into serviceconstants values('materials','Red Shale',85.00,97.75);
+insert into serviceconstants values('materials','Sod (per 10 s.f.)',3.60,4.80);
+insert into serviceconstants values('materials','Sod (per 10 s.f.)',3.60,4.80);
