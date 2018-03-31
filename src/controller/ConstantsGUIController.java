@@ -12,8 +12,6 @@ import javafx.fxml.Initializable;
 public class ConstantsGUIController implements Initializable {
     
     
-    
-
     /**
      * Initializes the controller class.
      */

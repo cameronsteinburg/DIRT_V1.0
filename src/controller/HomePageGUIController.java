@@ -80,7 +80,6 @@ public class HomePageGUIController extends Controller implements Initializable {
     private void newClientAction(ActionEvent event) throws IOException {
 
         navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client inside dynamic pane
-        disableButtons();
     }
 
     /**
@@ -91,10 +90,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void viewClientAction(ActionEvent event) throws IOException {
 
-        disableButtons();
         tableFlag = true;
         navigateTo("/ui/ViewClientGUI.fxml");
-
     }
 
     /**
@@ -144,7 +141,6 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             setMessage("Cllient Successfully Removed", this.errorMessage);
             navigateTo("/ui/ViewClientGUI.fxml");
-            disableButtons();
 
         } else {
             alert.close();
@@ -334,7 +330,6 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        disableButtons();
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
 
@@ -361,7 +356,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             dbs.deleteLabourer(target);
             setMessage("Labourer Successfully Removed", this.errorMessage);
             navigateTo("/ui/ViewLabourerGUI.fxml");
-            disableButtons();
+            
         } else {
             alert.close();
         }
@@ -398,7 +393,6 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {
 
-        disableButtons();
         tableFlag = true;
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
@@ -545,8 +539,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void constantsAction(ActionEvent event) throws IOException{
         
-        disableButtons();
-        navigateTo("");
+        
+        navigateTo("/ui/ConstantsGUI.fxml");
     
         
     }
@@ -566,6 +560,8 @@ public class HomePageGUIController extends Controller implements Initializable {
      */
     public void navigateTo(String url) throws IOException {
 
+        disableButtons();
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
 
         Parent root = null;

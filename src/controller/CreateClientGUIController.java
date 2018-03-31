@@ -20,7 +20,7 @@ public class CreateClientGUIController extends Controller implements Initializab
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
-    private TextField fNameField;
+    private TextField fNameField; 
     @FXML
     private TextField lNameField;
     @FXML
