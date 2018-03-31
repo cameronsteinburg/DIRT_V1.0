@@ -256,6 +256,10 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * 
+     * @param clients 
+     */
     private void updateClientTable(ObservableList<Client> clients) {
 
         if (firstNameCol != null) {
@@ -539,10 +543,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void constantsAction(ActionEvent event) throws IOException{
         
-        
         navigateTo("/ui/ConstantsGUI.fxml");
-    
-        
     }
 
     /*======================================Home Page Controls======================================*/
@@ -658,20 +659,18 @@ public class HomePageGUIController extends Controller implements Initializable {
             
             CreateProjectGUIController cpgc = loader.getController();
             cpgc.setOuterPane(this.borderpane);
+            cpgc.setErrorMessage(errorMessage);
             newProjectFlag = false;
         }
         
         if(tableFlag == true){
         
-            
             reloadTables(root);
             tableFlag = false;
         }
 
         //need the view client/labourer tables to be reloaded duringt all page navigation to keep the data fresh
         
-        //Controller cont = loader.getController(); //cant remember why I have this here
-        //cont.setErrorMessage(errorMessage);
        
         this.borderpane.setCenter(root);
     }
