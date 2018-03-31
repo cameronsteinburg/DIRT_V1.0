@@ -37,6 +37,7 @@ public class CreateClientGUIController extends Controller implements Initializab
     private TextArea notesField;
     
     private Label errorMessage;
+    
     @FXML
     private Label titleField;
     @FXML

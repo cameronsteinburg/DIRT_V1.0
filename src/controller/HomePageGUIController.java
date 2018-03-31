@@ -56,6 +56,7 @@ public class HomePageGUIController extends Controller implements Initializable {
  /*============Outer Frame Client Dropdown===============*/
     private boolean editFlagClient = false; //indicatse user clicks edit client instead of new in outer gui, after picking from table
     private boolean viewClientProfileFlag = false; //indicates user has clicked view client in outer gui, after picking from table
+    private boolean createClientFlag = false;
 
     @FXML
     protected BorderPane borderpane = new BorderPane(); //this pane is morphed to hold all inner fram pages, as opposed to changing scenes inside of a scene, which isn't possible
@@ -79,6 +80,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void newClientAction(ActionEvent event) throws IOException {
 
+        createClientFlag = true;
         navigateTo("/ui/CreateClientGUI.fxml"); //takes user to page to make new Client inside dynamic pane
     }
 
@@ -324,6 +326,7 @@ public class HomePageGUIController extends Controller implements Initializable {
  /*============Outer Frame Labourer Dropdown===============*/
     private boolean editLabourerFlag = false;
     private boolean viewLabourerProfileFlag = false;
+    private boolean createLabourerFlag = false;
 
     /**
      *
@@ -334,6 +337,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void newLabourerAction(ActionEvent event) throws IOException, URISyntaxException {
 
+        createLabourerFlag = true;
         navigateTo("/ui/CreateLabourerGUI.fxml");
     }
 
@@ -536,6 +540,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     
     /*======================================Menu Bar  Controls======================================*/
     
+    private boolean constantsFlag = false;
     /**
      * Under File in menu bar, set rates of value that are used repeatedly in calculations
      * @param event 
@@ -543,6 +548,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void constantsAction(ActionEvent event) throws IOException{
         
+        constantsFlag = true;
         navigateTo("/ui/ConstantsGUI.fxml");
     }
 
@@ -587,6 +593,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             ccgc.setAddressField(selectedClient.getAddress());
             ccgc.setNotesField(selectedClient.getDescription());
             ccgc.setSelected(selectedClient);
+            ccgc.setErrorMessage(errorMessage);
             editFlagClient = false;
         }
 
@@ -609,7 +616,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             clgc.setEmergencyPhone2Field(selectedLabourer.getEmergContactPhone2());
             clgc.setSinField(selectedLabourer.getSin());
             clgc.setWageField(selectedLabourer.getWage());
-
+            clgc.setErrorMessage(errorMessage);
             editLabourerFlag = false;
         }
 
@@ -628,7 +635,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             lpgc.setEmergencyPhone2Field(selectedLabourer.getEmergContactPhone2());
             lpgc.setSinField(selectedLabourer.getSin());
             lpgc.setWageField(selectedLabourer.getWage());
-
+            lpgc.setErrorMessage(errorMessage);
             viewLabourerProfileFlag = false;
         }
 
@@ -651,7 +658,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             String notes = selectedClient.getDescription();
             cpgc.setNotesField(notes);
             cpgc.setSelected(selectedClient);
-            
+            cpgc.setErrorMessage(errorMessage);
             viewClientProfileFlag = false;
         }
 
@@ -671,6 +678,27 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         //need the view client/labourer tables to be reloaded duringt all page navigation to keep the data fresh
         
+        if(constantsFlag == true){
+            
+            ConstantsGUIController cgc = loader.getController();
+            cgc.setErrorMessage(errorMessage);
+            
+            constantsFlag = false;
+        }
+        
+        if(createClientFlag == true){
+        
+            CreateClientGUIController ccgc = loader.getController();
+            ccgc.setErrorMessage(errorMessage);
+            createClientFlag = false;
+        }
+        
+        if(createLabourerFlag == true){
+        
+            CreateLabourerGUIController clgc = loader.getController();
+            clgc.setErrorMessage(errorMessage);
+            createLabourerFlag = false;
+        }
        
         this.borderpane.setCenter(root);
     }

@@ -12,10 +12,10 @@
 
 <AnchorPane id="AnchorPane" maxHeight="521.0" maxWidth="1078.0" prefHeight="521.0" prefWidth="1078.0" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConstantsGUIController">
    <children>
-      <Button layoutX="12.0" layoutY="480.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="52.0" text="Save" />
+      <Button layoutX="12.0" layoutY="480.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="32.0" prefWidth="52.0" text="Save" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="12.0" />
       <AnchorPane layoutX="1.0" layoutY="-4.0" minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="1079.0">
          <children>
-            <GridPane layoutX="503.0" layoutY="12.0" prefHeight="163.0" prefWidth="50.0">
+            <GridPane layoutX="503.0" layoutY="12.0" prefHeight="163.0" prefWidth="50.0" AnchorPane.topAnchor="12.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                </columnConstraints>
@@ -41,7 +41,7 @@
                   <TextField fx:id="field22" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <GridPane layoutX="268.0" layoutY="22.0" prefHeight="147.0" prefWidth="237.0">
+            <GridPane layoutX="268.0" layoutY="22.0" prefHeight="147.0" prefWidth="237.0" AnchorPane.topAnchor="22.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                </columnConstraints>
@@ -62,7 +62,7 @@
                   <Label prefHeight="27.0" prefWidth="232.0" text="Man Hour Rate By Skid (dollars per 1 hour)" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane layoutX="474.0" layoutY="180.0" prefHeight="54.0" prefWidth="50.0">
+            <GridPane layoutX="474.0" layoutY="180.0" prefHeight="54.0" prefWidth="50.0" AnchorPane.topAnchor="180.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                </columnConstraints>
@@ -92,27 +92,27 @@
                   <Label prefHeight="27.0" prefWidth="198.0" text="Man Hour Rate (dollars per 1 hour)" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Label layoutX="275.0" layoutY="2.0" prefHeight="27.0" prefWidth="87.0" text="Excavation" underline="true">
+            <Label layoutX="275.0" layoutY="2.0" prefHeight="27.0" prefWidth="87.0" text="Excavation" underline="true" AnchorPane.topAnchor="2.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="272.0" layoutY="175.0" text="Beds" underline="true">
+            <Label layoutX="272.0" layoutY="175.0" text="Beds" underline="true" AnchorPane.topAnchor="175.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="8.0" layoutY="271.0" text="Walkway" underline="true">
+            <Label layoutX="8.0" layoutY="271.0" text="Walkway" underline="true" AnchorPane.topAnchor="271.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="6.0" layoutY="2.0" text="Materials Cost List" underline="true">
+            <Label layoutX="6.0" layoutY="2.0" text="Materials Cost List" underline="true" AnchorPane.leftAnchor="6.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <GridPane layoutX="6.0" layoutY="25.0" prefHeight="230.0" prefWidth="258.0">
+            <GridPane layoutX="6.0" layoutY="25.0" prefHeight="230.0" prefWidth="258.0" AnchorPane.topAnchor="25.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.5" minWidth="10.0" prefWidth="136.5" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.5" minWidth="10.0" prefWidth="57.0" />
@@ -167,7 +167,7 @@
                   <TextField fx:id="field16" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                   <TextField fx:id="field3" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="field4" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="field1" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" text="000.00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="field1" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="field2" maxWidth="50.0" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
