@@ -599,5 +599,50 @@ public class JDBCCommands {
     public ArrayList<Labourer> fetchLabourers() {
         return null;
     }
+    
+    /**
+     *
+     * Retrieves a constant from the database from the name passed to the method
+     *
+     * @param superService the superService to be searched for
+     * @param subService the subService to be searched for
+     * @return the constant found if no errors occur
+     */
+    public ArrayList getConstant(String superService, String subService) {
 
+        try {
+            
+            Statement statement = conn.createStatement();
+
+            // Result set contains the result of the SQL query
+            String query = "select * from serviceconstants where superservice = ? & subservice = ?";
+            
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+
+            preparedStmt.setString(1, superService);
+            preparedStmt.setString(2, subService);
+
+            // Result set contains the result of the SQL query
+            ResultSet results = preparedStmt.executeQuery();
+
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                
+                ArrayList narray = new ArrayList();                
+                double constantLow = results.getDouble("constantLow");
+                narray.add(constantLow);
+                
+                if (superService.equals("materials")){
+                    double constantHigh = results.getDouble("constantHigh");
+                    narray.add(constantHigh);
+                }
+                return narray;
+            }            
+        }   catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList narray = new ArrayList();
+        narray.add(-1);
+        return narray;
+    }
 }

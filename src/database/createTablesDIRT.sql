@@ -139,4 +139,3 @@ insert into serviceconstants values('materials','Top Soil: Premium mix',35.10,39
 insert into serviceconstants values('materials','Crusher Dust',44.21,50.84);
 insert into serviceconstants values('materials','Red Shale',85.00,97.75);
 insert into serviceconstants values('materials','Sod (per 10 s.f.)',3.60,4.80);
-insert into serviceconstants values('materials','Sod (per 10 s.f.)',3.60,4.80);
