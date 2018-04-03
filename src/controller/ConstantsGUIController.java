@@ -69,7 +69,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
     private void saveBtnAction(ActionEvent event){
     
         String f1s = field1.getText();
-        String f2s = field3.getText();
+        String f2s = field2.getText();
         String f3s = field3.getText();
         String f4s = field4.getText();
         String f5s = field5.getText();

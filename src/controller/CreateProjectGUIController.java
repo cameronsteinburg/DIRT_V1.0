@@ -11,6 +11,7 @@ import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -26,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class CreateProjectGUIController extends Controller implements Initializable {
@@ -50,10 +52,12 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private TableColumn<String, String> servCol;
     @FXML
     private Button nextBtn2;
+    @FXML
+    private AnchorPane pane3;
 
     private Label errorMessage;
 
-    private BorderPane outerPane;
+    private static BorderPane outerPane;
 
     private Project inProgress; //is actually used. netbeans is a liar
 
@@ -61,8 +65,11 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
     private String selectedItem;
 
-    private ObservableList allItems = FXCollections.observableArrayList();
+    private ObservableList<String> allItems = FXCollections.observableArrayList();
+    
+    private ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
 
+    
     /**
      *
      * @param event
@@ -103,7 +110,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
             setMessage("Preliminary Date Must Be Before End Date", errorMessage);
             return;
         }//all data is valid at this point
-        
 
         if (description.length() == 0 && address.length() == 0) { //if user didn't enter anything into the optional fields
             this.inProgress = new Project(name, prelimStartDate, estEndDate);
@@ -131,6 +137,42 @@ public class CreateProjectGUIController extends Controller implements Initializa
      */
     @FXML
     private void nextBtnAction2(ActionEvent event) {
+
+        navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
+    }
+
+    private void addToList() {
+
+        for (int i = 0; i < allItems.size(); i++) {
+
+            if (allItems.get(i) == "Bed") {
+
+            } else if (allItems.get(i).contains("Hand")) {
+                
+                ArrayList hand = new ArrayList();
+                
+                TextField sqft = new TextField();
+                
+
+            } else if (allItems.get(i).contains("Skid")) {
+
+            } else if (allItems.get(i).contains("Custom")) {
+
+            } else if (allItems.get(i).contains("Soil")) {
+
+            } else if (allItems.get(i).contains("Sod")) {
+
+            } else if (allItems.get(i).contains("Snow")) {
+
+            } else if (allItems.get(i).contains("Irrigation")) {
+
+            } else if (allItems.get(i).contains("Barrier")) {
+
+            } else if (allItems.get(i).contains("Wall")) {
+
+            }
+
+        }
 
     }
 
@@ -216,6 +258,17 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
+     *
+     * @param event
+     */
+    @FXML
+    private void patioAction(ActionEvent event) {
+
+        allItems.add("Paver");
+        updateTable(allItems);
+    }
+
+    /**
      * updates the table of services when the user clicks buttons of services
      */
     private void updateTable(ObservableList items) {
@@ -241,16 +294,16 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     * 
-     * @param pane 
+     *
+     * @param pane
      */
     protected void setOuterPane(BorderPane pane) {
         this.outerPane = pane;
     }
 
     /**
-     * 
-     * @param error 
+     *
+     * @param error
      */
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
