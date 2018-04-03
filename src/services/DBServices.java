@@ -259,36 +259,68 @@ public class DBServices {
         return (int) Main.jdbcc.getConstant("jointingsand","install /hours").get(0);
     }
     
-    public double materials_CrushedRock(){
+    public double materials_CrushedRockUnit(){
         return (int) Main.jdbcc.getConstant("materials","Crushed Rock").get(0);
     }
     
-    public double materials_PeaRock(){
+    public double materials_CrushedRockRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Crushed Rock").get(1);
+    }
+    
+    public double materials_PeaRockUnit(){
         return (int) Main.jdbcc.getConstant("materials","Pea Rock").get(0);
     }
     
-    public double materials_RiverRock(){
+    public double materials_PeaRockRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Pea Rock").get(1);
+    }
+    
+    public double materials_RiverRockUnit(){
         return (int) Main.jdbcc.getConstant("materials","River Rock").get(0);
     }
     
-    public double materials_MulchWesternRedCedar(){
+    public double materials_RiverRockRetail(){
+        return (int) Main.jdbcc.getConstant("materials","River Rock").get(1);
+    }
+    
+    public double materials_MulchWesternRedCedarUnit(){
         return (int) Main.jdbcc.getConstant("materials","Mulch: Western Red Cedar").get(0);
     }
     
-    public double materials_TopSoilPremiumMix(){
+     public double materials_MulchWesternRedCedarRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Mulch: Western Red Cedar").get(1);
+    }
+    
+    public double materials_TopSoilPremiumMixUnit(){
         return (int) Main.jdbcc.getConstant("materials","Top Soil: Premium mix").get(0);
     }
     
-    public double materials_CrusherDust(){
+    public double materials_TopSoilPremiumMixRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Top Soil: Premium mix").get(1);
+    }
+    
+    public double materials_CrusherDustUnit(){
         return (int) Main.jdbcc.getConstant("materials","Crusher Dust").get(0);
     }
     
-    public double materials_RedShale(){
+    public double materials_CrusherDustRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Crusher Dust").get(1);
+    }
+    
+    public double materials_RedShaleUnit(){
         return (int) Main.jdbcc.getConstant("materials","Red Shale").get(0);
     }
     
-    public double materials_SodPer10SQFT(){
+    public double materials_RedShaleRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Red Shale").get(1);
+    }
+    
+    public double materials_SodPer10SQFTUnit(){
         return (int) Main.jdbcc.getConstant("materials","Sod (per 10 s.f.)").get(0);
+    }
+    
+    public double materials_SodPer10SQFTRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Sod (per 10 s.f.)").get(1);
     }
     
 }
