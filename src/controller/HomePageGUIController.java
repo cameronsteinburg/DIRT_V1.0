@@ -289,6 +289,8 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
+    
+    private boolean createProjectFlag = false;
     /**
      *
      * @throws IOException
@@ -684,6 +686,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             cgc.setErrorMessage(errorMessage);
             
             constantsFlag = false;
+            
         }
         
         if(createClientFlag == true){
@@ -699,8 +702,17 @@ public class HomePageGUIController extends Controller implements Initializable {
             clgc.setErrorMessage(errorMessage);
             createLabourerFlag = false;
         }
+        
+        if(createProjectFlag == true){
+        
+            CreateProjectGUIController cpgc = loader.getController();
+            cpgc.setErrorMessage(errorMessage);
+            cpgc.setOuterPane(borderpane);
+            createProjectFlag = false;
+        }
        
         this.borderpane.setCenter(root);
+        
     }
 
     /**
@@ -789,7 +801,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         this.updateClientTable(null); //for viewing all clients in a table   
         this.updateLabourerTable(null); //for viewing all labourer in a table
-
+        
     }
 
     /**

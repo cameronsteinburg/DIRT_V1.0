@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateProjectGUIController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateProjectGUIController">
    <children>
       <Label layoutX="27.0" layoutY="68.0" text="Predefined Services:">
          <font>
@@ -49,7 +49,7 @@
             <Button fx:id="snowRemovalBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Snow Removal" GridPane.rowIndex="2" />
             <Button fx:id="bedBtn" mnemonicParsing="false" onAction="#bedAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Bed (Soil/Mulch/Aggregate/Rock)" GridPane.rowIndex="3" />
             <Button fx:id="barrierBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="4" />
-            <Button fx:id="walkwayBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="walkwayBtn" mnemonicParsing="false" onAction="#patioAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Button fx:id="irrigationBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Underground Irrigation" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button fx:id="sodBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="topSoilBtn" disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="314.0" styleClass="blue-button" text="Top Soil" GridPane.columnIndex="2" />
