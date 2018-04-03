@@ -207,7 +207,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     * 
+     *
+     * @param event
      */
     private void selectServiceFromList() {
 
@@ -285,6 +286,18 @@ public class CreateProjectGUIController extends Controller implements Initializa
             servCol.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()));
             table.setItems(items);
 
+        }
+
+        if (allItems.size() > 0 || customsAdded > 0) {
+
+            selectServiceFromList();
+            removeBtn.setDisable(false);
+            nextBtn2.setDisable(false);
+
+        } else {
+
+            removeBtn.setDisable(true);
+            nextBtn2.setDisable(true);
         }
     }
 
