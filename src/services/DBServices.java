@@ -134,4 +134,193 @@ public class DBServices {
     public boolean backup() {
         return false;
     }
+    
+    public double excavation_Trucking(){
+        return (int) Main.jdbcc.getConstant("excavation", "trucking /2 yards").get(0);
+    }
+    
+    public double excavation_Disposal(){
+        return (int) Main.jdbcc.getConstant("excavation","disposal").get(0); 
+    }
+    
+    public double excavation_ManHoursByHandPerYards(){
+        return (int) Main.jdbcc.getConstant("excavation","man hours by hand /yards").get(0);
+    }
+    
+    public double excavation_ManHoursBySkidPerYards(){
+        return (int) Main.jdbcc.getConstant("excavation","man hours by skid /yards").get(0); 
+    }
+    
+    public double excavation_ManHoursByHandPerHours(){
+        return (int) Main.jdbcc.getConstant("excavation","labour cost by hand /hours").get(0);
+    }
+    
+    public double excavation_ManHoursBySkidPerHours(){
+        return (int) Main.jdbcc.getConstant("excavation","labour cost by skid /hours").get(0);
+    }
+    
+    public double bed_HoursPerHours(){
+        return (int) Main.jdbcc.getConstant("bed","hours /yards").get(0);
+    }
+    
+    public double bed_InstallPerYards(){
+        return (int) Main.jdbcc.getConstant("bed","install /hours").get(0);
+    }
+    
+    public double stonewalkway_EstimatedManHours(){
+        return (int) Main.jdbcc.getConstant("stonewalkway","estimated man hours").get(0);
+    }
+    
+    public double stonewalkway_InstallRatePerHours(){
+        return (int) Main.jdbcc.getConstant("stonewalkway","install rate /hours").get(0);
+    }
+    
+    public double geotextilewalkway_WeedBarrierCostPerSQFT(){
+        return (int) Main.jdbcc.getConstant("geotextilewalkway","weed barrier cost /sq. ft").get(0);
+    }
+    
+    public double geotextilewalkway_FabricStaplesQTYPerOneFifthSQFT(){
+        return (int) Main.jdbcc.getConstant("geotextilewalkway","fabric staples qty /1/5 sq. ft").get(0);
+    }
+    
+    public double geotextilewalkway_FabricStaplesCostPerStaple(){
+        return (int) Main.jdbcc.getConstant("geotextilewalkway","fabric staples cost /staple").get(0);
+    }
+    
+    public double geotextilewalkway_FabricManHoursPer100SQFT(){
+        return (int) Main.jdbcc.getConstant("geotextilewalkway","fabric man hours /100 sq ft").get(0);
+    }
+    
+    public double geotextilewalkway_FabricInstallRatePerHours(){
+        return (int) Main.jdbcc.getConstant("geotextilewalkway","fabric install rate /hours").get(0);
+    }
+    
+    public double walkwaybase_CrushedBaseSQFTPerInchPerYard(){
+        return (int) Main.jdbcc.getConstant("walkwaybase","crushed base sq. ft/inch/yard").get(0);
+    }
+    
+    public double walkwaybase_CrausedCostPerYard(){
+        return (int) Main.jdbcc.getConstant("walkwaybase","crasued cost /yard").get(0);
+    }
+    
+    public double walkwaybase_ManHoursPerYard(){
+        return (int) Main.jdbcc.getConstant("walkwaybase","man hours /yard").get(0);
+    }
+    
+    public double walkwaybase_InstallRatePerHours(){
+        return (int) Main.jdbcc.getConstant("walkwaybase","install rate / hours").get(0);
+    }
+    
+    public double screedsand_DepthSQFTPerYard(){
+        return (int) Main.jdbcc.getConstant("screedsand","depth sq.ft / yard").get(0);
+    }
+    
+    public double screedsand_CostPerYard(){
+        return (int) Main.jdbcc.getConstant("screedsand","cost /yard").get(0);
+    }
+    
+    public double screedsand_ManHoursPerYard(){
+        return (int) Main.jdbcc.getConstant("screedsand","man hours / yard").get(0);
+    }
+    
+    public double screedsand_InstallPerHour(){
+        return (int) Main.jdbcc.getConstant("screedsand","install /hours").get(0);
+    }
+    
+    public double edgerestraint_CostPer8FT(){
+        return (int) Main.jdbcc.getConstant("edgerestraint","cost /8 ft").get(0);
+    }
+    
+    public double edgerestraint_NailsPer1Nail(){
+        return (int) Main.jdbcc.getConstant("edgerestraint","nails /1nail").get(0);
+    }
+    
+    public double edgerestraint_ManHours(){
+        return (int) Main.jdbcc.getConstant("edgerestraint","man hours").get(0);
+    }
+    
+    public double edgerestraint_InstallPerHours(){
+        return (int) Main.jdbcc.getConstant("edgerestraint","install /hours").get(0);
+    }
+    
+    public double jointingsand_QTYkgPersfAtOneQuarterInch(){
+        return (int) Main.jdbcc.getConstant("jointingsand","QTY (kg/sf) @ 1/4 inch").get(0);
+    }
+    
+    public double jointingsand_CostPerKg(){
+        return (int) Main.jdbcc.getConstant("jointingsand","cost /kg").get(0);
+    }
+    
+    public double jointingsand_HoursPerKg(){
+        return (int) Main.jdbcc.getConstant("jointingsand","hours /kg").get(0);
+    }
+    
+    public double jointingsand_InstallPerHours(){
+        return (int) Main.jdbcc.getConstant("jointingsand","install /hours").get(0);
+    }
+    
+    public double materials_CrushedRockUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Crushed Rock").get(0);
+    }
+    
+    public double materials_CrushedRockRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Crushed Rock").get(1);
+    }
+    
+    public double materials_PeaRockUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Pea Rock").get(0);
+    }
+    
+    public double materials_PeaRockRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Pea Rock").get(1);
+    }
+    
+    public double materials_RiverRockUnit(){
+        return (int) Main.jdbcc.getConstant("materials","River Rock").get(0);
+    }
+    
+    public double materials_RiverRockRetail(){
+        return (int) Main.jdbcc.getConstant("materials","River Rock").get(1);
+    }
+    
+    public double materials_MulchWesternRedCedarUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Mulch: Western Red Cedar").get(0);
+    }
+    
+     public double materials_MulchWesternRedCedarRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Mulch: Western Red Cedar").get(1);
+    }
+    
+    public double materials_TopSoilPremiumMixUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Top Soil: Premium mix").get(0);
+    }
+    
+    public double materials_TopSoilPremiumMixRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Top Soil: Premium mix").get(1);
+    }
+    
+    public double materials_CrusherDustUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Crusher Dust").get(0);
+    }
+    
+    public double materials_CrusherDustRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Crusher Dust").get(1);
+    }
+    
+    public double materials_RedShaleUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Red Shale").get(0);
+    }
+    
+    public double materials_RedShaleRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Red Shale").get(1);
+    }
+    
+    public double materials_SodPer10SQFTUnit(){
+        return (int) Main.jdbcc.getConstant("materials","Sod (per 10 s.f.)").get(0);
+    }
+    
+    public double materials_SodPer10SQFTRetail(){
+        return (int) Main.jdbcc.getConstant("materials","Sod (per 10 s.f.)").get(1);
+    }
+    
 }
