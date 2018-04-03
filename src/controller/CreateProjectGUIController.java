@@ -20,7 +20,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -53,7 +55,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private Button nextBtn2;
     @FXML
-    private AnchorPane pane3;
+    private static AnchorPane pane3;
 
     private Label errorMessage;
 
@@ -66,10 +68,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private String selectedItem;
 
     private ObservableList<String> allItems = FXCollections.observableArrayList();
-    
+
     private ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
 
-    
     /**
      *
      * @param event
@@ -137,8 +138,14 @@ public class CreateProjectGUIController extends Controller implements Initializa
      */
     @FXML
     private void nextBtnAction2(ActionEvent event) {
-
+        
+        addToList();
+        
         navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
+        
+        
+      //  this.pane3.getChildren().add((Control) elements.get(0).get(0));
+        this.pane3.getChildren().add(new Label("booty"));
     }
 
     private void addToList() {
@@ -148,11 +155,15 @@ public class CreateProjectGUIController extends Controller implements Initializa
             if (allItems.get(i) == "Bed") {
 
             } else if (allItems.get(i).contains("Hand")) {
+
+                ArrayList<Control> hand = new ArrayList();
+
                 
-                ArrayList hand = new ArrayList();
+                TextField sqft = new TextField("000.00");
                 
-                TextField sqft = new TextField();
+                hand.add(sqft);
                 
+                elements.add(hand);
 
             } else if (allItems.get(i).contains("Skid")) {
 
@@ -171,9 +182,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
             } else if (allItems.get(i).contains("Wall")) {
 
             }
-
         }
-
     }
 
     /**
@@ -198,8 +207,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
-     * @param event
+     * 
      */
     private void selectServiceFromList() {
 
@@ -209,7 +217,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
             System.out.println(selectedItem);
             removeBtn.setDisable(false);
         }
-
     }
 
     /**
@@ -278,18 +285,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
             servCol.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()));
             table.setItems(items);
 
-        }
-
-        if (allItems.size() > 0 || customsAdded > 0) {
-
-            selectServiceFromList();
-            removeBtn.setDisable(false);
-            nextBtn2.setDisable(false);
-
-        } else {
-
-            removeBtn.setDisable(true);
-            nextBtn2.setDisable(true);
         }
     }
 
