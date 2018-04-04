@@ -218,6 +218,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
             System.out.println(selectedItem);
             removeBtn.setDisable(false);
         }
+        else {
+            removeBtn.setDisable(true);
+        }
     }
 
     /**
