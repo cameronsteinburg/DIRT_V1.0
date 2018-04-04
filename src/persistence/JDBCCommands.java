@@ -615,7 +615,7 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
-            String query = "select * from serviceconstants where superservice = ? & subservice = ?";
+            String query = "select * from serviceconstants where superservice = ? and subservice = ?";
             
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
