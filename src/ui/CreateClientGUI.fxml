@@ -22,21 +22,20 @@
          <bottom>
             <AnchorPane prefHeight="50.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
                <children>
-                      <Button fx:id="saveBtn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Create" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
-                      <Button fx:id="clearBtn" layoutX="105.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="red_button" text="Clear" textFill="#c4d7c4" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0" />
-                  <Button fx:id="editBtn" layoutX="100.0" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Edit" visible="false" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
+                      <Button fx:id="saveBtn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="grn-button" text="Create" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="0.0" />
+                      <Button fx:id="clearBtn" layoutX="105.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearBtnAction" prefHeight="40.0" prefWidth="100.0" styleClass="red_button" text="Clear" textFill="#c4d7c4" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </bottom>
          <top>
             <AnchorPane prefHeight="0.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
                <children>
-                    <Label fx:id="titleField" layoutX="14.0" layoutY="14.0" text="Create New Client" underline="true" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="20.0">
+                    <Label fx:id="titleField" layoutX="14.0" layoutY="14.0" text="Create New Client" underline="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="10.0">
                         <font>
-                            <Font size="30.0" />
+                            <Font size="25.0" />
                         </font>
                     </Label>
-                      <Label id="errorMessage" fx:id="errorMessage" layoutX="410.0" layoutY="14.0" prefHeight="43.0" prefWidth="657.0" textFill="RED">
+                      <Label id="errorMessage" fx:id="errorMessage" layoutX="410.0" layoutY="14.0" prefHeight="43.0" prefWidth="657.0" textFill="RED" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                           <font>
                               <Font size="19.0" />
                           </font>
@@ -48,9 +47,9 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="386.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
+            <AnchorPane BorderPane.alignment="CENTER">
                <children>
-                  <GridPane layoutX="14.0" layoutY="14.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="30.0">
+                  <GridPane layoutX="14.0" layoutY="14.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="30.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
@@ -75,7 +74,7 @@
                         </TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="150.0" layoutY="53.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
+                  <GridPane layoutX="150.0" layoutY="53.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="80.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
@@ -99,7 +98,7 @@
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="150.0" layoutY="83.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="130.0">
+                  <GridPane layoutX="150.0" layoutY="83.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="130.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
@@ -123,7 +122,7 @@
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="150.0" layoutY="113.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="180.0">
+                  <GridPane layoutX="150.0" layoutY="113.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="180.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -147,7 +146,7 @@
                         </TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="150.0" layoutY="143.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="230.0">
+                  <GridPane layoutX="150.0" layoutY="143.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="230.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" prefWidth="200.0" />
@@ -171,7 +170,7 @@
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="150.0" layoutY="173.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="280.0">
+                  <GridPane layoutX="150.0" layoutY="173.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="280.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
@@ -195,7 +194,7 @@
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="150.0" layoutY="203.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="330.0">
+                  <GridPane layoutX="150.0" layoutY="203.0" prefWidth="400.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="330.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
@@ -219,7 +218,7 @@
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="600.0" layoutY="30.0" prefHeight="330.0" prefWidth="500.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="30.0">
+                  <GridPane layoutX="517.0" layoutY="30.0" prefHeight="330.0" prefWidth="486.0" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="30.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
