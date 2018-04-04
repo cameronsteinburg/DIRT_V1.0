@@ -429,6 +429,22 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field6.setText(dbs.materials_RiverRockUnit() + "");
         field7.setText(dbs.materials_MulchWesternRedCedarRetail() + "");
         field8.setText(dbs.materials_MulchWesternRedCedarUnit() + "");
+        field9.setText(dbs.materials_TopSoilPremiumMixRetail()+ "");
+        field10.setText(dbs.materials_TopSoilPremiumMixUnit()+ "");
+        field11.setText(dbs.materials_CrusherDustRetail()+ "");
+        field12.setText(dbs.materials_CrusherDustUnit()+ "");
+        field13.setText(dbs.materials_RedShaleRetail() + "");
+        field14.setText(dbs.materials_RedShaleUnit() + "");
+        field15.setText(dbs.materials_SodPer10SQFTRetail() + "");
+        field16.setText(dbs.materials_SodPer10SQFTUnit() + "");
+        field17.setText(dbs.excavation_ManHoursByHandPerHours() + "");
+        field18.setText(dbs.excavation_ManHoursBySkidPerHours() + "");
+        field19.setText(dbs.excavation_TruckingFee() + "");
+        field20.setText(dbs.excavation_DisposalFee() + "");
+        field21.setText(dbs.excavation_ManHoursByHandPerYards() + "");
+        field22.setText(dbs.excavation_ManHoursBySkidPerYards() + "");
+        field23.setText(dbs.bed_InstallPerYards() + "");
+        field24.setText(dbs.materials_SodPer10SQFTRetail() + "");
         
     }     
 

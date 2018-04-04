@@ -135,11 +135,11 @@ public class DBServices {
         return false;
     }
     
-    public double excavation_Trucking(){
+    public double excavation_TruckingFee(){
         return (double) Main.jdbcc.getConstant("excavation", "trucking /2 yards").get(0);
     }
     
-    public double excavation_Disposal(){
+    public double excavation_DisposalFee(){
         return (double) Main.jdbcc.getConstant("excavation","disposal").get(0); 
     }
     
