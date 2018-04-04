@@ -33,7 +33,7 @@ abstract class Controller {
         timeline.play();
     }
 
-    protected void navigateTo(String url, BorderPane pane) {
+    protected FXMLLoader navigateTo(String url, BorderPane pane) {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
 
@@ -45,6 +45,8 @@ abstract class Controller {
         }
 
         pane.setCenter(root);
+        
+        return loader;
     }
     
     protected abstract void setErrorMessage(Label error);

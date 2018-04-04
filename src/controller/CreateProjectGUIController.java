@@ -55,7 +55,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private Button nextBtn2;
     @FXML
-    private static AnchorPane pane3;
+    private AnchorPane pane3;
 
     private Label errorMessage;
 
@@ -144,8 +144,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
         navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
         
         
-      //  this.pane3.getChildren().add((Control) elements.get(0).get(0));
-        this.pane3.getChildren().add(new Label("booty"));
+       // this.pane3.getChildren().add((Control) elements.get(0).get(0));
     }
 
     private void addToList() {
@@ -199,6 +198,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
             String sel = (String) allItems.get(i);
 
             if (sel.contains(selectedItem)) {
+                
                 allItems.remove(i);
             }
         }
@@ -215,7 +215,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
         if (table.getSelectionModel().getSelectedItem() != null) {
 
             this.selectedItem = table.getSelectionModel().getSelectedItem();
-            System.out.println(selectedItem);
             removeBtn.setDisable(false);
         }
     }

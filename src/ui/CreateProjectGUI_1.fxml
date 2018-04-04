@@ -47,15 +47,15 @@
                </font>
             </Label>
             <TextField fx:id="nameField" maxWidth="300.0" prefHeight="14.0" prefWidth="300.0" stylesheets="@createclientgui.css" GridPane.columnIndex="1" />
-            <TextArea fx:id="notesField" prefHeight="179.0" prefWidth="584.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="addressField" maxWidth="300.0" prefHeight="25.0" prefWidth="300.0" stylesheets="@createclientgui.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker fx:id="prelimStart" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <DatePicker fx:id="estEnd" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea fx:id="notesField" prefHeight="179.0" prefWidth="584.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label prefHeight="0.0" prefWidth="104.0" text="Site Address" GridPane.rowIndex="1">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="addressField" maxWidth="300.0" prefHeight="25.0" prefWidth="300.0" stylesheets="@createclientgui.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label layoutX="83.0" layoutY="88.0" text="* = Required">

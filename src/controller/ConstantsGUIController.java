@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import services.DBServices;
 
 public class ConstantsGUIController extends Controller implements Initializable {
     
@@ -417,7 +418,10 @@ public class ConstantsGUIController extends Controller implements Initializable 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // todo
+        
+        DBServices dbs = new DBServices();
+        
+        field1.setText(dbs.materials_CrushedRockRetail() + "");
     }     
 
    
