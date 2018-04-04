@@ -5,6 +5,7 @@
  */
 package controller;
 
+import entity.Client;
 import entity.Project;
 import java.io.IOException;
 import java.net.URL;
@@ -14,12 +15,16 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -31,6 +36,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 public class CreateProjectGUIController extends Controller implements Initializable {
 
@@ -138,13 +144,20 @@ public class CreateProjectGUIController extends Controller implements Initializa
      */
     @FXML
     private void nextBtnAction2(ActionEvent event) {
-        
+
         addToList();
+
+        FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
+
+        CreateProjectController2 cont = loader.getController();
         
-        navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
-        
-        
-       // this.pane3.getChildren().add((Control) elements.get(0).get(0));
+        GridPane newGrid = new GridPane();
+        newGrid.addRow(0, new Label("suhh"));
+    
+        AnchorPane pane = cont.getPane();
+       // pane.getChildren().add(new Label("SUUUUUUUUUUUHDUUUDE"));
+        pane.getChildren().add(newGrid);
+ 
     }
 
     private void addToList() {
@@ -157,11 +170,10 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
                 ArrayList<Control> hand = new ArrayList();
 
-                
                 TextField sqft = new TextField("000.00");
-                
+
                 hand.add(sqft);
-                
+
                 elements.add(hand);
 
             } else if (allItems.get(i).contains("Skid")) {
@@ -198,7 +210,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
             String sel = (String) allItems.get(i);
 
             if (sel.contains(selectedItem)) {
-                
+
                 allItems.remove(i);
             }
         }
@@ -216,8 +228,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
             this.selectedItem = table.getSelectionModel().getSelectedItem();
             removeBtn.setDisable(false);
-        }
-        else {
+            
+        } else {
             removeBtn.setDisable(true);
         }
     }

@@ -596,6 +596,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             ccgc.setNotesField(selectedClient.getDescription());
             ccgc.setSelected(selectedClient);
             ccgc.setErrorMessage(errorMessage);
+
             editFlagClient = false;
         }
 

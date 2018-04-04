@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import services.DBServices;
 
 public class CreateClientGUIController extends Controller implements Initializable {
@@ -44,6 +46,10 @@ public class CreateClientGUIController extends Controller implements Initializab
     private Button saveBtn;
     @FXML
     private Button editBtn;
+    @FXML
+    private AnchorPane pane;
+    @FXML
+    private GridPane grid; 
 
     Client selected;
 
@@ -76,7 +82,6 @@ public class CreateClientGUIController extends Controller implements Initializab
         } else {
             alert.close();
         }
-
     }
 
     @FXML
