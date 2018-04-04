@@ -421,7 +421,15 @@ public class ConstantsGUIController extends Controller implements Initializable 
         
         DBServices dbs = new DBServices();
         
-        field1.setText(dbs.materials_CrushedRockRetail() + "");
+        field1.setText(dbs.materials_CrushedRockRetail()+ "");
+        field2.setText(dbs.materials_CrushedRockUnit()+ "");
+        field3.setText(dbs.materials_PeaRockRetail()+ "");
+        field4.setText(dbs.materials_PeaRockUnit()+ "");
+        field5.setText(dbs.materials_RiverRockRetail()+ "");
+        field6.setText(dbs.materials_RiverRockUnit() + "");
+        field7.setText(dbs.materials_MulchWesternRedCedarRetail() + "");
+        field8.setText(dbs.materials_MulchWesternRedCedarUnit() + "");
+        
     }     
 
    
