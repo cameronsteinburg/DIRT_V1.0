@@ -150,9 +150,9 @@ public class DBAccessor {
         StringBuilder result = new StringBuilder("");
 
 	//Get file from resources folder
-	ClassLoader classLoader = getClass().getClassLoader();
-        InputStream in = getClass().getResourceAsStream("/startupdbscript.sql"); 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//	ClassLoader classLoader = getClass().getClassLoader();
+//        InputStream in = getClass().getResourceAsStream("/startupdbscript.sql"); 
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 //	File file = new File("res/startupdbscript.sql");
 
 	try {
