@@ -443,8 +443,8 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field20.setText(dbs.excavation_DisposalFee() + "");
         field21.setText(dbs.excavation_ManHoursByHandPerYards() + "");
         field22.setText(dbs.excavation_ManHoursBySkidPerYards() + "");
-        field23.setText(dbs.bed_InstallPerYards() + "");
-        field24.setText(dbs.materials_SodPer10SQFTRetail() + "");
+        field23.setText(dbs.bed_HoursPerHours()+ "");
+        field24.setText(dbs.bed_InstallPerYards() + "");
         
     }     
 
