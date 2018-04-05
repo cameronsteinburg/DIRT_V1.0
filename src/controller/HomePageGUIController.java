@@ -35,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import services.DBServices;
 
@@ -262,8 +263,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * 
-     * @param clients 
+     *
+     * @param clients
      */
     private void updateClientTable(ObservableList<Client> clients) {
 
@@ -292,8 +293,8 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
-    
     private boolean createProjectFlag = false;
+
     /**
      *
      * @throws IOException
@@ -369,7 +370,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             dbs.deleteLabourer(target);
             setMessage("Labourer Successfully Removed", this.errorMessage);
             navigateTo("/ui/ViewLabourerGUI.fxml");
-            
+
         } else {
             alert.close();
         }
@@ -542,48 +543,51 @@ public class HomePageGUIController extends Controller implements Initializable {
             }
         }
     }
-    
+
     /*======================================Menu Bar  Controls======================================*/
-    
     private boolean constantsFlag = false;
-    
-    
+
     /**
-     * Under File in menu bar, set rates of value that are used repeatedly in calculations
-     * @param event 
+     * Under File in menu bar, set rates of value that are used repeatedly in
+     * calculations
+     *
+     * @param event
      */
     @FXML
-    private void constantsAction(ActionEvent event) throws IOException{
-        
+    private void constantsAction(ActionEvent event) throws IOException {
+
         constantsFlag = true;
         navigateTo("/ui/ConstantsGUI.fxml");
     }
-    
+
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
-    private void restoreAction(ActionEvent event){
-    
+    private void restoreAction(ActionEvent event) {
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        File file = fileChooser.showOpenDialog(Main.stage); 
+        File file = fileChooser.showOpenDialog(Main.stage);
     }
-    
+
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
-    private void backupAction(ActionEvent event){
-    
-    }
+    private void backupAction(ActionEvent event) {
         
+        DirectoryChooser dc = new DirectoryChooser();
+        dc.setTitle("Choose Backup Location");
+        File path = dc.showDialog(Main.stage);
+    }
+
 
     /*======================================Home Page Controls======================================*/
-    
     private boolean tableFlag = false;
+
     /**
      * Primary means of changing pages of the inner panel of the app.
      * Controllers of FXML pages in the inner frame cannot access Home
@@ -597,7 +601,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     public void navigateTo(String url) throws IOException {
 
         disableButtons();
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
 
         Parent root = null;
@@ -693,54 +697,53 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
 
         if (newProjectFlag == true) {
-            
+
             CreateProjectGUIController cpgc = loader.getController();
             cpgc.setOuterPane(this.borderpane);
             cpgc.setErrorMessage(errorMessage);
             newProjectFlag = false;
         }
-        
-        if(tableFlag == true){
-        
+
+        if (tableFlag == true) {
+
             reloadTables(root);
             tableFlag = false;
         }
 
         //need the view client/labourer tables to be reloaded duringt all page navigation to keep the data fresh
-        
-        if(constantsFlag == true){
-            
+        if (constantsFlag == true) {
+
             ConstantsGUIController cgc = loader.getController();
             cgc.setErrorMessage(errorMessage);
-            
+
             constantsFlag = false;
-            
+
         }
-        
-        if(createClientFlag == true){
-        
+
+        if (createClientFlag == true) {
+
             CreateClientGUIController ccgc = loader.getController();
             ccgc.setErrorMessage(errorMessage);
             createClientFlag = false;
         }
-        
-        if(createLabourerFlag == true){
-        
+
+        if (createLabourerFlag == true) {
+
             CreateLabourerGUIController clgc = loader.getController();
             clgc.setErrorMessage(errorMessage);
             createLabourerFlag = false;
         }
-        
-        if(createProjectFlag == true){
-        
+
+        if (createProjectFlag == true) {
+
             CreateProjectGUIController cpgc = loader.getController();
             cpgc.setErrorMessage(errorMessage);
             cpgc.setOuterPane(borderpane);
             createProjectFlag = false;
         }
-       
+
         this.borderpane.setCenter(root);
-        
+
     }
 
     /**
@@ -819,6 +822,14 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
+     *
+     * @param error
+     */
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
+    }
+
+    /**
      * Loading data into any given page that the HomePageGUIController controls
      *
      * @param url
@@ -829,14 +840,6 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         this.updateClientTable(null); //for viewing all clients in a table   
         this.updateLabourerTable(null); //for viewing all labourer in a table
-        
-    }
 
-    /**
-     * 
-     * @param error 
-     */
-    protected void setErrorMessage(Label error) {
-        this.errorMessage = error;
     }
 }
