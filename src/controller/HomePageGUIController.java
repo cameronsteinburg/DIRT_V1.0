@@ -4,8 +4,10 @@
  */
 package controller;
 
+import application.Main;
 import entity.Client;
 import entity.Labourer;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -33,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import services.DBServices;
 
 /**
@@ -543,6 +546,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     /*======================================Menu Bar  Controls======================================*/
     
     private boolean constantsFlag = false;
+    
+    
     /**
      * Under File in menu bar, set rates of value that are used repeatedly in calculations
      * @param event 
@@ -553,6 +558,28 @@ public class HomePageGUIController extends Controller implements Initializable {
         constantsFlag = true;
         navigateTo("/ui/ConstantsGUI.fxml");
     }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void restoreAction(ActionEvent event){
+    
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File file = fileChooser.showOpenDialog(Main.stage); 
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void backupAction(ActionEvent event){
+    
+    }
+        
 
     /*======================================Home Page Controls======================================*/
     

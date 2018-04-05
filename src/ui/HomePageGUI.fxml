@@ -64,8 +64,8 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Database">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Backup" />
-                              <MenuItem mnemonicParsing="false" text="Restore" />
+                              <MenuItem mnemonicParsing="false" onAction="#backupAction" text="Backup" />
+                              <MenuItem mnemonicParsing="false" onAction="#restoreAction" text="Restore" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="About" />

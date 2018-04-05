@@ -3,6 +3,8 @@
  */
 package controller;
 
+import application.Main;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -10,10 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import services.DBServices;
 
 public class ConstantsGUIController extends Controller implements Initializable {
-    
+
     //these fields are shown left to right in each section of the gui, numericaly ordered this way, first in top left, last in bottom right
     @FXML
     private TextField field1;
@@ -63,12 +66,12 @@ public class ConstantsGUIController extends Controller implements Initializable 
     private TextField field23;
     @FXML
     private TextField field24;
-    
+
     private Label errorMessage;
-    
+
     @FXML
-    private void saveBtnAction(ActionEvent event){
-    
+    private void saveBtnAction(ActionEvent event) {
+
         String f1s = field1.getText();
         String f2s = field2.getText();
         String f3s = field3.getText();
@@ -94,345 +97,344 @@ public class ConstantsGUIController extends Controller implements Initializable 
         String f23s = field23.getText();
         String f24s = field24.getText();
         //theres gonna be more
-        
+
         //broken up for readbiliy, not fields are allowed to be empty on this page
-        if(f1s == null || f2s == null || f3s == null || f4s == null || f5s == null || f6s == null || f7s == null || f8s == null || f9s == null || f10s == null || f11s == null || f12s == null){
-            
+        if (f1s == null || f2s == null || f3s == null || f4s == null || f5s == null || f6s == null || f7s == null || f8s == null || f9s == null || f10s == null || f11s == null || f12s == null) {
+
             errorMessage.setText("No Field Can Be Left Blank");
             return;
         }
-        
-        if(f13s == null || f14s == null || f15s == null || f16s == null || f17s == null || f18s == null || f19s == null || f20s == null || f21s == null || f22s == null || f23s == null || f24s == null){
-            
+
+        if (f13s == null || f14s == null || f15s == null || f16s == null || f17s == null || f18s == null || f19s == null || f20s == null || f21s == null || f22s == null || f23s == null || f24s == null) {
+
             errorMessage.setText("No Field Can Be Left Blank");
             return;
         }
-        
+
         double f1d;
-        
-        try{
-        
+
+        try {
+
             f1d = Double.parseDouble(f1s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f2d;
-        
-        try{
-        
+
+        try {
+
             f2d = Double.parseDouble(f2s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f3d;
-        
-        try{
-        
+
+        try {
+
             f3d = Double.parseDouble(f3s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f4d;
-        
-        try{
-        
+
+        try {
+
             f4d = Double.parseDouble(f4s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f5d;
-        
-        try{
-        
+
+        try {
+
             f5d = Double.parseDouble(f5s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f6d;
-        
-        try{
-        
+
+        try {
+
             f6d = Double.parseDouble(f6s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f7d;
-        
-        try{
-        
+
+        try {
+
             f7d = Double.parseDouble(f7s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f8d;
-        
-        try{
-        
+
+        try {
+
             f8d = Double.parseDouble(f8s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f9d;
-        
-        try{
-        
+
+        try {
+
             f9d = Double.parseDouble(f9s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f10d;
-        
-        try{
-        
+
+        try {
+
             f10d = Double.parseDouble(f10s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f11d;
-        
-        try{
-        
+
+        try {
+
             f11d = Double.parseDouble(f11s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f12d;
-        
-        try{
-        
+
+        try {
+
             f12d = Double.parseDouble(f12s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f13d;
-        
-        try{
-        
+
+        try {
+
             f13d = Double.parseDouble(f13s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f14d;
-        
-        try{
-        
+
+        try {
+
             f14d = Double.parseDouble(f14s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f15d;
-        
-        try{
-        
+
+        try {
+
             f15d = Double.parseDouble(f15s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f16d;
-        
-        try{
-        
+
+        try {
+
             f16d = Double.parseDouble(f16s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f17d;
-        
-        try{
-        
+
+        try {
+
             f17d = Double.parseDouble(f17s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f18d;
-        
-        try{
-        
+
+        try {
+
             f18d = Double.parseDouble(f18s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f19d;
-        
-        try{
-        
+
+        try {
+
             f19d = Double.parseDouble(f19s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f20d;
-        
-        try{
-        
+
+        try {
+
             f20d = Double.parseDouble(f20s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f21d;
-        
-        try{
-        
+
+        try {
+
             f21d = Double.parseDouble(f21s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f22d;
-        
-        try{
-        
+
+        try {
+
             f22d = Double.parseDouble(f22s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f23d;
-        
-        try{
-        
+
+        try {
+
             f23d = Double.parseDouble(f23s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
+
         double f24d;
-        
-        try{
-        
+
+        try {
+
             f24d = Double.parseDouble(f24s);
-            
-        } catch (Exception e){
-        
+
+        } catch (Exception e) {
+
             errorMessage.setText("One of the Fields is Not a Proper Number");
             return;
         }
-        
-        
-        if(f1s.length() > 6 || f2s.length() > 6 || f3s.length() > 6 || f4s.length() > 6 || f5s.length() > 6 || f6s.length() > 6 || f7s.length() > 6 || f8s.length() > 6 || f9s.length() > 6 || f10s.length() > 6 || f11s.length() > 6 || f12s.length() > 6 ){
-         
+
+        if (f1s.length() > 6 || f2s.length() > 6 || f3s.length() > 6 || f4s.length() > 6 || f5s.length() > 6 || f6s.length() > 6 || f7s.length() > 6 || f8s.length() > 6 || f9s.length() > 6 || f10s.length() > 6 || f11s.length() > 6 || f12s.length() > 6) {
+
             errorMessage.setText("One of the Numbers is Too Big");
             return;
         }
-        
-        if(f13s.length() > 6 || f14s.length() > 6 || f15s.length() > 6 || f16s.length() > 6 || f17s.length() > 6 || f18s.length() > 6 || f19s.length() > 6 || f20s.length() > 6 || f21s.length() > 6 || f22s.length() > 6 || f23s.length() > 6 || f24s.length() > 6 ){
-            
+
+        if (f13s.length() > 6 || f14s.length() > 6 || f15s.length() > 6 || f16s.length() > 6 || f17s.length() > 6 || f18s.length() > 6 || f19s.length() > 6 || f20s.length() > 6 || f21s.length() > 6 || f22s.length() > 6 || f23s.length() > 6 || f24s.length() > 6) {
+
             errorMessage.setText("One of the Numbers is Too Big");
             return;
         }
         //data is valid at this point
-        
-        
+
+       
     }
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         DBServices dbs = new DBServices();
-        
-        field1.setText(dbs.materials_CrushedRockRetail()+ "");
-        field2.setText(dbs.materials_CrushedRockUnit()+ "");
-        field3.setText(dbs.materials_PeaRockRetail()+ "");
-        field4.setText(dbs.materials_PeaRockUnit()+ "");
-        field5.setText(dbs.materials_RiverRockRetail()+ "");
+
+        field1.setText(dbs.materials_CrushedRockRetail() + "");
+        field2.setText(dbs.materials_CrushedRockUnit() + "");
+        field3.setText(dbs.materials_PeaRockRetail() + "");
+        field4.setText(dbs.materials_PeaRockUnit() + "");
+        field5.setText(dbs.materials_RiverRockRetail() + "");
         field6.setText(dbs.materials_RiverRockUnit() + "");
         field7.setText(dbs.materials_MulchWesternRedCedarRetail() + "");
         field8.setText(dbs.materials_MulchWesternRedCedarUnit() + "");
-        field9.setText(dbs.materials_TopSoilPremiumMixRetail()+ "");
-        field10.setText(dbs.materials_TopSoilPremiumMixUnit()+ "");
-        field11.setText(dbs.materials_CrusherDustRetail()+ "");
-        field12.setText(dbs.materials_CrusherDustUnit()+ "");
+        field9.setText(dbs.materials_TopSoilPremiumMixRetail() + "");
+        field10.setText(dbs.materials_TopSoilPremiumMixUnit() + "");
+        field11.setText(dbs.materials_CrusherDustRetail() + "");
+        field12.setText(dbs.materials_CrusherDustUnit() + "");
         field13.setText(dbs.materials_RedShaleRetail() + "");
         field14.setText(dbs.materials_RedShaleUnit() + "");
         field15.setText(dbs.materials_SodPer10SQFTRetail() + "");
@@ -443,14 +445,14 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field20.setText(dbs.excavation_DisposalFee() + "");
         field21.setText(dbs.excavation_ManHoursByHandPerYards() + "");
         field22.setText(dbs.excavation_ManHoursBySkidPerYards() + "");
-        field23.setText(dbs.bed_HoursPerHours()+ "");
+        field23.setText(dbs.bed_HoursPerHours() + "");
         field24.setText(dbs.bed_InstallPerYards() + "");
-        
-    }     
 
-   
-    protected void setErrorMessage(Label error) {
         
+    }
+
+    protected void setErrorMessage(Label error) {
+
         this.errorMessage = error;
     }
 }
