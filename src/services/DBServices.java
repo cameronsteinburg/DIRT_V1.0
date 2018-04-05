@@ -4,8 +4,12 @@ import application.Main;
 import entity.Client;
 import entity.Labourer;
 import entity.Project;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  * Methods that have direct access and control to the databases
@@ -132,6 +136,29 @@ public class DBServices {
      * @return true if successful, false otherwise
      */
     public boolean backup() {
+         
+        try {
+            Runtime rt = Runtime.getRuntime();
+            String d1 = "C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysqldump.exe";
+            String d2 = "-uroot";
+            String d3 = "-ppassword";
+            String d4 = "DIRT";
+            String d5 = ">";
+            StringBuilder path = new StringBuilder("");
+            String myDocuments = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
+            path.append(myDocuments);
+            path.append("\\DIRT\\startupdbscript.sql");
+            String d6 = path.toString();
+            
+            Process proc = rt.exec(new String[]{"cmd.exe","/C",d1,d2,d3,d4,d5,d6});
+            int waitforme = proc.waitFor();
+            
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
     
