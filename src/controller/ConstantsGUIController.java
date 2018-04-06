@@ -4,6 +4,7 @@
 package controller;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -119,29 +120,32 @@ public class ConstantsGUIController extends Controller implements Initializable 
         TextField field = null;
         Double doubleVal;
         String fieldText = null;
+        
         //Loop through array to validate information
         for(int i = 0; i < list.size(); i++) {
             
             field = list.get(i);
-            //System.out.println(field.getId() + ": " + fieldText);
+
             try {
-                fieldText = field.getText();
                 
+                fieldText = field.getText();    
             }       
             catch(Exception e) {
-                //field.setDisable(true);
-                errorMessage.setText("A field was left blank");
+                
+                errorMessage.setText("One of the Fields is Blank");
+                return;
             }
             
             try {
+                
                 doubleVal = Double.parseDouble(fieldText);
             }
             catch (Exception e) {
-                errorMessage.setText("A Field is not a proper number!");
+                
+                errorMessage.setText("One of the Fiels is Not a Proper Number");
                 return;
             }
         }
-        System.out.println("");
     }
 
     /**
@@ -150,11 +154,12 @@ public class ConstantsGUIController extends Controller implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        DecimalFormat f = new DecimalFormat("#.00");
         
         DBServices dbs = new DBServices();
 
-        field1.setText(dbs.materials_CrushedRockRetail() + "");
-        field2.setText(dbs.materials_CrushedRockUnit() + "");
+        field1.setText(f.format(dbs.materials_CrushedRockRetail()));
+        field2.setText(f.format(dbs.materials_CrushedRockUnit()));
         field3.setText(dbs.materials_PeaRockRetail() + "");
         field4.setText(dbs.materials_PeaRockUnit() + "");
         field5.setText(dbs.materials_RiverRockRetail() + "");
