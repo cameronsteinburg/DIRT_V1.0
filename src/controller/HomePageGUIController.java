@@ -570,6 +570,8 @@ public class HomePageGUIController extends Controller implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         File file = fileChooser.showOpenDialog(Main.stage);
+        DBServices dbs = new DBServices();
+        dbs.restore(file.getAbsolutePath());
     }
 
     /**
