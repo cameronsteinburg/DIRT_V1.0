@@ -158,12 +158,28 @@ public class DBServices {
     }
     
     /**
-     * Request backup from DB, calls overloaded backup method
-     *
-     * @return true if successful, false otherwise
+     * backs up the database to the directory chosen by the user
+     * @param path the path of the directory chosen
+     * @return true if successful
      */
     public boolean backup(String path) {
-         
+        try {
+            Runtime rt = Runtime.getRuntime();
+            String d1 = "C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysqldump.exe";
+            String d2 = "-uroot";
+            String d3 = "-ppassword";
+            String d4 = "DIRT";
+            String d5 = ">";
+            String d6 = path + "\\DIRTBackup.sql";
+
+            Process proc = rt.exec(new String[]{"cmd.exe","/C",d1,d2,d3,d4,d5,d6});
+            int waitforme = proc.waitFor();
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
     

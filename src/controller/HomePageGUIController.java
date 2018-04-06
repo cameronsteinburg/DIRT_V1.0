@@ -584,6 +584,8 @@ public class HomePageGUIController extends Controller implements Initializable {
         DirectoryChooser dc = new DirectoryChooser();
         dc.setTitle("Choose Backup Location");
         File path = dc.showDialog(Main.stage);
+        DBServices dbs = new DBServices();
+        dbs.backup(path.getAbsolutePath());
     }
 
 
