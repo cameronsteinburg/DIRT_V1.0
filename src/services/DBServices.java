@@ -131,12 +131,38 @@ public class DBServices {
     }
 
     /**
-     * Request backup from DB, calls overloaded backup method
-     *
-     * @return true if successful, false otherwise
+     * restores the database from the chosen file path
+     * @param path the file path belonging to the backup
+     * @return true if successful
      */
-    public boolean backup() {
-         
+    public boolean restore(String path){
+        
+        try {
+            Runtime rt = Runtime.getRuntime();
+            String d1 = "C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysql.exe";
+            String d2 = "-uroot";
+            String d3 = "-ppassword";
+            String d4 = "DIRT";
+            String d5 = "<";
+            String d6 = path;
+            Process proc = rt.exec(new String[]{"cmd.exe","/C",d1,d2,d3,d4,d5,d6});
+            int waitforme = proc.waitFor();
+            
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    /**
+     * backs up the database to the directory chosen by the user
+     * @param path the path of the directory chosen
+     * @return true if successful
+     */
+    public boolean backup(String path) {
         try {
             Runtime rt = Runtime.getRuntime();
             String d1 = "C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysqldump.exe";
@@ -144,15 +170,10 @@ public class DBServices {
             String d3 = "-ppassword";
             String d4 = "DIRT";
             String d5 = ">";
-            StringBuilder path = new StringBuilder("");
-            String myDocuments = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
-            path.append(myDocuments);
-            path.append("\\DIRT\\startupdbscript.sql");
-            String d6 = path.toString();
-            
+            String d6 = path + "\\DIRTBackup.sql";
+
             Process proc = rt.exec(new String[]{"cmd.exe","/C",d1,d2,d3,d4,d5,d6});
             int waitforme = proc.waitFor();
-            
             return true;
         } catch (IOException ex) {
             Logger.getLogger(DBServices.class.getName()).log(Level.SEVERE, null, ex);

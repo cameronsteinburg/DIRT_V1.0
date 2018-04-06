@@ -568,6 +568,8 @@ public class HomePageGUIController extends Controller implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         File file = fileChooser.showOpenDialog(Main.stage);
+        DBServices dbs = new DBServices();
+        dbs.restore(file.getAbsolutePath());
     }
 
     /**
@@ -580,6 +582,8 @@ public class HomePageGUIController extends Controller implements Initializable {
         DirectoryChooser dc = new DirectoryChooser();
         dc.setTitle("Choose Backup Location");
         File path = dc.showDialog(Main.stage);
+        DBServices dbs = new DBServices();
+        dbs.backup(path.getAbsolutePath());
     }
 
 
