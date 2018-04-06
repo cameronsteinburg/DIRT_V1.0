@@ -3,416 +3,145 @@
  */
 package controller;
 
-import application.Main;
-import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
 import services.DBServices;
 
 public class ConstantsGUIController extends Controller implements Initializable {
 
     //these fields are shown left to right in each section of the gui, numericaly ordered this way, first in top left, last in bottom right
     @FXML
-    private TextField field1;
-    @FXML
-    private TextField field2;
-    @FXML
-    private TextField field3;
-    @FXML
-    private TextField field4;
-    @FXML
-    private TextField field5;
-    @FXML
-    private TextField field6;
-    @FXML
-    private TextField field7;
-    @FXML
-    private TextField field8;
-    @FXML
-    private TextField field9;
-    @FXML
-    private TextField field10;
-    @FXML
-    private TextField field11;
-    @FXML
-    private TextField field12;
-    @FXML
-    private TextField field13;
-    @FXML
-    private TextField field14;
-    @FXML
-    private TextField field15;
-    @FXML
-    private TextField field16;
-    @FXML
-    private TextField field17;
-    @FXML
-    private TextField field18;
-    @FXML
-    private TextField field19;
-    @FXML
-    private TextField field20;
-    @FXML
-    private TextField field21;
-    @FXML
-    private TextField field22;
-    @FXML
-    private TextField field23;
-    @FXML
-    private TextField field24;
-
+    private TextField field1,field2,field3,field4,field5,field6,field7,field8,field9,field10,
+                        field11,field12,field13,field14,field15,field16,field17,field18,field19,field20,
+                        field21,field22,field23,field24,field25,field26,field27,field28,field29,field30,
+                        field31,field32,field33,field34,field35,field36,field37,field38,field39,field40,
+                        field41,field42,field43,field44,field45,field46,field47,field48,field49,field50,
+                        field51,field52,field53,field54,field55,field56,field57,field58,field59,field60,
+                        field61,field62,field63,field64,field65,field66,field67,field68,field69,field70,
+                        field71,field72,field73,field74,field75,field76,field77,field78,field79,field80;
+    
+    private ArrayList<TextField> list = new ArrayList();
+  
     private Label errorMessage;
 
     @FXML
     private void saveBtnAction(ActionEvent event) {
 
-        String f1s = field1.getText();
-        String f2s = field2.getText();
-        String f3s = field3.getText();
-        String f4s = field4.getText();
-        String f5s = field5.getText();
-        String f6s = field6.getText();
-        String f7s = field7.getText();
-        String f8s = field8.getText();
-        String f9s = field9.getText();
-        String f10s = field10.getText();
-        String f11s = field11.getText();
-        String f12s = field12.getText();
-        String f13s = field13.getText();
-        String f14s = field14.getText();
-        String f15s = field15.getText();
-        String f16s = field16.getText();
-        String f17s = field17.getText();
-        String f18s = field18.getText();
-        String f19s = field19.getText();
-        String f20s = field20.getText();
-        String f21s = field21.getText();
-        String f22s = field22.getText();
-        String f23s = field23.getText();
-        String f24s = field24.getText();
-        //theres gonna be more
-
-        //broken up for readbiliy, not fields are allowed to be empty on this page
-        if (f1s == null || f2s == null || f3s == null || f4s == null || f5s == null || f6s == null || f7s == null || f8s == null || f9s == null || f10s == null || f11s == null || f12s == null) {
-
-            errorMessage.setText("No Field Can Be Left Blank");
-            return;
+        //Create ArrayList of values in the TextFields
+        list.add(field1);
+        list.add(field2);
+        list.add(field3);
+        list.add(field4);
+        list.add(field5);
+        list.add(field6);
+        list.add(field7);
+        list.add(field8);
+        list.add(field9);
+        list.add(field10);
+        list.add(field11);
+        list.add(field12);
+        list.add(field13);
+        list.add(field14);
+        list.add(field15);
+        list.add(field16);
+        list.add(field17);
+        list.add(field18);
+        list.add(field19);
+        list.add(field20);
+        list.add(field21);
+        list.add(field22);
+        list.add(field23);
+        list.add(field24);
+        list.add(field25);
+        list.add(field26);
+        list.add(field27);
+        list.add(field28);
+        list.add(field29);
+        list.add(field30);
+        list.add(field31);
+        list.add(field32);
+        list.add(field33);
+        list.add(field34);
+        list.add(field35);
+        list.add(field36);
+        list.add(field37);
+        list.add(field38);
+        list.add(field39);
+        list.add(field40);
+        list.add(field41);
+        list.add(field42);
+        list.add(field43);
+        list.add(field44);
+        list.add(field45);
+        list.add(field46);
+        list.add(field47);
+        list.add(field48);
+        list.add(field49);
+        list.add(field50);
+        list.add(field51);
+        list.add(field52);
+        list.add(field53);
+        list.add(field54);
+        list.add(field55);
+        list.add(field56);
+        list.add(field57);
+        list.add(field58);
+        list.add(field59);
+        list.add(field60);
+        list.add(field61);
+        list.add(field62);
+        list.add(field63);
+        list.add(field64);
+        list.add(field65);
+        list.add(field66);
+        list.add(field67);
+        list.add(field68);
+        list.add(field69);
+        list.add(field70);
+        list.add(field71);
+        list.add(field72);
+        list.add(field73);
+        list.add(field74);
+        list.add(field75);
+        list.add(field76);
+        list.add(field77);
+        list.add(field78);
+        list.add(field79);
+        list.add(field80);
+        
+        //Instantiate Variables
+        TextField field = null;
+        Double doubleVal;
+        String fieldText = null;
+        //Loop through array to validate information
+        for(int i = 0; i < list.size(); i++) {
+            
+            field = list.get(i);
+            //System.out.println(field.getId() + ": " + fieldText);
+            try {
+                fieldText = field.getText();
+                
+            }       
+            catch(Exception e) {
+                //field.setDisable(true);
+                errorMessage.setText("A field was left blank");
+            }
+            
+            try {
+                doubleVal = Double.parseDouble(fieldText);
+            }
+            catch (Exception e) {
+                errorMessage.setText("A Field is not a proper number!");
+                return;
+            }
         }
-
-        if (f13s == null || f14s == null || f15s == null || f16s == null || f17s == null || f18s == null || f19s == null || f20s == null || f21s == null || f22s == null || f23s == null || f24s == null) {
-
-            errorMessage.setText("No Field Can Be Left Blank");
-            return;
-        }
-
-        double f1d;
-
-        try {
-
-            f1d = Double.parseDouble(f1s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f2d;
-
-        try {
-
-            f2d = Double.parseDouble(f2s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f3d;
-
-        try {
-
-            f3d = Double.parseDouble(f3s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f4d;
-
-        try {
-
-            f4d = Double.parseDouble(f4s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f5d;
-
-        try {
-
-            f5d = Double.parseDouble(f5s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f6d;
-
-        try {
-
-            f6d = Double.parseDouble(f6s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f7d;
-
-        try {
-
-            f7d = Double.parseDouble(f7s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f8d;
-
-        try {
-
-            f8d = Double.parseDouble(f8s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f9d;
-
-        try {
-
-            f9d = Double.parseDouble(f9s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f10d;
-
-        try {
-
-            f10d = Double.parseDouble(f10s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f11d;
-
-        try {
-
-            f11d = Double.parseDouble(f11s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f12d;
-
-        try {
-
-            f12d = Double.parseDouble(f12s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f13d;
-
-        try {
-
-            f13d = Double.parseDouble(f13s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f14d;
-
-        try {
-
-            f14d = Double.parseDouble(f14s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f15d;
-
-        try {
-
-            f15d = Double.parseDouble(f15s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f16d;
-
-        try {
-
-            f16d = Double.parseDouble(f16s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f17d;
-
-        try {
-
-            f17d = Double.parseDouble(f17s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f18d;
-
-        try {
-
-            f18d = Double.parseDouble(f18s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f19d;
-
-        try {
-
-            f19d = Double.parseDouble(f19s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f20d;
-
-        try {
-
-            f20d = Double.parseDouble(f20s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f21d;
-
-        try {
-
-            f21d = Double.parseDouble(f21s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f22d;
-
-        try {
-
-            f22d = Double.parseDouble(f22s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f23d;
-
-        try {
-
-            f23d = Double.parseDouble(f23s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        double f24d;
-
-        try {
-
-            f24d = Double.parseDouble(f24s);
-
-        } catch (Exception e) {
-
-            errorMessage.setText("One of the Fields is Not a Proper Number");
-            return;
-        }
-
-        if (f1s.length() > 6 || f2s.length() > 6 || f3s.length() > 6 || f4s.length() > 6 || f5s.length() > 6 || f6s.length() > 6 || f7s.length() > 6 || f8s.length() > 6 || f9s.length() > 6 || f10s.length() > 6 || f11s.length() > 6 || f12s.length() > 6) {
-
-            errorMessage.setText("One of the Numbers is Too Big");
-            return;
-        }
-
-        if (f13s.length() > 6 || f14s.length() > 6 || f15s.length() > 6 || f16s.length() > 6 || f17s.length() > 6 || f18s.length() > 6 || f19s.length() > 6 || f20s.length() > 6 || f21s.length() > 6 || f22s.length() > 6 || f23s.length() > 6 || f24s.length() > 6) {
-
-            errorMessage.setText("One of the Numbers is Too Big");
-            return;
-        }
-        //data is valid at this point
-
-       
+        System.out.println("");
     }
 
     /**
@@ -421,6 +150,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
         DBServices dbs = new DBServices();
 
         field1.setText(dbs.materials_CrushedRockRetail() + "");
@@ -447,10 +177,66 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field22.setText(dbs.excavation_ManHoursBySkidPerYards() + "");
         field23.setText(dbs.bed_HoursPerHours() + "");
         field24.setText(dbs.bed_InstallPerYards() + "");
+        //TODO: field25 - field80 Data Retrieval
+        field25.setText(dbs.bed_InstallPerYards() + "");
+        field26.setText(dbs.bed_InstallPerYards() + "");
+        field27.setText(dbs.bed_InstallPerYards() + "");
+        field28.setText(dbs.bed_InstallPerYards() + "");
+        field29.setText(dbs.bed_InstallPerYards() + "");
+        field30.setText(dbs.bed_InstallPerYards() + "");
+        field31.setText(dbs.bed_InstallPerYards() + "");
+        field32.setText(dbs.bed_InstallPerYards() + "");
+        field33.setText(dbs.bed_InstallPerYards() + "");
+        field34.setText(dbs.bed_InstallPerYards() + "");
+        field35.setText(dbs.bed_InstallPerYards() + "");
+        field36.setText(dbs.bed_InstallPerYards() + "");
+        field37.setText(dbs.bed_InstallPerYards() + "");
+        field38.setText(dbs.bed_InstallPerYards() + "");
+        field39.setText(dbs.bed_InstallPerYards() + "");
+        field40.setText(dbs.bed_InstallPerYards() + "");
+        field41.setText(dbs.bed_InstallPerYards() + "");
+        field42.setText(dbs.bed_InstallPerYards() + "");
+        field43.setText(dbs.bed_InstallPerYards() + "");
+        field44.setText(dbs.bed_InstallPerYards() + "");
+        field45.setText(dbs.bed_InstallPerYards() + "");
+        field46.setText(dbs.bed_InstallPerYards() + "");
+        field47.setText(dbs.bed_InstallPerYards() + "");
+        field48.setText(dbs.bed_InstallPerYards() + "");
+        field49.setText(dbs.bed_InstallPerYards() + "");
+        field50.setText(dbs.bed_InstallPerYards() + "");
+        field51.setText(dbs.bed_InstallPerYards() + "");
+        field52.setText(dbs.bed_InstallPerYards() + "");
+        field53.setText(dbs.bed_InstallPerYards() + "");
+        field54.setText(dbs.bed_InstallPerYards() + "");
+        field55.setText(dbs.bed_InstallPerYards() + "");
+        field56.setText(dbs.bed_InstallPerYards() + "");
+        field57.setText(dbs.bed_InstallPerYards() + "");
+        field58.setText(dbs.bed_InstallPerYards() + "");
+        field59.setText(dbs.bed_InstallPerYards() + "");
+        field60.setText(dbs.bed_InstallPerYards() + "");
+        field61.setText(dbs.bed_InstallPerYards() + "");
+        field62.setText(dbs.bed_InstallPerYards() + "");
+        field63.setText(dbs.bed_InstallPerYards() + "");
+        field64.setText(dbs.bed_InstallPerYards() + "");
+        field65.setText(dbs.bed_InstallPerYards() + "");
+        field66.setText(dbs.bed_InstallPerYards() + "");
+        field67.setText(dbs.bed_InstallPerYards() + "");
+        field68.setText(dbs.bed_InstallPerYards() + "");
+        field69.setText(dbs.bed_InstallPerYards() + "");
+        field70.setText(dbs.bed_InstallPerYards() + "");
+        field71.setText(dbs.bed_InstallPerYards() + "");
+        field72.setText(dbs.bed_InstallPerYards() + "");
+        field73.setText(dbs.bed_InstallPerYards() + "");
+        field74.setText(dbs.bed_InstallPerYards() + "");
+        field75.setText(dbs.bed_InstallPerYards() + "");
+        field76.setText(dbs.bed_InstallPerYards() + "");
+        field77.setText(dbs.bed_InstallPerYards() + "");
+        field78.setText(dbs.bed_InstallPerYards() + "");
+        field79.setText(dbs.bed_InstallPerYards() + "");
+        field80.setText(dbs.bed_InstallPerYards() + "");
 
-        
     }
-
+    
     protected void setErrorMessage(Label error) {
 
         this.errorMessage = error;
