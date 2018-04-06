@@ -21,6 +21,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -33,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 
 public class CreateProjectGUIController extends Controller implements Initializable {
 
@@ -72,6 +75,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private ObservableList<String> allItems = FXCollections.observableArrayList();
 
     private ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
+
+    private static int fieldCount = 0;
 
     /**
      *
@@ -149,29 +154,27 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
         GridPane newGrid = new GridPane();
 
-        for(int i =0; i < elements.size(); i++){
-        
-            for(int j = 0; j < elements.get(i).size(); j++){
-            
+        for (int i = 0; i < elements.size(); i++) {
+
+            for (int j = 0; j < elements.get(i).size(); j++) {
+
                 newGrid.addRow(i, (Node) elements.get(i).get(j));
             }
         }
-        
-       // newGrid.addRow(0, (Node) elements.get(0).get(0));
 
         AnchorPane pane = cont.getPane();
 
-        newGrid.setTranslateX(75);
-        newGrid.setTranslateY(30);
+        newGrid.setTranslateX(5);
+        newGrid.setTranslateY(5);
 
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
         //AnchorPane.setTopAnchor(newGrid, Double.NaN);
         //AnchorPane.setRightAnchor(newGrid, Double.NaN);
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
-        
         newGrid.setHgap(5);
         newGrid.setVgap(5);
+        newGrid.setPadding(new Insets(0, 0, 15, 0));
         pane.getChildren().add(newGrid);
     }
 
@@ -183,26 +186,10 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
                 if (allItems.get(i).contains("Hand")) {
 
-                    ArrayList<Control> hand = new ArrayList();
-
-                    Label label = new Label("SQ FT:");
-   
-                    hand.add(new TextField("000"));
-                    hand.add(label);
-                    
-                    label = new Label("Depth (Inches)");
-                    hand.add(new TextField("000"));
-                    hand.add(label);
-                    
-                    label = new Label("Required Yards");
-                    hand.add(label);
-                    hand.add(new TextField("000"));
-
-                    elements.add(hand);
+                    elements.add(addByHand());
 
                 } else if (allItems.get(i).contains("Skid")) {
-                    
-                    
+
                 }
 
             } else if (allItems.get(i).contains("Custom")) {
@@ -259,6 +246,64 @@ public class CreateProjectGUIController extends Controller implements Initializa
         } else {
             removeBtn.setDisable(true);
         }
+    }
+
+    private ArrayList<Control> addByHand() {
+
+        ArrayList<Control> hand = new ArrayList();
+
+        Label label = new Label("Excavation By Hand:");
+        label.setUnderline(true);
+        label.setPadding(new Insets(0, 15, 0, 0));//top, right, bottom, left
+        hand.add(label);
+        hand.add(this.addField());
+
+        hand.add(addLabel("SQ.FT"));
+        hand.add(this.addField());
+
+        hand.add(addLabel("Depth In Inches"));
+        hand.add(addField());
+
+        hand.add(addLabel("Required Yards"));
+        hand.add(addField());
+
+        label = new Label("    | ");
+        label.setFont(new Font(20));
+        hand.add(label);
+
+        hand.add(addLabel("Est. Man Hours /Yard"));
+        hand.add(this.addField());
+
+        hand.add(addLabel("Excavation Labour Cost"));
+        hand.add(addField());
+
+        hand.add(addLabel("Trucking Fees /2 Yards"));
+        hand.add(addField());
+
+        hand.add(addLabel("Disposal Fees"));
+        
+        Label pad = new Label("   ");
+        hand.add(pad);
+
+        return hand;
+    }
+
+    private TextField addField() {
+
+        TextField field = new TextField("000.00");
+        field.setMaxWidth(56);
+        field.setId(fieldCount + "");
+        field.setAlignment(Pos.CENTER);
+        fieldCount++;
+        return field;
+    }
+
+    private Label addLabel(String text) {
+
+        Label label = new Label(text);
+        label.setPadding(new Insets(0, 0, 0, 15));
+        return label;
+
     }
 
     /**
