@@ -522,4 +522,347 @@ public class DBServices {
     public double snowremoval_AdditionalArea(){
         return (double) Main.jdbcc.getConstant("snowremoval","additional area").get(0);
     }
+    
+    
+    
+    
+    
+    //Constant Setters
+    
+    public boolean setexcavation_TruckingFee(double constant) {
+        return Main.jdbcc.setConstant("excavation", "trucking /2 yards", constant);
+    }
+
+    public boolean setexcavation_DisposalFee(double constant) {
+        return Main.jdbcc.setConstant("excavation", "disposal", constant);
+    }
+
+    public boolean setexcavation_ManHoursByHandPerYards(double constant) {
+        return Main.jdbcc.setConstant("excavation", "man hours by hand /yards", constant);
+    }
+
+    public boolean setexcavation_ManHoursBySkidPerYards(double constant) {
+        return Main.jdbcc.setConstant("excavation", "man hours by skid /yards", constant);
+    }
+
+    public boolean setexcavation_ManHoursByHandPerHours(double constant) {
+        return Main.jdbcc.setConstant("excavation", "labour cost by hand /hours", constant);
+    }
+
+    public boolean setexcavation_ManHoursBySkidPerHours(double constant) {
+        return Main.jdbcc.setConstant("excavation", "labour cost by skid /hours", constant);
+    }
+
+    public boolean setbed_HoursPerHours(double constant) {
+        return Main.jdbcc.setConstant("bed", "hours /yards", constant);
+    }
+
+    public boolean setbed_InstallPerYards(double constant) {
+        return Main.jdbcc.setConstant("bed", "install /hours", constant);
+    }
+
+    public boolean setstonewalkway_EstimatedManHours(double constant) {
+        return Main.jdbcc.setConstant("stonewalkway", "estimated man hours", constant);
+    }
+
+    public boolean setstonewalkway_InstallRatePerHours(double constant) {
+        return Main.jdbcc.setConstant("stonewalkway", "install rate /hours", constant);
+    }
+
+    public boolean setgeotextilewalkway_WeedBarrierCostPerSQFT(double constant) {
+        return Main.jdbcc.setConstant("geotextilewalkway", "weed barrier cost /sq. ft", constant);
+    }
+
+    public boolean setgeotextilewalkway_FabricStaplesQTYPerOneFifthSQFT(double constant) {
+        return Main.jdbcc.setConstant("geotextilewalkway", "fabric staples qty /1/5 sq. ft", constant);
+    }
+
+    public boolean setgeotextilewalkway_FabricStaplesCostPerStaple(double constant) {
+        return Main.jdbcc.setConstant("geotextilewalkway", "fabric staples cost /staple", constant);
+    }
+
+    public boolean setgeotextilewalkway_FabricManHoursPer100SQFT(double constant) {
+        return Main.jdbcc.setConstant("geotextilewalkway", "fabric man hours /100 sq ft", constant);
+    }
+
+    public boolean setgeotextilewalkway_FabricInstallRatePerHours(double constant) {
+        return Main.jdbcc.setConstant("geotextilewalkway", "fabric install rate /hours", constant);
+    }
+
+    public boolean setwalkwaybase_CrushedBaseSQFTPerInchPerYard(double constant) {
+        return Main.jdbcc.setConstant("walkwaybase", "crushed base sq. ft/inch/yard", constant);
+    }
+
+    public boolean setwalkwaybase_CrausedCostPerYard(double constant) {
+        return Main.jdbcc.setConstant("walkwaybase", "crasued cost /yard", constant);
+    }
+
+    public boolean setwalkwaybase_ManHoursPerYard(double constant) {
+        return Main.jdbcc.setConstant("walkwaybase", "man hours /yard", constant);
+    }
+
+    public boolean setwalkwaybase_InstallRatePerHours(double constant) {
+        return Main.jdbcc.setConstant("walkwaybase", "install rate / hours", constant);
+    }
+
+    public boolean setscreedsand_DepthSQFTPerYard(double constant) {
+        return Main.jdbcc.setConstant("screedsand", "depth sq.ft / yard", constant);
+    }
+
+    public boolean setscreedsand_CostPerYard(double constant) {
+        return Main.jdbcc.setConstant("screedsand", "cost /yard", constant);
+    }
+
+    public boolean setscreedsand_ManHoursPerYard(double constant) {
+        return Main.jdbcc.setConstant("screedsand", "man hours / yard", constant);
+    }
+
+    public boolean setscreedsand_InstallPerHour(double constant) {
+        return Main.jdbcc.setConstant("screedsand", "install /hours", constant);
+    }
+
+    public boolean setedgerestraint_CostPer8FT(double constant) {
+        return Main.jdbcc.setConstant("edgerestraint", "cost /8 ft", constant);
+    }
+
+    public boolean setedgerestraint_NailsPer1Nail(double constant) {
+        return Main.jdbcc.setConstant("edgerestraint", "nails /1nail", constant);
+    }
+
+    public boolean setedgerestraint_ManHours(double constant) {
+        return Main.jdbcc.setConstant("edgerestraint", "man hours", constant);
+    }
+
+    public boolean setedgerestraint_InstallPerHours(double constant) {
+        return Main.jdbcc.setConstant("edgerestraint", "install /hours", constant);
+    }
+
+    public boolean setjointingsand_QTYkgPersfAtOneQuarterInch(double constant) {
+        return Main.jdbcc.setConstant("jointingsand", "QTY (kg/sf) @ 1/4 inch", constant);
+    }
+
+    public boolean setjointingsand_CostPerKg(double constant) {
+        return Main.jdbcc.setConstant("jointingsand", "cost /kg", constant);
+    }
+
+    public boolean setjointingsand_HoursPerKg(double constant) {
+        return Main.jdbcc.setConstant("jointingsand", "hours /kg", constant);
+    }
+
+    public boolean setjointingsand_InstallPerHours(double constant) {
+        return Main.jdbcc.setConstant("jointingsand", "install /hours", constant);
+    }
+
+    public boolean setmaterials_CrushedRockUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Crushed Rock", "constantLow", constant);
+    }
+
+    public boolean setmaterials_CrushedRockRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Crushed Rock", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_PeaRockUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Pea Rock", "constantLow", constant);
+    }
+
+    public boolean setmaterials_PeaRockRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Pea Rock", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_RiverRockUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "River Rock", "constantLow", constant);
+    }
+
+    public boolean setmaterials_RiverRockRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "River Rock", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_MulchWesternRedCedarUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Mulch: Western Red Cedar", "constantLow", constant);
+    }
+
+    public boolean setmaterials_MulchWesternRedCedarRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Mulch: Western Red Cedar", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_TopSoilPremiumMixUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Top Soil: Premium mix", "constantLow", constant);
+    }
+
+    public boolean setmaterials_TopSoilPremiumMixRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Top Soil: Premium mix", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_CrusherDustUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Crusher Dust", "constantLow", constant);
+    }
+
+    public boolean setmaterials_CrusherDustRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Crusher Dust", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_RedShaleUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Red Shale", "constantLow", constant);
+    }
+
+    public boolean setmaterials_RedShaleRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Red Shale", "constantHigh", constant);
+    }
+
+    public boolean setmaterials_SodPer10SQFTUnit(double constant) {
+        return Main.jdbcc.setConstant("materials", "Sod (per 10 s.f.)", "constantLow", constant);
+    }
+
+    public boolean setmaterials_SodPer10SQFTRetail(double constant) {
+        return Main.jdbcc.setConstant("materials", "Sod (per 10 s.f.)", "constantHigh", constant);
+    }
+
+    public boolean setretainingwall_CrushedBaseCostPerYard(double constant) {
+        return Main.jdbcc.setConstant("retainingwall", "crushed base cost / yard", constant);
+    }
+
+    public boolean setretainingwall_CrushedBaseInstallHoursPerYard(double constant) {
+        return Main.jdbcc.setConstant("retainingwall", "crushed base install hours / yard", constant);
+    }
+
+    public boolean setretainingwall_CrushedBaseInstallRatePerYard(double constant) {
+        return Main.jdbcc.setConstant("retainingwall", "crushed base install rate / yard", constant);
+    }
+
+    public boolean setretainingwall_BaseRowInstallHoursPerLineFeet(double constant) {
+        return Main.jdbcc.setConstant("retainingwall", "base row install hours /line feet", constant);
+    }
+
+    public boolean setretainingwall_BaseRowInstallRatePerHour(double constant) {
+        return Main.jdbcc.setConstant("retainingwall", "base row install rate / hour", constant);
+    }
+
+    public boolean setretainingwall_BlockCostPerLineFeet(double constant) {
+        return Main.jdbcc.setConstant("retainingwall", "block cost /line feet", constant);
+    }
+
+    public boolean setirrigation_3QuarterLiningMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "3/4 lining", "constantLow", constant);
+    }
+
+    public boolean setirrigation_3QuarterLiningLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "3/4 lining", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_HoseBibsMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "hose bibs", "constantLow", constant);
+    }
+
+    public boolean setirrigation_HoseBibsLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "hose bibs", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_ShutOffValveMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "shut off valve", "constantLow", constant);
+    }
+
+    public boolean setirrigation_ShutOffValveLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "shut off valve", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_RotaryHeadMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "rotary head", "constantLow", constant);
+    }
+
+    public boolean setirrigation_RotaryHeadLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "rotary head", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_SprayHeadMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "spray head", "constantLow", constant);
+    }
+
+    public boolean setirrigation_SprayHeadLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "spray head", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_Drip1QuarterInchPerFootMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "drip 1/4inch /foot", "constantLow", constant);
+    }
+
+    public boolean setirrigation_Drip1QuarterInchPerFootLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "drip 1/4inch /foot", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_DripEmitterMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "drip emmiter", "constantLow", constant);
+    }
+
+    public boolean setirrigation_DripEmitterLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "drip emmiter", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_TimerControlMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "timer control", "constantLow", constant);
+    }
+
+    public boolean setirrigation_TimerControlLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "timer control", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_ControlWirePer100FeetMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "control wire /100 feet", "constantLow", constant);
+    }
+
+    public boolean setirrigation_ControlWirePer100FeetLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "control wire /100 feet", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_ValveBoxMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "valve box", "constantLow", constant);
+    }
+
+    public boolean setirrigation_ValveBoxLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "valve box", "constantHigh", constant);
+    }
+
+    public boolean setirrigation_ControlValveMaterial(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "control valve", "constantLow", constant);
+    }
+
+    public boolean setirrigation_ControlValveLabour(double constant) {
+        return Main.jdbcc.setConstant("irrigation", "control valve", "constantHigh", constant);
+    }
+
+    public boolean setweedbarrier_ManHoursPer500SQFT(double constant) {
+        return Main.jdbcc.setConstant("weedbarrier", "man hours /500 sqft", constant);
+    }
+
+    public boolean setweedbarrier_StaplesPer500SQFT(double constant) {
+        return Main.jdbcc.setConstant("weedbarrier", "staples /500 sqft", constant);
+    }
+
+    public boolean setweedbarrier_CostPerStaples(double constant) {
+        return Main.jdbcc.setConstant("weedbarrier", "cost per staples", constant);
+    }
+
+    public boolean setweedbarrier_BarrierSupplyPer500SQFT(double constant) {
+        return Main.jdbcc.setConstant("weedbarrier", "barrier supply /500 sqft", constant);
+    }
+
+    public boolean setsod_SupplyPerYard(double constant) {
+        return Main.jdbcc.setConstant("sod", "supply /yard", constant);
+    }
+
+    public boolean setsod_ManHoursPer10SQFT(double constant) {
+        return Main.jdbcc.setConstant("sod", "man hours /10 sqft", constant);
+    }
+
+    public boolean setsod_InstallRatePerHours(double constant) {
+        return Main.jdbcc.setConstant("sod", "install rate /hours", constant);
+    }
+
+    public boolean setsnowremoval_MonthlyRate(double constant) {
+        return Main.jdbcc.setConstant("snowremoval", "monthly rate", constant);
+    }
+
+    public boolean setsnowremoval_AdditionalArea(double constant) {
+        return Main.jdbcc.setConstant("snowremoval", "additional area", constant);
+    }
+    
 }

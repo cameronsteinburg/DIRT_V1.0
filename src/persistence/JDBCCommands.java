@@ -612,8 +612,6 @@ public class JDBCCommands {
 
         try {
             
-            Statement statement = conn.createStatement();
-
             // Result set contains the result of the SQL query
             String query = "select * from serviceconstants where superservice = ? and subservice = ?";
             
@@ -644,5 +642,47 @@ public class JDBCCommands {
         ArrayList narray = new ArrayList();
         narray.add(-1);
         return narray;
+    }
+    
+    public boolean setConstant(String superService, String subService, double constant){
+        
+        try {
+            // update to be done
+            String update = "update serviceconstants set constantLow = ? where superservice = ? and subservice = ?";
+            
+            PreparedStatement preparedStmt = conn.prepareStatement(update);
+            
+            preparedStmt.setDouble(1, constant);
+            preparedStmt.setString(2, superService);
+            preparedStmt.setString(3, subService);
+            
+            // execute the update
+            preparedStmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean setConstant(String superService, String subService, String lowOrHigh, double constant){
+        try {
+            // update to be done
+            String update = "update serviceconstants set ? = ? where superservice = ? and subservice = ?";
+
+            PreparedStatement preparedStmt = conn.prepareStatement(update);
+
+            preparedStmt.setString(1, lowOrHigh);
+            preparedStmt.setDouble(2, constant);
+            preparedStmt.setString(3, superService);
+            preparedStmt.setString(4, subService);
+
+            // execute the update
+            preparedStmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 }
