@@ -439,7 +439,7 @@ public class JDBCCommands {
     public Labourer getLabourer(String labourerName) {
 
         try {
-            
+
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
@@ -447,7 +447,7 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                
+
                 String fname = results.getString("fname");
                 String lname = results.getString("lname");
                 String title = results.getString("title");
@@ -468,7 +468,7 @@ public class JDBCCommands {
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return null;
     }
 
@@ -599,7 +599,7 @@ public class JDBCCommands {
     public ArrayList<Labourer> fetchLabourers() {
         return null;
     }
-    
+
     /**
      *
      * Retrieves a constant from the database from the name passed to the method
@@ -611,10 +611,10 @@ public class JDBCCommands {
     public ArrayList getConstant(String superService, String subService) {
 
         try {
-            
+
             // Result set contains the result of the SQL query
             String query = "select * from serviceconstants where superservice = ? and subservice = ?";
-            
+
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
             preparedStmt.setString(1, superService);
@@ -625,37 +625,37 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                
-                ArrayList narray = new ArrayList();                
+
+                ArrayList narray = new ArrayList();
                 double constantLow = results.getDouble("constantLow");
                 narray.add(constantLow);
-                
-                if (superService.equals("materials")){
+
+                if (superService.equals("materials")) {
                     double constantHigh = results.getDouble("constantHigh");
                     narray.add(constantHigh);
                 }
                 return narray;
-            }            
-        }   catch (SQLException ex) {
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
         ArrayList narray = new ArrayList();
         narray.add(-1);
         return narray;
     }
-    
-    public boolean setConstant(String superService, String subService, double constant){
-        
+
+    public boolean setConstant(String superService, String subService, double constant) {
+
         try {
             // update to be done
             String update = "update serviceconstants set constantLow = ? where superservice = ? and subservice = ?";
-            
+
             PreparedStatement preparedStmt = conn.prepareStatement(update);
-            
+
             preparedStmt.setDouble(1, constant);
             preparedStmt.setString(2, superService);
             preparedStmt.setString(3, subService);
-            
+
             // execute the update
             preparedStmt.executeUpdate();
             return true;
@@ -664,8 +664,8 @@ public class JDBCCommands {
             return false;
         }
     }
-    
-    public boolean setConstant(String superService, String subService, String lowOrHigh, double constant){
+
+    public boolean setConstant(String superService, String subService, String lowOrHigh, double constant) {
         try {
             // update to be done
             String update = "update serviceconstants set ? = ? where superservice = ? and subservice = ?";
