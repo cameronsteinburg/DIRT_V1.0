@@ -509,8 +509,6 @@ public class HomePageGUIController extends Controller implements Initializable {
 
                     matches.add(labourerList.get(i));
                 }
-
-                //matches.add(labourerList.get(i));
             }
 
             updateLabourerTable(matches);
