@@ -371,4 +371,151 @@ public class DBServices {
         return (double) Main.jdbcc.getConstant("materials","Sod (per 10 s.f.)").get(1);
     }
     
+    public double retainingwall_CrushedBaseCostPerYard(){
+        return (double) Main.jdbcc.getConstant("retainingwall","crushed base cost / yard").get(0);
+    }
+    
+    public double retainingwall_CrushedBaseInstallHoursPerYard(){
+        return (double) Main.jdbcc.getConstant("retainingwall","crushed base install hours / yard").get(0);
+    }
+    
+    public double retainingwall_CrushedBaseInstallRatePerYard(){
+        return (double) Main.jdbcc.getConstant("retainingwall","crushed base install rate / yard").get(0);
+    }
+    
+    public double retainingwall_BaseRowInstallHoursPerLineFeet(){
+        return (double) Main.jdbcc.getConstant("retainingwall","base row install hours /line feet").get(0);
+    }
+    
+    public double retainingwall_BaseRowInstallRatePerHour(){
+        return (double) Main.jdbcc.getConstant("retainingwall","base row install rate / hour").get(0);
+    }
+    
+    public double retainingwall_BlockCostPerLineFeet(){
+        return (double) Main.jdbcc.getConstant("retainingwall","block cost /line feet").get(0);
+    }
+    
+    public double irrigation_3QuarterLiningMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","3/4 lining").get(0);
+    }
+    
+    public double irrigation_3QuarterLiningLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","3/4 lining").get(1);
+    }
+    
+    public double irrigation_HoseBibsMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","hose bibs").get(0);
+    }
+    
+    public double irrigation_HoseBibsLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","hose bibs").get(1);
+    }
+    
+    public double irrigation_ShutOffValveMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","shut off valve").get(0);
+    }
+    
+    public double irrigation_ShutOffValveLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","shut off valve").get(1);
+    }
+    
+    public double irrigation_RotaryHeadMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","rotary head").get(0);
+    }
+    
+    public double irrigation_RotaryHeadLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","rotary head").get(1);
+    }
+    
+    public double irrigation_SprayHeadMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","spray head").get(0);
+    }
+    
+    public double irrigation_SprayHeadLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","spray head").get(1);
+    }
+    
+    public double irrigation_Drip1QuarterInchPerFootMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","drip 1/4inch /foot").get(0);
+    }
+    
+    public double irrigation_Drip1QuarterInchPerFootLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","drip 1/4inch /foot").get(1);
+    }
+    
+    public double irrigation_DripEmitterMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","drip emmiter").get(0);
+    }
+    
+    public double irrigation_DripEmitterLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","drip emmiter").get(1);
+    }
+    
+    public double irrigation_TimerControlMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","timer control").get(0);
+    }
+    
+    public double irrigation_TimerControlLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","timer control").get(1);
+    }
+    
+    public double irrigation_ControlWirePer100FeetMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","control wire /100 feet").get(0);
+    }
+    
+    public double irrigation_ControlWirePer100FeetLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","control wire /100 feet").get(1);
+    }
+    
+    public double irrigation_ValveBoxMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","valve box").get(0);
+    }
+    
+    public double irrigation_ValveBoxLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","valve box").get(1);
+    }
+    
+    public double irrigation_ControlValveMaterial(){
+        return (double) Main.jdbcc.getConstant("irrigation","control valve").get(0);
+    }
+    
+    public double irrigation_ControlValveLabour(){
+        return (double) Main.jdbcc.getConstant("irrigation","control valve").get(1);
+    }
+    
+    public double weedbarrier_ManHoursPer500SQFT(){
+        return (double) Main.jdbcc.getConstant("weedbarrier","man hours /500 sqft").get(0);
+    }
+    
+    public double weedbarrier_StaplesPer500SQFT(){
+        return (double) Main.jdbcc.getConstant("weedbarrier","staples /500 sqft").get(0);
+    }
+    
+    public double weedbarrier_CostPerStaples(){
+        return (double) Main.jdbcc.getConstant("weedbarrier","cost per staples").get(0);
+    }
+    
+    public double weedbarrier_BarrierSupplyPer500SQFT(){
+        return (double) Main.jdbcc.getConstant("weedbarrier","barrier supply /500 sqft").get(0);
+    }
+    
+    public double sod_SupplyPerYard(){
+        return (double) Main.jdbcc.getConstant("sod","supply /yard").get(0);
+    }
+    
+    public double sod_ManHoursPer10SQFT(){
+        return (double) Main.jdbcc.getConstant("sod","man hours /10 sqft").get(0);
+    }
+    
+    public double sod_InstallRatePerHours(){
+        return (double) Main.jdbcc.getConstant("sod","install rate /hours").get(0);
+    }
+    
+    public double snowremoval_MonthlyRate(){
+        return (double) Main.jdbcc.getConstant("snowremoval","monthly rate").get(0);
+    }
+    
+    public double snowremoval_AdditionalArea(){
+        return (double) Main.jdbcc.getConstant("snowremoval","additional area").get(0);
+    }
 }
