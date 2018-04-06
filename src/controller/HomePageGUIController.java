@@ -563,13 +563,19 @@ public class HomePageGUIController extends Controller implements Initializable {
      * @param event
      */
     @FXML
-    private void restoreAction(ActionEvent event) {
+    private void restoreAction(ActionEvent event) throws IOException {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SQL Files(*.sql)", "*.sql");
+        fileChooser.getExtensionFilters().add(extFilter);
+        
         File file = fileChooser.showOpenDialog(Main.stage);
+        
         DBServices dbs = new DBServices();
         dbs.restore(file.getAbsolutePath());
+                
+        navigateHome(null);
     }
 
     /**
@@ -582,6 +588,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         DirectoryChooser dc = new DirectoryChooser();
         dc.setTitle("Choose Backup Location");
         File path = dc.showDialog(Main.stage);
+        
         DBServices dbs = new DBServices();
         dbs.backup(path.getAbsolutePath());
     }
@@ -717,9 +724,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             ConstantsGUIController cgc = loader.getController();
             cgc.setErrorMessage(errorMessage);
-
             constantsFlag = false;
-
         }
 
         if (createClientFlag == true) {
@@ -842,6 +847,5 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         this.updateClientTable(null); //for viewing all clients in a table   
         this.updateLabourerTable(null); //for viewing all labourer in a table
-
     }
 }

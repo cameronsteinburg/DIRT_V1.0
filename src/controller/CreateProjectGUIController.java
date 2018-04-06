@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
@@ -144,34 +145,65 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
         FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
 
-        CreateProjectController2 cont = loader.getController();
-        
+        CreateProjectGUI_3Controller cont = loader.getController();
+
         GridPane newGrid = new GridPane();
-        newGrid.addRow(0, new Label("suhh"));
-    
+
+        for(int i =0; i < elements.size(); i++){
+        
+            for(int j = 0; j < elements.get(i).size(); j++){
+            
+                newGrid.addRow(i, (Node) elements.get(i).get(j));
+            }
+        }
+        
+       // newGrid.addRow(0, (Node) elements.get(0).get(0));
+
         AnchorPane pane = cont.getPane();
-       // pane.getChildren().add(new Label("SUUUUUUUUUUUHDUUUDE"));
+
+        newGrid.setTranslateX(75);
+        newGrid.setTranslateY(30);
+
+        //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
+        //AnchorPane.setTopAnchor(newGrid, Double.NaN);
+        //AnchorPane.setRightAnchor(newGrid, Double.NaN);
+        //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
+        //todo anchor constraints
+        
+        newGrid.setHgap(5);
+        newGrid.setVgap(5);
         pane.getChildren().add(newGrid);
- 
     }
 
     private void addToList() {
 
         for (int i = 0; i < allItems.size(); i++) {
 
-            if (allItems.get(i) == "Bed") {
+            if (allItems.get(i).contains("Excavation")) {
 
-            } else if (allItems.get(i).contains("Hand")) {
+                if (allItems.get(i).contains("Hand")) {
 
-                ArrayList<Control> hand = new ArrayList();
+                    ArrayList<Control> hand = new ArrayList();
 
-                TextField sqft = new TextField("000.00");
+                    Label label = new Label("SQ FT:");
+   
+                    hand.add(new TextField("000"));
+                    hand.add(label);
+                    
+                    label = new Label("Depth (Inches)");
+                    hand.add(new TextField("000"));
+                    hand.add(label);
+                    
+                    label = new Label("Required Yards");
+                    hand.add(label);
+                    hand.add(new TextField("000"));
 
-                hand.add(sqft);
+                    elements.add(hand);
 
-                elements.add(hand);
-
-            } else if (allItems.get(i).contains("Skid")) {
+                } else if (allItems.get(i).contains("Skid")) {
+                    
+                    
+                }
 
             } else if (allItems.get(i).contains("Custom")) {
 
@@ -223,7 +255,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
             this.selectedItem = table.getSelectionModel().getSelectedItem();
             removeBtn.setDisable(false);
-            
+
         } else {
             removeBtn.setDisable(true);
         }

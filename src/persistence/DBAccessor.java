@@ -45,7 +45,7 @@ public class DBAccessor {
             Logger.getLogger(DBAccessor.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } catch (SQLException ex) {
-            Logger.getLogger(DBAccessor.class.getName()).log(Level.SEVERE, null, ex);
+           //Logger.getLogger(DBAccessor.class.getName()).log(Level.SEVERE, null, ex);
             conn = initializeDatabase();
             if (conn != null) return true;
             return false;

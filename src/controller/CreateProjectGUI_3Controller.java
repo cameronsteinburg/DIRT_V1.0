@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author 734972
  */
-public class CreateProjectController2 implements Initializable {
+public class CreateProjectGUI_3Controller implements Initializable {
 
     public static ArrayList<ArrayList> elements;
     

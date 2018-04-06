@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
-import javax.swing.filechooser.FileSystemView;
 
 /**
  * Methods that have direct access and control to the databases
@@ -98,6 +97,11 @@ public class DBServices {
         return Main.jdbcc.getLabourer(name);
     }
     
+    /**
+     * 
+     * @param lab
+     * @return 
+     */
     public boolean persistLabourer(Labourer lab){
          return Main.jdbcc.persistLabourer(lab);
     }
