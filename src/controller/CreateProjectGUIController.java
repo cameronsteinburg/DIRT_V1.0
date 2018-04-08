@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
@@ -74,7 +75,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
     private ObservableList<String> allItems = FXCollections.observableArrayList();
 
-    private ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
+    public ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
 
     private static int fieldCount = 0;
 
@@ -144,7 +145,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
      * @param event
      */
     @FXML
-    private void nextBtnAction2(ActionEvent event) {
+    private void nextBtnAction2(ActionEvent event) throws IOException {
 
         addToList();
 
@@ -177,6 +178,12 @@ public class CreateProjectGUIController extends Controller implements Initializa
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
         pane.getChildren().add(newGrid);
+
+        FXMLLoader luh = new FXMLLoader(getClass().getResource("CreateProjectGUI_3.fxml"));
+        luh.setLocation(loader.getLocation());
+        Parent root = luh.load();
+        CreateProjectGUI_3Controller c = loader.getController();
+        c.setEls(elements);
     }
 
     private void addToList() {
@@ -190,18 +197,16 @@ public class CreateProjectGUIController extends Controller implements Initializa
                     elements.add(addByHand());
 
                 } else if (allItems.get(i).contains("Skid")) {
-                    
-                        //todo addBySkid
+
+                    //todo addBySkid
                 }
 
             } else if (allItems.get(i).contains("Custom")) {
-                
+
                 //todo addCustom
-
             } else if (allItems.get(i).contains("Soil")) {
-                
-                //todo addSoil
 
+                //todo addSoil
             } else if (allItems.get(i).contains("Sod")) {
 
             } else if (allItems.get(i).contains("Snow")) {
@@ -287,26 +292,26 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
         hand.add(addLabel("Disposal Fees"));
         hand.add(addField());
-        
+
         label = new Label("   |");
         label.setFont(new Font(20));
         hand.add(label);
-        
+
         label = addLabel("Service Total");
         label.setUnderline(true);
         label.setFont(new Font(16));
         hand.add(label);
-        
+
         hand.add(addField());
-        
+
         hand.add(new Label("   "));
 
         return hand;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     private TextField addField() {
 
@@ -319,9 +324,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     * 
+     *
      * @param text
-     * @return 
+     * @return
      */
     private Label addLabel(String text) {
 

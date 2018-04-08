@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
@@ -16,6 +17,8 @@ import javafx.util.Duration;
  * @author 734972
  */
 abstract class Controller {
+    
+    public static ArrayList<ArrayList> elementsFor3;
 
     /**
      *
@@ -45,8 +48,16 @@ abstract class Controller {
         }
 
         pane.setCenter(root);
-        
+        System.out.println(loader.getLocation() + "");
         return loader;
+    }
+    
+    protected static void setElsFor3(ArrayList<ArrayList> els){
+       elementsFor3 = els;
+    }
+    
+    protected static ArrayList<ArrayList> getElsFor3(){
+        return elementsFor3;
     }
     
     protected abstract void setErrorMessage(Label error);

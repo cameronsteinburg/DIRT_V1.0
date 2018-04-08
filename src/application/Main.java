@@ -41,6 +41,7 @@ Governing Law, Jurisdiction: Licensee hereby agrees not to initiate class-action
  */
 package application;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -59,6 +60,8 @@ public class Main extends Application {
 
     public static Stage stage;//singleton stage object i.e the apps window definied by fxml files controlled by controller files
     public static JDBCCommands jdbcc; //singleton jdcc object to be used by DBAccessor
+    
+    public static ArrayList<ArrayList> ffs;
         //DBServices - > JDBCCommands -> DBAccessor -> DB 
 
     @Override
