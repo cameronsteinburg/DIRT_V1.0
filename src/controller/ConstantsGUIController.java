@@ -25,7 +25,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
                         field41,field42,field43,field44,field45,field46,field47,field48,field49,field50,
                         field51,field52,field53,field54,field55,field56,field57,field58,field59,field60,
                         field61,field62,field63,field64,field65,field66,field67,field68,field69,field70,
-                        field71,field72,field73,field74,field75,field76,field77,field78,field79,field80;
+                        field71,field72,field73,field74,field75,field76,field77,field78,field79,field80,field81,field82;
     
     private ArrayList<TextField> list = new ArrayList();
   
@@ -115,6 +115,8 @@ public class ConstantsGUIController extends Controller implements Initializable 
         list.add(field78);
         list.add(field79);
         list.add(field80);
+        list.add(field81);
+        list.add(field82);
         
         //Instantiate Variables
         TextField field = null;
@@ -144,7 +146,108 @@ public class ConstantsGUIController extends Controller implements Initializable 
                 
                 errorMessage.setText("One of the Fiels is Not a Proper Number");
                 return;
-            }
+            }//data is valid at this point
+            
+            
+            DBServices dbs = new DBServices();
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field1.getText()));
+            
+            /*
+            dbs.setmaterials_CrushedRockUnit(Double.parseDouble(field2.getText()));
+            dbs.setmaterials_PeaRockRetail(Double.parseDouble(field3.getText()));
+            dbs.setmaterials_RiverRockUnit(Double.parseDouble(field4.getText()));
+            dbs.setmaterials_RiverRockRetail(Double.parseDouble(field5.getText()));
+            dbs.setmaterials_RiverRockUnit(Double.parseDouble(field6.getText()));
+            dbs.setmaterials_MulchWesternRedCedarRetail(Double.parseDouble(field7.getText()));
+            dbs.setmaterials_MulchWesternRedCedarUnit(Double.parseDouble(field8.getText()));
+            dbs.setmaterials_TopSoilPremiumMixRetail(Double.parseDouble(field9.getText()));
+            dbs.setmaterials_TopSoilPremiumMixUnit(Double.parseDouble(field10.getText()));
+            dbs.setmaterials_CrusherDustRetail(Double.parseDouble(field11.getText()));
+            dbs.setmaterials_CrusherDustUnit(Double.parseDouble(field12.getText()));
+            dbs.setmaterials_RedShaleRetail(Double.parseDouble(field13.getText()));
+            dbs.setmaterials_RedShaleUnit(Double.parseDouble(field14.getText()));
+            dbs.setmaterials_SodPer10SQFTRetail(Double.parseDouble(field15.getText()));
+            dbs.setmaterials_SodPer10SQFTUnit(Double.parseDouble(field16.getText()));
+            
+            dbs.setexcavation_ManHoursBySkidPerYards(Double.parseDouble(field17.getText()));
+            dbs.setexcavation_ManHoursBySkidPerHours(Double.parseDouble(field18.getText()));
+            dbs.setexcavation_ManHoursByHandPerYards(Double.parseDouble(field19.getText()));
+            dbs.setexcavation_ManHoursByHandPerHours(Double.parseDouble(field20.getText()));
+            dbs.setexcavation_TruckingFee(Double.parseDouble(field21.getText()));
+            dbs.setexcavation_DisposalFee(Double.parseDouble(field22.getText()));  
+            
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field23.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field24.getText()));            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field25.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field26.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field27.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field28.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field29.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field30.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field31.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field32.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field33.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field34.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field35.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field36.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field37.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field38.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field39.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field40.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field41.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field42.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field43.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field44.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field45.getText())); 
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field46.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field47.getText()));
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field48.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field49.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field50.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field51.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field52.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field53.getText()));
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field54.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field55.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field56.getText()));
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field57.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field58.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field59.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field60.getText()));
+            
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field61.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field62.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field63.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field64.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field65.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field66.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field67.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field68.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field69.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field70.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field71.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field72.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field73.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field74.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field75.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field76.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field77.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field78.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field79.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field80.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field81.getText()));
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field82.getText()));
+            */
+            
+            errorMessage.setText("Changes to Constants Saved!");
+            
+     
         }
     }
 
@@ -181,8 +284,6 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field18.setText(f.format(dbs.excavation_ManHoursBySkidPerHours()));
         field19.setText(f.format(dbs.excavation_ManHoursByHandPerYards()));
         field20.setText(f.format(dbs.excavation_ManHoursByHandPerHours()));
-
-  
         field21.setText(f.format(dbs.excavation_TruckingFee()));
         field22.setText(f.format(dbs.excavation_DisposalFee()));
 
@@ -248,13 +349,13 @@ public class ConstantsGUIController extends Controller implements Initializable 
         //Irrigation Tab
             //first sectin
         field61.setText(f.format(dbs.irrigation_HoseBibsMaterial()));
-        //field62.setText(f.format(dbs.irrigation_HoseBibsLabour()));
+        field62.setText(f.format(dbs.irrigation_HoseBibsLabour()));
         field63.setText(f.format(dbs.irrigation_ShutOffValveMaterial()));
-        //field64.setText(f.format(dbs.irrigation_ShutOffValveLabour()));
+        field64.setText(f.format(dbs.irrigation_ShutOffValveLabour()));
         field65.setText(f.format(dbs.irrigation_RotaryHeadMaterial()));
-        //field66.setText(f.format(dbs.irrigation_RotaryHeadLabour()));
+        field66.setText(f.format(dbs.irrigation_RotaryHeadLabour()));
         field67.setText(f.format(dbs.irrigation_SprayHeadMaterial()));
-        //field68.setText(f.format(dbs.irrigation_SprayHeadLabour()));
+        field68.setText(f.format(dbs.irrigation_SprayHeadLabour()));
         
             //second section
         field69.setText(f.format(dbs.irrigation_Drip1QuarterInchPerFootMaterial()));
@@ -267,10 +368,13 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field76.setText(f.format(dbs.irrigation_ControlWirePer100FeetLabour()));
         
             //third section
+        field82.setText(f.format(dbs.irrigation_3QuarterLiningLabour()));
+        field81.setText(f.format(dbs.irrigation_3QuarterLiningMaterial()));
         field77.setText(f.format(dbs.irrigation_ValveBoxMaterial()));
         field78.setText(f.format(dbs.irrigation_ValveBoxLabour()));
         field79.setText(f.format(dbs.irrigation_ControlValveMaterial()));
         field80.setText(f.format(dbs.irrigation_ControlValveLabour()));   
+        
     }
     
     protected void setErrorMessage(Label error) {

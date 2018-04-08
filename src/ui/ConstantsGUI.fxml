@@ -1741,6 +1741,7 @@
                                                       <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Material" wrapText="true" GridPane.columnIndex="2">
@@ -1795,6 +1796,16 @@
                                                       <Label text="\$" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                       <Label text="\$" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                       <Label text="each" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                                      <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="3/4 Lining" wrapText="true" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Label text="\$" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                      <TextField fx:id="field81" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                      <TextField fx:id="field82" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                                      <Label text="each" GridPane.columnIndex="5" GridPane.rowIndex="3" />
                                                    </children>
                                                 </GridPane>
                                              </children>
