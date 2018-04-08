@@ -215,13 +215,13 @@ public class DBServices {
     public double excavation_ManHoursBySkidPerHours() {
         return (double) Main.jdbcc.getConstant("excavation", "labour cost by skid /hours").get(0);
     }
-
-    public double bed_HoursPerHours() {
-        return (double) Main.jdbcc.getConstant("bed", "hours /yards").get(0);
+    
+    public double bed_LabourPerHour(){
+        return (double) Main.jdbcc.getConstant("bed","hours /yards").get(0);
     }
-
-    public double bed_InstallPerYards() {
-        return (double) Main.jdbcc.getConstant("bed", "install /hours").get(0);
+    
+    public double bed_ManHoursPerYard(){
+        return (double) Main.jdbcc.getConstant("bed","install /hours").get(0);
     }
 
     public double stonewalkway_EstimatedManHours() {
@@ -287,9 +287,9 @@ public class DBServices {
     public double edgerestraint_CostPer8FT() {
         return (double) Main.jdbcc.getConstant("edgerestraint", "cost /8 ft").get(0);
     }
-
-    public double edgerestraint_NailsPer1Nail() {
-        return (double) Main.jdbcc.getConstant("edgerestraint", "nails /1nail").get(0);
+    
+    public double edgerestraint_CostPer1Nail(){
+        return (double) Main.jdbcc.getConstant("edgerestraint","nails /1nail").get(0);
     }
 
     public double edgerestraint_ManHours() {

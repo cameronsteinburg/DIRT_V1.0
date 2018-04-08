@@ -573,7 +573,13 @@ public class HomePageGUIController extends Controller implements Initializable {
         File file = fileChooser.showOpenDialog(Main.stage);
         
         DBServices dbs = new DBServices();
-        dbs.restore(file.getAbsolutePath());
+        
+        try{
+             dbs.restore(file.getAbsolutePath());
+        } catch(NullPointerException e){
+            //want it to ignore, errors when you cancel the window for some reason
+        }
+       
                 
         navigateHome(null);
     }
@@ -590,7 +596,12 @@ public class HomePageGUIController extends Controller implements Initializable {
         File path = dc.showDialog(Main.stage);
         
         DBServices dbs = new DBServices();
-        dbs.backup(path.getAbsolutePath());
+        
+        try{
+             dbs.backup(path.getAbsolutePath());
+        } catch(NullPointerException e){
+            //want it to ignore, errors when you cancel the backup for some reason
+        }
     }
 
 

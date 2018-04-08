@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="innnerAnchor" prefHeight="516.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="innnerAnchor" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="7.0" prefHeight="46.0" prefWidth="148.0" text="Current Projects" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="16.0" layoutY="38.0" prefHeight="250.0" prefWidth="1048.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
+      <TableView layoutX="16.0" layoutY="38.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
          <columns>
             <TableColumn prefWidth="106.0" text="Project Name" />
             <TableColumn text="Client" />
@@ -22,12 +22,12 @@
             <TableColumn prefWidth="100.0" text="End Date" />
          </columns>
       </TableView>
-      <Label layoutX="14.0" layoutY="288.0" prefHeight="46.0" prefWidth="257.0" text="Completed Projects">
+      <Label layoutX="7.0" layoutY="250.0" prefHeight="46.0" prefWidth="257.0" text="Completed Projects">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="15.0" layoutY="324.0" prefHeight="157.0" prefWidth="1048.0">
+      <TableView layoutX="15.0" layoutY="296.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="296.0">
          <columns>
             <TableColumn prefWidth="106.0" text="Project Name" />
             <TableColumn text="Client" />

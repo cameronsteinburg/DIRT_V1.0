@@ -112,7 +112,7 @@ insert into serviceconstants values('geotextilewalkway','fabric man hours /100 s
 insert into serviceconstants values('geotextilewalkway','fabric install rate /hours',55,null);
 
 insert into serviceconstants values('walkwaybase','crushed base sq. ft/inch/yard',243,null);
-insert into serviceconstants values('walkwaybase','crasued cost /yard',75,null);
+insert into serviceconstants values('walkwaybase','crasued cost /yard',75.0,null);
 insert into serviceconstants values('walkwaybase','man hours /yard',3,null);
 insert into serviceconstants values('walkwaybase','install rate / hours',55,null);
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateProjectGUI_3Controller">
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateProjectGUI_3Controller">
    <children>
       <ScrollPane layoutX="-1.0" pannable="true" prefHeight="468.0" prefWidth="1078.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -18,8 +18,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="843.0" layoutY="472.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" text="Save In New Project" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="114.0" />
-      <Button layoutX="976.0" layoutY="472.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Cancel" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="928.0" layoutY="474.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="143.0" styleClass="grn-button" text="Save In New Project" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="7.0" />
+      <Button layoutX="826.0" layoutY="474.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="81.0" styleClass="red_button" text="Cancel" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="171.0" />
       <Label layoutX="157.0" layoutY="471.0" prefHeight="42.0" prefWidth="112.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="157.0">
          <font>
             <Font size="20.0" />

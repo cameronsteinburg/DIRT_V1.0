@@ -30,7 +30,7 @@
          <top>
             <AnchorPane prefHeight="125.0" prefWidth="1280.0" style="-fx-background-color: d9ffd6; -fx-border-color: #24664e; -fx-border-width: 2px;" styleClass="navButton" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="165.0" layoutX="14.0" layoutY="31.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+                  <ImageView fitHeight="100.0" fitWidth="165.0" layoutX="-8.0" layoutY="32.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-8.0" AnchorPane.topAnchor="32.0">
                      <image>
                         <Image url="@images/vls.png" />
                      </image>
@@ -187,7 +187,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TableView layoutX="16.0" layoutY="38.0" prefHeight="250.0" prefWidth="1048.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
+                        <TableView layoutX="16.0" layoutY="38.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
                            <columns>
                               <TableColumn prefWidth="106.0" text="Project Name" />
                               <TableColumn text="Client" />
@@ -196,12 +196,12 @@
                               <TableColumn prefWidth="100.0" text="End Date" />
                            </columns>
                         </TableView>
-                        <Label layoutX="14.0" layoutY="288.0" prefHeight="46.0" prefWidth="257.0" text="Completed Projects">
+                        <Label layoutX="7.0" layoutY="250.0" prefHeight="46.0" prefWidth="257.0" text="Completed Projects">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TableView layoutX="15.0" layoutY="324.0" prefHeight="190.0" prefWidth="1048.0">
+                        <TableView layoutX="15.0" layoutY="296.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="296.0">
                            <columns>
                               <TableColumn prefWidth="106.0" text="Project Name" />
                               <TableColumn text="Client" />

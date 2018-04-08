@@ -189,12 +189,18 @@ public class CreateProjectGUIController extends Controller implements Initializa
                     elements.add(addByHand());
 
                 } else if (allItems.get(i).contains("Skid")) {
+                    
+                        //todo addBySkid
 
                 }
 
             } else if (allItems.get(i).contains("Custom")) {
+                
+                //todo addCustom
 
             } else if (allItems.get(i).contains("Soil")) {
+                
+                //todo addSoil
 
             } else if (allItems.get(i).contains("Sod")) {
 

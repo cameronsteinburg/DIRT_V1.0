@@ -118,7 +118,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
         
         //Instantiate Variables
         TextField field = null;
-        Double doubleVal;
+        Double doubleVal; //it is being used dont let netbeans deceive you
         String fieldText = null;
         
         //Loop through array to validate information
@@ -154,92 +154,123 @@ public class ConstantsGUIController extends Controller implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        DecimalFormat f = new DecimalFormat("#.00");
+        DecimalFormat f = new DecimalFormat("0.00");
         
         DBServices dbs = new DBServices();
-
+        
+        //materials tab
         field1.setText(f.format(dbs.materials_CrushedRockRetail()));
         field2.setText(f.format(dbs.materials_CrushedRockUnit()));
-        field3.setText(dbs.materials_PeaRockRetail() + "");
-        field4.setText(dbs.materials_PeaRockUnit() + "");
-        field5.setText(dbs.materials_RiverRockRetail() + "");
-        field6.setText(dbs.materials_RiverRockUnit() + "");
-        field7.setText(dbs.materials_MulchWesternRedCedarRetail() + "");
-        field8.setText(dbs.materials_MulchWesternRedCedarUnit() + "");
-        field9.setText(dbs.materials_TopSoilPremiumMixRetail() + "");
-        field10.setText(dbs.materials_TopSoilPremiumMixUnit() + "");
-        field11.setText(dbs.materials_CrusherDustRetail() + "");
-        field12.setText(dbs.materials_CrusherDustUnit() + "");
-        field13.setText(dbs.materials_RedShaleRetail() + "");
-        field14.setText(dbs.materials_RedShaleUnit() + "");
-        field15.setText(dbs.materials_SodPer10SQFTRetail() + "");
-        field16.setText(dbs.materials_SodPer10SQFTUnit() + "");
-        field17.setText(dbs.excavation_ManHoursByHandPerHours() + "");
-        field18.setText(dbs.excavation_ManHoursBySkidPerHours() + "");
-        field19.setText(dbs.excavation_TruckingFee() + "");
-        field20.setText(dbs.excavation_DisposalFee() + "");
-        field21.setText(dbs.excavation_ManHoursByHandPerYards() + "");
-        field22.setText(dbs.excavation_ManHoursBySkidPerYards() + "");
-        field23.setText(dbs.bed_HoursPerHours() + "");
-        field24.setText(dbs.bed_InstallPerYards() + "");
-        //TODO: field25 - field80 Data Retrieval
-        field25.setText(dbs.bed_InstallPerYards() + "");
-        field26.setText(dbs.bed_InstallPerYards() + "");
-        field27.setText(dbs.bed_InstallPerYards() + "");
-        field28.setText(dbs.bed_InstallPerYards() + "");
-        field29.setText(dbs.bed_InstallPerYards() + "");
-        field30.setText(dbs.bed_InstallPerYards() + "");
-        field31.setText(dbs.bed_InstallPerYards() + "");
-        field32.setText(dbs.bed_InstallPerYards() + "");
-        field33.setText(dbs.bed_InstallPerYards() + "");
-        field34.setText(dbs.bed_InstallPerYards() + "");
-        field35.setText(dbs.bed_InstallPerYards() + "");
-        field36.setText(dbs.bed_InstallPerYards() + "");
-        field37.setText(dbs.bed_InstallPerYards() + "");
-        field38.setText(dbs.bed_InstallPerYards() + "");
-        field39.setText(dbs.bed_InstallPerYards() + "");
-        field40.setText(dbs.bed_InstallPerYards() + "");
-        field41.setText(dbs.bed_InstallPerYards() + "");
-        field42.setText(dbs.bed_InstallPerYards() + "");
-        field43.setText(dbs.bed_InstallPerYards() + "");
-        field44.setText(dbs.bed_InstallPerYards() + "");
-        field45.setText(dbs.bed_InstallPerYards() + "");
-        field46.setText(dbs.bed_InstallPerYards() + "");
-        field47.setText(dbs.bed_InstallPerYards() + "");
-        field48.setText(dbs.bed_InstallPerYards() + "");
-        field49.setText(dbs.bed_InstallPerYards() + "");
-        field50.setText(dbs.bed_InstallPerYards() + "");
-        field51.setText(dbs.bed_InstallPerYards() + "");
-        field52.setText(dbs.bed_InstallPerYards() + "");
-        field53.setText(dbs.bed_InstallPerYards() + "");
-        field54.setText(dbs.bed_InstallPerYards() + "");
-        field55.setText(dbs.bed_InstallPerYards() + "");
-        field56.setText(dbs.bed_InstallPerYards() + "");
-        field57.setText(dbs.bed_InstallPerYards() + "");
-        field58.setText(dbs.bed_InstallPerYards() + "");
-        field59.setText(dbs.bed_InstallPerYards() + "");
-        field60.setText(dbs.bed_InstallPerYards() + "");
-        field61.setText(dbs.bed_InstallPerYards() + "");
-        field62.setText(dbs.bed_InstallPerYards() + "");
-        field63.setText(dbs.bed_InstallPerYards() + "");
-        field64.setText(dbs.bed_InstallPerYards() + "");
-        field65.setText(dbs.bed_InstallPerYards() + "");
-        field66.setText(dbs.bed_InstallPerYards() + "");
-        field67.setText(dbs.bed_InstallPerYards() + "");
-        field68.setText(dbs.bed_InstallPerYards() + "");
-        field69.setText(dbs.bed_InstallPerYards() + "");
-        field70.setText(dbs.bed_InstallPerYards() + "");
-        field71.setText(dbs.bed_InstallPerYards() + "");
-        field72.setText(dbs.bed_InstallPerYards() + "");
-        field73.setText(dbs.bed_InstallPerYards() + "");
-        field74.setText(dbs.bed_InstallPerYards() + "");
-        field75.setText(dbs.bed_InstallPerYards() + "");
-        field76.setText(dbs.bed_InstallPerYards() + "");
-        field77.setText(dbs.bed_InstallPerYards() + "");
-        field78.setText(dbs.bed_InstallPerYards() + "");
-        field79.setText(dbs.bed_InstallPerYards() + "");
-        field80.setText(dbs.bed_InstallPerYards() + "");
+        field3.setText(f.format(dbs.materials_PeaRockRetail()));
+        field4.setText(f.format(dbs.materials_PeaRockUnit()));
+        field5.setText(f.format(dbs.materials_RiverRockRetail()));
+        field6.setText(f.format(dbs.materials_RiverRockUnit()));
+        field7.setText(f.format(dbs.materials_MulchWesternRedCedarRetail()));
+        field8.setText(f.format(dbs.materials_MulchWesternRedCedarUnit()));
+        field9.setText(f.format(dbs.materials_TopSoilPremiumMixRetail()));
+        field10.setText(f.format(dbs.materials_TopSoilPremiumMixUnit()));
+        field11.setText(f.format(dbs.materials_CrusherDustRetail()));
+        field12.setText(f.format(dbs.materials_CrusherDustUnit()));
+        field13.setText(f.format(dbs.materials_RedShaleRetail()));
+        field14.setText(f.format(dbs.materials_RedShaleUnit()));
+        field15.setText(f.format(dbs.materials_SodPer10SQFTRetail()));
+        field16.setText(f.format(dbs.materials_SodPer10SQFTUnit()));
+        
+        //excavation tab
+        field17.setText(f.format(dbs.excavation_ManHoursBySkidPerYards()));  
+        field18.setText(f.format(dbs.excavation_ManHoursBySkidPerHours()));
+        field19.setText(f.format(dbs.excavation_ManHoursByHandPerYards()));
+        field20.setText(f.format(dbs.excavation_ManHoursByHandPerHours()));
 
+  
+        field21.setText(f.format(dbs.excavation_TruckingFee()));
+        field22.setText(f.format(dbs.excavation_DisposalFee()));
+
+        //walkway tab
+            //stone
+        field23.setText(f.format(dbs.stonewalkway_EstimatedManHours()));
+        field24.setText(f.format(dbs.stonewalkway_InstallRatePerHours()));
+        
+            //geotextile
+        field25.setText(f.format(dbs.geotextilewalkway_WeedBarrierCostPerSQFT()));
+        field26.setText(f.format(dbs.geotextilewalkway_FabricStaplesQTYPerOneFifthSQFT()));
+        field27.setText(f.format(dbs.geotextilewalkway_FabricStaplesCostPerStaple()));
+        field28.setText(f.format(dbs.geotextilewalkway_FabricManHoursPer100SQFT()));
+        field29.setText(f.format(dbs.geotextilewalkway_FabricInstallRatePerHours()));
+        
+            //base
+        field30.setText(f.format(dbs.walkwaybase_CrushedBaseSQFTPerInchPerYard()));
+        field31.setText(f.format(dbs.walkwaybase_CrausedCostPerYard()));
+        field32.setText(f.format(dbs.walkwaybase_ManHoursPerYard()));
+        field33.setText(f.format(dbs.walkwaybase_InstallRatePerHours()));
+        
+            //screed sand
+        field34.setText(f.format(dbs.screedsand_DepthSQFTPerYard()));
+        field35.setText(f.format(dbs.screedsand_CostPerYard()));
+        field36.setText(f.format(dbs.screedsand_ManHoursPerYard()));
+        field37.setText(f.format(dbs.screedsand_InstallPerHour()));
+        
+            //edge restraint
+        field38.setText(f.format(dbs.edgerestraint_CostPer8FT()));
+        field39.setText(f.format(dbs.edgerestraint_CostPer1Nail()));
+        field40.setText(f.format(dbs.edgerestraint_ManHours()));
+        field41.setText(f.format(dbs.edgerestraint_InstallPerHours()));
+        
+            //jointing sand
+        field42.setText(f.format(dbs.jointingsand_QTYkgPersfAtOneQuarterInch()));
+        field43.setText(f.format(dbs.jointingsand_CostPerKg()));
+        field44.setText(f.format(dbs.jointingsand_HoursPerKg()));
+        field45.setText(f.format(dbs.jointingsand_InstallPerHours()));
+        
+        //bed tab
+        field46.setText(f.format(dbs.bed_LabourPerHour()));
+        field47.setText(f.format(dbs.bed_ManHoursPerYard()));
+        
+        //retaining wall tab
+        field48.setText(f.format(dbs.retainingwall_CrushedBaseCostPerYard()));
+        field49.setText(f.format(dbs.retainingwall_CrushedBaseInstallHoursPerYard()));
+        field50.setText(f.format(dbs.retainingwall_CrushedBaseInstallRatePerYard()));
+        field51.setText(f.format(dbs.retainingwall_BaseRowInstallHoursPerLineFeet()));
+        field52.setText(f.format(dbs.retainingwall_BaseRowInstallRatePerHour()));
+        field53.setText(f.format(dbs.retainingwall_BlockCostPerLineFeet()));
+        
+        //sod tab
+        field54.setText(f.format(dbs.bed_ManHoursPerYard()));
+        field55.setText(f.format(dbs.bed_ManHoursPerYard()));
+        field56.setText(f.format(dbs.bed_ManHoursPerYard()));
+        
+        //weed barrier tab
+        field57.setText(f.format(dbs.weedbarrier_ManHoursPer500SQFT()));
+        field58.setText(f.format(dbs.weedbarrier_StaplesPer500SQFT()));
+        field59.setText(f.format(dbs.weedbarrier_CostPerStaples()));
+        field60.setText(f.format(dbs.weedbarrier_BarrierSupplyPer500SQFT()));
+             
+        //Irrigation Tab
+            //first sectin
+        field61.setText(f.format(dbs.irrigation_HoseBibsMaterial()));
+        //field62.setText(f.format(dbs.irrigation_HoseBibsLabour()));
+        field63.setText(f.format(dbs.irrigation_ShutOffValveMaterial()));
+        //field64.setText(f.format(dbs.irrigation_ShutOffValveLabour()));
+        field65.setText(f.format(dbs.irrigation_RotaryHeadMaterial()));
+        //field66.setText(f.format(dbs.irrigation_RotaryHeadLabour()));
+        field67.setText(f.format(dbs.irrigation_SprayHeadMaterial()));
+        //field68.setText(f.format(dbs.irrigation_SprayHeadLabour()));
+        
+            //second section
+        field69.setText(f.format(dbs.irrigation_Drip1QuarterInchPerFootMaterial()));
+        field70.setText(f.format(dbs.irrigation_Drip1QuarterInchPerFootLabour()));
+        field71.setText(f.format(dbs.irrigation_DripEmitterMaterial()));
+        field72.setText(f.format(dbs.irrigation_DripEmitterLabour()));
+        field73.setText(f.format(dbs.irrigation_TimerControlMaterial()));
+        field74.setText(f.format(dbs.irrigation_TimerControlLabour()));
+        field75.setText(f.format(dbs.irrigation_ControlWirePer100FeetMaterial()));
+        field76.setText(f.format(dbs.irrigation_ControlWirePer100FeetLabour()));
+        
+            //third section
+        field77.setText(f.format(dbs.irrigation_ValveBoxMaterial()));
+        field78.setText(f.format(dbs.irrigation_ValveBoxLabour()));
+        field79.setText(f.format(dbs.irrigation_ControlValveMaterial()));
+        field80.setText(f.format(dbs.irrigation_ControlValveLabour()));   
     }
     
     protected void setErrorMessage(Label error) {
