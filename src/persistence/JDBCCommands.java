@@ -666,14 +666,18 @@ public class JDBCCommands {
     public boolean setConstant(String superService, String subService, String lowOrHigh, double constant) {
         try {
             // update to be done
-            String update = "update serviceconstants set ? = ? where superservice = ? and subservice = ?";
-
+            String update = null;
+            if (lowOrHigh.equals("constantHigh")){
+                update = "update serviceconstants set constantHigh = ? where superservice = ? and subservice = ?";
+            }
+            else {
+                update = "update serviceconstants set constantLow = ? where superservice = ? and subservice = ?";
+            }
             PreparedStatement preparedStmt = conn.prepareStatement(update);
 
-            preparedStmt.setString(1, lowOrHigh);
-            preparedStmt.setDouble(2, constant);
-            preparedStmt.setString(3, superService);
-            preparedStmt.setString(4, subService);
+            preparedStmt.setDouble(1, constant);
+            preparedStmt.setString(2, superService);
+            preparedStmt.setString(3, subService);
 
             // execute the update
             preparedStmt.executeUpdate();
