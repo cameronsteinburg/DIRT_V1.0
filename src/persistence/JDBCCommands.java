@@ -628,7 +628,7 @@ public class JDBCCommands {
                 double constantLow = results.getDouble("constantLow");
                 narray.add(constantLow);
 
-                if (superService.equals("materials")) {
+                if (superService.equals("materials") || superService.equals("irrigation")) {
                     double constantHigh = results.getDouble("constantHigh");
                     narray.add(constantHigh);
                 }
