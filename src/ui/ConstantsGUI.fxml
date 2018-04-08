@@ -39,22 +39,22 @@
          <center>
             <AnchorPane prefWidth="1078.0" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane blendMode="ADD" layoutY="-10.0" prefWidth="1068.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                  <TabPane blendMode="ADD" layoutY="-10.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                     <tabs>
                       <Tab text="Materials">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox layoutX="98.0" prefHeight="345.0" prefWidth="1068.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="-98.0" AnchorPane.topAnchor="0.0">
+                                    <HBox layoutX="98.0" prefHeight="345.0" prefWidth="1068.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="-98.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="295.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                          <AnchorPane maxWidth="-Infinity" prefWidth="295.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
                                              <children>
                                                 <Label alignment="CENTER" layoutX="12.0" layoutY="14.0" text="Rock" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="2.0" layoutY="49.0" prefHeight="291.0" prefWidth="260.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                <GridPane layoutX="2.0" layoutY="49.0" prefHeight="291.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
@@ -66,9 +66,9 @@
                                                   </columnConstraints>
                                                   <rowConstraints>
                                                     <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" prefWidth="62.0" text="Unit" GridPane.columnIndex="4">
@@ -153,14 +153,14 @@
                                                 </GridPane>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="341.0" prefWidth="288.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="341.0" prefWidth="288.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
                                              <children>
                                                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Mulch / Soil" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="3.0" layoutY="53.0" prefHeight="213.0" prefWidth="284.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                <GridPane layoutX="3.0" layoutY="53.0" prefHeight="213.0" prefWidth="284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
@@ -172,8 +172,8 @@
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="7.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <TextField fx:id="field7" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -232,14 +232,14 @@
                                                 </GridPane>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane maxWidth="-Infinity" prefHeight="345.0" prefWidth="288.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                          <AnchorPane maxWidth="-Infinity" prefHeight="345.0" prefWidth="288.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
                                              <children>
                                                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Other" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="3.0" layoutY="52.0" prefHeight="274.0" prefWidth="283.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="51.0">
+                                                <GridPane layoutX="3.0" layoutY="52.0" prefHeight="274.0" prefWidth="283.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
@@ -249,9 +249,9 @@
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="7.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <TextField fx:id="field11" maxWidth="52.0" prefWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -329,7 +329,7 @@
                                  <children>
                                     <HBox layoutX="167.0" style="-fx-border-color: #00000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="-167.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                          <AnchorPane maxWidth="-Infinity" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
                                              <children>
                                                 <GridPane layoutX="2.0" layoutY="52.0" prefWidth="267.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
@@ -339,9 +339,8 @@
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                    </columnConstraints>
                                                    <rowConstraints>
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours">
@@ -398,8 +397,8 @@
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                    </columnConstraints>
                                                    <rowConstraints>
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours">
@@ -455,8 +454,8 @@
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                    </columnConstraints>
                                                    <rowConstraints>
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Trucking">
@@ -1095,10 +1094,13 @@
                                                             <Insets left="5.0" right="5.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <Label alignment="CENTER" prefHeight="50.0" prefWidth="79.0" text="Labour" wrapText="true" GridPane.rowIndex="1">
+                                                      <Label alignment="CENTER" prefHeight="50.0" prefWidth="75.0" text="Labour" wrapText="true" GridPane.rowIndex="1">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
                                                       </Label>
                                                       <Label text="/ hour" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                          <GridPane.margin>
@@ -1111,7 +1113,7 @@
                                                          </GridPane.margin>
                                                       </TextField>
                                                       <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <Label prefHeight="60.0" prefWidth="39.0" text="/yard" wrapText="true" GridPane.columnIndex="3" />
+                                                      <Label text="/yard" wrapText="true" GridPane.columnIndex="3" />
                                                    </children>
                                                 </GridPane>
                                              </children>
@@ -1137,7 +1139,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="3.0" layoutY="52.0" prefHeight="273.0" prefWidth="255.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="52.0">
+                                                <GridPane layoutX="3.0" layoutY="52.0" prefHeight="273.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.66665649414062" minWidth="102.66665649414062" prefWidth="102.66665649414062" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="14.333343505859375" minWidth="8.333343505859375" percentWidth="0.0" prefWidth="8.333343505859375" />
@@ -1216,7 +1218,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="2.0" layoutY="101.0" prefHeight="275.0" prefWidth="226.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                <GridPane layoutX="2.0" layoutY="101.0" prefHeight="275.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
@@ -1314,9 +1316,9 @@
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                    </columnConstraints>
                                                    <rowConstraints>
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Supply">
@@ -1390,7 +1392,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="2.0" layoutY="52.0" prefWidth="267.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                <GridPane layoutX="2.0" layoutY="52.0" prefHeight="319.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
@@ -1398,10 +1400,10 @@
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                    </columnConstraints>
                                                    <rowConstraints>
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" percentHeight="0.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" percentHeight="0.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours">
@@ -1500,10 +1502,10 @@
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Material" wrapText="true" GridPane.columnIndex="2">
@@ -1608,7 +1610,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="11.0" layoutY="50.0" prefHeight="291.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="50.0">
+                                                <GridPane layoutX="11.0" layoutY="50.0" prefHeight="291.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
@@ -1619,10 +1621,10 @@
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Material" wrapText="true" GridPane.columnIndex="2">
@@ -1640,7 +1642,7 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets left="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
                                                       <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Drip Emitter" wrapText="true" GridPane.rowIndex="2">
@@ -1727,7 +1729,7 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <GridPane layoutX="2.0" layoutY="49.0" prefHeight="258.0" prefWidth="291.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="50.0">
+                                                <GridPane layoutX="2.0" layoutY="49.0" prefHeight="258.0" prefWidth="291.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
@@ -1739,9 +1741,9 @@
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
                                                       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Material" wrapText="true" GridPane.columnIndex="2">
