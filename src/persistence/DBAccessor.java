@@ -34,7 +34,7 @@ public class DBAccessor {
     public boolean connectToMySQL() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DIRT?user=root&password=password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DIRT?user=Chuck&password=bLSxc4czdhmJ2BpLxrTY");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBAccessor.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -82,14 +82,25 @@ public class DBAccessor {
             Statement stmt = conn.createStatement();
             String sql = "CREATE DATABASE DIRT";
             stmt.executeUpdate(sql);
+            
+            
+            //Create the Chuck User and grant permissions
+            Statement stmtCreate = conn.createStatement();
+            String createChuck = "create user 'Chuck'@'localhost' identified by 'bLSxc4czdhmJ2BpLxrTY'";
+            stmtCreate.execute(createChuck);
+            
+            
+            Statement stmtGrant = conn.createStatement();
+            String grantChuck = "GRANT ALL ON DIRT.* TO 'Chuck'@'localhost'";
+            stmtGrant.execute(grantChuck);
 
             //Make a directory and file in my documents
             copyStartupScript();
 
             Runtime rt = Runtime.getRuntime();
             String d1 = "C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysql.exe";
-            String d2 = "-uroot";
-            String d3 = "-ppassword";
+            String d2 = "-uChuck";
+            String d3 = "-pbLSxc4czdhmJ2BpLxrTY";
             String d4 = "DIRT";
             String d5 = "<";
             StringBuilder path = new StringBuilder("");
@@ -103,7 +114,7 @@ public class DBAccessor {
 
 //            if (waitforme2 == 0){
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DIRT?user=root&password=password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DIRT?user=Chuck&password=bLSxc4czdhmJ2BpLxrTY");
 
             return conn;
 //            }
