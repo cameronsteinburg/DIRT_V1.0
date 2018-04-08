@@ -153,7 +153,7 @@
                                                 </GridPane>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="341.0" prefWidth="288.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="341.0" prefWidth="288.0">
                                              <children>
                                                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Mulch / Soil" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                    <font>
@@ -387,7 +387,7 @@
                                                 </Label>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane maxWidth="-Infinity" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
+                                          <AnchorPane maxWidth="-Infinity" prefWidth="228.0">
                                              <children>
                                                 <GridPane layoutX="3.0" layoutY="52.0" prefHeight="273.0" prefWidth="206.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <columnConstraints>
@@ -563,7 +563,7 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Geotextile Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
@@ -765,7 +765,7 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Screed Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
@@ -859,7 +859,7 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Edge Restraint" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
@@ -1132,7 +1132,7 @@
                                  <children>
                                     <HBox layoutX="301.0" prefWidth="1068.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="-301.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <AnchorPane prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
+                                          <AnchorPane prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;">
                                              <children>
                                                 <Label alignment="CENTER" text="Crushed Base" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                    <font>
@@ -1603,7 +1603,7 @@
                                                 </GridPane>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="313.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="313.0">
                                              <children>
                                                 <Label alignment="CENTER" layoutX="12.0" layoutY="14.0" text="Costs" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                    <font>
