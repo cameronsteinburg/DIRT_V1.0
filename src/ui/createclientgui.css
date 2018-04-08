@@ -107,3 +107,21 @@
     -fx-padding: 10 15 13 15;
     -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
+.tab-header-background {
+    -fx-background-color:  #e9fcae;
+}
+
+.tab-content-area {
+    -fx-border-color: grey;
+}
+.tab {
+    -fx-background-color: 
+        grey,
+        #e9fcae;
+}
+
+.tab:selected {
+    -fx-background-color:
+        grey,
+        linear-gradient(to bottom, #d0ea7e,  #e9fcae);
+}
