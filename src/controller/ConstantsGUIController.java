@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.DBServices;
@@ -26,6 +27,9 @@ public class ConstantsGUIController extends Controller implements Initializable 
                         field51,field52,field53,field54,field55,field56,field57,field58,field59,field60,
                         field61,field62,field63,field64,field65,field66,field67,field68,field69,field70,
                         field71,field72,field73,field74,field75,field76,field77,field78,field79,field80,field81,field82;
+    
+    @FXML
+    private Button saveBtn;
     
     private ArrayList<TextField> list = new ArrayList();
   
@@ -144,16 +148,15 @@ public class ConstantsGUIController extends Controller implements Initializable 
             }
             catch (Exception e) {
                 
-                errorMessage.setText("One of the Fiels is Not a Proper Number");
+                errorMessage.setText("One of the Fields is Either Blank Or Not a Proper Number");
                 return;
             }//data is valid at this point
-            
+        }
             
             DBServices dbs = new DBServices();
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field1.getText()));
-            
-            /*
+            //broken up by section in gui
+            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field1.getText()));  
             dbs.setmaterials_CrushedRockUnit(Double.parseDouble(field2.getText()));
             dbs.setmaterials_PeaRockRetail(Double.parseDouble(field3.getText()));
             dbs.setmaterials_RiverRockUnit(Double.parseDouble(field4.getText()));
@@ -177,78 +180,82 @@ public class ConstantsGUIController extends Controller implements Initializable 
             dbs.setexcavation_TruckingFee(Double.parseDouble(field21.getText()));
             dbs.setexcavation_DisposalFee(Double.parseDouble(field22.getText()));  
             
+            dbs.setstonewalkway_EstimatedManHours(Double.parseDouble(field23.getText()));
+            dbs.setstonewalkway_InstallRatePerHours(Double.parseDouble(field24.getText()));   
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field23.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field24.getText()));            
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field25.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field26.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field27.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field28.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field29.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field30.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field31.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field32.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field33.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field34.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field35.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field36.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field37.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field38.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field39.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field40.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field41.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field42.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field43.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field44.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field45.getText())); 
+            dbs.setgeotextilewalkway_WeedBarrierCostPerSQFT(Double.parseDouble(field25.getText()));
+            dbs.setgeotextilewalkway_FabricStaplesQTYPerOneFifthSQFT(Double.parseDouble(field26.getText()));
+            dbs.setgeotextilewalkway_FabricStaplesCostPerStaple(Double.parseDouble(field27.getText()));
+            dbs.setgeotextilewalkway_FabricManHoursPer100SQFT(Double.parseDouble(field28.getText()));
+            dbs.setgeotextilewalkway_FabricInstallRatePerHours(Double.parseDouble(field29.getText()));
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field46.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field47.getText()));
+            dbs.setwalkwaybase_CrushedBaseSQFTPerInchPerYard(Double.parseDouble(field30.getText()));
+            dbs.setwalkwaybase_CrausedCostPerYard(Double.parseDouble(field31.getText()));
+            dbs.setwalkwaybase_ManHoursPerYard(Double.parseDouble(field32.getText()));
+            dbs.setwalkwaybase_InstallRatePerHours(Double.parseDouble(field33.getText()));
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field48.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field49.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field50.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field51.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field52.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field53.getText()));
+            dbs.setscreedsand_DepthSQFTPerYard(Double.parseDouble(field34.getText()));
+            dbs.setscreedsand_CostPerYard(Double.parseDouble(field35.getText()));
+            dbs.setscreedsand_ManHoursPerYard(Double.parseDouble(field36.getText()));
+            dbs.setscreedsand_InstallPerHour(Double.parseDouble(field37.getText()));
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field54.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field55.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field56.getText()));
+            dbs.setedgerestraint_CostPer8FT(Double.parseDouble(field38.getText()));
+            dbs.setedgerestraint_NailsPer1Nail(Double.parseDouble(field39.getText()));
+            dbs.setedgerestraint_ManHours(Double.parseDouble(field40.getText()));
+            dbs.setedgerestraint_InstallPerHours(Double.parseDouble(field41.getText()));
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field57.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field58.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field59.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field60.getText()));
+            dbs.setjointingsand_QTYkgPersfAtOneQuarterInch(Double.parseDouble(field42.getText()));
+            dbs.setjointingsand_CostPerKg(Double.parseDouble(field43.getText()));
+            dbs.setjointingsand_HoursPerKg(Double.parseDouble(field44.getText()));
+            dbs.setjointingsand_InstallPerHours(Double.parseDouble(field45.getText())); 
             
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field61.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field62.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field63.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field64.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field65.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field66.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field67.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field68.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field69.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field70.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field71.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field72.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field73.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field74.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field75.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field76.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field77.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field78.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field79.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field80.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field81.getText()));
-            dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field82.getText()));
-            */
+            dbs.setbed_HoursPerHours(Double.parseDouble(field46.getText()));
+            dbs.setbed_InstallPerYards(Double.parseDouble(field47.getText()));
             
-            errorMessage.setText("Changes to Constants Saved!");
+            dbs.setretainingwall_CrushedBaseCostPerYard(Double.parseDouble(field48.getText()));
+            dbs.setretainingwall_CrushedBaseInstallHoursPerYard(Double.parseDouble(field49.getText()));
+            dbs.setretainingwall_CrushedBaseInstallRatePerYard(Double.parseDouble(field50.getText()));
+            dbs.setretainingwall_BaseRowInstallHoursPerLineFeet(Double.parseDouble(field51.getText()));
+            dbs.setretainingwall_BaseRowInstallRatePerHour(Double.parseDouble(field52.getText()));
+            dbs.setretainingwall_BlockCostPerLineFeet(Double.parseDouble(field53.getText()));
             
-     
-        }
+            dbs.setsod_SupplyPerYard(Double.parseDouble(field54.getText()));
+            dbs.setsod_ManHoursPer10SQFT(Double.parseDouble(field55.getText()));
+            dbs.setsod_InstallRatePerHours(Double.parseDouble(field56.getText()));
+            
+            dbs.setweedbarrier_ManHoursPer500SQFT(Double.parseDouble(field57.getText()));
+            dbs.setweedbarrier_StaplesPer500SQFT(Double.parseDouble(field58.getText()));
+            dbs.setweedbarrier_CostPerStaples(Double.parseDouble(field59.getText()));
+            dbs.setweedbarrier_BarrierSupplyPer500SQFT(Double.parseDouble(field60.getText()));
+             
+            dbs.setirrigation_HoseBibsMaterial(Double.parseDouble(field61.getText()));
+            dbs.setirrigation_HoseBibsLabour(Double.parseDouble(field62.getText()));
+            dbs.setirrigation_ShutOffValveMaterial(Double.parseDouble(field63.getText()));
+            dbs.setirrigation_ShutOffValveLabour(Double.parseDouble(field64.getText()));
+            dbs.setirrigation_RotaryHeadMaterial(Double.parseDouble(field65.getText()));
+            dbs.setirrigation_RotaryHeadLabour(Double.parseDouble(field66.getText()));
+            dbs.setirrigation_SprayHeadMaterial(Double.parseDouble(field67.getText()));
+            dbs.setirrigation_SprayHeadLabour(Double.parseDouble(field68.getText()));
+                       
+            dbs.setirrigation_Drip1QuarterInchPerFootMaterial(Double.parseDouble(field69.getText()));
+            dbs.setirrigation_Drip1QuarterInchPerFootLabour(Double.parseDouble(field70.getText()));
+            dbs.setirrigation_DripEmitterMaterial(Double.parseDouble(field71.getText()));
+            dbs.setirrigation_DripEmitterLabour(Double.parseDouble(field72.getText()));
+            dbs.setirrigation_TimerControlMaterial(Double.parseDouble(field73.getText()));
+            dbs.setirrigation_TimerControlLabour(Double.parseDouble(field74.getText()));
+            dbs.setirrigation_ControlWirePer100FeetMaterial(Double.parseDouble(field75.getText()));
+            dbs.setirrigation_ControlWirePer100FeetLabour(Double.parseDouble(field76.getText()));
+            
+            dbs.setirrigation_ValveBoxMaterial(Double.parseDouble(field77.getText()));
+            dbs.setirrigation_TimerControlLabour(Double.parseDouble(field78.getText()));
+            dbs.setirrigation_ControlValveMaterial(Double.parseDouble(field79.getText()));
+            dbs.setirrigation_ControlValveLabour(Double.parseDouble(field80.getText()));
+            dbs.setirrigation_3QuarterLiningMaterial(Double.parseDouble(field81.getText()));
+            dbs.setirrigation_3QuarterLiningLabour(Double.parseDouble(field82.getText()));
+            
+            System.out.println(saveBtn.getUserData());
+           
+            errorMessage.setText("Changes to Constants Saved!");  
     }
 
     /**
@@ -256,6 +263,8 @@ public class ConstantsGUIController extends Controller implements Initializable 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        saveBtn.setUserData(1);
 
         DecimalFormat f = new DecimalFormat("0.00");
         

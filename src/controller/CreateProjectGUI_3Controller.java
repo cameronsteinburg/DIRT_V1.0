@@ -14,29 +14,38 @@ import javafx.scene.layout.GridPane;
  * @author 734972
  */
 public class CreateProjectGUI_3Controller implements Initializable {
-
-    public static ArrayList<ArrayList> elements;
     
     @FXML
     private GridPane starter;
     @FXML
     private AnchorPane anc;
-    /**
-     * Initializes the controller class.
-     */
     
+    public static ArrayList<ArrayList> elements;
+    
+    /**
+     * 
+     * @param els 
+     */
     protected void setEls(ArrayList<ArrayList> els){
         this.elements = els;
     }
     
+    /**
+     * 
+     * @return 
+     */
     protected AnchorPane getPane(){
         return anc;
     }
             
+    /**
+     * 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-//        System.out.println(elements.get(0).get(0));
+
     }    
     
 }

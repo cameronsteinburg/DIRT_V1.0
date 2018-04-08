@@ -172,6 +172,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
         //AnchorPane.setRightAnchor(newGrid, Double.NaN);
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
+        newGrid.setMaxWidth(1800);
         newGrid.setHgap(5);
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
@@ -191,7 +192,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
                 } else if (allItems.get(i).contains("Skid")) {
                     
                         //todo addBySkid
-
                 }
 
             } else if (allItems.get(i).contains("Custom")) {
@@ -262,7 +262,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
         label.setUnderline(true);
         label.setPadding(new Insets(0, 15, 0, 0));//top, right, bottom, left
         hand.add(label);
-        hand.add(this.addField());
 
         hand.add(addLabel("SQ.FT"));
         hand.add(this.addField());
@@ -287,13 +286,28 @@ public class CreateProjectGUIController extends Controller implements Initializa
         hand.add(addField());
 
         hand.add(addLabel("Disposal Fees"));
+        hand.add(addField());
         
-        Label pad = new Label("   ");
-        hand.add(pad);
+        label = new Label("   |");
+        label.setFont(new Font(20));
+        hand.add(label);
+        
+        label = addLabel("Service Total");
+        label.setUnderline(true);
+        label.setFont(new Font(16));
+        hand.add(label);
+        
+        hand.add(addField());
+        
+        hand.add(new Label("   "));
 
         return hand;
     }
 
+    /**
+     * 
+     * @return 
+     */
     private TextField addField() {
 
         TextField field = new TextField("000.00");
@@ -304,12 +318,16 @@ public class CreateProjectGUIController extends Controller implements Initializa
         return field;
     }
 
+    /**
+     * 
+     * @param text
+     * @return 
+     */
     private Label addLabel(String text) {
 
         Label label = new Label(text);
         label.setPadding(new Insets(0, 0, 0, 15));
         return label;
-
     }
 
     /**
@@ -377,7 +395,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
             servCol.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()));
             table.setItems(items);
-
         }
 
         if (allItems.size() > 0 || customsAdded > 0) {

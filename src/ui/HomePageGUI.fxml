@@ -43,12 +43,8 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <Hyperlink prefHeight="28.0" prefWidth="97.0" text="Facebook" />
-                        <Hyperlink text="Website" GridPane.columnIndex="1" />
-                     </children>
                   </GridPane>
-                  <Label fx:id="errorMessage" layoutX="701.0" layoutY="102.0" prefHeight="28.0" prefWidth="397.0" textFill="RED">
+                  <Label fx:id="errorMessage" layoutX="740.0" layoutY="84.0" prefHeight="34.0" prefWidth="526.0" textFill="RED">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -71,6 +67,8 @@
                         <Menu mnemonicParsing="false" text="About" />
                     </menus>
                   </MenuBar>
+                  <Hyperlink layoutX="1128.0" layoutY="33.0" prefHeight="29.0" prefWidth="77.0" text="Facebook" />
+                  <Hyperlink layoutX="1210.0" layoutY="34.0" text="Website" />
                </children>
                <BorderPane.margin>
                   <Insets />
