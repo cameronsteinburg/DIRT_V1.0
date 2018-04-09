@@ -16,9 +16,11 @@ import javafx.util.Duration;
  *
  * @author 734972
  */
-abstract class Controller {
-    
-    public static ArrayList<ArrayList> elementsFor3;
+public abstract class Controller {
+
+    protected Controller() {
+
+    }
 
     /**
      *
@@ -52,13 +54,6 @@ abstract class Controller {
         return loader;
     }
     
-    protected static void setElsFor3(ArrayList<ArrayList> els){
-       elementsFor3 = els;
-    }
-    
-    protected static ArrayList<ArrayList> getElsFor3(){
-        return elementsFor3;
-    }
-    
+
     protected abstract void setErrorMessage(Label error);
 }

@@ -18,13 +18,13 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
@@ -33,6 +33,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -75,9 +76,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
     private ObservableList<String> allItems = FXCollections.observableArrayList();
 
-    public ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
+    
 
-    private static int fieldCount = 0;
+    
 
     /**
      *
@@ -147,79 +148,20 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private void nextBtnAction2(ActionEvent event) throws IOException {
 
-        addToList();
-
-        FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
-
-        CreateProjectGUI_3Controller cont = loader.getController();
-
-        GridPane newGrid = new GridPane();
-
-        for (int i = 0; i < elements.size(); i++) {
-
-            for (int j = 0; j < elements.get(i).size(); j++) {
-
-                newGrid.addRow(i, (Node) elements.get(i).get(j));
-            }
-        }
-
+        //give allitems to new controller
+        // FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateProjectGUI_3.fxml"));
+        CreateProjectGUI_3Controller cont = new CreateProjectGUI_3Controller();
+        loader.setController(cont);
+        cont.setEls(allItems);
+        Node r = loader.load();
         AnchorPane pane = cont.getPane();
-
-        newGrid.setTranslateX(5);
-        newGrid.setTranslateY(5);
-
-        //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
-        //AnchorPane.setTopAnchor(newGrid, Double.NaN);
-        //AnchorPane.setRightAnchor(newGrid, Double.NaN);
-        //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
-        //todo anchor constraints
-        newGrid.setMaxWidth(1800);
-        newGrid.setHgap(5);
-        newGrid.setVgap(5);
-        newGrid.setPadding(new Insets(0, 0, 15, 0));
-        pane.getChildren().add(newGrid);
-
-        FXMLLoader luh = new FXMLLoader(getClass().getResource("CreateProjectGUI_3.fxml"));
-        luh.setLocation(loader.getLocation());
-        Parent root = luh.load();
-        CreateProjectGUI_3Controller c = loader.getController();
-        c.setEls(elements);
+       
+        
+        outerPane.setCenter(pane);
     }
 
-    private void addToList() {
-
-        for (int i = 0; i < allItems.size(); i++) {
-
-            if (allItems.get(i).contains("Excavation")) {
-
-                if (allItems.get(i).contains("Hand")) {
-
-                    elements.add(addByHand());
-
-                } else if (allItems.get(i).contains("Skid")) {
-
-                    //todo addBySkid
-                }
-
-            } else if (allItems.get(i).contains("Custom")) {
-
-                //todo addCustom
-            } else if (allItems.get(i).contains("Soil")) {
-
-                //todo addSoil
-            } else if (allItems.get(i).contains("Sod")) {
-
-            } else if (allItems.get(i).contains("Snow")) {
-
-            } else if (allItems.get(i).contains("Irrigation")) {
-
-            } else if (allItems.get(i).contains("Barrier")) {
-
-            } else if (allItems.get(i).contains("Wall")) {
-
-            }
-        }
-    }
+   
 
     /**
      *
@@ -257,82 +199,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
         } else {
             removeBtn.setDisable(true);
         }
-    }
-
-    private ArrayList<Control> addByHand() {
-
-        ArrayList<Control> hand = new ArrayList();
-
-        Label label = new Label("Excavation By Hand:");
-        label.setUnderline(true);
-        label.setPadding(new Insets(0, 15, 0, 0));//top, right, bottom, left
-        hand.add(label);
-
-        hand.add(addLabel("SQ.FT"));
-        hand.add(this.addField());
-
-        hand.add(addLabel("Depth In Inches"));
-        hand.add(addField());
-
-        hand.add(addLabel("Required Yards"));
-        hand.add(addField());
-
-        label = new Label("    | ");
-        label.setFont(new Font(20));
-        hand.add(label);
-
-        hand.add(addLabel("Est. Man Hours /Yard"));
-        hand.add(this.addField());
-
-        hand.add(addLabel("Excavation Labour Cost"));
-        hand.add(addField());
-
-        hand.add(addLabel("Trucking Fees /2 Yards"));
-        hand.add(addField());
-
-        hand.add(addLabel("Disposal Fees"));
-        hand.add(addField());
-
-        label = new Label("   |");
-        label.setFont(new Font(20));
-        hand.add(label);
-
-        label = addLabel("Service Total");
-        label.setUnderline(true);
-        label.setFont(new Font(16));
-        hand.add(label);
-
-        hand.add(addField());
-
-        hand.add(new Label("   "));
-
-        return hand;
-    }
-
-    /**
-     *
-     * @return
-     */
-    private TextField addField() {
-
-        TextField field = new TextField("000.00");
-        field.setMaxWidth(56);
-        field.setId(fieldCount + "");
-        field.setAlignment(Pos.CENTER);
-        fieldCount++;
-        return field;
-    }
-
-    /**
-     *
-     * @param text
-     * @return
-     */
-    private Label addLabel(String text) {
-
-        Label label = new Label(text);
-        label.setPadding(new Insets(0, 0, 0, 15));
-        return label;
     }
 
     /**

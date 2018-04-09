@@ -35,21 +35,11 @@
                         <Image url="@images/vls.png" />
                      </image>
                   </ImageView>
-                  <GridPane layoutX="674.0" layoutY="46.0" prefHeight="30.0" prefWidth="136.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="72.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="68.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
                   <Label fx:id="errorMessage" layoutX="740.0" layoutY="84.0" prefHeight="34.0" prefWidth="526.0" textFill="RED">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <Label fx:id="selectedField" layoutX="205.0" layoutY="14.0" text="Label" visible="false" />
                   <MenuBar layoutX="723.0" layoutY="-1.0" prefHeight="30.0" prefWidth="491.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <menus>
                       <Menu mnemonicParsing="false" text="File" />
@@ -67,8 +57,8 @@
                         <Menu mnemonicParsing="false" text="About" />
                     </menus>
                   </MenuBar>
-                  <Hyperlink layoutX="1128.0" layoutY="33.0" prefHeight="29.0" prefWidth="77.0" text="Facebook" />
-                  <Hyperlink layoutX="1210.0" layoutY="34.0" text="Website" />
+                  <Hyperlink layoutX="1144.0" layoutY="30.0" prefHeight="29.0" prefWidth="77.0" text="Facebook" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="30.0" />
+                  <Hyperlink layoutX="1218.0" layoutY="30.0" text="Website" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="30.0" />
                </children>
                <BorderPane.margin>
                   <Insets />

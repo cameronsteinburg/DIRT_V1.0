@@ -93,7 +93,7 @@ insert into Clients (fname, lname, phone1, email, address, isActive) values ('Ol
 insert into Clients (fname, lname, phone1, phone2, email, address, isActive) values ('Patrick', 'Stump', 5642568759, 5556894258, 'fedora@fob.com' ,'88 Coopersonte Way NE', 1);
 
 insert into serviceconstants values('excavation','trucking /2 yards',78,null);
-insert into serviceconstants values('excavation','disposal',60,null);
+insert into serviceconstants values('excavation','disposal',113,null);
 insert into serviceconstants values('excavation','man hours by hand /yards',3,null);
 insert into serviceconstants values('excavation','man hours by skid /yards',0.5,null);
 insert into serviceconstants values('excavation','labour cost by hand /hours',55,null);
