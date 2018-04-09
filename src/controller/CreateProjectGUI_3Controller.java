@@ -50,13 +50,14 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
     @FXML
     private void suh(ActionEvent event) {
-        System.out.println("SUH DUDE");
+        
+        
     }
 
     @FXML
     private void saveBtnAction(ActionEvent event) {
 
-        System.out.println("tester save button");
+        
     }
 
     private void addToList() {
@@ -154,7 +155,6 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
             String currentEl = hand.get(i).getId();
 
-            System.out.println("currently looking at element with id:" + currentEl);
 
             if (currentEl == null) {
                 currentEl = "-1";

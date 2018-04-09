@@ -8,10 +8,9 @@ import java.util.ArrayList;
  */
 public class WorkOrder {
    
-    private String description;
-    private double total;
-    private String id;
+    protected String description;
+    protected double quotedTotal;
+    protected double actualTotal;
+    protected String woid;
 
-   
- 
 }
