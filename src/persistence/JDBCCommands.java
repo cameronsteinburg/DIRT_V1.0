@@ -210,6 +210,7 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
+                int clientNum = results.getInt("clientNum");
                 String fname = results.getString("fname");
                 String lname = results.getString("lname");
                 String company = results.getString("company");
@@ -225,7 +226,7 @@ public class JDBCCommands {
                     isActiveToBoolean = true;
                 }
 
-                Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean);
+                Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean, clientNum);
                 return client;
 
             }
@@ -445,7 +446,7 @@ public class JDBCCommands {
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-
+                int labourerNum = results.getInt("labourerNum");
                 String fname = results.getString("fname");
                 String lname = results.getString("lname");
                 String title = results.getString("title");
@@ -459,7 +460,7 @@ public class JDBCCommands {
                 String sin = results.getString("sin");
                 String wage = results.getString("wage");
 
-                Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage);
+                Labourer labourer = new Labourer(fname, lname, title, phone1, phone2, email, address, emergContact, emergContactPhone1, emergContactPhone2, sin, wage, labourerNum);
                 return labourer;
             }
 
