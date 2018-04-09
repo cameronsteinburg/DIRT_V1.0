@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Labourer {
 
+    private int labNum;
     private String firstName;
     private String lastName;
     private String title;
@@ -56,6 +57,25 @@ public class Labourer {
         this.wage = wage;
         this.skills = null;
         this.isActive = true;
+    }
+    
+     public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, String wage, int labNum) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.title = title;
+        this.phone1 = phone1;
+        this.phone2 = phone2;
+        this.email = email;
+        this.address = address;
+        this.emergContactName = emergContactName;
+        this.emergContactPhone1 = emergContactPhone1;
+        this.emergContactPhone2 = emergContactPhone2;
+        this.sin = sin;
+        this.wage = wage;
+        this.skills = null;
+        this.isActive = true;
+        this.labNum = labNum;
     }
 
     public String getFirstName() {
