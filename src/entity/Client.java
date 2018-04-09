@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Client {
 
+    private int clientNum;
     private String clientFirstName; //User's entered client's name, bisuness or personal, from CreateClientGUI screen.  NOT NULL
     private String clientLastName; //User's entered client's last name, required.
     private String company; //User's entered client's company, if they are employed by one (optional)
@@ -43,25 +44,9 @@ public class Client {
         this.address = address;
         this.isActive = isActive;
     }
-
-    /**
-     * 
-     * @param clientName
-     * @param clientLastName
-     * @param company
-     * @param description
-     * @param phone1
-     * @param phone2
-     * @param email
-     * @param address
-     * @param isActive
-     * @param ongoingProjects
-     * @param completedProjects
-     * @param clientNotes 
-     */
-    public Client(String clientName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive,
-            List<Project> ongoingProjects, List<Project> completedProjects, List<String> clientNotes) {
-        this.clientFirstName = clientName;
+    
+    public Client(String clientFirstName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive, int clientNum) {
+        this.clientFirstName = clientFirstName;
         this.clientLastName = clientLastName;
         this.company = company;
         this.description = description;
@@ -70,11 +55,9 @@ public class Client {
         this.email = email;
         this.address = address;
         this.isActive = isActive;
-        this.ongoingProjects.clear();
-        this.ongoingProjects.addAll(ongoingProjects);
-        this.completedProjects.clear();
-        this.completedProjects.addAll(completedProjects);
+        this.clientNum = clientNum;
     }
+
 
     public String getLastName() {
         return clientLastName;

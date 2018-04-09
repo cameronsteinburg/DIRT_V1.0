@@ -35,11 +35,11 @@ public class CreateProjectGUI_3Controller implements Initializable {
     private AnchorPane anc;
 
     private static int fieldCount = 0;
-
     private static BorderPane outerPane;
-
     private ObservableList<String> allItems;
-
+    private ArrayList<Double> allTotals = new ArrayList<Double>();
+    private double projectTotal = 0;
+    
     protected CreateProjectGUI_3Controller(ObservableList<String> allItems) {
         this.allItems = allItems;
     }
@@ -221,13 +221,12 @@ public class CreateProjectGUI_3Controller implements Initializable {
                         disp.setText(f.format(disDbl));
                         
                         TextField serTotal = (TextField) hand.get(18);
-                        Double serTotalDbl = Double.parseDouble(serTotal.getText());
-                        serTotal.setText(f.format(disDbl + labourCostDouble + truckingDbl));
+                        Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
+                        serTotal.setText(f.format(serTotalDbl));
+                        
+                        projectTotal = projectTotal + serTotalDbl;
                     }
-
                 });
-                
-                
             } 
         }
 

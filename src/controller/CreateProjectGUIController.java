@@ -152,6 +152,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
         loader.setController(cont);
         cont.setEls(allItems);
         Parent root = loader.load();
+        
   
         outerPane.setCenter(root);
     }

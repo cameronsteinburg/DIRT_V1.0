@@ -10,8 +10,8 @@ public class WorkOrder {
    
     private String description;
     private double total;
-    private char id;
-    private char type; //'s' for service, like a mulch bed, 't' for transportation, like gas expenses, and 
-    
+    private String id;
+
+   
  
 }
