@@ -120,19 +120,19 @@ public class CreateProjectGUIController extends Controller implements Initializa
         }//all data is valid at this point
 
         if (description.length() == 0 && address.length() == 0) { //if user didn't enter anything into the optional fields
-            this.inProgress = new Project(name, prelimStartDate, estEndDate);
+            this.inProgress = new Project(name, prelimStartDate, estEndDate, true);
         }
 
         if (description.length() > 0 && address.length() == 0) {
-            this.inProgress = new Project(name, prelimStartDate, estEndDate, description); //if user only put text in notes field
+            this.inProgress = new Project(name, prelimStartDate, estEndDate, description, true); //if user only put text in notes field
         }
 
         if (address.length() > 0 && description.length() == 0) {
-            this.inProgress = new Project(address, name, prelimStartDate, estEndDate); //if user only puts text in address field
+            this.inProgress = new Project(address, name, prelimStartDate, estEndDate, true); //if user only puts text in address field
         }
 
         if (description.length() > 0 && address.length() > 0) {
-            this.inProgress = new Project(name, prelimStartDate, estEndDate, description, address); //user puts text in both field
+            this.inProgress = new Project(name, prelimStartDate, estEndDate, description, address, true); //user puts text in both field
         }
 
         navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);

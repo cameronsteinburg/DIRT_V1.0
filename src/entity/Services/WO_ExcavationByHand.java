@@ -61,4 +61,116 @@ public class WO_ExcavationByHand extends WorkOrder {
         this.woid = woid; //pk only not null
     }
 
+    public double getEstSQFT() {
+        return estSQFT;
+    }
+
+    public void setEstSQFT(double estSQFT) {
+        this.estSQFT = estSQFT;
+    }
+
+    public double getEstDepth() {
+        return estDepth;
+    }
+
+    public void setEstDepth(double estDepth) {
+        this.estDepth = estDepth;
+    }
+
+    public double getEstReqYards() {
+        return estReqYards;
+    }
+
+    public void setEstReqYards(double estReqYards) {
+        this.estReqYards = estReqYards;
+    }
+
+    public double getEstHours() {
+        return estHours;
+    }
+
+    public void setEstHours(double estHours) {
+        this.estHours = estHours;
+    }
+
+    public double getEstLabour() {
+        return estLabour;
+    }
+
+    public void setEstLabour(double estLabour) {
+        this.estLabour = estLabour;
+    }
+
+    public double getEstTrucking() {
+        return estTrucking;
+    }
+
+    public void setEstTrucking(double estTrucking) {
+        this.estTrucking = estTrucking;
+    }
+
+    public double getEstDisposal() {
+        return estDisposal;
+    }
+
+    public void setEstDisposal(double estDisposal) {
+        this.estDisposal = estDisposal;
+    }
+
+    public double getActSQFT() {
+        return actSQFT;
+    }
+
+    public void setActSQFT(double actSQFT) {
+        this.actSQFT = actSQFT;
+    }
+
+    public double getActDepth() {
+        return actDepth;
+    }
+
+    public void setActDepth(double actDepth) {
+        this.actDepth = actDepth;
+    }
+
+    public double getActReqYards() {
+        return actReqYards;
+    }
+
+    public void setActReqYards(double actReqYards) {
+        this.actReqYards = actReqYards;
+    }
+
+    public double getActHours() {
+        return actHours;
+    }
+
+    public void setActHours(double actHours) {
+        this.actHours = actHours;
+    }
+
+    public double getActLabour() {
+        return actLabour;
+    }
+
+    public void setActLabour(double actLabour) {
+        this.actLabour = actLabour;
+    }
+
+    public double getActTrucking() {
+        return actTrucking;
+    }
+
+    public void setActTrucking(double actTrucking) {
+        this.actTrucking = actTrucking;
+    }
+
+    public double getActDisposal() {
+        return actDisposal;
+    }
+
+    public void setActDisposal(double actDisposal) {
+        this.actDisposal = actDisposal;
+    }
+
 }

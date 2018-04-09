@@ -217,7 +217,7 @@ public class CreateProjectGUI_3Controller implements Initializable {
                         
                         projectTotal = projectTotal + serTotalDbl;
                         
-                        WO_ExcavationByHand woe = new WO_ExcavationByHand(projectTotal, );
+                       // WO_ExcavationByHand woe = new WO_ExcavationByHand(projectTotal, );
                        
                         // todo bottomLine.setText(f.format(projectTotal));
                     }

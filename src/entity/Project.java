@@ -183,6 +183,160 @@ public class Project {
         this.actualCost = actualCost;
         this.projectNum = id; //pk, only not null
     }
+
+    public int getProjectNum() {
+        return projectNum;
+    }
+
+    public void setProjectNum(int projectNum) {
+        this.projectNum = projectNum;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public String getSiteAddress() {
+        return siteAddress;
+    }
+
+    public void setSiteAddress(String siteAddress) {
+        this.siteAddress = siteAddress;
+    }
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getDateConstructed() {
+        return dateConstructed;
+    }
+
+    public void setDateConstructed(String dateConstructed) {
+        this.dateConstructed = dateConstructed;
+    }
+
+    public List<WorkOrder> getWorkOrders() {
+        return workOrders;
+    }
+
+    public void setWorkOrders(List<WorkOrder> workOrders) {
+        this.workOrders = workOrders;
+    }
+
+    public List<Labourer> getLabourers() {
+        return labourers;
+    }
+
+    public void setLabourers(List<Labourer> labourers) {
+        this.labourers = labourers;
+    }
+
+    public Date getPrelimStartDate() {
+        return prelimStartDate;
+    }
+
+    public void setPrelimStartDate(Date prelimStartDate) {
+        this.prelimStartDate = prelimStartDate;
+    }
+
+    public Date getActualStartDate() {
+        return actualStartDate;
+    }
+
+    public void setActualStartDate(Date actualStartDate) {
+        this.actualStartDate = actualStartDate;
+    }
+
+    public Date getEstimatedEndDate() {
+        return estimatedEndDate;
+    }
+
+    public void setEstimatedEndDate(Date estimatedEndDate) {
+        this.estimatedEndDate = estimatedEndDate;
+    }
+
+    public Date getActualEndDate() {
+        return actualEndDate;
+    }
+
+    public void setActualEndDate(Date actualEndDate) {
+        this.actualEndDate = actualEndDate;
+    }
+
+    public double getClientOwing() {
+        return clientOwing;
+    }
+
+    public void setClientOwing(double clientOwing) {
+        this.clientOwing = clientOwing;
+    }
+
+    public boolean isClientPaid() {
+        return clientPaid;
+    }
+
+    public void setClientPaid(boolean clientPaid) {
+        this.clientPaid = clientPaid;
+    }
+
+    public double getAllowanceCost() {
+        return allowanceCost;
+    }
+
+    public void setAllowanceCost(double allowanceCost) {
+        this.allowanceCost = allowanceCost;
+    }
+
+    public double getExtraneousExpenses() {
+        return extraneousExpenses;
+    }
+
+    public void setExtraneousExpenses(double extraneousExpenses) {
+        this.extraneousExpenses = extraneousExpenses;
+    }
+
+    public double getQuote() {
+        return quote;
+    }
+
+    public void setQuote(double quote) {
+        this.quote = quote;
+    }
+
+    public double getActualCost() {
+        return actualCost;
+    }
+
+    public void setActualCost(double actualCost) {
+        this.actualCost = actualCost;
+    }
+    
+    
     
     
 

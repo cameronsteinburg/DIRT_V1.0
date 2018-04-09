@@ -322,41 +322,9 @@ public class JDBCCommands {
      * @return true if no error occurs
      */
     public boolean persistProject(Project project) {
+        return false;
 
-        try {
-            // the mysql prepared insert statement
-            String query = " insert into projects (clientNum, projectName, description, siteAddress, startDate, estimatedEndDate, clientOwing, clientPaid, estimatedShoppingCost, estimatedLabourCost, estimatedDeliveryCost, allowanceCost, actualShoppingCost, actualLabourCost, acutalDeliveryCost, extraneousExpenses, estimatedProfit, actualProfit, actualEndDate, isActive) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-            // create the mysql insert preparedstatement
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
-            preparedStmt.setString(2, project.getProjectName());
-            preparedStmt.setString(3, project.getProjectDescription());
-            preparedStmt.setString(4, project.getSiteAddress());
-            preparedStmt.setDate(5, (Date) project.getPrelimStartDate());
-            preparedStmt.setDate(6, (Date) project.getEstimatedEndDate());
-            preparedStmt.setDouble(7, project.getClientOwing());
-            preparedStmt.setBoolean(8, project.isClientPaid());
-            preparedStmt.setDouble(9, project.getEstimatedShoppingCost());
-            preparedStmt.setDouble(10, project.getEstimatedLabourCost());
-            preparedStmt.setDouble(11, project.getEstimatedDeliveryCost());
-            preparedStmt.setDouble(12, project.getAllowanceCost());
-            preparedStmt.setDouble(13, project.getActualShoppingCost());
-            preparedStmt.setDouble(14, project.getActualLabourCost());
-            preparedStmt.setDouble(15, project.getActualDeliveryCost());
-            preparedStmt.setDouble(16, project.getExtraneousExpenses());
-            preparedStmt.setDouble(17, project.getEstimatedProfit());
-            preparedStmt.setDouble(18, project.getActualProfit());
-            preparedStmt.setDate(19, (Date) project.getActualEndDate());
-            preparedStmt.setDouble(20, project.getStatus());
-
-            // execute the preparedstatement
-            preparedStmt.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        return true;
+        //@Matthew todo, its totally different now
     }
 
     /**
