@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Services.WO_ExcavationByHand;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class CreateProjectGUI_3Controller implements Initializable {
     @FXML
     private AnchorPane anc;
     @FXML
-    private TextField bottomLine;
+    private Label bottomLine;
 
     private static int fieldCount = 0;
     private static BorderPane outerPane;
@@ -215,7 +216,10 @@ public class CreateProjectGUI_3Controller implements Initializable {
                         serTotal.setText(f.format(serTotalDbl));
                         
                         projectTotal = projectTotal + serTotalDbl;
-                        bottomLine.setText(projectTotal + "");
+                        
+                        WO_ExcavationByHand woe = new WO_ExcavationByHand(projectTotal, );
+                       
+                        // todo bottomLine.setText(f.format(projectTotal));
                     }
                 });
             } 

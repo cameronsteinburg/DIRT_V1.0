@@ -13,5 +13,6 @@ public class WorkOrder {
     protected double actualTotal;
     protected String woid;
     protected String projectID;
+    protected boolean isActive;
 
 }

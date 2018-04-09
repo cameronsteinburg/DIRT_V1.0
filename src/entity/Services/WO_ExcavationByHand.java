@@ -24,11 +24,10 @@ public class WO_ExcavationByHand extends WorkOrder {
     private double actTrucking;
     private double actDisposal;
 
-    public WO_ExcavationByHand(double total, String woid, String proj, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal) {
+    //first creation in java for data entered
+    public WO_ExcavationByHand(double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, boolean isActive) {
 
         this.quotedTotal = total;
-        this.projectID = proj;
-        this.woid = woid;
         this.estSQFT = estSQFT;
         this.estDepth = estDepth;
         this.estReqYards = estReqYards;
@@ -36,28 +35,13 @@ public class WO_ExcavationByHand extends WorkOrder {
         this.estLabour = estLabour;
         this.estTrucking = estTrucking;
         this.estDisposal = estDisposal;
+        this.isActive = isActive;
     }
 
-    public WO_ExcavationByHand(double total, String woid, String proj, String desc, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal) {
+    //from/to database @Matthew
+    public WO_ExcavationByHand(double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, double actTrucking, double actDisposal, boolean isActive, String proj, String woid) {
 
-        this.projectID = proj;
         this.quotedTotal = total;
-        this.woid = woid;
-        this.description = desc;
-        this.estSQFT = estSQFT;
-        this.estDepth = estDepth;
-        this.estReqYards = estReqYards;
-        this.estHours = estHours;
-        this.estLabour = estLabour;
-        this.estTrucking = estTrucking;
-        this.estDisposal = estDisposal;
-    }
-
-    public WO_ExcavationByHand(double total, String woid, String proj, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, double actTrucking, double actDisposal) {
-
-        this.projectID = proj;
-        this.quotedTotal = total;
-        this.woid = woid;
         this.estSQFT = estSQFT;
         this.estDepth = estDepth;
         this.estReqYards = estReqYards;
@@ -72,28 +56,9 @@ public class WO_ExcavationByHand extends WorkOrder {
         this.actLabour = actLabour;
         this.actTrucking = actTrucking;
         this.actDisposal = actDisposal;
-    }
-
-    public WO_ExcavationByHand(double total, String woid, String proj, String desc, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, double actTrucking, double actDisposal) {
-
-        this.projectID = proj;
-        this.quotedTotal = total;
-        this.woid = woid;
-        this.description = desc;
-        this.estSQFT = estSQFT;
-        this.estDepth = estDepth;
-        this.estReqYards = estReqYards;
-        this.estHours = estHours;
-        this.estLabour = estLabour;
-        this.estTrucking = estTrucking;
-        this.estDisposal = estDisposal;
-        this.actSQFT = actSQFT;
-        this.actDepth = actDepth;
-        this.actReqYards = actReqYards;
-        this.actHours = actHours;
-        this.actLabour = actLabour;
-        this.actTrucking = actTrucking;
-        this.actDisposal = actDisposal;
+        this.isActive = isActive;
+        this.projectID = proj; //fk
+        this.woid = woid; //pk only not null
     }
 
 }
