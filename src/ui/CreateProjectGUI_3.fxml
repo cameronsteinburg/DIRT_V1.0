@@ -20,7 +20,7 @@
       </Label>
       <Button layoutX="928.0" layoutY="474.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="143.0" styleClass="grn-button" text="Save In New Project" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="7.0" />
       <Button layoutX="826.0" layoutY="474.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="81.0" styleClass="red_button" text="Cancel" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="171.0" />
-      <Label layoutX="157.0" layoutY="471.0" prefHeight="42.0" prefWidth="112.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="157.0">
+      <Label fx:id="bottomLine" layoutX="157.0" layoutY="471.0" prefHeight="42.0" prefWidth="112.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="157.0">
          <font>
             <Font size="20.0" />
          </font>

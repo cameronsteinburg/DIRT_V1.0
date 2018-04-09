@@ -33,6 +33,8 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
     @FXML
     private AnchorPane anc;
+    @FXML
+    private TextField bottomLine;
 
     private static int fieldCount = 0;
     private static BorderPane outerPane;
@@ -46,18 +48,6 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
     protected CreateProjectGUI_3Controller() {
         this(null);
-    }
-
-    @FXML
-    private void suh(ActionEvent event) {
-        
-        
-    }
-
-    @FXML
-    private void saveBtnAction(ActionEvent event) {
-
-        
     }
 
     private void addToList() {
@@ -225,6 +215,7 @@ public class CreateProjectGUI_3Controller implements Initializable {
                         serTotal.setText(f.format(serTotalDbl));
                         
                         projectTotal = projectTotal + serTotalDbl;
+                        bottomLine.setText(projectTotal + "");
                     }
                 });
             } 

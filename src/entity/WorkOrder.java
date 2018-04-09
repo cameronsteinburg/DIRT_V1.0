@@ -12,5 +12,6 @@ public class WorkOrder {
     protected double quotedTotal;
     protected double actualTotal;
     protected String woid;
+    protected String projectID;
 
 }
