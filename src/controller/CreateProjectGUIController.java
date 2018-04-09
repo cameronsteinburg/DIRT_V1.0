@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
@@ -77,9 +78,6 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private ObservableList<String> allItems = FXCollections.observableArrayList();
 
     
-
-    
-
     /**
      *
      * @param event
@@ -148,20 +146,15 @@ public class CreateProjectGUIController extends Controller implements Initializa
     @FXML
     private void nextBtnAction2(ActionEvent event) throws IOException {
 
-        //give allitems to new controller
-        // FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_3.fxml", this.outerPane);
+        //give allitems to new controller, load fxml and set controller manually to enable objcet access during initialize 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateProjectGUI_3.fxml"));
         CreateProjectGUI_3Controller cont = new CreateProjectGUI_3Controller();
         loader.setController(cont);
         cont.setEls(allItems);
-        Node r = loader.load();
-        AnchorPane pane = cont.getPane();
-       
-        
-        outerPane.setCenter(pane);
+        Parent root = loader.load();
+  
+        outerPane.setCenter(root);
     }
-
-   
 
     /**
      *

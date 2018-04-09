@@ -16,7 +16,6 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -163,7 +162,7 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
             if (currentEl.equals("0") || currentEl.equals("1")) {
 
-                TextField sqft = (TextField) hand.get(i);
+                TextField sqft = (TextField) hand.get(2);
                 
                 int place;
                 
