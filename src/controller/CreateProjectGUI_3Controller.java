@@ -57,15 +57,15 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private Project inProgress;
 
     /**
-     * 
-     * @param allItems 
+     *
+     * @param allItems
      */
     private CreateProjectGUI_3Controller(ObservableList<String> allItems) {
         this.allItems = allItems;
     }
 
     /**
-     * 
+     *
      */
     protected CreateProjectGUI_3Controller() {
         this(null);
@@ -84,11 +84,14 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         if (result.get() == ButtonType.OK) {
 
+            DBServices dbs = new DBServices();
+
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
+            inProgress.setClient(dbs.getClient(19));
 
-            //todo persist Project
+            dbs.persistProject(inProgress);
         }
     }
 
@@ -109,7 +112,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     * 
+     *
      */
     private void addToList() {
 
@@ -129,9 +132,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             } else if (allItems.get(i).contains("Custom")) {
 
                 //todo addCustom
-            } else if (allItems.get(i).contains("Soil")) {
-
-                //todo addSoil
             } else if (allItems.get(i).contains("Sod")) {
 
             } else if (allItems.get(i).contains("Snow")) {
@@ -145,10 +145,12 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             }
         }
     }
+    
+    //private ArrayList<Control> addSod
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     private ArrayList<Control> addByHand() {
 
@@ -306,8 +308,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         return hand;
     }
 
-    
-
     /**
      *
      * @return
@@ -316,7 +316,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         //WO_ExcavationBySkid newSkid = new WO_ExcavationBySkid();
         //orders.add(newSkid);
-        
         WO_Excavation newSkid = new WO_Excavation('s', true);
         orders.add(newSkid);
 
@@ -367,8 +366,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         DBServices dbs = new DBServices();
 
-       
-
         fieldCount = 0;
         return skid;
     }
@@ -400,7 +397,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 0, 0, 8));
         return label;
     }
-    
+
     /**
      *
      */

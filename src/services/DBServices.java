@@ -28,11 +28,21 @@ public class DBServices {
     /**
      * gets a client object from the database via jdbccommands based on name
      *
-     * @param name the name of the client to retrieve
+     * @param num 
      * @return the Client object
      */
-    public Client getClient(String name) {
-        return Main.jdbcc.getClient(name);
+    public Client getClient(int num) {
+        return Main.jdbcc.getClient(num);
+    }
+    
+    /**
+     * 
+     * @param first
+     * @param last
+     * @return 
+     */
+    public Client getClient(String first, String last) {
+        return Main.jdbcc.getClient(first, last);
     }
 
     /**
@@ -128,13 +138,12 @@ public class DBServices {
     }
 
     /**
-     * Calls the Projects export method
-     *
-     * @param project Project Object to export CSV
-     * @return true is successful, false otherwise
+     * 
+     * @param proj
+     * @return 
      */
-    public boolean export(Project project) {
-        return false;
+    public boolean persistProject(Project proj){
+        return Main.jdbcc.persistProject(proj);
     }
 
     /**

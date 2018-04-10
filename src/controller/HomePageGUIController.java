@@ -141,7 +141,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             DBServices dbs = new DBServices();
 
-            Client target = dbs.getClient(this.selectedClient.getFirstName());
+            Client target = dbs.getClient(this.selectedClient.getFirstName(), this.selectedClient.getClientLastName());
 
             dbs.deleteClient(target);
 

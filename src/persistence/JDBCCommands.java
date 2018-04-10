@@ -201,13 +201,56 @@ public class JDBCCommands {
      * @return a client object created from the information found in the clients
      * table
      */
-    public Client getClient(String clientName) {
+    public Client getClient(int num) {
 
         try {
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
-            ResultSet results = statement.executeQuery("select * from clients where fname = '" + clientName + "';");
+            ResultSet results = statement.executeQuery("select * from clients where clientNum = '" + num + "';");
+
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                int clientNum = results.getInt("clientNum");
+                String fname = results.getString("fname");
+                String lname = results.getString("lname");
+                String company = results.getString("company");
+                String description = results.getString("description");
+                String phone1 = results.getString("phone1");
+                String phone2 = results.getString("phone2");
+                String email = results.getString("email");
+                String address = results.getString("address");
+                char isActive = results.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+
+                Client client = new Client(fname, lname, company, description, phone1, phone2, email, address, isActiveToBoolean, clientNum);
+                return client;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param first
+     * @param last
+     * @return 
+     */
+    public Client getClient(String first, String last) {
+
+        try {
+            Statement statement = conn.createStatement();
+
+            // Result set contains the result of the SQL query
+            ResultSet results = statement.executeQuery("select * from clients where fname = '" + first + "' and lname = '" + last + "';");
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
@@ -330,12 +373,17 @@ public class JDBCCommands {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
+           
+            
+            java.sql.Date start = new java.sql.Date(project.getStartDate().getTime());
+            java.sql.Date end = new java.sql.Date(project.getEndDate().getTime());
+            
+           preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getDescription());
             preparedStmt.setString(4, project.getSiteAddress());
-            preparedStmt.setDate(5, (Date) project.getStartDate());
-            preparedStmt.setDate(6, (Date) project.getEndDate());
+            preparedStmt.setDate(5, start);
+            preparedStmt.setDate(6, end);
             preparedStmt.setDouble(7, project.getClientOwing());
             preparedStmt.setBoolean(8, project.isClientPaid());
             preparedStmt.setDouble(9, project.getAllowanceCost());
