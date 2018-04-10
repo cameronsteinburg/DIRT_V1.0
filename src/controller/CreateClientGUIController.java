@@ -22,7 +22,7 @@ public class CreateClientGUIController extends Controller implements Initializab
     //try to keeps this in the relative order they appear on the page
     //elements from the GUI.fxml page
     @FXML
-    private TextField fNameField; 
+    private TextField fNameField;
     @FXML
     private TextField lNameField;
     @FXML
@@ -37,9 +37,6 @@ public class CreateClientGUIController extends Controller implements Initializab
     private TextField addressField;
     @FXML
     private TextArea notesField;
-    
-    private Label errorMessage;
-    
     @FXML
     private Label titleField;
     @FXML
@@ -49,7 +46,9 @@ public class CreateClientGUIController extends Controller implements Initializab
     @FXML
     private AnchorPane pane;
     @FXML
-    private GridPane grid; 
+    private GridPane grid;
+
+    private Label errorMessage;
 
     Client selected;
 
@@ -66,8 +65,8 @@ public class CreateClientGUIController extends Controller implements Initializab
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Clear Form?");
-
         Optional<ButtonType> result = alert.showAndWait();
+        
         if (result.get() == ButtonType.OK) {
 
             fNameField.clear();

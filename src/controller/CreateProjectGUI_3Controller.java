@@ -6,6 +6,7 @@ import entity.WorkOrder;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -31,7 +34,7 @@ import services.DBServices;
  *
  * @author 734972
  */
-public class CreateProjectGUI_3Controller implements Initializable {
+public class CreateProjectGUI_3Controller extends Controller implements Initializable {
 
     public ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
 
@@ -42,12 +45,15 @@ public class CreateProjectGUI_3Controller implements Initializable {
     @FXML
     private Button saveBtn;
 
+    private Label errorMessage;
+
     private static int fieldCount = 0;
     private ObservableList<String> allItems;
     private double projectTotal = 0;
     private Project inProgress;
     private ArrayList<WorkOrder> orders = new ArrayList();
     private DecimalFormat f = new DecimalFormat("#.00");
+    private static BorderPane outerPane;
 
     private CreateProjectGUI_3Controller(ObservableList<String> allItems) {
         this.allItems = allItems;
@@ -60,12 +66,28 @@ public class CreateProjectGUI_3Controller implements Initializable {
     @FXML
     private void saveBtnAction(ActionEvent event) {
 
-        System.out.println(inProgress);
-        System.out.println(inProgress.getProjectName());
-        System.out.println(inProgress.getSiteAddress());
-        System.out.println(inProgress.getPrelimStartDate());
-        System.out.println(inProgress.getEstimatedEndDate());
-        System.out.println(inProgress.getDescription());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Save New Project?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+            
+            Project fin = new Project();
+            fin.setProjectName(inProgress.getProjectName());
+            fin.setDescription(inProgress.getDescription());
+        }
+    }
+
+    @FXML
+    private void cancelBtnAction(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Cancel Entire Project Creation?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+            navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
+        }
     }
 
     private void addToList() {
@@ -101,7 +123,6 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
             }
         }
-
     }
 
     private ArrayList<Control> addByHand() {
@@ -334,6 +355,10 @@ public class CreateProjectGUI_3Controller implements Initializable {
         this.inProgress = prog;
     }
 
+    protected void setOuterPane(BorderPane pane) {
+        this.outerPane = pane;
+    }
+
     /**
      *
      * @param url
@@ -368,5 +393,10 @@ public class CreateProjectGUI_3Controller implements Initializable {
         newGrid.setPadding(new Insets(0, 0, 15, 0));
 
         anc.getChildren().add(newGrid);
+    }
+
+    @Override
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 }

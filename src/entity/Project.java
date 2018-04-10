@@ -5,8 +5,6 @@
  */
 package entity;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +22,6 @@ public class Project {
     private Client client; //user has to make a client to assign to this project beforehand NOT NULL 
     private String siteAddress; //the site of the project
     private boolean isActive; //false if the user has deleted this entity, true if he hasn't NOT NULL
-    private String dateConstructed; //date project was made
 
     //dependent entitites
     private ArrayList<WorkOrder> workOrders; //anything that costs User money
@@ -168,14 +165,13 @@ public class Project {
      * @param quote
      * @param actualCost 
      */
-    public Project(String projectName, String projectDescription, Client client, String siteAddress, boolean isActive, String dateConstructed, ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id) {
+    public Project(String projectName, String projectDescription, Client client, String siteAddress,  ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id, boolean isActive) {
        
         this.projectName = projectName;
         this.description = projectDescription;
         this.client = client;
         this.siteAddress = siteAddress;
         this.isActive = isActive;
-        this.dateConstructed = dateConstructed;
         this.workOrders = workOrders; //get fks from objects
         this.labourers = labourers; //get fks from objects
         this.prelimStartDate = prelimStartDate;
@@ -215,7 +211,7 @@ public class Project {
         return description;
     }
 
-    public void setProjectDescription(String projectDescription) {
+    public void setDescription(String projectDescription) {
         this.description = projectDescription;
     }
 
@@ -241,14 +237,6 @@ public class Project {
 
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
-    }
-
-    public String getDateConstructed() {
-        return dateConstructed;
-    }
-
-    public void setDateConstructed(String dateConstructed) {
-        this.dateConstructed = dateConstructed;
     }
 
     public List<WorkOrder> getWorkOrders() {

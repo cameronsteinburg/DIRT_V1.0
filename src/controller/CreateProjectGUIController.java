@@ -143,6 +143,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
         loader.setController(cont);
         cont.setEls(allItems);
         cont.setInProgress(inProgress);
+        cont.setErrorMessage(errorMessage);
+        cont.setOuterPane(outerPane);
         Parent root = loader.load();
 
         outerPane.setCenter(root);
