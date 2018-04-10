@@ -69,6 +69,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     @FXML
     private void saveBtnAction(ActionEvent event) {
+        
+        inProgress.getWorkOrders().add(new WorkOrder());
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Save New Project?");
@@ -76,13 +78,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         if (result.get() == ButtonType.OK) {
             
-            Project fin = new Project(true);
+            //Project fin = new Project(true);
             
-            fin.setProjectName(inProgress.getProjectName());
-            fin.setDescription(inProgress.getDescription());
-            fin.setSiteAddress(inProgress.getSiteAddress());
-            fin.setEstimatedEndDate(inProgress.getEstimatedEndDate());
-            fin.setPrelimStartDate(inProgress.getPrelimStartDate());
+//            fin.setProjectName(inProgress.getProjectName());
+//            fin.setDescription(inProgress.getDescription());
+//            fin.setSiteAddress(inProgress.getSiteAddress());
+//            fin.setStartDate(inProgress.getStartDate());
+//            fin.setPrelimStartDate(inProgress.getPrelimStartDate());
             
         }
     }
