@@ -220,4 +220,61 @@ public class WO_Excavation extends WorkOrder {
         this.actDisposal = actDisposal;
     }
 
+    public char getType() {
+        return type;
+    }
+
+    public void setType(char type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getQuotedTotal() {
+        return quotedTotal;
+    }
+
+    public void setQuotedTotal(double quotedTotal) {
+        this.quotedTotal = quotedTotal;
+    }
+
+    public double getActualTotal() {
+        return actualTotal;
+    }
+
+    public void setActualTotal(double actualTotal) {
+        this.actualTotal = actualTotal;
+    }
+
+    public String getWoid() {
+        return woid;
+    }
+
+    public void setWoid(String woid) {
+        this.woid = woid;
+    }
+
+    public String getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(String projectID) {
+        this.projectID = projectID;
+    }
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    
 }

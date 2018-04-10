@@ -52,6 +52,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private double projectTotal = 0;
     private ArrayList<WorkOrder> orders = new ArrayList();
     private DecimalFormat f = new DecimalFormat("#.00");
+    private DBServices dbs = new DBServices();
+    private double taxMultiplier = dbs.tax_GST() + dbs.tax_PST() + 1.0;
 
     private ObservableList<String> allItems;
     private Project inProgress;
@@ -296,7 +298,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
                         projectTotal = ttl;
 
-                        bottomLine.setText(f.format(projectTotal));
+                        bottomLine.setText(f.format(projectTotal * taxMultiplier));
 
                         botCheck();
                     }
@@ -364,8 +366,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         skid.add(new Label("   "));
 
-        DBServices dbs = new DBServices();
-        
         
         double labourhours = dbs.excavation_ManHoursBySkidPerYards();
         double labourRate = dbs.excavation_ManHoursBySkidPerHours();
@@ -459,7 +459,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
                         projectTotal = ttl;
 
-                        bottomLine.setText(f.format(projectTotal));
+                        double taxMultiplier = dbs.tax_GST() + dbs.tax_PST() + 1.0;
+                        
+                        bottomLine.setText(f.format(projectTotal * taxMultiplier));
 
                         botCheck();
                     }
