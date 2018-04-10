@@ -6,7 +6,7 @@ import entity.WorkOrder;
  *
  * @author 734972
  */
-public class WO_ExcavationByHand extends WorkOrder {
+public class WO_Excavation extends WorkOrder {
 
     private double estSQFT;
     private double estDepth;
@@ -24,16 +24,32 @@ public class WO_ExcavationByHand extends WorkOrder {
     private double actTrucking;
     private double actDisposal;
     
+    private char type = 0;
+    
     /**
      * 
      */
-    public WO_ExcavationByHand(){
+    public WO_Excavation(){
     
     }
 
     //first creation in java for data entered
-    public WO_ExcavationByHand(double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, boolean isActive) {
+    /**
+     * 
+     * @param type
+     * @param total
+     * @param estSQFT
+     * @param estDepth
+     * @param estReqYards
+     * @param estHours
+     * @param estLabour
+     * @param estTrucking
+     * @param estDisposal
+     * @param isActive 
+     */
+    public WO_Excavation(char type, double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, boolean isActive) {
 
+        this.type = type;
         this.quotedTotal = total;
         this.estSQFT = estSQFT;
         this.estDepth = estDepth;
@@ -46,8 +62,31 @@ public class WO_ExcavationByHand extends WorkOrder {
     }
 
     //from/to database @Matthew
-    public WO_ExcavationByHand(double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, double actTrucking, double actDisposal, boolean isActive, String proj, String woid) {
+    /**
+     * 
+     * @param type
+     * @param total
+     * @param estSQFT
+     * @param estDepth
+     * @param estReqYards
+     * @param estHours
+     * @param estLabour
+     * @param estTrucking
+     * @param estDisposal
+     * @param actSQFT
+     * @param actDepth
+     * @param actReqYards
+     * @param actHours
+     * @param actLabour
+     * @param actTrucking
+     * @param actDisposal
+     * @param isActive
+     * @param proj
+     * @param woid 
+     */
+    public WO_Excavation(char type, double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, double actTrucking, double actDisposal, boolean isActive, String proj, String woid) {
 
+        this.type = type;
         this.quotedTotal = total;
         this.estSQFT = estSQFT;
         this.estDepth = estDepth;

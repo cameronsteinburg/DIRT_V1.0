@@ -1,7 +1,7 @@
 package controller;
 
 import entity.Project;
-import entity.Services.WO_ExcavationByHand;
+import entity.Services.WO_Excavation;
 import entity.WorkOrder;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -46,52 +46,55 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private Button saveBtn;
 
     private Label errorMessage;
-
-    private static int fieldCount = 0;
-    private ObservableList<String> allItems;
-    private double projectTotal = 0;
-    private Project inProgress;
-    private ArrayList<WorkOrder> orders = new ArrayList();
-    private DecimalFormat f = new DecimalFormat("#.00");
     private static BorderPane outerPane;
 
+    private static int fieldCount = 0;
+    private double projectTotal = 0;
+    private ArrayList<WorkOrder> orders = new ArrayList();
+    private DecimalFormat f = new DecimalFormat("#.00");
+
+    private ObservableList<String> allItems;
+    private Project inProgress;
+
+    /**
+     * 
+     * @param allItems 
+     */
     private CreateProjectGUI_3Controller(ObservableList<String> allItems) {
         this.allItems = allItems;
     }
 
+    /**
+     * 
+     */
     protected CreateProjectGUI_3Controller() {
         this(null);
     }
 
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void saveBtnAction(ActionEvent event) {
-        
-        inProgress.getWorkOrders().add(new WorkOrder());
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Save New Project?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == ButtonType.OK) {
-            
-            //Project fin = new Project(true);
-            
-//            fin.setProjectName(inProgress.getProjectName());
-//            fin.setDescription(inProgress.getDescription());
-//            fin.setSiteAddress(inProgress.getSiteAddress());
-//            fin.setStartDate(inProgress.getStartDate());
-//            fin.setPrelimStartDate(inProgress.getPrelimStartDate());
-            
+
+            inProgress.setWorkOrders(orders);
+            inProgress.setQuote(projectTotal);
+            inProgress.setActualCost(projectTotal);
+
+            //todo persist Project
         }
     }
 
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void cancelBtnAction(ActionEvent event) {
@@ -105,6 +108,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    /**
+     * 
+     */
     private void addToList() {
 
         for (int i = 0; i < allItems.size(); i++) {
@@ -140,9 +146,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     private ArrayList<Control> addByHand() {
 
-        WO_ExcavationByHand newHand = new WO_ExcavationByHand();
+        WO_Excavation newHand = new WO_Excavation();
         orders.add(newHand);
 
         ArrayList<Control> hand = new ArrayList();
@@ -194,7 +204,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
         double labourRate = dbs.excavation_ManHoursByHandPerHours();
-        double truckingRate = dbs.excavation_TruckingFee();
+        double truckingRate = dbs.excavation_TruckingFeeByHand();
         double disposalRate = dbs.excavation_DisposalFee();
 
         for (int i = 0; i < hand.size(); i++) {
@@ -296,25 +306,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         return hand;
     }
 
-    /**
-     * 
-     */
-    private void botCheck() {
-
-        double eh = -1;
-
-        try {
-            eh = Double.parseDouble(bottomLine.getText());
-        } catch (Exception e) {
-            saveBtn.setDisable(true);
-        }
-
-        if (eh == 0 || eh == -1) {
-            saveBtn.setDisable(true);
-        } else {
-            saveBtn.setDisable(false);
-        }
-    }
+    
 
     /**
      *
@@ -323,9 +315,62 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private ArrayList<Control> addBySkid() {
 
         //WO_ExcavationBySkid newSkid = new WO_ExcavationBySkid();
-        //orders.add(newHand);
-        //ArrayList<Control> skid = new ArrayList();
-        return null;
+        //orders.add(newSkid);
+        
+        WO_Excavation newSkid = new WO_Excavation();
+        orders.add(newSkid);
+
+        ArrayList<Control> skid = new ArrayList();
+
+        Label label = new Label("Excavation By Skid Steer:");
+        label.setUnderline(true);
+        label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
+        label.setFont(new Font(20));
+        skid.add(label);
+
+        skid.add(addLabel("SQ.FT"));
+        skid.add(addField(true));
+
+        skid.add(addLabel("Depth In Inches"));
+        skid.add(addField(true));
+
+        label = new Label("    | ");
+        label.setFont(new Font(20));
+        skid.add(label);
+
+        skid.add(addLabel("Required Yards"));
+        skid.add(addField(false));
+
+        skid.add(addLabel("Est. Man Hours /Yard"));
+        skid.add(this.addField(false));
+
+        skid.add(addLabel("Excavation Labour Cost"));
+        skid.add(addField(false));
+
+        skid.add(addLabel("Trucking Fees /2 Yards"));
+        skid.add(addField(false));
+
+        skid.add(addLabel("Disposal Fees"));
+        skid.add(addField(false));
+
+        label = new Label("   |");
+        label.setFont(new Font(20));
+        skid.add(label);
+
+        label = addLabel("Service Total");
+        label.setUnderline(true);
+        label.setFont(new Font(16));
+        skid.add(label);
+        skid.add(addField(false));
+
+        skid.add(new Label("   "));
+
+        DBServices dbs = new DBServices();
+
+       
+
+        fieldCount = 0;
+        return skid;
     }
 
     /**
@@ -355,6 +400,26 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 0, 0, 8));
         return label;
     }
+    
+    /**
+     *
+     */
+    private void botCheck() {
+
+        double eh = -1;
+
+        try {
+            eh = Double.parseDouble(bottomLine.getText());
+        } catch (Exception e) {
+            saveBtn.setDisable(true);
+        }
+
+        if (eh == 0 || eh == -1) {
+            saveBtn.setDisable(true);
+        } else {
+            saveBtn.setDisable(false);
+        }
+    }
 
     /**
      *
@@ -362,7 +427,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     protected void setEls(ObservableList<String> els) {
         allItems = els;
-
     }
 
     /**

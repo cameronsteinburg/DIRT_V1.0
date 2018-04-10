@@ -192,10 +192,12 @@ public class DBServices {
         return false;
     }
 
-    public double excavation_TruckingFee() {
+    public double excavation_TruckingFeeByHand() {
         return (double) Main.jdbcc.getConstant("excavation", "trucking /2 yards").get(0);
     }
 
+    //todo excavation_TruckingFeeBySkid
+    
     public double excavation_DisposalFee() {
         return (double) Main.jdbcc.getConstant("excavation", "disposal").get(0);
     }
@@ -529,9 +531,11 @@ public class DBServices {
     }
 
     //Constant Setters
-    public boolean setexcavation_TruckingFee(double constant) {
+    public boolean setexcavation_TruckingFeeByHand(double constant) {
         return Main.jdbcc.setConstant("excavation", "trucking /2 yards", constant);
     }
+    
+    //todo setexcavation_TruckingFeeBySkid
 
     public boolean setexcavation_DisposalFee(double constant) {
         return Main.jdbcc.setConstant("excavation", "disposal", constant);

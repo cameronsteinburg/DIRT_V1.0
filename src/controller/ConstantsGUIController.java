@@ -177,7 +177,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
             dbs.setexcavation_ManHoursBySkidPerHours(Double.parseDouble(field18.getText()));
             dbs.setexcavation_ManHoursByHandPerYards(Double.parseDouble(field19.getText()));
             dbs.setexcavation_ManHoursByHandPerHours(Double.parseDouble(field20.getText()));
-            dbs.setexcavation_TruckingFee(Double.parseDouble(field21.getText()));
+            dbs.setexcavation_TruckingFeeByHand(Double.parseDouble(field21.getText()));
             dbs.setexcavation_DisposalFee(Double.parseDouble(field22.getText()));  
             
             dbs.setstonewalkway_EstimatedManHours(Double.parseDouble(field23.getText()));
@@ -293,7 +293,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field18.setText(f.format(dbs.excavation_ManHoursBySkidPerHours()));
         field19.setText(f.format(dbs.excavation_ManHoursByHandPerYards()));
         field20.setText(f.format(dbs.excavation_ManHoursByHandPerHours()));
-        field21.setText(f.format(dbs.excavation_TruckingFee()));
+        field21.setText(f.format(dbs.excavation_TruckingFeeByHand()));
         field22.setText(f.format(dbs.excavation_DisposalFee()));
 
         //walkway tab
