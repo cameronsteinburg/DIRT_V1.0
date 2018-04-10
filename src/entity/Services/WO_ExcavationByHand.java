@@ -23,6 +23,13 @@ public class WO_ExcavationByHand extends WorkOrder {
     private double actLabour;
     private double actTrucking;
     private double actDisposal;
+    
+    /**
+     * 
+     */
+    public WO_ExcavationByHand(){
+    
+    }
 
     //first creation in java for data entered
     public WO_ExcavationByHand(double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, boolean isActive) {

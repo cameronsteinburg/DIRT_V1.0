@@ -18,8 +18,10 @@ import javafx.util.Duration;
  */
 public abstract class Controller {
 
+    /**
+     * 
+     */
     protected Controller() {
-
     }
 
     /**
@@ -50,7 +52,7 @@ public abstract class Controller {
         }
 
         pane.setCenter(root);
-        System.out.println(loader.getLocation() + "");
+        
         return loader;
     }
     

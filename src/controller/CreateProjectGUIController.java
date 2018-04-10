@@ -11,34 +11,25 @@ import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
 
 public class CreateProjectGUIController extends Controller implements Initializable {
 
@@ -69,7 +60,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
     private static BorderPane outerPane;
 
-    private Project inProgress; //is actually used. netbeans is a liar
+    private static Project inProgress; //is actually used. netbeans is a liar
 
     private int customsAdded;
 
@@ -151,9 +142,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
         CreateProjectGUI_3Controller cont = new CreateProjectGUI_3Controller();
         loader.setController(cont);
         cont.setEls(allItems);
+        cont.setInProgress(inProgress);
         Parent root = loader.load();
-        
-  
+
         outerPane.setCenter(root);
     }
 

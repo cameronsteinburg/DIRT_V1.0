@@ -20,15 +20,15 @@ public class Project {
     
     //details
     private String projectName; //a name user will give to easily identify their project from others NOT NULL
-    private String projectDescription; //optional description for users personal reference on project
+    private String description; //optional description for users personal reference on project
     private Client client; //user has to make a client to assign to this project beforehand NOT NULL 
     private String siteAddress; //the site of the project
     private boolean isActive; //false if the user has deleted this entity, true if he hasn't NOT NULL
     private String dateConstructed; //date project was made
 
     //dependent entitites
-    private List<WorkOrder> workOrders; //anything that costs User money
-    private List<Labourer> labourers; //User's employees he can assign to projects 
+    private ArrayList<WorkOrder> workOrders; //anything that costs User money
+    private ArrayList<Labourer> labourers; //User's employees he can assign to projects 
 
     //dates
     private Date prelimStartDate; //date entered by user when first making new peoject, used for quote calculation NOT NULL
@@ -50,6 +50,13 @@ public class Project {
     //the actual bill
     private double actualCost; //the bottom line at end of project for what the client paid in the end
 
+    
+    /**
+     * 
+     */
+    public Project(){
+    }
+    
     /**
      *
      * @param name
@@ -87,7 +94,7 @@ public class Project {
         this.projectName = name;
         this.prelimStartDate = prelim;
         this.estimatedEndDate = estEnd;
-        this.projectDescription = notes;
+        this.description = notes;
         this.isActive = isActive;
     }
 
@@ -161,10 +168,10 @@ public class Project {
      * @param quote
      * @param actualCost 
      */
-    public Project(String projectName, String projectDescription, Client client, String siteAddress, boolean isActive, String dateConstructed, List<WorkOrder> workOrders, List<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id) {
+    public Project(String projectName, String projectDescription, Client client, String siteAddress, boolean isActive, String dateConstructed, ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id) {
        
         this.projectName = projectName;
-        this.projectDescription = projectDescription;
+        this.description = projectDescription;
         this.client = client;
         this.siteAddress = siteAddress;
         this.isActive = isActive;
@@ -183,6 +190,10 @@ public class Project {
         this.actualCost = actualCost;
         this.projectNum = id; //pk, only not null
     }
+    
+    public void addOrder(WorkOrder order){
+        workOrders.add(order);
+    }
 
     public int getProjectNum() {
         return projectNum;
@@ -200,12 +211,12 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public String getProjectDescription() {
-        return projectDescription;
+    public String getDescription() {
+        return description;
     }
 
     public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
+        this.description = projectDescription;
     }
 
     public Client getClient() {
@@ -244,7 +255,7 @@ public class Project {
         return workOrders;
     }
 
-    public void setWorkOrders(List<WorkOrder> workOrders) {
+    public void setWorkOrders(ArrayList<WorkOrder> workOrders) {
         this.workOrders = workOrders;
     }
 
@@ -252,7 +263,7 @@ public class Project {
         return labourers;
     }
 
-    public void setLabourers(List<Labourer> labourers) {
+    public void setLabourers(ArrayList<Labourer> labourers) {
         this.labourers = labourers;
     }
 

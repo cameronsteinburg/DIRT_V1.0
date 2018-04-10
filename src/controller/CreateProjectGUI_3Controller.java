@@ -1,6 +1,8 @@
 package controller;
 
+import entity.Project;
 import entity.Services.WO_ExcavationByHand;
+import entity.WorkOrder;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -36,19 +39,33 @@ public class CreateProjectGUI_3Controller implements Initializable {
     private AnchorPane anc;
     @FXML
     private Label bottomLine;
+    @FXML
+    private Button saveBtn;
 
     private static int fieldCount = 0;
-    private static BorderPane outerPane;
     private ObservableList<String> allItems;
-    private ArrayList<Double> allTotals = new ArrayList<Double>();
     private double projectTotal = 0;
-    
-    protected CreateProjectGUI_3Controller(ObservableList<String> allItems) {
+    private Project inProgress;
+    private ArrayList<WorkOrder> orders = new ArrayList();
+    private DecimalFormat f = new DecimalFormat("#.00");
+
+    private CreateProjectGUI_3Controller(ObservableList<String> allItems) {
         this.allItems = allItems;
     }
 
     protected CreateProjectGUI_3Controller() {
         this(null);
+    }
+
+    @FXML
+    private void saveBtnAction(ActionEvent event) {
+
+        System.out.println(inProgress);
+        System.out.println(inProgress.getProjectName());
+        System.out.println(inProgress.getSiteAddress());
+        System.out.println(inProgress.getPrelimStartDate());
+        System.out.println(inProgress.getEstimatedEndDate());
+        System.out.println(inProgress.getDescription());
     }
 
     private void addToList() {
@@ -63,7 +80,7 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
                 } else if (allItems.get(i).contains("Skid")) {
 
-                    //todo addBySkid
+                    elements.add(addBySkid());
                 }
 
             } else if (allItems.get(i).contains("Custom")) {
@@ -84,11 +101,13 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
             }
         }
+
     }
 
     private ArrayList<Control> addByHand() {
-        
-        DecimalFormat f = new DecimalFormat("#.00");
+
+        WO_ExcavationByHand newHand = new WO_ExcavationByHand();
+        orders.add(newHand);
 
         ArrayList<Control> hand = new ArrayList();
 
@@ -146,7 +165,6 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
             String currentEl = hand.get(i).getId();
 
-
             if (currentEl == null) {
                 currentEl = "-1";
             }
@@ -154,12 +172,12 @@ public class CreateProjectGUI_3Controller implements Initializable {
             if (currentEl.equals("0") || currentEl.equals("1")) {
 
                 TextField sqft = (TextField) hand.get(2);
-                
+
                 int place;
-                
-                if(currentEl.equals("0")){
+
+                if (currentEl.equals("0")) {
                     place = 2;
-                } else{
+                } else {
                     place = 4;
                 }
 
@@ -188,45 +206,87 @@ public class CreateProjectGUI_3Controller implements Initializable {
                         }
 
                         Double reqyardsdbl = (depthdbl / 12.0) * (sqftdbl / 27.0);
+                        newHand.setEstReqYards(reqyardsdbl);
 
                         reqyards.setText(f.format(reqyardsdbl));
 
                         //update estimated man hours per yard
                         TextField estManHours = (TextField) hand.get(9);
                         Double estimatedManHourDbl = (labourhours * reqyardsdbl);
+                        newHand.setEstHours(estimatedManHourDbl);
                         estManHours.setText(f.format(estimatedManHourDbl));
 
                         //update labour cost
                         TextField labourCost = (TextField) hand.get(11);
                         Double labourCostDouble = (estimatedManHourDbl * labourRate);
+                        newHand.setEstLabour(labourCostDouble);
                         labourCost.setText(f.format(labourCostDouble));
-                        
+
                         //update trucking fee
                         TextField trucking = (TextField) hand.get(13);
-                        Double truckingDbl = ((reqyardsdbl/2) * truckingRate);
+                        Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
+                        newHand.setEstTrucking(truckingDbl);
                         trucking.setText(f.format(truckingDbl));
-                        
+
                         //update disposl
                         TextField disp = (TextField) hand.get(15);
                         Double disDbl = (reqyardsdbl * disposalRate);
+                        newHand.setEstDisposal(0);
                         disp.setText(f.format(disDbl));
-                        
+
                         TextField serTotal = (TextField) hand.get(18);
                         Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
+                        newHand.setQuotedTotal(serTotalDbl);
                         serTotal.setText(f.format(serTotalDbl));
-                        
-                        projectTotal = projectTotal + serTotalDbl;
-                        
-                       // WO_ExcavationByHand woe = new WO_ExcavationByHand(projectTotal, );
-                       
-                        // todo bottomLine.setText(f.format(projectTotal));
+
+                        double ttl = 0;
+
+                        for (int i = 0; i < orders.size(); i++) {
+
+                            ttl += orders.get(i).getQuotedTotal();
+                        }
+
+                        projectTotal = ttl;
+
+                        bottomLine.setText(f.format(projectTotal));
+
+                        botCheck();
                     }
                 });
-            } 
+            }
         }
 
         fieldCount = 0;
         return hand;
+    }
+
+    private void botCheck() {
+
+        double eh = -1;
+
+        try {
+            eh = Double.parseDouble(bottomLine.getText());
+        } catch (Exception e) {
+            saveBtn.setDisable(true);
+        }
+
+        if (eh == 0 || eh == -1) {
+            saveBtn.setDisable(true);
+        } else {
+            saveBtn.setDisable(false);
+        }
+    }
+
+    /**
+     *
+     * @return
+     */
+    private ArrayList<Control> addBySkid() {
+
+        //WO_ExcavationBySkid newSkid = new WO_ExcavationBySkid();
+        //orders.add(newHand);
+        //ArrayList<Control> skid = new ArrayList();
+        return null;
     }
 
     /**
@@ -266,12 +326,12 @@ public class CreateProjectGUI_3Controller implements Initializable {
 
     }
 
-    protected void setOuterPane(BorderPane pane) {
-        this.outerPane = pane;
-    }
-
-    protected AnchorPane getPane() {
-        return this.anc;
+    /**
+     *
+     * @param prog
+     */
+    protected void setInProgress(Project prog) {
+        this.inProgress = prog;
     }
 
     /**
