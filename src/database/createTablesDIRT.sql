@@ -36,7 +36,22 @@ create table Clients (clientNum smallint unsigned not null auto_increment,
   isActive boolean not null, constraint pk_Client primary key (clientNum));
 
 #creates projects table
-create table Projects (projectNum smallint unsigned not null auto_increment, clientNum smallint unsigned not null, projectName varchar(50), description varchar(5000), siteAddress varchar(100), startDate Date, estimatedEndDate Date, clientOwing numeric(8,2), clientPaid boolean, estimatedShoppingCost numeric(8,2), estimatedLabourCost numeric(8,2), estimatedDeliveryCost numeric(8,2), allowanceCost numeric(8,2), actualShoppingCost numeric(8,2), actualLabourCost numeric(8,2), actualDeliveryCost numeric(8,2), extraneousExpenses numeric(8,2), estimatedProfit numeric(8,2), actualProfit numeric(8,2), actualEndDate Date, isActive boolean not null, constraint pk_Project primary key (projectNum), constraint fk_ProjectClient foreign key (clientNum) references Clients (clientNum));
+create table Projects (projectNum smallint unsigned not null auto_increment,
+    clientNum smallint unsigned, 
+    projectName varchar(50), 
+    description varchar(5000), 
+    siteAddress varchar(100),
+    startDate Date,
+    endDate Date, 
+    clientOwing numeric(8,2), 
+    clientPaid boolean, 
+    allowanceCost numeric(8,2),  
+    extraneousExpenses numeric(8,2), 
+    quote numeric(8,2),
+    actualCost numeric(8,2),
+    isActive boolean not null, 
+    constraint pk_Project primary key (projectNum), 
+    constraint fk_ProjectClient foreign key (clientNum) references Clients (clientNum));
 
 #creates labourers table
 create table Labourers (labourerNum smallint unsigned not null auto_increment, 
@@ -63,6 +78,35 @@ superService varchar(30) not null,
 subService varchar(200) not null, 
 constantLow numeric(5,2) not null,
 constantHigh numeric(5,2));
+
+#creates workorders table
+create table WorkOrders (workOrderNum mediumint unsigned not null auto_increment,
+    projectNum smallint unsigned not null, 
+    description varchar(5000), 
+    quotedTotal numeric(8,2),
+    actualTotal numeric(8,2),
+    isActive boolean not null, 
+    workOrderType varchar(100),
+    constraint pk_WorkOrder primary key (workOrderNum), 
+    constraint fk_WorkOrderProject foreign key (projectNum) references Projects (projectNum));
+
+#creates workorder excavation by hand table
+create table ExcavationByHandWorkOrder (workOrderNum mediumint unsigned not null,
+    estSQFT numeric(8,2),
+    estDepth numeric(8,2),
+    estReqYards numeric(8,2),
+    estHours numeric(8,2),
+    estLabour numeric(8,2),
+    estTrucking numeric(8,2),
+    estDisposal numeric(8,2),
+    actSQFT numeric(8,2),
+    actDepth numeric(8,2),
+    actReqYards numeric(8,2),
+    actHours numeric(8,2),
+    actLabour numeric(8,2),
+    actTrucking numeric(8,2),
+    actDisposal numeric(8,2), 
+    constraint fk_WorkOrderExcByHand foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
@@ -92,7 +136,8 @@ insert into Clients (fname, lname, phone1, address, isActive) values ('Bill', 'g
 insert into Clients (fname, lname, phone1, email, address, isActive) values ('Oliver', 'Sykes', 64512437659, 'welsh@dropdead.com', '666 vegan st', 1);
 insert into Clients (fname, lname, phone1, phone2, email, address, isActive) values ('Patrick', 'Stump', 5642568759, 5556894258, 'fedora@fob.com' ,'88 Coopersonte Way NE', 1);
 
-insert into serviceconstants values('excavation','trucking /2 yards',78,null);
+insert into serviceconstants values('excavation','trucking by hand /2 yards',78,null);
+insert into serviceconstants values('excavation','trucking by skid /2 yards',78,null);
 insert into serviceconstants values('excavation','disposal',113,null);
 insert into serviceconstants values('excavation','man hours by hand /yards',3,null);
 insert into serviceconstants values('excavation','man hours by skid /yards',0.5,null);
