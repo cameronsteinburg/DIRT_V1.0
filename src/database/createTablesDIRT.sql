@@ -9,6 +9,8 @@
 
 
 #Remove for update
+drop table excavationbyhandworkorder;
+drop table workorders;
 drop table projectlabourer;
 drop table labourers;
 drop table projects;
@@ -217,3 +219,6 @@ insert into serviceconstants values('sod','install rate /hours',55.0,null);
 
 insert into serviceconstants values('snowremoval','monthly rate',105.0,null);
 insert into serviceconstants values('snowremoval','additional area',26.25,null);
+
+insert into serviceconstants values('tax','GST',0.05,null);
+insert into serviceconstants values('tax','PST',0.06,null);

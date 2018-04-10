@@ -378,7 +378,7 @@ public class JDBCCommands {
             java.sql.Date start = new java.sql.Date(project.getStartDate().getTime());
             java.sql.Date end = new java.sql.Date(project.getEndDate().getTime());
             
-           preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
+            preparedStmt.setInt(1, 1);
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getDescription());
             preparedStmt.setString(4, project.getSiteAddress());
@@ -411,7 +411,7 @@ public class JDBCCommands {
             //add work orders to the project
             for (int n = 0; n < project.getWorkOrders().size(); n++){
                 String workOrderType = getWorkOrderType(project.getWorkOrders().get(n));
-                String workOrderNoTypeQuery = " insert into workOrders (projectNum, description, quotedTotal, actualTotal, isActive, workOrderType) values(?, ?, ?, ?, ?, " + workOrderType + ")";
+                String workOrderNoTypeQuery = " insert into workOrders (projectNum, description, quotedTotal, actualTotal, isActive, workOrderType) values(?, ?, ?, ?, ?, '" + workOrderType + "')";
                 PreparedStatement preparedStmtWorkOrderNoType = conn.prepareStatement(workOrderNoTypeQuery, Statement.RETURN_GENERATED_KEYS);
                     preparedStmtWorkOrderNoType.setInt(1, projectNum);
                     preparedStmtWorkOrderNoType.setString(2, project.getWorkOrders().get(n).getDescription());

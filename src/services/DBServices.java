@@ -540,6 +540,14 @@ public class DBServices {
     public double snowremoval_AdditionalArea() {
         return (double) Main.jdbcc.getConstant("snowremoval", "additional area").get(0);
     }
+    
+    public double tax_GST() {
+        return (double) Main.jdbcc.getConstant("tax", "GST").get(0);
+    }
+
+    public double tax_PST() {
+        return (double) Main.jdbcc.getConstant("tax", "PST").get(0);
+    }
 
     //Constant Setters
     public boolean setexcavation_TruckingFeeByHand(double constant) {
