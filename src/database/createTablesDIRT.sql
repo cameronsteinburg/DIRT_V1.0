@@ -111,6 +111,24 @@ create table ExcavationByHandWorkOrder (workOrderNum mediumint unsigned not null
     actDisposal numeric(8,2), 
     constraint fk_WorkOrderExcByHand foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
+#creates workorder excavation by skid table
+create table ExcavationBySkidWorkOrder (workOrderNum mediumint unsigned not null,
+    estSQFT numeric(8,2),
+    estDepth numeric(8,2),
+    estReqYards numeric(8,2),
+    estHours numeric(8,2),
+    estLabour numeric(8,2),
+    estTrucking numeric(8,2),
+    estDisposal numeric(8,2),
+    actSQFT numeric(8,2),
+    actDepth numeric(8,2),
+    actReqYards numeric(8,2),
+    actHours numeric(8,2),
+    actLabour numeric(8,2),
+    actTrucking numeric(8,2),
+    actDisposal numeric(8,2), 
+    constraint fk_WorkOrderExcByHand foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
 insert into Labourers (fname, lname, title, phone1, address,  emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Keifer', 'Hicks', 'Contracter', 587456852, '4242 Riverbend Rd SE', 'Shaizans Sister', 5874456888, 4036855477, 1);
