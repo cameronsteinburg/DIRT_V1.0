@@ -378,7 +378,10 @@ public class JDBCCommands {
             java.sql.Date start = new java.sql.Date(project.getStartDate().getTime());
             java.sql.Date end = new java.sql.Date(project.getEndDate().getTime());
             
-            preparedStmt.setInt(1, 1);
+            if (project.getClient() == null){
+                preparedStmt.setInt(1, 1);
+            }
+            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getDescription());
             preparedStmt.setString(4, project.getSiteAddress());
