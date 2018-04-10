@@ -29,8 +29,9 @@ public class WO_Excavation extends WorkOrder {
     /**
      * 
      */
-    public WO_Excavation(){
-    
+    public WO_Excavation(char type, boolean isActive){
+        this.type = type;
+        this.isActive = isActive;
     }
 
     //first creation in java for data entered

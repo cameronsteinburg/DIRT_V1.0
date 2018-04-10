@@ -152,7 +152,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     private ArrayList<Control> addByHand() {
 
-        WO_Excavation newHand = new WO_Excavation();
+        WO_Excavation newHand = new WO_Excavation('h', true);
         orders.add(newHand);
 
         ArrayList<Control> hand = new ArrayList();
@@ -317,7 +317,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //WO_ExcavationBySkid newSkid = new WO_ExcavationBySkid();
         //orders.add(newSkid);
         
-        WO_Excavation newSkid = new WO_Excavation();
+        WO_Excavation newSkid = new WO_Excavation('s', true);
         orders.add(newSkid);
 
         ArrayList<Control> skid = new ArrayList();
