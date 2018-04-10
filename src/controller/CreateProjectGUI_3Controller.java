@@ -63,6 +63,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         this(null);
     }
 
+    /**
+     * 
+     * @param event 
+     */
     @FXML
     private void saveBtnAction(ActionEvent event) {
 
@@ -72,12 +76,21 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         if (result.get() == ButtonType.OK) {
             
-            Project fin = new Project();
+            Project fin = new Project(true);
+            
             fin.setProjectName(inProgress.getProjectName());
             fin.setDescription(inProgress.getDescription());
+            fin.setSiteAddress(inProgress.getSiteAddress());
+            fin.setEstimatedEndDate(inProgress.getEstimatedEndDate());
+            fin.setPrelimStartDate(inProgress.getPrelimStartDate());
+            
         }
     }
 
+    /**
+     * 
+     * @param event 
+     */
     @FXML
     private void cancelBtnAction(ActionEvent event) {
 
@@ -281,6 +294,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         return hand;
     }
 
+    /**
+     * 
+     */
     private void botCheck() {
 
         double eh = -1;

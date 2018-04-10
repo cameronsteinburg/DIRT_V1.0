@@ -13,25 +13,22 @@ public class Project {
 
     //* nothing gets saved to db until the user pucnhes in all the info to get the the quote production
     //once they have the number they will be asked to save this new project or to throw it away
-    
     private int projectNum; //defined by DB
-    
+
     //details
     private String projectName; //a name user will give to easily identify their project from others NOT NULL
     private String description; //optional description for users personal reference on project
-    private Client client; //user has to make a client to assign to this project beforehand NOT NULL 
     private String siteAddress; //the site of the project
     private boolean isActive; //false if the user has deleted this entity, true if he hasn't NOT NULL
 
     //dependent entitites
-    private ArrayList<WorkOrder> workOrders; //anything that costs User money
-    private ArrayList<Labourer> labourers; //User's employees he can assign to projects 
+    private ArrayList<WorkOrder> workOrders = new ArrayList(); //anything that costs User money
+    private ArrayList<Labourer> labourers = new ArrayList(); //User's employees he can assign to projects 
+    private Client client; //user has to make a client to assign to this project beforehand
 
     //dates
-    private Date prelimStartDate; //date entered by user when first making new peoject, used for quote calculation NOT NULL
-    private Date actualStartDate; //that actual date things got rolling, different from date used for quote
-    private Date estimatedEndDate; //estimated date of project end used in new project to calculate initial quote NOT NULL
-    private Date actualEndDate; //the date the project actually ended
+    private Date startDate; //date entered by user when first making new project, used for quote calculation NOT NULL
+    private Date endDate; //estimated date of project end used in new project to calculate initial quote NOT NULL
 
     //track clients payments
     private double clientOwing; //what client still owes
@@ -47,20 +44,23 @@ public class Project {
     //the actual bill
     private double actualCost; //the bottom line at end of project for what the client paid in the end
 
-    
     /**
-     * 
+     *
+     * @param isActive
      */
-    public Project(){
+    public Project(boolean isActive) {
+        this.isActive = isActive;
     }
-    
+
     /**
      *
      * @param name
+     * @param isActive
      */
-    public Project(String name) {
+    public Project(String name, boolean isActive) {
 
         this.projectName = name;
+        this.isActive = isActive;
     }
 
     /**
@@ -73,8 +73,8 @@ public class Project {
     public Project(String name, Date prelim, Date estEnd, boolean isActive) { //for new project use case, minimum
 
         this.projectName = name;
-        this.prelimStartDate = prelim;
-        this.estimatedEndDate = estEnd;
+        this.startDate = prelim;
+        this.endDate = estEnd;
         this.isActive = isActive;
     }
 
@@ -89,8 +89,8 @@ public class Project {
     public Project(String name, Date prelim, Date estEnd, String notes, boolean isActive) {
 
         this.projectName = name;
-        this.prelimStartDate = prelim;
-        this.estimatedEndDate = estEnd;
+        this.startDate = prelim;
+        this.endDate = estEnd;
         this.description = notes;
         this.isActive = isActive;
     }
@@ -106,8 +106,8 @@ public class Project {
     public Project(String siteAddress, String name, Date prelim, Date estEnd, boolean isActive) {
 
         this.projectName = name;
-        this.prelimStartDate = prelim;
-        this.estimatedEndDate = estEnd;
+        this.startDate = prelim;
+        this.endDate = estEnd;
         this.siteAddress = siteAddress;
         this.isActive = isActive;
     }
@@ -125,33 +125,31 @@ public class Project {
         this.isActive = isActive;
     }
 
- /**
-  * 
-  * @param name
-  * @param prelim
-  * @param estEnd
-  * @param address
-  * @param notes
-  * @param isActive 
-  */
+    /**
+     *
+     * @param name
+     * @param prelim
+     * @param estEnd
+     * @param address
+     * @param notes
+     * @param isActive
+     */
     public Project(String name, Date prelim, Date estEnd, String address, String notes, boolean isActive) {
 
         this.projectName = name;
-        this.prelimStartDate = prelim;
-        this.estimatedEndDate = estEnd;
+        this.startDate = prelim;
+        this.endDate = estEnd;
         this.siteAddress = address;
         this.isActive = isActive;
     }
-    
+
     /**
      * @Matthew
-     * 
+     *
      * @param projectName
      * @param projectDescription
      * @param client
      * @param siteAddress
-     * @param isActive
-     * @param dateConstructed
      * @param workOrders
      * @param labourers
      * @param prelimStartDate
@@ -163,10 +161,12 @@ public class Project {
      * @param allowanceCost
      * @param extraneousExpenses
      * @param quote
-     * @param actualCost 
+     * @param actualCost
+     * @param id
+     * @param isActive
      */
-    public Project(String projectName, String projectDescription, Client client, String siteAddress,  ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id, boolean isActive) {
-       
+    public Project(String projectName, String projectDescription, Client client, String siteAddress, ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id, boolean isActive) {
+
         this.projectName = projectName;
         this.description = projectDescription;
         this.client = client;
@@ -174,10 +174,8 @@ public class Project {
         this.isActive = isActive;
         this.workOrders = workOrders; //get fks from objects
         this.labourers = labourers; //get fks from objects
-        this.prelimStartDate = prelimStartDate;
-        this.actualStartDate = actualStartDate;
-        this.estimatedEndDate = estimatedEndDate;
-        this.actualEndDate = actualEndDate;
+        this.startDate = prelimStartDate;
+        this.endDate = estimatedEndDate;
         this.clientOwing = clientOwing;
         this.clientPaid = clientPaid;
         this.allowanceCost = allowanceCost;
@@ -185,10 +183,6 @@ public class Project {
         this.quote = quote;
         this.actualCost = actualCost;
         this.projectNum = id; //pk, only not null
-    }
-    
-    public void addOrder(WorkOrder order){
-        workOrders.add(order);
     }
 
     public int getProjectNum() {
@@ -211,16 +205,8 @@ public class Project {
         return description;
     }
 
-    public void setDescription(String projectDescription) {
-        this.description = projectDescription;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getSiteAddress() {
@@ -239,7 +225,7 @@ public class Project {
         this.isActive = isActive;
     }
 
-    public List<WorkOrder> getWorkOrders() {
+    public ArrayList<WorkOrder> getWorkOrders() {
         return workOrders;
     }
 
@@ -247,7 +233,7 @@ public class Project {
         this.workOrders = workOrders;
     }
 
-    public List<Labourer> getLabourers() {
+    public ArrayList<Labourer> getLabourers() {
         return labourers;
     }
 
@@ -255,36 +241,28 @@ public class Project {
         this.labourers = labourers;
     }
 
-    public Date getPrelimStartDate() {
-        return prelimStartDate;
+    public Client getClient() {
+        return client;
     }
 
-    public void setPrelimStartDate(Date prelimStartDate) {
-        this.prelimStartDate = prelimStartDate;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public Date getActualStartDate() {
-        return actualStartDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setActualStartDate(Date actualStartDate) {
-        this.actualStartDate = actualStartDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEstimatedEndDate() {
-        return estimatedEndDate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEstimatedEndDate(Date estimatedEndDate) {
-        this.estimatedEndDate = estimatedEndDate;
-    }
-
-    public Date getActualEndDate() {
-        return actualEndDate;
-    }
-
-    public void setActualEndDate(Date actualEndDate) {
-        this.actualEndDate = actualEndDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public double getClientOwing() {
@@ -334,9 +312,5 @@ public class Project {
     public void setActualCost(double actualCost) {
         this.actualCost = actualCost;
     }
-    
-    
-    
-    
 
 }
