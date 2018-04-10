@@ -140,43 +140,43 @@ insert into Clients (fname, lname, phone1, phone2, email, address, isActive) val
 
 insert into serviceconstants values('excavation','trucking by hand /2 yards',78.0,null);
 insert into serviceconstants values('excavation','trucking by skid /2 yards',125.0,null);
-insert into serviceconstants values('excavation','disposal',113,null);
-insert into serviceconstants values('excavation','man hours by hand /yards',3,null);
+insert into serviceconstants values('excavation','disposal',113.0,null);
+insert into serviceconstants values('excavation','man hours by hand /yards',3.0,null);
 insert into serviceconstants values('excavation','man hours by skid /yards',0.5,null);
-insert into serviceconstants values('excavation','labour cost by hand /hours',55,null);
-insert into serviceconstants values('excavation','labour cost by skid /hours',150,null);
+insert into serviceconstants values('excavation','labour cost by hand /hours',55.0,null);
+insert into serviceconstants values('excavation','labour cost by skid /hours',150.0,null);
 
-insert into serviceconstants values('bed','hours /yards',1,null);
-insert into serviceconstants values('bed','install /hours',55,null);
+insert into serviceconstants values('bed','hours /yards',1.0,null);
+insert into serviceconstants values('bed','install /hours',55.0,null);
 
-insert into serviceconstants values('stonewalkway','estimated man hours',4,null);
-insert into serviceconstants values('stonewalkway','install rate /hours',55,null);
+insert into serviceconstants values('stonewalkway','estimated man hours',4.0,null);
+insert into serviceconstants values('stonewalkway','install rate /hours',55.0,null);
 
 insert into serviceconstants values('geotextilewalkway','weed barrier cost /sq. ft',0.15,null);
-insert into serviceconstants values('geotextilewalkway','fabric staples qty /1/5 sq. ft',5,null);
+insert into serviceconstants values('geotextilewalkway','fabric staples qty /1/5 sq. ft',5.0,null);
 insert into serviceconstants values('geotextilewalkway','fabric staples cost /staple',0.15,null);
-insert into serviceconstants values('geotextilewalkway','fabric man hours /100 sq ft',200,null);
-insert into serviceconstants values('geotextilewalkway','fabric install rate /hours',55,null);
+insert into serviceconstants values('geotextilewalkway','fabric man hours /100 sq ft',200.0,null);
+insert into serviceconstants values('geotextilewalkway','fabric install rate /hours',55.0,null);
 
-insert into serviceconstants values('walkwaybase','crushed base sq. ft/inch/yard',243,null);
+insert into serviceconstants values('walkwaybase','crushed base sq. ft/inch/yard',243.0,null);
 insert into serviceconstants values('walkwaybase','crasued cost /yard',75.0,null);
-insert into serviceconstants values('walkwaybase','man hours /yard',3,null);
-insert into serviceconstants values('walkwaybase','install rate / hours',55,null);
+insert into serviceconstants values('walkwaybase','man hours /yard',3.0,null);
+insert into serviceconstants values('walkwaybase','install rate / hours',55.0,null);
 
-insert into serviceconstants values('screedsand','depth sq.ft / yard',324,null);
-insert into serviceconstants values('screedsand','cost /yard',85,null);
-insert into serviceconstants values('screedsand','man hours / yard',3,null);
-insert into serviceconstants values('screedsand','install /hours',55,null);
+insert into serviceconstants values('screedsand','depth sq.ft / yard',324.0,null);
+insert into serviceconstants values('screedsand','cost /yard',85.0,null);
+insert into serviceconstants values('screedsand','man hours / yard',3.0,null);
+insert into serviceconstants values('screedsand','install /hours',55.0,null);
 
-insert into serviceconstants values('edgerestraint','cost /8 ft',20,null);
-insert into serviceconstants values('edgerestraint','nails /1nail',1,null);
-insert into serviceconstants values('edgerestraint','man hours',50,null);
+insert into serviceconstants values('edgerestraint','cost /8 ft',20.0,null);
+insert into serviceconstants values('edgerestraint','nails /1nail',1.0,null);
+insert into serviceconstants values('edgerestraint','man hours',50.0,null);
 insert into serviceconstants values('edgerestraint','install /hours',55,null);
 
 insert into serviceconstants values('jointingsand','QTY (kg/sf) @ 1/4 inch',0.6,null);
 insert into serviceconstants values('jointingsand','cost /kg',1.5,null);
 insert into serviceconstants values('jointingsand','hours /kg',0.1,null);
-insert into serviceconstants values('jointingsand','install /hours',55,null);
+insert into serviceconstants values('jointingsand','install /hours',55.0,null);
 
 insert into serviceconstants values('materials','Crushed Rock',53.10,59.00);
 insert into serviceconstants values('materials','Pea Rock',58.50,65.00);
@@ -187,33 +187,33 @@ insert into serviceconstants values('materials','Crusher Dust',44.21,50.84);
 insert into serviceconstants values('materials','Red Shale',85.00,97.75);
 insert into serviceconstants values('materials','Sod (per 10 s.f.)',3.60,4.80);
 
-insert into serviceconstants values('retainingwall','crushed base cost / yard',45,null);
-insert into serviceconstants values('retainingwall','crushed base install hours / yard',2,null);
-insert into serviceconstants values('retainingwall','crushed base install rate / yard',55,null);
+insert into serviceconstants values('retainingwall','crushed base cost / yard',45.0,null);
+insert into serviceconstants values('retainingwall','crushed base install hours / yard',2.0,null);
+insert into serviceconstants values('retainingwall','crushed base install rate / yard',55.0,null);
 insert into serviceconstants values('retainingwall','base row install hours /line feet',0.2,null);
-insert into serviceconstants values('retainingwall','base row install rate / hour',55,null);
+insert into serviceconstants values('retainingwall','base row install rate / hour',55.0,null);
 insert into serviceconstants values('retainingwall','block cost /line feet',13.37,null);
 
 insert into serviceconstants values('irrigation','3/4 lining',0.60,2.5);
-insert into serviceconstants values('irrigation','hose bibs',12,15);
-insert into serviceconstants values('irrigation','shut off valve',20,20);
-insert into serviceconstants values('irrigation','rotary head',42,30);
-insert into serviceconstants values('irrigation','spray head',20,30);
-insert into serviceconstants values('irrigation','drip 1/4inch /foot',1,1);
-insert into serviceconstants values('irrigation','drip emmiter',2.5,1);
-insert into serviceconstants values('irrigation','timer control',150,110);
-insert into serviceconstants values('irrigation','control wire /100 feet',50,55);
-insert into serviceconstants values('irrigation','valve box',40,25);
-insert into serviceconstants values('irrigation','control valve',51,15);
+insert into serviceconstants values('irrigation','hose bibs',12.0,15.0);
+insert into serviceconstants values('irrigation','shut off valve',20.0,20.0);
+insert into serviceconstants values('irrigation','rotary head',42.0,30.0);
+insert into serviceconstants values('irrigation','spray head',20.0,30.0);
+insert into serviceconstants values('irrigation','drip 1/4inch /foot',1.0,1.0);
+insert into serviceconstants values('irrigation','drip emmiter',2.5,1.0);
+insert into serviceconstants values('irrigation','timer control',150.0,110.0);
+insert into serviceconstants values('irrigation','control wire /100 feet',50.0,55.0);
+insert into serviceconstants values('irrigation','valve box',40.0,25.0);
+insert into serviceconstants values('irrigation','control valve',51.0,15.0);
 
-insert into serviceconstants values('weedbarrier','man hours /500 sqft',1,null);
-insert into serviceconstants values('weedbarrier','staples /500 sqft',60,null);
+insert into serviceconstants values('weedbarrier','man hours /500 sqft',1.0,null);
+insert into serviceconstants values('weedbarrier','staples /500 sqft',60.0,null);
 insert into serviceconstants values('weedbarrier','cost per staples',0.10,null);
-insert into serviceconstants values('weedbarrier','barrier supply /500 sqft',55,null);
+insert into serviceconstants values('weedbarrier','barrier supply /500 sqft',55.0,null);
 
 insert into serviceconstants values('sod','supply /yard',0.6,null);
 insert into serviceconstants values('sod','man hours /10 sqft',0.12,null);
-insert into serviceconstants values('sod','install rate /hours',55,null);
+insert into serviceconstants values('sod','install rate /hours',55.0,null);
 
-insert into serviceconstants values('snowremoval','monthly rate',105,null);
+insert into serviceconstants values('snowremoval','monthly rate',105.0,null);
 insert into serviceconstants values('snowremoval','additional area',26.25,null);

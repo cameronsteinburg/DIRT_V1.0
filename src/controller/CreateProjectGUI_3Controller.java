@@ -365,6 +365,108 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         skid.add(new Label("   "));
 
         DBServices dbs = new DBServices();
+        
+        
+        double labourhours = dbs.excavation_ManHoursBySkidPerYards();
+        double labourRate = dbs.excavation_ManHoursBySkidPerHours();
+        double truckingRate = dbs.excavation_TruckingFeeBySkid();
+        double disposalRate = dbs.excavation_DisposalFee();
+        
+        for (int i = 0; i < skid.size(); i++) {
+
+            String currentEl = skid.get(i).getId();
+
+            if (currentEl == null) {
+                currentEl = "-1";
+            }
+
+            if (currentEl.equals("0") || currentEl.equals("1")) {
+
+                TextField sqft = (TextField) skid.get(2);
+
+                int place;
+
+                if (currentEl.equals("0")) {
+                    place = 2;
+                } else {
+                    place = 4;
+                }
+
+                skid.get(place).setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+                    @Override
+                    public void handle(KeyEvent event) {
+
+                        //update required yards
+                        double sqftdbl;
+                        double depthdbl;
+
+                        TextField depth = (TextField) skid.get(4);
+                        TextField reqyards = (TextField) skid.get(7);
+
+                        try {
+                            sqftdbl = Double.parseDouble(sqft.getText());
+                        } catch (Exception e) {
+                            sqftdbl = 0;
+                        }
+
+                        try {
+                            depthdbl = Double.parseDouble(depth.getText());
+                        } catch (Exception e) {
+                            depthdbl = 0;
+                        }
+
+                        Double reqyardsdbl = (depthdbl / 12.0) * (sqftdbl / 27.0);
+                        newSkid.setEstReqYards(reqyardsdbl);
+
+                        reqyards.setText(f.format(reqyardsdbl));
+
+                        //update estimated man hours per yard
+                        TextField estManHours = (TextField) skid.get(9);
+                        Double estimatedManHourDbl = (labourhours * reqyardsdbl);
+                        newSkid.setEstHours(estimatedManHourDbl);
+                        estManHours.setText(f.format(estimatedManHourDbl));
+
+                        //update labour cost
+                        TextField labourCost = (TextField) skid.get(11);
+                        Double labourCostDouble = (estimatedManHourDbl * labourRate);
+                        newSkid.setEstLabour(labourCostDouble);
+                        labourCost.setText(f.format(labourCostDouble));
+
+                        //update trucking fee
+                        TextField trucking = (TextField) skid.get(13);
+                        Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
+                        newSkid.setEstTrucking(truckingDbl);
+                        trucking.setText(f.format(truckingDbl));
+
+                        //update disposl
+                        TextField disp = (TextField) skid.get(15);
+                        Double disDbl = (reqyardsdbl * disposalRate);
+                        newSkid.setEstDisposal(0);
+                        disp.setText(f.format(disDbl));
+
+                        TextField serTotal = (TextField) skid.get(18);
+                        Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
+                        newSkid.setQuotedTotal(serTotalDbl);
+                        serTotal.setText(f.format(serTotalDbl));
+
+                        double ttl = 0;
+
+                        for (int i = 0; i < orders.size(); i++) {
+
+                            ttl += orders.get(i).getQuotedTotal();
+                        }
+
+                        projectTotal = ttl;
+
+                        bottomLine.setText(f.format(projectTotal));
+
+                        botCheck();
+                    }
+                });
+            }
+        }
+        
 
         fieldCount = 0;
         return skid;
