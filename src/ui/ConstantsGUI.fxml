@@ -505,7 +505,7 @@
                                        <content>
                                           <AnchorPane maxHeight="1.7976931348623157E308" style="-fx-background-color: #e9fcae;">
                                              <children>
-                                                <HBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <HBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="1172.0" prefWidth="2180.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="-292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-552.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <AnchorPane prefHeight="600.0" prefWidth="229.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                          <children>
