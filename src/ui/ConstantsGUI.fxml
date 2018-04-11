@@ -514,7 +514,7 @@
                                                                   <Font size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="3.0" layoutY="101.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
+                                                            <GridPane layoutX="3.0" layoutY="101.0" prefWidth="225.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
@@ -570,7 +570,7 @@
                                                                   <Font size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
@@ -671,14 +671,14 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-background-color: #e9fcae; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Walkway Base" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
                                                                   <Font size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
@@ -765,14 +765,14 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Screed Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
                                                                   <Font size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="-9.0" layoutY="50.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                            <GridPane layoutX="-9.0" layoutY="50.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
@@ -859,14 +859,14 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Edge Restraint" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
                                                                   <Font size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
@@ -953,14 +953,14 @@
                                                             <Insets bottom="10.0" />
                                                          </opaqueInsets>
                                                       </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label alignment="CENTER" text="Jointing Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <font>
                                                                   <Font size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
