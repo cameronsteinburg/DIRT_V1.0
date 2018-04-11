@@ -173,16 +173,25 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         ComboBox<Aggregate> aggs = new ComboBox();
         aggs.setMaxHeight(10);
-
-        aggs.setItems(FXCollections.observableArrayList(
-                new Aggregate("Crushed Rock", dbs.materials_CrushedRockUnit()),
+        
+  /*                new Aggregate("Crushed Rock", dbs.materials_CrushedRockUnit()),
                 new Aggregate("Pea Rock", dbs.materials_PeaRockUnit()),
                 new Aggregate("River Rock", dbs.materials_RiverRockUnit()),
                 new Aggregate("Western Red Cedar Mulch", dbs.materials_MulchWesternRedCedarUnit()),
                 new Aggregate("Premium Top Soil", dbs.materials_TopSoilPremiumMixUnit()),
                 new Aggregate("Crusher Dust", dbs.materials_CrusherDustUnit()),
                 new Aggregate("Red Shale", dbs.materials_RedShaleUnit()),
-                new Aggregate("Sod /10 sq.ft", dbs.materials_SodPer10SQFTUnit())));
+                new Aggregate("Sod /10 sq.ft", dbs.materials_SodPer10SQFTUnit())));*/
+
+        aggs.setItems(FXCollections.observableArrayList(
+                "Crushed Rock",
+                "Pea Rock",
+                "River Rock",
+                "Western Red Cedar Mulch",
+                "Premium Top Soil",
+                "Crusher Dust",
+                "Red Shale",
+                "Sod /10 sq.ft"));
         bed.add(aggs);
 
         bed.add(addLabel("SQ.FT"));
