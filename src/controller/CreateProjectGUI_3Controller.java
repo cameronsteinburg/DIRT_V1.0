@@ -1,6 +1,5 @@
 package controller;
 
-import entity.Aggregate;
 import entity.Project;
 import entity.Services.WO_Bed;
 import entity.Services.WO_Excavation;
@@ -170,28 +169,22 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         bed.add(label);
-
-        ComboBox<Aggregate> aggs = new ComboBox();
+        
+        ObservableList<String> options
+                = FXCollections.observableArrayList(
+                        "Crushed Rock",
+                        "Pea Rock",
+                        "River Rock",
+                        "Western Red Cedar Mulch",
+                        "Premium Top Soil",
+                        "Crusher Dust",
+                        "Red Shale",
+                        "Sod /10 sq.ft"
+                );
+        
+        ComboBox aggs = new ComboBox(options);
         aggs.setMaxHeight(10);
         
-  /*                new Aggregate("Crushed Rock", dbs.materials_CrushedRockUnit()),
-                new Aggregate("Pea Rock", dbs.materials_PeaRockUnit()),
-                new Aggregate("River Rock", dbs.materials_RiverRockUnit()),
-                new Aggregate("Western Red Cedar Mulch", dbs.materials_MulchWesternRedCedarUnit()),
-                new Aggregate("Premium Top Soil", dbs.materials_TopSoilPremiumMixUnit()),
-                new Aggregate("Crusher Dust", dbs.materials_CrusherDustUnit()),
-                new Aggregate("Red Shale", dbs.materials_RedShaleUnit()),
-                new Aggregate("Sod /10 sq.ft", dbs.materials_SodPer10SQFTUnit())));*/
-
-        aggs.setItems(FXCollections.observableArrayList(
-                "Crushed Rock",
-                "Pea Rock",
-                "River Rock",
-                "Western Red Cedar Mulch",
-                "Premium Top Soil",
-                "Crusher Dust",
-                "Red Shale",
-                "Sod /10 sq.ft"));
         bed.add(aggs);
 
         bed.add(addLabel("SQ.FT"));
@@ -622,6 +615,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         newGrid.setTranslateX(5);
         newGrid.setTranslateY(5);
+        
+       // ColoumnConstraints cc = new ColoumnConstraints();
 
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
         //AnchorPane.setTopAnchor(newGrid, Double.NaN);
@@ -629,14 +624,15 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
         newGrid.setMaxWidth(1850);
+       // newGrid
         newGrid.setHgap(5);
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
-        
+
         RowConstraints rc = new RowConstraints();
         rc.setMinHeight(50);
         newGrid.getRowConstraints().add(rc);
-        
+
         anc.getChildren().add(newGrid);
     }
 }
