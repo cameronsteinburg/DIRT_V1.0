@@ -98,7 +98,7 @@ public class Project {
     //for new project 1
     public Project(String name, Date startDate, Date endDate, String description, String address, boolean isActive) {
         
-        this.projectName = projectName;
+        this.projectName = name;
         this.startDate = startDate;
         this.endDate= endDate;
         this.description = description;

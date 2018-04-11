@@ -93,6 +93,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             DBServices dbs = new DBServices();
 
+            
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
@@ -170,7 +171,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         bed.add(label);
-        
+
         ObservableList<String> options
                 = FXCollections.observableArrayList(
                         "Crushed Rock",
@@ -182,11 +183,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         "Red Shale",
                         "Sod /10 sq.ft"
                 );
-        
+
         ComboBox aggs = new ComboBox(options);
         aggs.setMaxHeight(10);
         aggs.setMaxWidth(50);
-        
+
         bed.add(aggs);
 
         bed.add(addLabel("SQ.FT"));
@@ -207,6 +208,16 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         bed.add(addLabel("Aggregate Cost"));
         bed.add(this.addField(false));
+
+        bed.add(addLabel("Labour Cost"));
+        bed.add(addField(false));
+
+        label = addLabel("Service Total");
+        label.setUnderline(true);
+        label.setFont(new Font(16));
+        label.setPadding(new Insets(0, 0, 0, 100));
+        bed.add(label);
+        bed.add(addField(false));
 
         fieldCount = 0;
         return bed;
@@ -618,9 +629,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         newGrid.setTranslateX(5);
         newGrid.setTranslateY(5);
-        
-       ColumnConstraints cc = new ColumnConstraints();
 
+        ColumnConstraints cc = new ColumnConstraints();
 
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
         //AnchorPane.setTopAnchor(newGrid, Double.NaN);
