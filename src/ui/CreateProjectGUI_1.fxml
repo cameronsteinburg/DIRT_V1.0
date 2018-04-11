@@ -26,17 +26,17 @@
             <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="196.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Name this Project *">
+            <Label text="Name This Project *Required">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label prefHeight="34.0" prefWidth="451.0" text="Preliminary Start Date (for Quote calculation) *" wrapText="true" GridPane.rowIndex="2">
+            <Label prefHeight="34.0" prefWidth="451.0" text="Preliminary Start Date (for Quote calculation)" wrapText="true" GridPane.rowIndex="2">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label prefHeight="28.0" prefWidth="455.0" text="Estimated End Date (for Quote calculation) *" GridPane.rowIndex="3">
+            <Label prefHeight="28.0" prefWidth="455.0" text="Estimated End Date (for Quote calculation)" GridPane.rowIndex="3">
                <font>
                   <Font size="19.0" />
                </font>
@@ -58,11 +58,6 @@
             </Label>
          </children>
       </GridPane>
-      <Label layoutX="83.0" layoutY="88.0" text="* = Required">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
       <Label layoutX="14.0" layoutY="14.0" text="Create New Project">
          <font>
             <Font size="35.0" />

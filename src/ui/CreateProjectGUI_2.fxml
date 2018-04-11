@@ -22,7 +22,7 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Button fx:id="nextBtn2" disable="true" layoutX="14.0" layoutY="469.0" mnemonicParsing="false" onAction="#nextBtnAction2" prefHeight="42.0" prefWidth="81.0" styleClass="grn-button" stylesheets="@createclientgui.css" text="Next " AnchorPane.leftAnchor="14.0" />
+      <Button fx:id="nextBtn2" disable="true" layoutX="14.0" layoutY="469.0" mnemonicParsing="false" onAction="#nextBtnAction2" prefHeight="42.0" prefWidth="81.0" styleClass="grn-button" stylesheets="@createclientgui.css" text="Next " AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" />
       <Label fx:id="errorMessage" layoutX="574.0" layoutY="40.0" prefHeight="28.0" prefWidth="410.0" textFill="#eb0000">
          <font>
             <Font size="19.0" />

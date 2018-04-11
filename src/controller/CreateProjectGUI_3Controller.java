@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -31,6 +30,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import services.DBServices;
 
@@ -165,18 +165,25 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         ArrayList<Control> bed = new ArrayList();
 
-        Label label = new Label("Excavation By Hand:");
+        Label label = new Label("Aggregate Bed:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         bed.add(label);
 
-        ComboBox<Aggregate> agss = new ComboBox();
+        ComboBox<Aggregate> aggs = new ComboBox();
+        aggs.setMaxHeight(10);
 
-        agss.setItems(FXCollections.observableArrayList(
+        aggs.setItems(FXCollections.observableArrayList(
                 new Aggregate("Crushed Rock", dbs.materials_CrushedRockUnit()),
-                new Aggregate("Pea Rock", 23.23),
-                new Aggregate("Bird", 15.0)));
+                new Aggregate("Pea Rock", dbs.materials_PeaRockUnit()),
+                new Aggregate("River Rock", dbs.materials_RiverRockUnit()),
+                new Aggregate("Western Red Cedar Mulch", dbs.materials_MulchWesternRedCedarUnit()),
+                new Aggregate("Premium Top Soil", dbs.materials_TopSoilPremiumMixUnit()),
+                new Aggregate("Crusher Dust", dbs.materials_CrusherDustUnit()),
+                new Aggregate("Red Shale", dbs.materials_RedShaleUnit()),
+                new Aggregate("Sod /10 sq.ft", dbs.materials_SodPer10SQFTUnit())));
+        bed.add(aggs);
 
         bed.add(addLabel("SQ.FT"));
         bed.add(addField(true));
@@ -194,7 +201,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         bed.add(addLabel("Est. Man Hours"));
         bed.add(this.addField(false));
 
-        bed.add(addLabel("Aggregate"));
+        bed.add(addLabel("Aggregate Cost"));
         bed.add(this.addField(false));
 
         return bed;
@@ -616,7 +623,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         newGrid.setHgap(5);
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
-
+        
+        RowConstraints rc = new RowConstraints();
+        rc.setMinHeight(50);
+        newGrid.getRowConstraints().add(rc);
+        
         anc.getChildren().add(newGrid);
     }
 }

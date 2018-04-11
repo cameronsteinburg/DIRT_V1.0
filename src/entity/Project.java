@@ -52,96 +52,6 @@ public class Project {
         this.isActive = isActive;
     }
 
-    /**
-     *
-     * @param name
-     * @param isActive
-     */
-    public Project(String name, boolean isActive) {
-
-        this.projectName = name;
-        this.isActive = isActive;
-    }
-
-    /**
-     *
-     * @param name
-     * @param prelim
-     * @param estEnd
-     * @param isActive
-     */
-    public Project(String name, Date prelim, Date estEnd, boolean isActive) { //for new project use case, minimum
-
-        this.projectName = name;
-        this.startDate = prelim;
-        this.endDate = estEnd;
-        this.isActive = isActive;
-    }
-
-    /**
-     *
-     * @param name
-     * @param prelim
-     * @param estEnd
-     * @param notes
-     * @param isActive
-     */
-    public Project(String name, Date prelim, Date estEnd, String notes, boolean isActive) {
-
-        this.projectName = name;
-        this.startDate = prelim;
-        this.endDate = estEnd;
-        this.description = notes;
-        this.isActive = isActive;
-    }
-
-    /**
-     *
-     * @param siteAddress
-     * @param name
-     * @param prelim
-     * @param estEnd
-     * @param isActive
-     */
-    public Project(String siteAddress, String name, Date prelim, Date estEnd, boolean isActive) {
-
-        this.projectName = name;
-        this.startDate = prelim;
-        this.endDate = estEnd;
-        this.siteAddress = siteAddress;
-        this.isActive = isActive;
-    }
-
-    /**
-     *
-     * @param siteAddress
-     * @param name
-     * @param isActive
-     */
-    public Project(String siteAddress, String name, boolean isActive) {
-
-        this.projectName = name;
-        this.siteAddress = siteAddress;
-        this.isActive = isActive;
-    }
-
-    /**
-     *
-     * @param name
-     * @param prelim
-     * @param estEnd
-     * @param address
-     * @param notes
-     * @param isActive
-     */
-    public Project(String name, Date prelim, Date estEnd, String address, String notes, boolean isActive) {
-
-        this.projectName = name;
-        this.startDate = prelim;
-        this.endDate = estEnd;
-        this.siteAddress = address;
-        this.isActive = isActive;
-    }
 
     /**
      * @Matthew
@@ -183,6 +93,35 @@ public class Project {
         this.quote = quote;
         this.actualCost = actualCost;
         this.projectNum = id; //pk, only not null
+    }
+
+    //for new project 1
+    public Project(String name, Date startDate, Date endDate, String description, String address, boolean isActive) {
+        
+        this.projectName = projectName;
+        this.startDate = startDate;
+        this.endDate= endDate;
+        this.description = description;
+        this.isActive = isActive;
+        this.siteAddress = address;
+    }
+
+    /**
+     * 
+     * @param projectName
+     * @param startDate
+     * @param endDate
+     * @param description
+     * @param isActive 
+     */
+    //for tables
+    public Project(String projectName, Date startDate, Date endDate, String description, boolean isActive) {
+       
+        this.projectName = projectName;
+        this.startDate = startDate;
+        this.endDate= endDate;
+        this.description = description;
+        this.isActive = isActive;
     }
 
     public int getProjectNum() {

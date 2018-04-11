@@ -237,12 +237,12 @@ public class JDBCCommands {
         }
         return null;
     }
-    
+
     /**
-     * 
+     *
      * @param first
      * @param last
-     * @return 
+     * @return
      */
     public Client getClient(String first, String last) {
 
@@ -366,22 +366,33 @@ public class JDBCCommands {
      * @return true if no error occurs
      */
     public boolean persistProject(Project project) {
-        
+
         try {
             // the mysql prepared insert statement
             String query = " insert into projects (clientNum, projectName, description, siteAddress, startDate, endDate, clientOwing, clientPaid, allowanceCost, extraneousExpenses, quote, actualCost, isActive) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-           
-            
-            java.sql.Date start = new java.sql.Date(project.getStartDate().getTime());
-            java.sql.Date end = new java.sql.Date(project.getEndDate().getTime());
-            
+
+            java.sql.Date start;
+            java.sql.Date end;
+
+            try {
+                start = new java.sql.Date(project.getStartDate().getTime());
+            } catch (NullPointerException e) {
+                start = null;
+            }
+
+            try {
+                 end = new java.sql.Date(project.getEndDate().getTime());
+            } catch (NullPointerException e) {
+                end = null;
+            }
+
             System.out.println(start);
             System.out.println(end);
-            
-            if (project.getClient() == null){
+
+            if (project.getClient() == null) {
                 preparedStmt.setInt(1, 1);
             }
             preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
@@ -400,48 +411,46 @@ public class JDBCCommands {
 
             // execute the preparedstatement
             preparedStmt.execute();
-            
-            
+
             //get the newly created projectNum
             int projectNum = getProjectNum(project.getProjectName());
-            
+
             //add labourers to the project
-            for (int i = 0; i < project.getLabourers().size(); i++){
+            for (int i = 0; i < project.getLabourers().size(); i++) {
                 String projectLabourerQuery = "insert into projectLabourer values(?,?)";
                 PreparedStatement preparedStmtProjectLabourer = conn.prepareStatement(projectLabourerQuery);
                 preparedStmtProjectLabourer.setInt(1, projectNum);
                 preparedStmtProjectLabourer.setInt(2, getLabourerNum(project.getLabourers().get(i).getFirstName(), project.getLabourers().get(i).getLastName()));
                 preparedStmtProjectLabourer.execute();
             }
-            
+
             //add work orders to the project
-            for (int n = 0; n < project.getWorkOrders().size(); n++){
+            for (int n = 0; n < project.getWorkOrders().size(); n++) {
                 String workOrderType = getWorkOrderType(project.getWorkOrders().get(n));
                 String workOrderNoTypeQuery = " insert into workOrders (projectNum, description, quotedTotal, actualTotal, isActive, workOrderType) values(?, ?, ?, ?, ?, '" + workOrderType + "')";
                 PreparedStatement preparedStmtWorkOrderNoType = conn.prepareStatement(workOrderNoTypeQuery, Statement.RETURN_GENERATED_KEYS);
-                    preparedStmtWorkOrderNoType.setInt(1, projectNum);
-                    preparedStmtWorkOrderNoType.setString(2, project.getWorkOrders().get(n).getDescription());
-                    preparedStmtWorkOrderNoType.setDouble(3, project.getWorkOrders().get(n).getQuotedTotal());
-                    preparedStmtWorkOrderNoType.setDouble(4, project.getWorkOrders().get(n).getActualTotal());
-                    preparedStmtWorkOrderNoType.setBoolean(5, true);
-                    preparedStmtWorkOrderNoType.execute();
-                    
-                    ResultSet lastIDsGenerated = preparedStmtWorkOrderNoType.getGeneratedKeys();
-                    int workOrderNum = -1;
-                    if(lastIDsGenerated.next()){
-                        workOrderNum = lastIDsGenerated.getInt(1);
-                    }   
-                insertWorkOrderType(workOrderNum,project.getWorkOrders().get(n));
+                preparedStmtWorkOrderNoType.setInt(1, projectNum);
+                preparedStmtWorkOrderNoType.setString(2, project.getWorkOrders().get(n).getDescription());
+                preparedStmtWorkOrderNoType.setDouble(3, project.getWorkOrders().get(n).getQuotedTotal());
+                preparedStmtWorkOrderNoType.setDouble(4, project.getWorkOrders().get(n).getActualTotal());
+                preparedStmtWorkOrderNoType.setBoolean(5, true);
+                preparedStmtWorkOrderNoType.execute();
+
+                ResultSet lastIDsGenerated = preparedStmtWorkOrderNoType.getGeneratedKeys();
+                int workOrderNum = -1;
+                if (lastIDsGenerated.next()) {
+                    workOrderNum = lastIDsGenerated.getInt(1);
+                }
+                insertWorkOrderType(workOrderNum, project.getWorkOrders().get(n));
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        }
         return false;
     }
-    
-    
-     /**
+
+    /**
      * Retrieves project information from MySQL database
      *
      * @return projectList List of projects in an observableList to populate
@@ -487,12 +496,11 @@ public class JDBCCommands {
         }
         return null;
     }
-    
-    
+
     /**
      *
-     * Retrieves a projectNum from the database from the projectName passed to the
-     * method
+     * Retrieves a projectNum from the database from the projectName passed to
+     * the method
      *
      * @param projectName the name of the project to be searched for
      * @return projectNum from the information found in the projects table
@@ -520,8 +528,7 @@ public class JDBCCommands {
         }
         return -1;
     }
-    
-    
+
     /**
      * persists labourer to MySQL
      *
@@ -831,10 +838,9 @@ public class JDBCCommands {
         try {
             // update to be done
             String update = null;
-            if (lowOrHigh.equals("constantHigh")){
+            if (lowOrHigh.equals("constantHigh")) {
                 update = "update serviceconstants set constantHigh = ? where superservice = ? and subservice = ?";
-            }
-            else {
+            } else {
                 update = "update serviceconstants set constantLow = ? where superservice = ? and subservice = ?";
             }
             PreparedStatement preparedStmt = conn.prepareStatement(update);
@@ -851,22 +857,22 @@ public class JDBCCommands {
             return false;
         }
     }
-    
-    public String getWorkOrderType(WorkOrder wkodr){
-        if(wkodr instanceof WO_Excavation){
-            if(((WO_Excavation) wkodr).getType() == 'h'){
+
+    public String getWorkOrderType(WorkOrder wkodr) {
+        if (wkodr instanceof WO_Excavation) {
+            if (((WO_Excavation) wkodr).getType() == 'h') {
                 return "excavationByHandWorkOrder";
             }
-        return "excavationBySkidWorkOrder";
-    }
+            return "excavationBySkidWorkOrder";
+        }
         return null;
     }
-        
-    public void insertWorkOrderType(int wkodrNum, WorkOrder wkodr){
-        
-        if(wkodr instanceof WO_Excavation){
+
+    public void insertWorkOrderType(int wkodrNum, WorkOrder wkodr) {
+
+        if (wkodr instanceof WO_Excavation) {
             try {
-                if (((WO_Excavation) wkodr).getType() == 'h'){
+                if (((WO_Excavation) wkodr).getType() == 'h') {
                     String excavationByHandQuery = "insert into ExcavationByHandWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement preparedStmtExcavationByHand = conn.prepareStatement(excavationByHandQuery);
                     preparedStmtExcavationByHand.setInt(1, wkodrNum);
@@ -885,8 +891,7 @@ public class JDBCCommands {
                     preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
                     preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
                     preparedStmtExcavationByHand.execute();
-                }
-                else{
+                } else {
                     String excavationByHandQuery = "insert into ExcavationBySkidWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement preparedStmtExcavationByHand = conn.prepareStatement(excavationByHandQuery);
                     preparedStmtExcavationByHand.setInt(1, wkodrNum);
@@ -906,11 +911,11 @@ public class JDBCCommands {
                     preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
                     preparedStmtExcavationByHand.execute();
                 }
-            }catch (SQLException ex) {
+            } catch (SQLException ex) {
                 Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
-            }     
+            }
         }
-        
+
     }
-    
+
 }
