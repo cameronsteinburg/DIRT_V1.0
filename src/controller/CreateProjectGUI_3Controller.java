@@ -1,6 +1,8 @@
 package controller;
 
+import entity.Aggregate;
 import entity.Project;
+import entity.Services.WO_Bed;
 import entity.Services.WO_Excavation;
 import entity.WorkOrder;
 import java.net.URL;
@@ -8,6 +10,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,6 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -141,8 +145,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             } else if (allItems.get(i).contains("Sod")) {
 
             } else if (allItems.get(i).contains("Bed")) {
-                
-                    elements.add(addBed());
+
+                elements.add(addBed());
 
             } else if (allItems.get(i).contains("Irrigation")) {
 
@@ -154,10 +158,48 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
-    private ArrayList<Control> addBed(){
-        return null;
+    private ArrayList<Control> addBed() {
+
+        WO_Bed newBed = new WO_Bed(true);
+        orders.add(newBed);
+
+        ArrayList<Control> bed = new ArrayList();
+
+        Label label = new Label("Excavation By Hand:");
+        label.setUnderline(true);
+        label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
+        label.setFont(new Font(16));
+        bed.add(label);
+
+        ComboBox<Aggregate> agss = new ComboBox();
+
+        agss.setItems(FXCollections.observableArrayList(
+                new Aggregate("Crushed Rock", dbs.materials_CrushedRockUnit()),
+                new Aggregate("Pea Rock", 23.23),
+                new Aggregate("Bird", 15.0)));
+
+        bed.add(addLabel("SQ.FT"));
+        bed.add(addField(true));
+
+        bed.add(addLabel("Depth In Inches"));
+        bed.add(addField(true));
+
+        label = new Label("    | ");
+        label.setFont(new Font(20));
+        bed.add(label);
+
+        bed.add(addLabel("Required Yards"));
+        bed.add(addField(false));
+
+        bed.add(addLabel("Est. Man Hours"));
+        bed.add(this.addField(false));
+
+        bed.add(addLabel("Aggregate"));
+        bed.add(this.addField(false));
+
+        return bed;
     }
-            
+
     /**
      *
      * @return
@@ -510,8 +552,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     * 
-     * @param error 
+     *
+     * @param error
      */
     @Override
     protected void setErrorMessage(Label error) {
@@ -535,8 +577,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     * 
-     * @param pane 
+     *
+     * @param pane
      */
     protected void setOuterPane(BorderPane pane) {
         this.outerPane = pane;
@@ -570,7 +612,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //AnchorPane.setRightAnchor(newGrid, Double.NaN);
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
-        
         newGrid.setMaxWidth(1850);
         newGrid.setHgap(5);
         newGrid.setVgap(5);

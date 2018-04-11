@@ -28,37 +28,11 @@ public class WO_Excavation extends WorkOrder {
     
     /**
      * 
+     * @param type
+     * @param isActive 
      */
     public WO_Excavation(char type, boolean isActive){
         this.type = type;
-        this.isActive = isActive;
-    }
-
-    //first creation in java for data entered
-    /**
-     * 
-     * @param type
-     * @param total
-     * @param estSQFT
-     * @param estDepth
-     * @param estReqYards
-     * @param estHours
-     * @param estLabour
-     * @param estTrucking
-     * @param estDisposal
-     * @param isActive 
-     */
-    public WO_Excavation(char type, double total, double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double estTrucking, double estDisposal, boolean isActive) {
-
-        this.type = type;
-        this.quotedTotal = total;
-        this.estSQFT = estSQFT;
-        this.estDepth = estDepth;
-        this.estReqYards = estReqYards;
-        this.estHours = estHours;
-        this.estLabour = estLabour;
-        this.estTrucking = estTrucking;
-        this.estDisposal = estDisposal;
         this.isActive = isActive;
     }
 

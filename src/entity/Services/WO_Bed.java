@@ -26,8 +26,7 @@ public class WO_Bed extends WorkOrder {
      * @param aggregate
      * @param isActive
      */
-    public WO_Bed(String aggregate, boolean isActive) {
-        this.aggregate = aggregate;
+    public WO_Bed(boolean isActive) {
         this.isActive = isActive;
     }
 
@@ -68,8 +67,9 @@ public class WO_Bed extends WorkOrder {
      * @param actHours
      * @param actLabour
      * @param aggregate 
+     * @param isActive
      */
-    public WO_Bed(double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double aggCost, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, String aggregate) {
+    public WO_Bed(double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double aggCost, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, String aggregate, boolean isActive) {
         this.estSQFT = estSQFT;
         this.estDepth = estDepth;
         this.estReqYards = estReqYards;
@@ -82,6 +82,7 @@ public class WO_Bed extends WorkOrder {
         this.actHours = actHours;
         this.actLabour = actLabour;
         this.aggregate = aggregate;
+        this.isActive = isActive;
     }
     
     
