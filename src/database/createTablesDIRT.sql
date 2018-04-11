@@ -10,6 +10,7 @@
 
 #Remove for update
 drop table excavationbyhandworkorder;
+drop table excavationbyskidworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
