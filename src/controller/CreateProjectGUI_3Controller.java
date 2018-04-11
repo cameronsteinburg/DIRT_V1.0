@@ -282,7 +282,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newHand.setEstDisposal(0);
                         disp.setText(f.format(disDbl));
 
-                        TextField serTotal = (TextField) hand.get(18);
+                        TextField serTotal = (TextField) hand.get(17);
                         Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
                         newHand.setQuotedTotal(serTotalDbl);
                         serTotal.setText(f.format(serTotalDbl));
@@ -430,7 +430,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newSkid.setEstTrucking(truckingDbl);
                         trucking.setText(f.format(truckingDbl));
 
-                        TextField serTotal = (TextField) skid.get(16);
+                        TextField serTotal = (TextField) skid.get(17);
                         Double serTotalDbl = labourCostDouble + truckingDbl;
                         newSkid.setQuotedTotal(serTotalDbl);
                         serTotal.setText(f.format(serTotalDbl));
