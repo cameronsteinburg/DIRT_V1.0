@@ -438,6 +438,54 @@ public class JDBCCommands {
     }
     
     
+     /**
+     * Retrieves project information from MySQL database
+     *
+     * @return projectList List of projects in an observableList to populate
+     * tables
+     */
+    public ObservableList<Project> getProjectsForTable(boolean getDeleted) {
+        try {
+            ObservableList<Project> projectList = FXCollections.observableArrayList();
+            Statement statement = conn.createStatement();
+
+            // Result set contains the result of the SQL query
+            ResultSet results = statement.executeQuery("select * from projects;");
+
+            //.next() retreives the next row, think of it like a cursor fetching
+            while (results.next()) {
+                int clientNum = results.getInt("clientNum");
+                String projectName = results.getString("projectName");
+                Date startDate = results.getDate("startDate");
+                Date endDate = results.getDate("endDate");
+                String description = results.getString("description");
+                char isActive = results.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                if (isActive == '0' && getDeleted == true) {
+                    Project project = new Project(projectName, startDate, endDate, description, isActiveToBoolean);
+                    Client client = getClient(clientNum);
+                    project.setClient(client);
+                    projectList.add(project);
+                } else if (isActive == '1') {
+                    Project project = new Project(projectName, startDate, endDate, description, isActiveToBoolean);
+                    Client client = getClient(clientNum);
+                    project.setClient(client);
+                    projectList.add(project);
+                }
+            }
+            return projectList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
     /**
      *
      * Retrieves a projectNum from the database from the projectName passed to the
