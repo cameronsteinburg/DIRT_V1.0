@@ -141,6 +141,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             } else if (allItems.get(i).contains("Sod")) {
 
             } else if (allItems.get(i).contains("Bed")) {
+                
+                    elements.add(addBed());
 
             } else if (allItems.get(i).contains("Irrigation")) {
 
@@ -152,7 +154,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
-    //private ArrayList<Control> addSod
+    private ArrayList<Control> addBed(){
+        return null;
+    }
+            
     /**
      *
      * @return
@@ -183,13 +188,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         hand.add(addLabel("Required Yards"));
         hand.add(addField(false));
 
-        hand.add(addLabel("Est. Man Hours /Yard"));
+        hand.add(addLabel("Est. Man Hours"));
         hand.add(this.addField(false));
 
         hand.add(addLabel("Excavation Labour Cost"));
         hand.add(addField(false));
 
-        hand.add(addLabel("Trucking Fees /2 Yards"));
+        hand.add(addLabel("Trucking Fees"));
         hand.add(addField(false));
 
         hand.add(addLabel("Disposal Fees"));
@@ -198,10 +203,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label = addLabel("Service Total");
         label.setUnderline(true);
         label.setFont(new Font(16));
+        label.setPadding(new Insets(0, 0, 0, 100));
         hand.add(label);
         hand.add(addField(false));
 
-        //
         DBServices dbs = new DBServices();
 
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
@@ -314,8 +319,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     private ArrayList<Control> addBySkid() {
 
-        //WO_ExcavationBySkid newSkid = new WO_ExcavationBySkid();
-        //orders.add(newSkid);
         WO_Excavation newSkid = new WO_Excavation('s', true);
         orders.add(newSkid);
 
@@ -340,13 +343,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         skid.add(addLabel("Required Yards"));
         skid.add(addField(false));
 
-        skid.add(addLabel("Est. Man Hours /Yard"));
+        skid.add(addLabel("Est. Man Hours"));
         skid.add(this.addField(false));
 
         skid.add(addLabel("Excavation Labour Cost"));
         skid.add(addField(false));
 
-        skid.add(addLabel("Trucking Fees /2 Yards"));
+        skid.add(addLabel("Trucking Fees"));
         skid.add(addField(false));
 
         skid.add(addLabel(""));
@@ -355,7 +358,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label = addLabel("Service Total");
         label.setUnderline(true);
         label.setFont(new Font(16));
-        //label.setPadding(new Insets(0, 0, 0, 50)); //top right bottom left
+        label.setPadding(new Insets(0, 0, 0, 100));
         skid.add(label);
         skid.add(addField(false));
 
@@ -531,6 +534,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         this.inProgress = prog;
     }
 
+    /**
+     * 
+     * @param pane 
+     */
     protected void setOuterPane(BorderPane pane) {
         this.outerPane = pane;
     }
@@ -563,7 +570,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //AnchorPane.setRightAnchor(newGrid, Double.NaN);
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
-        newGrid.setMaxWidth(1800);
+        
+        newGrid.setMaxWidth(1850);
         newGrid.setHgap(5);
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
