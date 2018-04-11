@@ -95,9 +95,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             inProgress.setClient(dbs.getClient(19));
 
             dbs.persistProject(inProgress);
-            
+
             setMessage("Project Successfully Created!", errorMessage);
-            
+
             navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
     }
@@ -138,10 +138,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             } else if (allItems.get(i).contains("Custom")) {
 
-                //todo addCustom
             } else if (allItems.get(i).contains("Sod")) {
 
-            } else if (allItems.get(i).contains("Snow")) {
+            } else if (allItems.get(i).contains("Bed")) {
 
             } else if (allItems.get(i).contains("Irrigation")) {
 
@@ -152,9 +151,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             }
         }
     }
-    
-    //private ArrayList<Control> addSod
 
+    //private ArrayList<Control> addSod
     /**
      *
      * @return
@@ -203,8 +201,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         hand.add(label);
         hand.add(addField(false));
 
-        hand.add(new Label("   "));
-
+        //
         DBServices dbs = new DBServices();
 
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
@@ -352,23 +349,20 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         skid.add(addLabel("Trucking Fees /2 Yards"));
         skid.add(addField(false));
 
-
-        label = new Label("   |");
-        label.setFont(new Font(20));
-        skid.add(label);
+        skid.add(addLabel(""));
+        skid.add(addLabel(""));
 
         label = addLabel("Service Total");
         label.setUnderline(true);
         label.setFont(new Font(16));
+        //label.setPadding(new Insets(0, 0, 0, 50)); //top right bottom left
         skid.add(label);
         skid.add(addField(false));
-
-        skid.add(new Label("   "));
 
         double labourhours = dbs.excavation_ManHoursBySkidPerYards();
         double labourRate = dbs.excavation_ManHoursBySkidPerHours();
         double truckingRate = dbs.excavation_TruckingFeeBySkid();
-         
+
         for (int i = 0; i < skid.size(); i++) {
 
             String currentEl = skid.get(i).getId();
@@ -436,7 +430,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newSkid.setEstTrucking(truckingDbl);
                         trucking.setText(f.format(truckingDbl));
 
-
                         TextField serTotal = (TextField) skid.get(16);
                         Double serTotalDbl = labourCostDouble + truckingDbl;
                         newSkid.setQuotedTotal(serTotalDbl);
@@ -452,7 +445,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         projectTotal = ttl;
 
                         double taxMultiplier = dbs.tax_GST() + dbs.tax_PST() + 1.0;
-                        
+
                         bottomLine.setText(f.format(projectTotal * taxMultiplier));
 
                         botCheck();
@@ -460,7 +453,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                 });
             }
         }
-        
 
         fieldCount = 0;
         return skid;
@@ -512,6 +504,15 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         } else {
             saveBtn.setDisable(false);
         }
+    }
+
+    /**
+     * 
+     * @param error 
+     */
+    @Override
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
     }
 
     /**
@@ -568,10 +569,5 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         newGrid.setPadding(new Insets(0, 0, 15, 0));
 
         anc.getChildren().add(newGrid);
-    }
-
-    @Override
-    protected void setErrorMessage(Label error) {
-        this.errorMessage = error;
     }
 }

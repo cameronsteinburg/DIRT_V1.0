@@ -25,8 +25,6 @@ create database DIRT;
 #enters db
 use DIRT;
 
-
-
 #creates client table
 create table Clients (clientNum smallint unsigned not null auto_increment, 
   fname varchar(50) not null,
