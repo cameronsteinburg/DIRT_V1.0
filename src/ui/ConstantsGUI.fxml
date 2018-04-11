@@ -17,7 +17,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConstantsGUIController">
    <children>
-      <BorderPane prefHeight="521.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="521.0" prefWidth="1080.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
             <AnchorPane prefHeight="24.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
                <children>
@@ -37,9 +37,9 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane prefWidth="1078.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefWidth="1078.0" style="-fx-background-color: #e9fcae;" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane blendMode="ADD" layoutY="-10.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                  <TabPane blendMode="ADD" layoutY="-10.0" style="-fx-background-color: #e9fcae;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                     <tabs>
                       <Tab text="Materials">
                         <content>
@@ -323,7 +323,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="Excavation">
+                      <Tab style="-fx-background-color: #e9fcae;" text="Excavation">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -497,7 +497,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="Walkway">
+                        <Tab style="-fx-background-color: #e9fcae;" text="Walkway">
                            <content>
                               <AnchorPane prefWidth="200.0" style="-fx-background-color: #e9fcae;">
                                  <children>
