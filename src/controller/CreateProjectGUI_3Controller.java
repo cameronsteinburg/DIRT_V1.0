@@ -92,12 +92,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         if (result.get() == ButtonType.OK) {
 
             DBServices dbs = new DBServices();
-
             
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
-            inProgress.setClient(dbs.getClient(19));
+            inProgress.setClient(null);
 
             dbs.persistProject(inProgress);
 

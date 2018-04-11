@@ -137,7 +137,7 @@ insert into Labourers (fname, lname, title, phone1,  emergcontact, isActive) val
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Johnny', 'Pottsmokr', 'PT Bitch', 5876658942, 4035688566, 'eatassandskatefast@hotmail.com', 'P.O Box #1433', 596795325, '15.00', 'Ethan Klein', 4036754216, 5874522588, 1);
 insert into Labourers (fname, lname, title, phone1, email, address,  emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Smoky', 'McPot', 'Contracter', 4035428977, 'blzitfgt@yahoo.ca', '23 Bradberry Ln NW', 'Hila Klein', 4036754216, 5874522588, 1);
 
-insert into Clients (clientNum, fname, lname, phone1, isActive) values (0, 'Place', 'Holder', 0000000000, 0);
+insert into Clients (fname, lname, isActive) values ('', '', 0);
 insert into Clients (fname, lname, phone1, isActive) values ('John', 'Smith', 4035551234, 1);
 insert into Clients (fname, lname, company, phone1, phone2, address, description, email, isActive) values ('Kevin', 'Brown', 'The Keg', 4035658452, 546135679 ,'2354 Plex Unit# 4', 'cool dude', 'kevin.brown@edu.sait.ca', 1); 
 insert into Clients (fname, lname, phone1, address, isActive) values ('Yukiko', 'Amagi', 465813467, 'The Amagi Inn', 1);

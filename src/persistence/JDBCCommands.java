@@ -391,9 +391,10 @@ public class JDBCCommands {
 
             if (project.getClient() == null) {
                 preparedStmt.setInt(1, 1);
+            } else {
+                preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
             }
-            
-            preparedStmt.setInt(1, getClientNum(project.getClient().getFirstName(), project.getClient().getLastName()));
+                 
             preparedStmt.setString(2, project.getProjectName());
             preparedStmt.setString(3, project.getDescription());
             preparedStmt.setString(4, project.getSiteAddress());
