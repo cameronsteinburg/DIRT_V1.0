@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
@@ -184,6 +185,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         
         ComboBox aggs = new ComboBox(options);
         aggs.setMaxHeight(10);
+        aggs.setMaxWidth(50);
         
         bed.add(aggs);
 
@@ -206,6 +208,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         bed.add(addLabel("Aggregate Cost"));
         bed.add(this.addField(false));
 
+        fieldCount = 0;
         return bed;
     }
 
@@ -616,7 +619,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         newGrid.setTranslateX(5);
         newGrid.setTranslateY(5);
         
-       // ColoumnConstraints cc = new ColoumnConstraints();
+       ColumnConstraints cc = new ColumnConstraints();
+
 
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
         //AnchorPane.setTopAnchor(newGrid, Double.NaN);
@@ -624,7 +628,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
         newGrid.setMaxWidth(1850);
-       // newGrid
+        newGrid.getColumnConstraints().add(cc);
+        newGrid.getColumnConstraints().add(new ColumnConstraints(60));
         newGrid.setHgap(5);
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
