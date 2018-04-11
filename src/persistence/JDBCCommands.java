@@ -378,6 +378,9 @@ public class JDBCCommands {
             java.sql.Date start = new java.sql.Date(project.getStartDate().getTime());
             java.sql.Date end = new java.sql.Date(project.getEndDate().getTime());
             
+            System.out.println(start);
+            System.out.println(end);
+            
             if (project.getClient() == null){
                 preparedStmt.setInt(1, 1);
             }

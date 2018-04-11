@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -94,6 +95,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             inProgress.setClient(dbs.getClient(19));
 
             dbs.persistProject(inProgress);
+            
+            setMessage("Project Successfully Created!", errorMessage);
+            
+            navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
     }
 
@@ -164,7 +169,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         Label label = new Label("Excavation By Hand:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
-        label.setFont(new Font(20));
+        label.setFont(new Font(16));
         hand.add(label);
 
         hand.add(addLabel("SQ.FT"));
@@ -191,10 +196,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         hand.add(addLabel("Disposal Fees"));
         hand.add(addField(false));
-
-        label = new Label("   |");
-        label.setFont(new Font(20));
-        hand.add(label);
 
         label = addLabel("Service Total");
         label.setUnderline(true);
@@ -326,7 +327,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         Label label = new Label("Excavation By Skid Steer:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
-        label.setFont(new Font(20));
+        label.setFont(new Font(16));
         skid.add(label);
 
         skid.add(addLabel("SQ.FT"));
@@ -351,8 +352,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         skid.add(addLabel("Trucking Fees /2 Yards"));
         skid.add(addField(false));
 
-        skid.add(addLabel("Disposal Fees"));
-        skid.add(addField(false));
 
         label = new Label("   |");
         label.setFont(new Font(20));
@@ -366,12 +365,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         skid.add(new Label("   "));
 
-        
         double labourhours = dbs.excavation_ManHoursBySkidPerYards();
         double labourRate = dbs.excavation_ManHoursBySkidPerHours();
         double truckingRate = dbs.excavation_TruckingFeeBySkid();
-        double disposalRate = dbs.excavation_DisposalFee();
-        
+         
         for (int i = 0; i < skid.size(); i++) {
 
             String currentEl = skid.get(i).getId();
@@ -439,14 +436,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newSkid.setEstTrucking(truckingDbl);
                         trucking.setText(f.format(truckingDbl));
 
-                        //update disposl
-                        TextField disp = (TextField) skid.get(15);
-                        Double disDbl = (reqyardsdbl * disposalRate);
-                        newSkid.setEstDisposal(0);
-                        disp.setText(f.format(disDbl));
 
-                        TextField serTotal = (TextField) skid.get(18);
-                        Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
+                        TextField serTotal = (TextField) skid.get(16);
+                        Double serTotalDbl = labourCostDouble + truckingDbl;
                         newSkid.setQuotedTotal(serTotalDbl);
                         serTotal.setText(f.format(serTotalDbl));
 

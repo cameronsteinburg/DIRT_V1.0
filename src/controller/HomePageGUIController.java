@@ -846,6 +846,10 @@ public class HomePageGUIController extends Controller implements Initializable {
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
     }
+    
+    protected void setWords(String words){
+        this.errorMessage.setText(words);
+    }
 
     /**
      * Loading data into any given page that the HomePageGUIController controls

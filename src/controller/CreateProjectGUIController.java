@@ -126,7 +126,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
             this.inProgress = new Project(name, prelimStartDate, estEndDate, description, address, true); //user puts text in both field
         }
 
-        navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
+        FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
+        CreateProjectGUIController cont = loader.getController();
+        cont.setErrorMessage(errorMessage);
 
     } //the project object is not committed to db until the quote has been produced
 
