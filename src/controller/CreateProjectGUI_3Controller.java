@@ -57,7 +57,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private double projectTotal = 0;
     private ArrayList<WorkOrder> orders = new ArrayList();
     private DecimalFormat f = new DecimalFormat("#.00");
-    private DBServices dbs = new DBServices();
+    private final DBServices dbs = new DBServices();
     private double taxMultiplier = dbs.tax_GST() + dbs.tax_PST() + 1.0;
 
     private ObservableList<String> allItems;
@@ -91,8 +91,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         if (result.get() == ButtonType.OK) {
 
-            DBServices dbs = new DBServices();
-            
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
@@ -140,24 +138,34 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                     elements.add(addBySkid());
                 }
 
-            } else if (allItems.get(i).contains("Custom")) {
-
             } else if (allItems.get(i).contains("Sod")) {
-
+                
+                //todo elements.add(addSod());
+                
             } else if (allItems.get(i).contains("Bed")) {
 
                 elements.add(addBed());
 
             } else if (allItems.get(i).contains("Irrigation")) {
+                
+                //todo elements.add(addIrrigation());
 
             } else if (allItems.get(i).contains("Barrier")) {
+                
+                //todo elements.add(addBarrier());
 
             } else if (allItems.get(i).contains("Wall")) {
+
+            } else if (allItems.get(i).contains("Custom")) {
 
             }
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     private ArrayList<Control> addBed() {
 
         WO_Bed newBed = new WO_Bed(true);
@@ -167,12 +175,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Aggregate Bed:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
+        label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         bed.add(label);
 
-        ObservableList<String> options
-                = FXCollections.observableArrayList(
+        ObservableList<String> options = FXCollections.observableArrayList(
                         "Crushed Rock",
                         "Pea Rock",
                         "River Rock",
@@ -180,8 +187,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         "Premium Top Soil",
                         "Crusher Dust",
                         "Red Shale",
-                        "Sod /10 sq.ft"
-                );
+                        "Sod /10 sq.ft");
 
         ComboBox aggs = new ComboBox(options);
         aggs.setMaxHeight(10);
@@ -217,6 +223,14 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 0, 0, 100));
         bed.add(label);
         bed.add(addField(false));
+        
+        bed.add(new Label(""));
+        bed.add(new Label(""));
+        
+        double labourRate = dbs.bed_LabourPerHour();
+        double hoursPeryard = dbs.bed_ManHoursPerYard();
+        
+        //String aggChosen = "" + aggs.getValue();
 
         fieldCount = 0;
         return bed;
@@ -235,7 +249,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Excavation By Hand:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
+        label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         hand.add(label);
 
@@ -245,7 +259,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         hand.add(addLabel("Depth In Inches"));
         hand.add(addField(true));
 
-        label = new Label("    | ");
+        label = new Label("   |");
         label.setFont(new Font(20));
         hand.add(label);
 
@@ -270,8 +284,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 0, 0, 100));
         hand.add(label);
         hand.add(addField(false));
-
-        DBServices dbs = new DBServices();
 
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
         double labourRate = dbs.excavation_ManHoursByHandPerHours();
@@ -390,7 +402,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Excavation By Skid Steer:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 7, 0, 0));//top, right, bottom, left
+        label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         skid.add(label);
 
@@ -400,7 +412,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         skid.add(addLabel("Depth In Inches"));
         skid.add(addField(true));
 
-        label = new Label("    | ");
+        label = new Label("   | ");
         label.setFont(new Font(20));
         skid.add(label);
 
@@ -532,8 +544,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private TextField addField(boolean editable) {
 
         TextField field = new TextField("00.00");
-        field.setMaxWidth(75);
-        field.setMinWidth(75);
+        field.setMaxWidth(60);
+        field.setMinWidth(60);
         field.setId(fieldCount + "");
         field.setAlignment(Pos.CENTER);
         field.setEditable(editable);
@@ -549,7 +561,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private Label addLabel(String text) {
 
         Label label = new Label(text);
-        label.setPadding(new Insets(0, 0, 0, 8));
+        label.setPadding(new Insets(0, 0, 0, 5));
         return label;
     }
 
