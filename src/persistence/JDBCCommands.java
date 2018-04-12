@@ -1099,6 +1099,9 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_Sod){
             return "SodWorkOrder";
         }
+        else if(wkodr instanceof WO_TopSoil){
+            return "TopSoilWorkOrder";
+        }
         return null;
     }
 
@@ -1177,6 +1180,24 @@ public class JDBCCommands {
                 preparedStmt.setDouble(7, ((WO_Sod) wkodr).getActSupplyCost());
                 preparedStmt.setDouble(8, ((WO_Sod) wkodr).getActManHours());
                 preparedStmt.setDouble(9, ((WO_Sod) wkodr).getActInstallCost());
+                preparedStmt.execute();
+            }
+            else if(wkodr instanceof WO_TopSoil){
+                String query = "insert into TopSoilWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(2, ((WO_TopSoil) wkodr).getEstSQFT());
+                preparedStmt.setDouble(3, ((WO_TopSoil) wkodr).getEstDepth());
+                preparedStmt.setDouble(4, ((WO_TopSoil) wkodr).getEstReqYards());
+                preparedStmt.setDouble(5, ((WO_TopSoil) wkodr).getEstSupplyCost());
+                preparedStmt.setDouble(6, ((WO_TopSoil) wkodr).getEstManHours());
+                preparedStmt.setDouble(7, ((WO_TopSoil) wkodr).getEstInstall());
+                preparedStmt.setDouble(8, ((WO_TopSoil) wkodr).getActSQFT());
+                preparedStmt.setDouble(9, ((WO_TopSoil) wkodr).getActDepth());
+                preparedStmt.setDouble(10, ((WO_TopSoil) wkodr).getActReqYards());
+                preparedStmt.setDouble(11, ((WO_TopSoil) wkodr).getActSupplyCost());
+                preparedStmt.setDouble(12, ((WO_TopSoil) wkodr).getActManHours());
+                preparedStmt.setDouble(13, ((WO_TopSoil) wkodr).getActInstall());
                 preparedStmt.execute();
             }
         } catch (SQLException ex) {
@@ -1287,6 +1308,37 @@ public class JDBCCommands {
                 return workOrder;
             }
             
+            else if (workOrderType.equalsIgnoreCase("topsoilworkorder")) {
+
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_TopSoil workOrder = new WO_TopSoil(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstDepth(result.getDouble("estDepth"));
+                workOrder.setEstReqYards(result.getDouble("estReqYards"));
+                workOrder.setEstSupplyCost(result.getDouble("estSupplyCost"));
+                workOrder.setEstManHours(result.getDouble("estManHours"));
+                workOrder.setEstInstall(result.getDouble("actInstall"));
+
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActDepth(result.getDouble("actDepth"));
+                workOrder.setActReqYards(result.getDouble("actReqYards"));
+                workOrder.setActSupplyCost(result.getDouble("actSupplyCost"));
+                workOrder.setActManHours(result.getDouble("actManHours"));
+                workOrder.setActInstall(result.getDouble("actInstall"));
+
+                return workOrder;
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
