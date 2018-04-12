@@ -95,6 +95,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
+            inProgress.setCompleted(false);
             inProgress.setClient(null);
 
             dbs.persistProject(inProgress);
