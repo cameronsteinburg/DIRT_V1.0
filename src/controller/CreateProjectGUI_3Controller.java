@@ -176,6 +176,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         bed.add(label);
 
+        bed.add(addLabel("Material"));
         ObservableList<String> options = FXCollections.observableArrayList(
                 "Crushed Rock",
                 "Pea Rock",
@@ -188,7 +189,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         ComboBox aggs = new ComboBox(options);
         aggs.setMaxHeight(10);
-        aggs.setMaxWidth(50);
+        aggs.setMaxWidth(175);
 
         bed.add(aggs);
 
@@ -207,12 +208,12 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         bed.add(addLabel("Est. Man Hours"));
         bed.add(this.addField(false));
+        
+        bed.add(addLabel("Labour Cost"));
+        bed.add(addField(false));
 
         bed.add(addLabel("Aggregate Cost"));
         bed.add(this.addField(false));
-
-        bed.add(addLabel("Labour Cost"));
-        bed.add(addField(false));
 
         label = addLabel("Service Total");
         label.setUnderline(true);
@@ -221,13 +222,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         bed.add(label);
         bed.add(addField(false));
 
-        bed.add(new Label(""));
-        bed.add(new Label(""));
-
         double labourRate = dbs.bed_LabourPerHour();
         double hoursPeryard = dbs.bed_ManHoursPerYard();
 
-        //String aggChosen = "" + aggs.getValue();
         for (int i = 0; i < bed.size(); i++) {
 
             String currentEl = bed.get(i).getId();
@@ -238,15 +235,81 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             if (currentEl.equals("0") || currentEl.equals("1")) {
 
-                TextField sqft = (TextField) bed.get(4);
-
                 int place;
 
                 if (currentEl.equals("0")) {
-                    place = 2;
-                } else {
                     place = 4;
+                } else {
+                    place = 6;
                 }
+                
+                bed.get(place).setOnKeyReleased(new EventHandler<KeyEvent>(){
+                    
+                    @Override
+                    public void handle(KeyEvent event) {
+                       
+                        double sqftdbl;
+                        double depthdbl;
+                        
+                        TextField sqft = (TextField) bed.get(4);
+                        TextField depth = (TextField) bed.get(6);
+                        TextField reqyards = (TextField) bed.get(9);
+                        
+                        try {
+                            sqftdbl = Double.parseDouble(sqft.getText());
+                        } catch (Exception e) {
+                            sqftdbl = 0;
+                        }
+
+                        try {
+                            depthdbl = Double.parseDouble(depth.getText());
+                        } catch (Exception e) {
+                            depthdbl = 0;
+                        }
+                        
+                        Double reqyardsdbl = (depthdbl / 12.0) * (sqftdbl / 27.0);
+                        newBed.setEstReqYards(reqyardsdbl);
+                        reqyards.setText(f.format(reqyardsdbl));
+                        
+                        TextField estManHours = (TextField) bed.get(11);
+                        Double manHoursDbl = hoursPeryard * reqyardsdbl;
+                        estManHours.setText(f.format(manHoursDbl));
+                        
+                        TextField labourCost = (TextField) bed.get(13);
+                        Double labourCostDouble = (manHoursDbl * labourRate);
+                        labourCost.setText(f.format(labourCostDouble));
+                        
+                        TextField aggCost = (TextField) bed.get(15);
+                        String aggChosen = "" + aggs.getValue();
+                        
+                        if (aggChosen.contains("Crushed")){
+                        
+                        } else if(aggChosen.contains("Pea")){
+                        
+                        } else if(aggChosen.contains("River")){
+                        
+                        } else if(aggChosen.contains("Mulch")){
+                        
+                        } else if(aggChosen.contains("Dust")){
+                        
+                        } else if(aggChosen.contains("Shale")){
+                        
+                        } else if(aggChosen.contains("Sod")){
+                        
+                        }
+                        
+                        /*                "Crushed Rock",
+                         "Pea Rock",
+                "River Rock",
+                "Western Red Cedar Mulch",
+                "Premium Top Soil",
+                "Crusher Dust",
+                "Red Shale",
+                "Sod /10 sq.ft");*/
+                        
+                        
+                    }
+                });
 
             }
         }
@@ -319,8 +382,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             if (currentEl.equals("0") || currentEl.equals("1")) {
 
-                TextField sqft = (TextField) hand.get(2);
-
                 int place;
 
                 if (currentEl.equals("0")) {
@@ -338,6 +399,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         double sqftdbl;
                         double depthdbl;
 
+                        TextField sqft = (TextField) hand.get(2);
                         TextField depth = (TextField) hand.get(4);
                         TextField reqyards = (TextField) hand.get(7);
 
@@ -354,37 +416,30 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         }
 
                         Double reqyardsdbl = (depthdbl / 12.0) * (sqftdbl / 27.0);
-                        newHand.setEstReqYards(reqyardsdbl);
-
                         reqyards.setText(f.format(reqyardsdbl));
 
                         //update estimated man hours per yard
                         TextField estManHours = (TextField) hand.get(9);
                         Double estimatedManHourDbl = (labourhours * reqyardsdbl);
-                        newHand.setEstHours(estimatedManHourDbl);
                         estManHours.setText(f.format(estimatedManHourDbl));
 
                         //update labour cost
                         TextField labourCost = (TextField) hand.get(11);
                         Double labourCostDouble = (estimatedManHourDbl * labourRate);
-                        newHand.setEstLabour(labourCostDouble);
                         labourCost.setText(f.format(labourCostDouble));
 
                         //update trucking fee
                         TextField trucking = (TextField) hand.get(13);
                         Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
-                        newHand.setEstTrucking(truckingDbl);
                         trucking.setText(f.format(truckingDbl));
 
                         //update disposl
                         TextField disp = (TextField) hand.get(15);
                         Double disDbl = (reqyardsdbl * disposalRate);
-                        newHand.setEstDisposal(0);
                         disp.setText(f.format(disDbl));
 
                         TextField serTotal = (TextField) hand.get(17);
-                        Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
-                        newHand.setQuotedTotal(serTotalDbl);
+                        Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;     
                         serTotal.setText(f.format(serTotalDbl));
 
                         double ttl = 0;
@@ -393,9 +448,27 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
                             ttl += orders.get(i).getQuotedTotal();
                         }
-
+                        
                         projectTotal = ttl;
-
+                        
+                        newHand.setEstDepth(depthdbl);
+                        newHand.setEstSQFT(sqftdbl);
+                        newHand.setEstReqYards(reqyardsdbl);
+                        newHand.setEstHours(estimatedManHourDbl);
+                        newHand.setEstLabour(labourCostDouble);
+                        newHand.setEstTrucking(truckingDbl);
+                        newHand.setEstDisposal(disDbl);
+                        newHand.setQuotedTotal(serTotalDbl);
+                        
+                        newHand.setActDepth(depthdbl);
+                        newHand.setActSQFT(sqftdbl);
+                        newHand.setActReqYards(reqyardsdbl);
+                        newHand.setActLabour(labourCostDouble);
+                        newHand.setActHours(estimatedManHourDbl);
+                        newHand.setActTrucking(truckingDbl);
+                        newHand.setActDisposal(disDbl);
+                        newHand.setActualTotal(serTotalDbl);
+                        
                         bottomLine.setText(f.format(projectTotal * taxMultiplier));
 
                         botCheck();
@@ -471,8 +544,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             if (currentEl.equals("0") || currentEl.equals("1")) {
 
-                TextField sqft = (TextField) skid.get(2);
-
                 int place;
 
                 if (currentEl.equals("0")) {
@@ -490,6 +561,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         double sqftdbl;
                         double depthdbl;
 
+                        TextField sqft = (TextField) skid.get(2);
                         TextField depth = (TextField) skid.get(4);
                         TextField reqyards = (TextField) skid.get(7);
 
@@ -506,31 +578,26 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         }
 
                         Double reqyardsdbl = (depthdbl / 12.0) * (sqftdbl / 27.0);
-                        newSkid.setEstReqYards(reqyardsdbl);
 
                         reqyards.setText(f.format(reqyardsdbl));
 
                         //update estimated man hours per yard
                         TextField estManHours = (TextField) skid.get(9);
                         Double estimatedManHourDbl = (labourhours * reqyardsdbl);
-                        newSkid.setEstHours(estimatedManHourDbl);
                         estManHours.setText(f.format(estimatedManHourDbl));
 
                         //update labour cost
                         TextField labourCost = (TextField) skid.get(11);
                         Double labourCostDouble = (estimatedManHourDbl * labourRate);
-                        newSkid.setEstLabour(labourCostDouble);
                         labourCost.setText(f.format(labourCostDouble));
 
                         //update trucking fee
                         TextField trucking = (TextField) skid.get(13);
                         Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
-                        newSkid.setEstTrucking(truckingDbl);
                         trucking.setText(f.format(truckingDbl));
 
                         TextField serTotal = (TextField) skid.get(17);
                         Double serTotalDbl = labourCostDouble + truckingDbl;
-                        newSkid.setQuotedTotal(serTotalDbl);
                         serTotal.setText(f.format(serTotalDbl));
 
                         double ttl = 0;
@@ -541,8 +608,22 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         }
 
                         projectTotal = ttl;
-
-                        double taxMultiplier = dbs.tax_GST() + dbs.tax_PST() + 1.0;
+                        
+                        newSkid.setEstDepth(depthdbl);
+                        newSkid.setEstSQFT(sqftdbl);
+                        newSkid.setEstReqYards(reqyardsdbl);
+                        newSkid.setEstHours(estimatedManHourDbl);
+                        newSkid.setEstLabour(labourCostDouble);
+                        newSkid.setEstTrucking(truckingDbl);
+                        newSkid.setQuotedTotal(serTotalDbl);
+                        
+                        newSkid.setActDepth(depthdbl);
+                        newSkid.setActSQFT(sqftdbl);
+                        newSkid.setActReqYards(reqyardsdbl);
+                        newSkid.setActLabour(labourCostDouble);
+                        newSkid.setActHours(estimatedManHourDbl);
+                        newSkid.setActTrucking(truckingDbl);
+                        newSkid.setActualTotal(serTotalDbl);
 
                         bottomLine.setText(f.format(projectTotal * taxMultiplier));
 
