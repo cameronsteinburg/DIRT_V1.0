@@ -125,3 +125,7 @@
         grey,
         linear-gradient(to bottom, #d0ea7e,  #e9fcae);
 }
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
