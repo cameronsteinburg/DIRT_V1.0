@@ -231,12 +231,39 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         
                         TextField supplyField = (TextField) sod.get(5);
                         Double supplyCostDbl = supplyPerYard * sqftDbl;
+                        supplyField.setText(f.format(supplyCostDbl));
                         
+                        TextField hoursField = (TextField) sod.get(7);
+                        Double hoursDbl = (sqftDbl/10) * estManPer10;
+                        hoursField.setText(f.format(hoursDbl));
+                        
+                        TextField labourCostField = (TextField) sod.get(9);
+                        Double labDbl = labourPerHours * hoursDbl;
+                        labourCostField.setText(f.format(labDbl));
+                        
+                        TextField totField = (TextField) sod.get(sod.size()-1);
+                        Double totDbl = labDbl + supplyCostDbl;
+                        totField.setText(f.format(totDbl));
+                        
+                        newSod.setEstSQFT(sqftDbl);
+                        newSod.setEstSupplyCost(supplyCostDbl);
+                        newSod.setEstManHours(hoursDbl);
+                        newSod.setEstInstallCost(labDbl);
+                        newSod.setQuotedTotal(totDbl);
+                        
+                        newSod.setActSQFT(sqftDbl);
+                        newSod.setActSupplyCost(supplyCostDbl);
+                        newSod.setActManHours(hoursDbl);
+                        newSod.setActInstallCost(labDbl);
+                        newSod.setActualTotal(totDbl);
+                        
+                        botCheck();
                     }
                 });
             }
         }
         
+        fieldCount = 0;
         return sod;
     }
 
