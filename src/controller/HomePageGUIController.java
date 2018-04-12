@@ -356,6 +356,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     private TableColumn<?, ?> olddescCol;
 
     private ObservableList<Project> projectsList;
+    
+    private Project selectedPoject;
 
     /**
      *
@@ -382,6 +384,26 @@ public class HomePageGUIController extends Controller implements Initializable {
             }
         }
     }
+    
+    /*============Controls===============*/
+    
+
+       private void getSelectedProject() {
+
+        if (currentProjectsTable.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedPoject = currentProjectsTable.getSelectionModel().getSelectedItem();
+
+            System.out.println(selectedPoject.getProjectName());
+            //Enable buttons once client is selected
+           
+            
+            //viewLabourerProfileBtn.setDisable(false);
+          //  editLabourerBtn.setDisable(false);
+           // removeLabourerBtn.setDisable(false);
+        }
+    }
+    
 
 
     /*======================================Labourer Actions======================================*/
@@ -430,7 +452,6 @@ public class HomePageGUIController extends Controller implements Initializable {
         } else {
             alert.close();
         }
-
     }
 
     /**
@@ -881,18 +902,18 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
         
         try {
-            node = root.lookup("#projectsTable");
+            node = root.lookup("#currentProjectsTable");
         } catch (NullPointerException e) {
             //ignore
         }
 
         if (node != null) {
 
-            this.currentProjectsTable = (TableView<Project>) root.lookup("#projectsTable");
+            this.currentProjectsTable = (TableView<Project>) root.lookup("#currentProjectsTable");
             this.currentProjectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    //getSelectedProject(); todo
+                    getSelectedProject(); 
                 }
             });
         }
