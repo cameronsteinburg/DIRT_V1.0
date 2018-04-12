@@ -120,7 +120,7 @@
                                     <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" GridPane.rowIndex="1" />
                                     <Button mnemonicParsing="false" onAction="#viewProjectsAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="List Projects" />
                                     <Button fx:id="newProjectBtn1" disable="true" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Snow Removal" textAlignment="RIGHT" wrapText="true" GridPane.rowIndex="3" />
-                                    <Button mnemonicParsing="false" onAction="#viewProjectsAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Edit Project" GridPane.rowIndex="2" />
+                                    <Button mnemonicParsing="false" onAction="#editProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Edit Project" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -179,11 +179,11 @@
                         </Label>
                         <TableView layoutX="16.0" layoutY="38.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
                            <columns>
-                              <TableColumn prefWidth="106.0" text="Project Name" />
-                              <TableColumn text="Client" />
-                              <TableColumn prefWidth="100.0" text="Project Address" />
-                              <TableColumn prefWidth="100.0" text="Start Date" />
-                              <TableColumn prefWidth="100.0" text="End Date" />
+                              <TableColumn fx:id="projNameCol" prefWidth="188.0" text="Project Name" />
+                              <TableColumn fx:id="clientCol" prefWidth="188.0" text="Client" />
+                              <TableColumn fx:id="startCol" prefWidth="99.0" text="Start Date" />
+                              <TableColumn fx:id="endCol" prefWidth="99.0" text="End Date" />
+                              <TableColumn fx:id="descCol" prefWidth="475.0" text="Description" />
                            </columns>
                         </TableView>
                         <Label layoutX="7.0" layoutY="250.0" text="Completed Projects" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="250.0">

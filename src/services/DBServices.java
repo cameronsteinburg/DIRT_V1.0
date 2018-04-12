@@ -145,6 +145,14 @@ public class DBServices {
     public boolean persistProject(Project proj){
         return Main.jdbcc.persistProject(proj);
     }
+    
+    public ObservableList<Project> getActiveProjectsForTable(){
+        return Main.jdbcc.getProjectsForTable(false);
+    }
+    
+    public ObservableList<Project> getAllProjectsForTable(){
+        return Main.jdbcc.getProjectsForTable(true);
+    }
 
     /**
      * restores the database from the chosen file path

@@ -294,6 +294,27 @@ public class HomePageGUIController extends Controller implements Initializable {
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
     private boolean createProjectFlag = false;
+    
+    @FXML
+    private TableColumn<?, ?> projNameCol;
+    @FXML
+    private TableColumn<?, ?> clientCol;
+    @FXML
+    private TableColumn<?, ?> startCol;
+    @FXML
+    private TableColumn<?, ?> endCol;
+    @FXML
+    private TableColumn<?, ?> descCol;
+    @FXML
+    private TableColumn<?, ?> oldprojNameCol;
+    @FXML
+    private TableColumn<?, ?> oldclientCol;
+    @FXML
+    private TableColumn<?, ?> oldstartCol;
+    @FXML
+    private TableColumn<?, ?> oldendCol;
+    @FXML
+    private TableColumn<?, ?> olddescCol;
 
     /**
      *
@@ -318,8 +339,18 @@ public class HomePageGUIController extends Controller implements Initializable {
         navigateTo("/ui/CreateProjectGUI_1.fxml");
     }
 
+    /**
+     * 
+     */
     private void updateProjectTable() {
-
+        
+        if(projNameCol != null){
+        
+            projNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+            clientCol.setCellValueFactory(new PropertyValueFactory<>("clientFirstName"));
+            startCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        
+        }
     }
 
     /*============Inner Frame Project Dropdown===============*/

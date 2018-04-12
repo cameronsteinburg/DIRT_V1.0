@@ -155,8 +155,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
      * @param event
      */
     @FXML
-    private void removeServiceAction(ActionEvent event
-    ) {
+    private void removeServiceAction(ActionEvent event) {
 
         for (int i = 0; i < allItems.size(); i++) {
 
