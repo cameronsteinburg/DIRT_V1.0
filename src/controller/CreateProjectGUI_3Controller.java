@@ -95,6 +95,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
+            inProgress.setCompleted(false);
             inProgress.setClient(null);
 
             dbs.persistProject(inProgress);
@@ -347,6 +348,18 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         TextField serTotal = (TextField) bed.get(17);
                         Double serTotalDbl = aggMatCost + labourCostDouble;
                         serTotal.setText(f.format(serTotalDbl));
+                        
+                        newBed.setEstSQFT(sqftdbl);
+                        newBed.setEstHours(manHoursDbl);
+                        newBed.setEstLabour(labourCostDouble);
+                        newBed.setEstReqYards(reqyardsdbl);
+                        newBed.setQuotedTotal(serTotalDbl);
+                        
+                        newBed.setActSQFT(sqftdbl);
+                        newBed.setActHours(manHoursDbl);
+                        newBed.setActLabour(labourCostDouble);
+                        newBed.setActReqYards(reqyardsdbl);
+                        newBed.setActualTotal(serTotalDbl);
 
                         botCheck();
                     }

@@ -83,6 +83,10 @@ public class Project {
         this.description = description;
         this.isActive = isActive;
     }
+    
+    public void setCompleted(boolean val){
+        this.completed = val;
+    }
 
     public String getClientName() {
         return this.clientName;
