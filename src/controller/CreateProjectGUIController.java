@@ -103,7 +103,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
         try {
             instant = Instant.from(start.atStartOfDay(ZoneId.systemDefault()));//some hoop jumping to get the dates picked from the User in GUI
             startDate = Date.from(instant);
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             instant = null;
             startDate = null;
         }
@@ -111,74 +111,72 @@ public class CreateProjectGUIController extends Controller implements Initializa
         try {
             instant2 = Instant.from(end.atStartOfDay(ZoneId.systemDefault()));//some hoop jumping to get the dates picked from the User in GUI
             endDate = Date.from(instant);
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             instant2 = null;
             endDate = null;
         }
 
-            if (start != null && end != null && startDate.compareTo(endDate) > 0) { //in can user set the first date to be after the end date
+        if (start != null && end != null && startDate.compareTo(endDate) > 0) { //in can user set the first date to be after the end date
 
-                setMessage("Preliminary Date Must Be Before End Date", errorMessage);
-                return;
-            }//all data is valid at this point
+            setMessage("Preliminary Date Must Be Before End Date", errorMessage);
+            return;
+        }//all data is valid at this point
 
-            inProgress = new Project(name, startDate, endDate, description, address, true);
+        inProgress = new Project(name, startDate, endDate, description, address, true);
 
-            FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
-            CreateProjectGUIController cont = loader.getController();
-            cont.setErrorMessage(errorMessage);
+        FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
+        CreateProjectGUIController cont = loader.getController();
+        cont.setErrorMessage(errorMessage);
 
-        } //the project object is not committed to db until the quote has been produced
+    } //the project object is not committed to db until the quote has been produced
 
-        /**
-         *
-         * @param event
-         */
-        @FXML
-        private void nextBtnAction2
-        (ActionEvent event) throws IOException {
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void nextBtnAction2(ActionEvent event) throws IOException {
 
-            //give allitems to new controller, load fxml and set controller manually to enable objcet access during initialize 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateProjectGUI_3.fxml"));
-            CreateProjectGUI_3Controller cont = new CreateProjectGUI_3Controller();
-            loader.setController(cont);
-            cont.setEls(allItems);
-            cont.setInProgress(inProgress);
-            cont.setErrorMessage(errorMessage);
-            cont.setOuterPane(outerPane);
-            Parent root = loader.load();
+        //give allitems to new controller, load fxml and set controller manually to enable objcet access during initialize 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateProjectGUI_3.fxml"));
+        CreateProjectGUI_3Controller cont = new CreateProjectGUI_3Controller();
+        loader.setController(cont);
+        cont.setEls(allItems);
+        cont.setInProgress(inProgress);
+        cont.setErrorMessage(errorMessage);
+        cont.setOuterPane(outerPane);
+        Parent root = loader.load();
 
-            outerPane.setCenter(root);
-        }
+        outerPane.setCenter(root);
+    }
 
-        /**
-         *
-         * @param event
-         */
-        @FXML
-        private void removeServiceAction
-        (ActionEvent event
-        
-            ) {
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void removeServiceAction(ActionEvent event
+    ) {
 
         for (int i = 0; i < allItems.size(); i++) {
 
-                selectServiceFromList();
+            selectServiceFromList();
 
-                String sel = (String) allItems.get(i);
+            String sel = (String) allItems.get(i);
 
-                if (sel.contains(selectedItem)) {
+            if (sel.contains(selectedItem)) {
 
-                    allItems.remove(i);
-                }
+                allItems.remove(i);
             }
-
-            updateTable(allItems);
         }
-        /**
-         *
-         * @param event
-         */
+
+        updateTable(allItems);
+    }
+
+    /**
+     *
+     * @param event
+     */
     private void selectServiceFromList() {
 
         if (table.getSelectionModel().getSelectedItem() != null) {
