@@ -348,13 +348,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         TextField serTotal = (TextField) bed.get(17);
                         Double serTotalDbl = aggMatCost + labourCostDouble;
                         serTotal.setText(f.format(serTotalDbl));
-                        
+
                         newBed.setEstSQFT(sqftdbl);
                         newBed.setEstHours(manHoursDbl);
                         newBed.setEstLabour(labourCostDouble);
                         newBed.setEstReqYards(reqyardsdbl);
                         newBed.setQuotedTotal(serTotalDbl);
-                        
+
                         newBed.setActSQFT(sqftdbl);
                         newBed.setActHours(manHoursDbl);
                         newBed.setActLabour(labourCostDouble);
