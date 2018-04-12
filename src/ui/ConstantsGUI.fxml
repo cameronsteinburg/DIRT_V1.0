@@ -501,11 +501,11 @@
                            <content>
                               <AnchorPane style="-fx-background-color: #e9fcae;">
                                  <children>
-                                    <ScrollPane maxHeight="-Infinity" style="-fx-border-color: grey; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane fitToHeight="true" maxHeight="-Infinity" style="-fx-border-color: grey; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
                                           <HBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" style="-fx-background-color: #e9fcae;">
                                              <children>
-                                                <AnchorPane maxWidth="-Infinity" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Label alignment="CENTER" text="Stone Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <font>
@@ -561,7 +561,7 @@
                                                       <Insets bottom="10.0" />
                                                    </opaqueInsets>
                                                 </AnchorPane>
-                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Label alignment="CENTER" text="Geotextile Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <font>
@@ -669,7 +669,7 @@
                                                       <Insets bottom="10.0" />
                                                    </opaqueInsets>
                                                 </AnchorPane>
-                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-color: black; -fx-background-color: #e9fcae; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-color: black; -fx-background-color: #e9fcae; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Label alignment="CENTER" text="Walkway Base" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <font>
@@ -763,7 +763,7 @@
                                                       <Insets bottom="10.0" />
                                                    </opaqueInsets>
                                                 </AnchorPane>
-                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Label alignment="CENTER" text="Screed Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <font>
@@ -857,7 +857,7 @@
                                                       <Insets bottom="10.0" />
                                                    </opaqueInsets>
                                                 </AnchorPane>
-                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-color: black; -fx-border-width: 0 0 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Label alignment="CENTER" text="Edge Restraint" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <font>
@@ -951,7 +951,7 @@
                                                       <Insets bottom="10.0" />
                                                    </opaqueInsets>
                                                 </AnchorPane>
-                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Label alignment="CENTER" text="Jointing Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <font>
