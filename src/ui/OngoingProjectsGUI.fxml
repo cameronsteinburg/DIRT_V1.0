@@ -13,7 +13,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="projectsTable" layoutX="15.0" layoutY="29.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
+      <TableView fx:id="currentProjectsTable" layoutX="15.0" layoutY="29.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
          <columns>
             <TableColumn fx:id="projNameCol" prefWidth="188.0" text="Project Name" />
             <TableColumn fx:id="clientCol" prefWidth="188.0" text="Client" />
@@ -27,7 +27,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="15.0" layoutY="291.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="290.0">
+      <TableView fx:id="completedProjectsTable" layoutX="15.0" layoutY="291.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="290.0">
          <columns>
             <TableColumn fx:id="oldprojNameCol" prefWidth="188.0" text="Project Name" />
             <TableColumn fx:id="oldclientCol" prefWidth="188.0" text="Client" />
