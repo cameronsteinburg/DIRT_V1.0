@@ -145,6 +145,17 @@ create table BedWorkOrder (workOrderNum mediumint unsigned not null,
     aggregate varchar(50),
     constraint fk_WorkOrderBed foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
+#create workorder sod table
+create table SodWorkOrder (workOrderNum mediumint unsigned not null,
+    estSQFT numeric(8,2),
+    estSupplyCost numeric(8,2),
+    estManHours numeric(8,2),
+    estInstallCost numeric(8,2),
+    actSQFT numeric(8,2),
+    actSupplyCost numeric(8,2),
+    actManHours numeric(8,2),
+    actInstallCost numeric(8,2),
+    constraint fk_WorkOrderSod foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);

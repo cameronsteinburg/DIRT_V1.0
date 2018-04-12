@@ -4,8 +4,7 @@ import entity.Project;
 import entity.WorkOrder;
 import entity.Client;
 import entity.Labourer;
-import entity.Services.WO_Bed;
-import entity.Services.WO_Excavation;
+import entity.Services.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -1104,7 +1103,8 @@ public class JDBCCommands {
             return false;
         }
     }
-
+    
+    //SCALE
     public String getWorkOrderType(WorkOrder wkodr) {
         if (wkodr instanceof WO_Excavation) {
             if (((WO_Excavation) wkodr).getType() == 'h') {
@@ -1115,9 +1115,13 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_Bed){
             return "BedWorkOrder";
         }
+        else if(wkodr instanceof WO_Sod){
+            return "SodWorkOrder";
+        }
         return null;
     }
 
+    //SCALE
     public void insertWorkOrderType(int wkodrNum, WorkOrder wkodr) {
 
         try {
@@ -1180,12 +1184,27 @@ public class JDBCCommands {
                         preparedStmt.setString(13, ((WO_Bed) wkodr).getAggregate());
                         preparedStmt.execute();
             }
+            else if(wkodr instanceof WO_Sod){
+                String query = "insert into SodWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(2, ((WO_Sod) wkodr).getEstSQFT());
+                preparedStmt.setDouble(3, ((WO_Sod) wkodr).getEstSupplyCost());
+                preparedStmt.setDouble(4, ((WO_Sod) wkodr).getEstManHours());
+                preparedStmt.setDouble(5, ((WO_Sod) wkodr).getEstInstallCost());
+                preparedStmt.setDouble(6, ((WO_Sod) wkodr).getActSQFT());
+                preparedStmt.setDouble(7, ((WO_Sod) wkodr).getActSupplyCost());
+                preparedStmt.setDouble(8, ((WO_Sod) wkodr).getActManHours());
+                preparedStmt.setDouble(9, ((WO_Sod) wkodr).getActInstallCost());
+                preparedStmt.execute();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
+    //SCALE
     public WorkOrder createWorkOrderForProject(String workOrderType, int workOrderNum, int projectNum, ResultSet result) {
         try {
             if (workOrderType.equalsIgnoreCase("excavationbyhandworkorder") || workOrderType.equalsIgnoreCase("excavationbyskidworkorder")) {
@@ -1256,6 +1275,33 @@ public class JDBCCommands {
                 workOrder.setActHours(result.getDouble("ActHours"));
                 workOrder.setActLabour(result.getDouble("ActLabour"));
                 workOrder.setAggregate(result.getString("aggregate"));
+
+                return workOrder;
+            }
+            
+            else if(workOrderType.equalsIgnoreCase("sodworkorder")){
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_Sod workOrder = new WO_Sod(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstSupplyCost(result.getDouble("estSupplyCost"));
+                workOrder.setEstManHours(result.getDouble("estManHours"));
+                workOrder.setEstInstallCost(result.getDouble("estInstallCost"));
+
+                workOrder.setActSQFT(result.getDouble("ActSQFT"));
+                workOrder.setActSupplyCost(result.getDouble("ActSupplyCost"));
+                workOrder.setActManHours(result.getDouble("ActReqManHours"));
+                workOrder.setActInstallCost(result.getDouble("ActInstallCost"));
 
                 return workOrder;
             }
