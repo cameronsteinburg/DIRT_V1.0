@@ -14,9 +14,9 @@
          <top>
             <AnchorPane prefHeight="37.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Clients" underline="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="20.0">
+                  <Label text="Clients" underline="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                      <font>
-                        <Font size="35.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
                   <Label layoutX="780.0" layoutY="70.0" prefHeight="17.0" prefWidth="49.0" text="Search: " AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="249.0" />
@@ -32,15 +32,15 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="373.0" prefWidth="1025.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="20.0">
+                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="373.0" prefWidth="1025.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                     <columns>
                       <TableColumn fx:id="firstNameCol" prefWidth="113.0" text="First Name" />
                         <TableColumn fx:id="lastNameCol" prefWidth="113.0" text="Last Name" />
                         <TableColumn fx:id="companyNameCol" prefWidth="106.0" text="Company" />
                         <TableColumn fx:id="firstNumCol" prefWidth="117.0" text="First Number" />
                         <TableColumn fx:id="secondNumCol" prefWidth="135.0" text="Second Number" />
-                      <TableColumn fx:id="addressCol" prefWidth="216.0" text="Address" />
-                        <TableColumn fx:id="emailCol" prefWidth="212.0" text="Email" />
+                      <TableColumn fx:id="addressCol" prefWidth="234.0" text="Address" />
+                        <TableColumn fx:id="emailCol" prefWidth="229.0" text="Email" />
                     </columns>
                   </TableView>
                </children>

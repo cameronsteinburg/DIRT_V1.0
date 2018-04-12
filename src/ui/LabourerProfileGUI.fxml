@@ -13,34 +13,34 @@
 
 <AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LabourerProfileGUIController">
    <children>
-      <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <stylesheets>
             <URL value="@createclientgui.css" />
          </stylesheets>
          <children>
-            <TableView fx:id="ongoing" layoutX="643.0" layoutY="296.0" prefHeight="212.0" prefWidth="417.0" AnchorPane.rightAnchor="18.0">
+            <TableView fx:id="ongoing" layoutX="643.0" layoutY="296.0" prefHeight="212.0" prefWidth="417.0" AnchorPane.leftAnchor="646.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="296.0">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
                </columns>
             </TableView>
-            <TableView fx:id="completed" layoutX="643.0" layoutY="41.0" prefHeight="220.0" prefWidth="417.0" AnchorPane.rightAnchor="18.0">
+            <TableView fx:id="completed" layoutX="643.0" layoutY="41.0" prefHeight="220.0" prefWidth="417.0" AnchorPane.leftAnchor="646.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="41.0">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
                </columns>
             </TableView>
-            <Label fx:id="nameField" layoutX="291.0" layoutY="14.0" prefHeight="47.0" prefWidth="351.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="5.0">
+            <Label fx:id="nameField" layoutX="291.0" layoutY="14.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
-            <Label layoutX="650.0" layoutY="14.0" prefHeight="28.0" prefWidth="295.0" text="Projects Currently Assigned to" AnchorPane.rightAnchor="133.0">
+            <Label layoutX="650.0" layoutY="14.0" prefHeight="28.0" prefWidth="295.0" text="Projects Currently Assigned to" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="14.0">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label layoutX="650.0" layoutY="267.0" prefHeight="28.0" prefWidth="351.0" text="Projects Previously Asssigned to" AnchorPane.rightAnchor="77.0">
+            <Label layoutX="650.0" layoutY="267.0" prefHeight="28.0" prefWidth="351.0" text="Projects Previously Asssigned to" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="267.0">
                <font>
                   <Font size="19.0" />
                </font>
