@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -100,7 +101,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             setMessage("Project Successfully Created!", errorMessage);
 
-            navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
+            navigateTo("/ui/EditProjectGUI.fxml", this.outerPane);
         }
     }
 

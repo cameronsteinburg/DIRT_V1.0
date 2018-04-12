@@ -7,6 +7,7 @@ package controller;
 import application.Main;
 import entity.Client;
 import entity.Labourer;
+import entity.Project;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -294,7 +295,44 @@ public class HomePageGUIController extends Controller implements Initializable {
     /*======================================Project Actions======================================*/
  /*============Outer Frame Project Dropdown===============*/
     private boolean createProjectFlag = false;
-    
+    boolean newProjectFlag = false;
+
+    /**
+     *
+     * @throws IOException
+     */
+    @FXML
+    private void viewProjectsAction(ActionEvent event) throws IOException {
+
+        tableFlag = true;
+        navigateTo("/ui/OngoingProjectsGUI.fxml");
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    private void editProjectAction() {
+
+    }
+
+    /**
+     *
+     * @param event
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    @FXML
+    private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
+
+        newProjectFlag = true;
+        navigateTo("/ui/CreateProjectGUI_1.fxml");
+    }
+
+    /*============Inner Frame Project Dropdown===============*/
+    @FXML
+    private TableView<Project> projectsTable;
     @FXML
     private TableColumn<?, ?> projNameCol;
     @FXML
@@ -316,48 +354,34 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> olddescCol;
 
-    /**
-     *
-     * @throws IOException
-     */
-    @FXML
-    private void viewProjectsAction() throws IOException {
-
-        navigateTo("/ui/OngoingProjectsGUI.fxml");
-    }
+    private ObservableList<Project> projectsList;
 
     /**
      *
-     * @param event
-     * @throws IOException
-     * @throws URISyntaxException
      */
-    @FXML
-    private void newProjectAction(ActionEvent event) throws IOException, URISyntaxException {
+    public void updateProjectTable(ObservableList<Project> newList) {
 
-        newProjectFlag = true;
-        navigateTo("/ui/CreateProjectGUI_1.fxml");
-    }
+        if (projNameCol != null) {
 
-    /**
-     * 
-     */
-    private void updateProjectTable() {
-        
-        if(projNameCol != null){
-        
             projNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
-            clientCol.setCellValueFactory(new PropertyValueFactory<>("clientFirstName"));
+            clientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
             startCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-        
+            endCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+            descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            DBServices dbs = new DBServices();
+
+            if (newList != null) {
+
+                projectsTable.setItems(newList);
+
+            } else {
+
+                this.projectsList = dbs.getAllProjectsForTable();
+                projectsTable.setItems(projectsList);
+            }
         }
     }
 
-    /*============Inner Frame Project Dropdown===============*/
-    boolean newProjectFlag = false;
-
-    @FXML
-    private TableView projectsTable;
 
     /*======================================Labourer Actions======================================*/
  /*============Outer Frame Labourer Dropdown===============*/
@@ -600,18 +624,17 @@ public class HomePageGUIController extends Controller implements Initializable {
         fileChooser.setTitle("Open Resource File");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("SQL Files(*.sql)", "*.sql");
         fileChooser.getExtensionFilters().add(extFilter);
-        
+
         File file = fileChooser.showOpenDialog(Main.stage);
-        
+
         DBServices dbs = new DBServices();
-        
-        try{
-             dbs.restore(file.getAbsolutePath());
-        } catch(NullPointerException e){
+
+        try {
+            dbs.restore(file.getAbsolutePath());
+        } catch (NullPointerException e) {
             //want it to ignore, errors when you cancel the window for some reason
         }
-       
-                
+
         navigateHome(null);
     }
 
@@ -621,16 +644,16 @@ public class HomePageGUIController extends Controller implements Initializable {
      */
     @FXML
     private void backupAction(ActionEvent event) {
-        
+
         DirectoryChooser dc = new DirectoryChooser();
         dc.setTitle("Choose Backup Location");
         File path = dc.showDialog(Main.stage);
-        
+
         DBServices dbs = new DBServices();
-        
-        try{
-             dbs.backup(path.getAbsolutePath());
-        } catch(NullPointerException e){
+
+        try {
+            dbs.backup(path.getAbsolutePath());
+        } catch (NullPointerException e) {
             //want it to ignore, errors when you cancel the backup for some reason
         }
     }
@@ -638,6 +661,10 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*======================================Home Page Controls======================================*/
     private boolean tableFlag = false;
+    
+    public void setTableFlag(Boolean state){
+        this.tableFlag = state;
+    }
 
     /**
      * Primary means of changing pages of the inner panel of the app.
@@ -812,7 +839,7 @@ public class HomePageGUIController extends Controller implements Initializable {
      *
      * @param root
      */
-    private void reloadTables(Parent root) {
+    public void reloadTables(Parent root) {
 
         Node node = null;
 
@@ -851,6 +878,23 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
             });
         }
+        
+        try {
+            node = root.lookup("#projectsTable");
+        } catch (NullPointerException e) {
+            //ignore
+        }
+
+        if (node != null) {
+
+            this.projectsTable = (TableView<Project>) root.lookup("#projectsTable");
+            this.projectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    //getSelectedProject(); todo
+                }
+            });
+        }
     }
 
     /**
@@ -877,9 +921,23 @@ public class HomePageGUIController extends Controller implements Initializable {
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
     }
-    
-    protected void setWords(String words){
+
+    /**
+     *
+     * @param words
+     */
+    protected void setWords(String words) {
         this.errorMessage.setText(words);
+    }
+
+    /**
+     *
+     */
+    protected void updateTables() {
+
+        this.updateClientTable(null); //for viewing all clients in a table   
+        this.updateLabourerTable(null); //for viewing all labourer in a table
+        this.updateProjectTable(null);// for viewing all projects in a table
     }
 
     /**
@@ -891,7 +949,6 @@ public class HomePageGUIController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        this.updateClientTable(null); //for viewing all clients in a table   
-        this.updateLabourerTable(null); //for viewing all labourer in a table
+        updateTables();
     }
 }

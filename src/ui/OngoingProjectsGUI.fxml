@@ -6,34 +6,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="innnerAnchor" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="innnerAnchor" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="7.0" text="Current Projects" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
+      <Label layoutX="14.0" layoutY="-1.0" text="Current Projects" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="-1.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="16.0" layoutY="38.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
+      <TableView fx:id="projectsTable" layoutX="15.0" layoutY="29.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="29.0">
          <columns>
-            <TableColumn prefWidth="106.0" text="Project Name" />
-            <TableColumn text="Client" />
-            <TableColumn prefWidth="100.0" text="Project Address" />
-            <TableColumn prefWidth="100.0" text="Start Date" />
-            <TableColumn prefWidth="100.0" text="End Date" />
+            <TableColumn fx:id="projNameCol" prefWidth="188.0" text="Project Name" />
+            <TableColumn fx:id="clientCol" prefWidth="188.0" text="Client" />
+            <TableColumn fx:id="startCol" prefWidth="99.0" text="Start Date" />
+            <TableColumn fx:id="endCol" prefWidth="99.0" text="End Date" />
+            <TableColumn fx:id="descCol" prefWidth="475.0" text="Description" />
          </columns>
       </TableView>
-      <Label layoutX="7.0" layoutY="250.0" text="Completed Projects" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="265.0">
+      <Label layoutX="14.0" layoutY="261.0" text="Completed Projects" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="261.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="15.0" layoutY="296.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="300.0">
+      <TableView layoutX="15.0" layoutY="291.0" prefHeight="216.0" prefWidth="1048.0">
          <columns>
-            <TableColumn prefWidth="106.0" text="Project Name" />
-            <TableColumn text="Client" />
-            <TableColumn prefWidth="100.0" text="Project Address" />
-            <TableColumn prefWidth="100.0" text="Start Date" />
-            <TableColumn prefWidth="100.0" text="End Date" />
+            <TableColumn fx:id="oldprojNameCol" prefWidth="188.0" text="Project Name" />
+            <TableColumn fx:id="oldclientCol" prefWidth="188.0" text="Client" />
+            <TableColumn fx:id="oldstartCol" prefWidth="99.0" text="Start Date" />
+            <TableColumn fx:id="oldendCol" prefWidth="99.0" text="End Date" />
+            <TableColumn fx:id="olddescCol1" prefWidth="475.0" text="Description" />
          </columns>
       </TableView>
    </children>

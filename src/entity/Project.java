@@ -8,7 +8,6 @@ package entity;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 public class Project {
 
     //* nothing gets saved to db until the user pucnhes in all the info to get the the quote production
@@ -44,6 +43,8 @@ public class Project {
     //the actual bill
     private double actualCost; //the bottom line at end of project for what the client paid in the end
 
+    private String clientName; //for use with TableView
+
     /**
      *
      * @param isActive
@@ -51,7 +52,6 @@ public class Project {
     public Project(boolean isActive) {
         this.isActive = isActive;
     }
-
 
     /**
      * @Matthew
@@ -93,35 +93,47 @@ public class Project {
         this.quote = quote;
         this.actualCost = actualCost;
         this.projectNum = id; //pk, only not null
+        
+        if(client != null){
+            this.clientName = client.getClientFirstName() + " " + client.getClientLastName();
+        }
     }
 
     //for new project 1
     public Project(String name, Date startDate, Date endDate, String description, String address, boolean isActive) {
-        
+
         this.projectName = name;
         this.startDate = startDate;
-        this.endDate= endDate;
+        this.endDate = endDate;
         this.description = description;
         this.isActive = isActive;
         this.siteAddress = address;
     }
 
     /**
-     * 
+     *
      * @param projectName
      * @param startDate
      * @param endDate
      * @param description
-     * @param isActive 
+     * @param isActive
      */
     //for tables
     public Project(String projectName, Date startDate, Date endDate, String description, boolean isActive) {
-       
+
         this.projectName = projectName;
         this.startDate = startDate;
-        this.endDate= endDate;
+        this.endDate = endDate;
         this.description = description;
         this.isActive = isActive;
+    }
+
+    public String getClientName() {
+        return this.clientName;
+    }
+
+    public void setClientName(String name) {
+        this.clientName = name;
     }
 
     public int getProjectNum() {

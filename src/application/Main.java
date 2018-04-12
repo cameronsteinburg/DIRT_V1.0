@@ -41,6 +41,7 @@ Governing Law, Jurisdiction: Licensee hereby agrees not to initiate class-action
  */
 package application;
 
+import controller.HomePageGUIController;
 import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -73,7 +74,11 @@ public class Main extends Application {
         this.jdbcc = new JDBCCommands(dba);
 
         //initialize main page
-        Parent root = FXMLLoader.load(getClass().getResource("/ui/HomePageGUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/HomePageGUI.fxml"));
+        Parent root = loader.load();
+        HomePageGUIController cont = loader.getController();
+        cont.setTableFlag(true);
+        cont.navigateTo("/ui/OngoingProjectsGUI.fxml");
         Scene scene = new Scene(root);
         newstage.setScene(scene);
         stage = newstage;

@@ -9,8 +9,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -168,42 +166,7 @@
             </Accordion>
          </left>
          <center>
-            <AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e9fcae;" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane fx:id="innnerAnchor" prefHeight="521.0" prefWidth="1078.0">
-                     <children>
-                        <Label layoutX="7.0" text="Current Projects" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TableView layoutX="16.0" layoutY="38.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
-                           <columns>
-                              <TableColumn fx:id="projNameCol" prefWidth="188.0" text="Project Name" />
-                              <TableColumn fx:id="clientCol" prefWidth="188.0" text="Client" />
-                              <TableColumn fx:id="startCol" prefWidth="99.0" text="Start Date" />
-                              <TableColumn fx:id="endCol" prefWidth="99.0" text="End Date" />
-                              <TableColumn fx:id="descCol" prefWidth="475.0" text="Description" />
-                           </columns>
-                        </TableView>
-                        <Label layoutX="7.0" layoutY="250.0" text="Completed Projects" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="250.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TableView layoutX="15.0" layoutY="296.0" prefHeight="200.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="280.0">
-                           <columns>
-                              <TableColumn prefWidth="106.0" text="Project Name" />
-                              <TableColumn text="Client" />
-                              <TableColumn prefWidth="100.0" text="Project Address" />
-                              <TableColumn prefWidth="100.0" text="Start Date" />
-                              <TableColumn prefWidth="100.0" text="End Date" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+            <AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e9fcae;" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>
