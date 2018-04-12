@@ -51,6 +51,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import persistence.DBAccessor;
 import persistence.JDBCCommands;
+import services.DBServices;
 
 /**
  *
@@ -61,9 +62,9 @@ public class Main extends Application {
 
     public static Stage stage;//singleton stage object i.e the apps window definied by fxml files controlled by controller files
     public static JDBCCommands jdbcc; //singleton jdcc object to be used by DBAccessor
-    
+
     public static ArrayList<ArrayList> ffs;
-        //DBServices - > JDBCCommands -> DBAccessor -> DB 
+    //DBServices - > JDBCCommands -> DBAccessor -> DB 
 
     @Override
     public void start(Stage newstage) throws Exception { //gets this show on the road
@@ -73,17 +74,21 @@ public class Main extends Application {
         dba.connectToMySQL();
         this.jdbcc = new JDBCCommands(dba);
 
+        DBServices dbs = new DBServices();
+
         //initialize main page
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/HomePageGUI.fxml"));
         Parent root = loader.load();
-        HomePageGUIController cont = loader.getController();
-        cont.setTableFlag(true);
-        cont.navigateTo("/ui/OngoingProjectsGUI.fxml");
         Scene scene = new Scene(root);
         newstage.setScene(scene);
         stage = newstage;
         stage.show();
         stage.setTitle("DIRT - Dynamic Interface Regarding Terrain");
+
+        HomePageGUIController cont = loader.getController();
+        cont.setTableFlag(true);
+        cont.navigateTo("/ui/OngoingProjectsGUI.fxml");
+        cont.updateProjectTable(null);
     }
 
     /**
