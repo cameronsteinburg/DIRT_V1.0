@@ -638,6 +638,111 @@ public class JDBCCommands {
         }
         return null;
     }
+    
+    
+    public boolean updateProject(Project projectOld, Project projectNew){
+        try {
+            // the mysql prepared insert statement
+            String query = "update projects set clientNum=?, projectName=?, description=?, siteAddress=?, startDate=?, endDate=?, clientOwing=?, clientPaid=?, allowanceCost=?, extraneousExpenses=?, quote=?, actualCost=? where projectNum = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+
+            java.sql.Date start;
+            java.sql.Date end;
+            
+            try{
+                start = new java.sql.Date(projectNew.getStartDate().getTime());
+            } catch(NullPointerException e){
+                start = null;
+            }       
+            
+            try{
+                end = new java.sql.Date(projectNew.getEndDate().getTime());
+            } catch(NullPointerException e){
+                end = null;
+            }    
+
+            if (projectNew.getClient() == null) {
+                preparedStmt.setInt(1, 1);
+            } else {
+                preparedStmt.setInt(1, getClientNum(projectNew.getClient().getFirstName(), projectNew.getClient().getLastName()));
+            }
+                 
+            preparedStmt.setString(2, projectNew.getProjectName());
+            preparedStmt.setString(3, projectNew.getDescription());
+            preparedStmt.setString(4, projectNew.getSiteAddress());
+            preparedStmt.setDate(5, start);
+            preparedStmt.setDate(6, end);
+            preparedStmt.setDouble(7, projectNew.getClientOwing());
+            preparedStmt.setBoolean(8, projectNew.isClientPaid());
+            preparedStmt.setDouble(9, projectNew.getAllowanceCost());
+            preparedStmt.setDouble(10, projectNew.getExtraneousExpenses());
+            preparedStmt.setDouble(11, projectNew.getQuote());
+            preparedStmt.setDouble(12, projectNew.getActualCost());
+            preparedStmt.setInt(13, getProjectNum(projectOld.getProjectName()));
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            //get the newly created projectNum
+            int projectNum = getProjectNum(projectNew.getProjectName());
+
+            //add labourers to the project
+            String deleteProjectLabourerQuery = "delete from projectLabourer where projectNum=?";
+            PreparedStatement preparedStmtDeleteProjectLabourer = conn.prepareStatement(deleteProjectLabourerQuery);
+            preparedStmtDeleteProjectLabourer.setInt(1, projectNum);
+            preparedStmtDeleteProjectLabourer.executeUpdate();
+            
+            for (int i = 0; i < projectNew.getLabourers().size(); i++) {
+                String projectLabourerQuery = "insert into projectLabourer values(?,?)";
+                PreparedStatement preparedStmtProjectLabourer = conn.prepareStatement(projectLabourerQuery);
+                preparedStmtProjectLabourer.setInt(1, projectNum);
+                preparedStmtProjectLabourer.setInt(2, getLabourerNum(projectNew.getLabourers().get(i).getFirstName(), projectNew.getLabourers().get(i).getLastName()));
+                preparedStmtProjectLabourer.execute();
+            }
+
+            
+            for (int j = 0; j < projectOld.getWorkOrders().size(); j++){
+                int workOrderNum =Integer.parseInt(projectOld.getWorkOrders().get(j).getWoid());
+                String workOrderType = getWorkOrderType(projectOld.getWorkOrders().get(j));
+                String deleteSubWorkOrderQuery = "delete from " + workOrderType + " where workordernum = ?;";
+                PreparedStatement preparedStmtDeleteSubWorkOrder = conn.prepareStatement(deleteSubWorkOrderQuery);
+                preparedStmtDeleteSubWorkOrder.setInt(1, workOrderNum);
+                preparedStmtDeleteSubWorkOrder.executeUpdate();
+            }
+            
+            String deleteSupWorkOrderQuery = "delete from workorders where projectNum=?";
+            PreparedStatement preparedStmtDeleteSupWorkOrder = conn.prepareStatement(deleteSupWorkOrderQuery);
+            preparedStmtDeleteSupWorkOrder.setInt(1, projectNum);
+            preparedStmtDeleteSupWorkOrder.executeUpdate();
+            
+            //add work orders to the project
+            for (int n = 0; n < projectNew.getWorkOrders().size(); n++) {
+                String workOrderType = getWorkOrderType(projectNew.getWorkOrders().get(n));
+                String workOrderNoTypeQuery = " insert into workOrders (projectNum, description, quotedTotal, actualTotal, isActive, workOrderType) values(?, ?, ?, ?, ?, '" + workOrderType + "')";
+                PreparedStatement preparedStmtWorkOrderNoType = conn.prepareStatement(workOrderNoTypeQuery, Statement.RETURN_GENERATED_KEYS);
+                preparedStmtWorkOrderNoType.setInt(1, projectNum);
+                preparedStmtWorkOrderNoType.setString(2, projectNew.getWorkOrders().get(n).getDescription());
+                preparedStmtWorkOrderNoType.setDouble(3, projectNew.getWorkOrders().get(n).getQuotedTotal());
+                preparedStmtWorkOrderNoType.setDouble(4, projectNew.getWorkOrders().get(n).getActualTotal());
+                preparedStmtWorkOrderNoType.setBoolean(5, true);
+                preparedStmtWorkOrderNoType.execute();
+
+                ResultSet lastIDsGenerated = preparedStmtWorkOrderNoType.getGeneratedKeys();
+                int workOrderNum = -1;
+                if (lastIDsGenerated.next()) {
+                    workOrderNum = lastIDsGenerated.getInt(1);
+                }
+                insertWorkOrderType(workOrderNum, projectNew.getWorkOrders().get(n));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
 
     /**
      *
