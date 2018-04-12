@@ -1121,6 +1121,41 @@ public class JDBCCommands {
 
                 return workOrder;
             }
+            
+            
+            else if(workOrderType.equalsIgnoreCase("bedworkorder")){
+                
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_Bed workOrder = new WO_Bed(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstDepth(result.getDouble("estDepth"));
+                workOrder.setEstReqYards(result.getDouble("estReqYards"));
+                workOrder.setEstHours(result.getDouble("estHours"));
+                workOrder.setEstLabour(result.getDouble("estLabour"));
+                workOrder.setAggCost(result.getDouble("aggCost"));
+
+                workOrder.setActSQFT(result.getDouble("ActSQFT"));
+                workOrder.setActDepth(result.getDouble("ActDepth"));
+                workOrder.setActReqYards(result.getDouble("ActReqYards"));
+                workOrder.setActHours(result.getDouble("ActHours"));
+                workOrder.setActLabour(result.getDouble("ActLabour"));
+                workOrder.setAggregate(result.getString("aggregate"));
+
+                return workOrder;
+            }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
