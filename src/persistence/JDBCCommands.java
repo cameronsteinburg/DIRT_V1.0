@@ -1007,6 +1007,9 @@ public class JDBCCommands {
             }
             return "excavationBySkidWorkOrder";
         }
+        else if(wkodr instanceof WO_Bed){
+            return "BedWorkOrder";
+        }
         return null;
     }
 
