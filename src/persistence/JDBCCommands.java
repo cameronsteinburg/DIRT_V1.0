@@ -461,32 +461,13 @@ public class JDBCCommands {
             Statement statement = conn.createStatement();
 
             // Result set contains the result of the SQL query
-            ResultSet results = statement.executeQuery("select * from projects;");
+            ResultSet results = statement.executeQuery("select projectName from projects;");
 
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
-                int clientNum = results.getInt("clientNum");
                 String projectName = results.getString("projectName");
-                Date startDate = results.getDate("startDate");
-                Date endDate = results.getDate("endDate");
-                String description = results.getString("description");
-                char isActive = results.getString("isActive").charAt(0);
-                boolean isActiveToBoolean = false;
-
-                if (isActive == '1') {
-                    isActiveToBoolean = true;
-                }
-                if (isActive == '0' && getDeleted == true) {
-                    Project project = new Project(projectName, startDate, endDate, description, isActiveToBoolean);
-                    Client client = getClient(clientNum);
-                    project.setClient(client);
-                    projectList.add(project);
-                } else if (isActive == '1') {
-                    Project project = new Project(projectName, startDate, endDate, description, isActiveToBoolean);
-                    Client client = getClient(clientNum);
-                    project.setClient(client);
-                    projectList.add(project);
-                }
+                Project project = getProject(projectName,false);
+                projectList.add(project);
             }
             return projectList;
 
