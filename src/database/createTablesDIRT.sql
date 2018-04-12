@@ -11,6 +11,7 @@
 #Remove for update
 drop table excavationbyhandworkorder;
 drop table excavationbyskidworkorder;
+drop table bedworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
