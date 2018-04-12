@@ -1343,7 +1343,7 @@
                                                             <Insets left="5.0" right="5.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label prefHeight="50.0" text="/ yard" wrapText="true" GridPane.columnIndex="3">
                                                          <GridPane.margin>
                                                             <Insets />

@@ -345,9 +345,9 @@ public class ConstantsGUIController extends Controller implements Initializable 
         field53.setText(f.format(dbs.retainingwall_BlockCostPerLineFeet()));
         
         //sod tab
-        field54.setText(f.format(dbs.bed_ManHoursPerYard()));
-        field55.setText(f.format(dbs.bed_ManHoursPerYard()));
-        field56.setText(f.format(dbs.bed_ManHoursPerYard()));
+        field54.setText(f.format(dbs.sod_SupplyPerYard()));
+        field55.setText(f.format(dbs.sod_ManHoursPer10SQFT()));
+        field56.setText(f.format(dbs.sod_InstallRatePerHours()));
         
         //weed barrier tab
         field57.setText(f.format(dbs.weedbarrier_ManHoursPer500SQFT()));

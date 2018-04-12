@@ -222,6 +222,17 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void sodAction(ActionEvent event) {
+        
+        allItems.add("Sod");
+        updateTable(allItems);
+    }
+    
+    /**
      *
      * @param event
      */

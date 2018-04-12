@@ -47,7 +47,7 @@
             <Button fx:id="barrierBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="3" />
             <Button fx:id="walkwayBtn" disable="true" mnemonicParsing="false" onAction="#patioAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="irrigationBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Underground Irrigation" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="sodBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="sodBtn" mnemonicParsing="false" onAction="#sodAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="wallBtn" disable="true" mnemonicParsing="false" prefHeight="42.0" prefWidth="328.0" styleClass="blue-button" text="Retaining Wall" GridPane.rowIndex="2" />
          </children>
       </GridPane>
