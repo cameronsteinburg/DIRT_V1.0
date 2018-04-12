@@ -323,11 +323,11 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="Excavation">
+                      <Tab closable="false" text="Excavation">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox layoutX="167.0" style="-fx-border-color: #00000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="-167.0" AnchorPane.topAnchor="0.0">
+                                    <HBox layoutX="167.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="-167.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <AnchorPane maxWidth="-Infinity" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1;">
                                              <children>
@@ -501,9 +501,9 @@
                            <content>
                               <AnchorPane style="-fx-background-color: #e9fcae;">
                                  <children>
-                                    <ScrollPane fitToHeight="true" maxHeight="-Infinity" style="-fx-background-color: #e9aeco;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane fitToHeight="true" maxHeight="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
-                                          <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" style="-fx-background-color: #e9fcaee;">
+                                          <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity">
                                              <children>
                                                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
