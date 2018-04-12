@@ -30,62 +30,6 @@ public class WO_Bed extends WorkOrder {
         this.isActive = isActive;
     }
 
-    /**
-     * 
-     * @param aggregate
-     * @param sqft
-     * @param depth
-     * @param yards
-     * @param hours
-     * @param labour
-     * @param agg
-     * @param isActive 
-     */
-    public WO_Bed(String aggregate, double sqft, double depth, double yards, double hours, double labour, double agg, boolean isActive) {
-        this.aggregate = aggregate;
-        this.estDepth = depth;
-        this.estSQFT = sqft;
-        this.estReqYards = yards;
-        this.estHours = hours;
-        this.estLabour = labour;
-        this.aggCost = agg;
-        this.isActive = isActive;
-    }
-
-    /**
-     * @Matthew
-     * 
-     * @param estSQFT
-     * @param estDepth
-     * @param estReqYards
-     * @param estHours
-     * @param estLabour
-     * @param aggCost
-     * @param actSQFT
-     * @param actDepth
-     * @param actReqYards
-     * @param actHours
-     * @param actLabour
-     * @param aggregate 
-     * @param isActive
-     */
-    public WO_Bed(double estSQFT, double estDepth, double estReqYards, double estHours, double estLabour, double aggCost, double actSQFT, double actDepth, double actReqYards, double actHours, double actLabour, String aggregate, boolean isActive) {
-        this.estSQFT = estSQFT;
-        this.estDepth = estDepth;
-        this.estReqYards = estReqYards;
-        this.estHours = estHours;
-        this.estLabour = estLabour;
-        this.aggCost = aggCost;
-        this.actSQFT = actSQFT;
-        this.actDepth = actDepth;
-        this.actReqYards = actReqYards;
-        this.actHours = actHours;
-        this.actLabour = actLabour;
-        this.aggregate = aggregate;
-        this.isActive = isActive;
-    }
-    
-    
 
     public double getEstSQFT() {
         return estSQFT;
