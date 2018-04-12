@@ -332,7 +332,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*============Inner Frame Project Dropdown===============*/
     @FXML
-    private TableView<Project> projectsTable;
+    private TableView<Project> currentProjectsTable;
     @FXML
     private TableColumn<?, ?> projNameCol;
     @FXML
@@ -372,12 +372,12 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             if (newList != null) {
 
-                projectsTable.setItems(newList);
+                currentProjectsTable.setItems(newList);
 
             } else {
 
                 this.projectsList = dbs.getAllProjectsForTable();
-                projectsTable.setItems(projectsList);
+                currentProjectsTable.setItems(projectsList);
             }
         }
     }
@@ -887,8 +887,8 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         if (node != null) {
 
-            this.projectsTable = (TableView<Project>) root.lookup("#projectsTable");
-            this.projectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            this.currentProjectsTable = (TableView<Project>) root.lookup("#projectsTable");
+            this.currentProjectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     //getSelectedProject(); todo

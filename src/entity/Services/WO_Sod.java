@@ -44,6 +44,7 @@ public class WO_Sod extends WorkOrder{
         this.actSQFT = actSQFT;
         this.actManHours = actManHours;
         this.actInstallRate = actInstallRate;
+        this.isActive = isActive;
     }    
     
     public double getEstSQFT() {

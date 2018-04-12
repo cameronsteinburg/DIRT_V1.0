@@ -44,6 +44,8 @@ public class Project {
     private double actualCost; //the bottom line at end of project for what the client paid in the end
 
     private String clientName; //for use with TableView
+    
+    private boolean completed;
 
     /**
      *
@@ -75,7 +77,7 @@ public class Project {
      * @param id
      * @param isActive
      */
-    public Project(String projectName, String projectDescription, Client client, String siteAddress, ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id, boolean isActive) {
+    public Project(String projectName, String projectDescription, Client client, String siteAddress, ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id, boolean completed, boolean isActive) {
 
         this.projectName = projectName;
         this.description = projectDescription;
@@ -93,6 +95,7 @@ public class Project {
         this.quote = quote;
         this.actualCost = actualCost;
         this.projectNum = id; //pk, only not null
+        this.completed = completed;
         
         if(client != null){
             this.clientName = client.getClientFirstName() + " " + client.getClientLastName();
