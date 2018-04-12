@@ -30,6 +30,7 @@ public class WO_TopSoil extends WorkOrder{
     private double actDelivery;
 
     public WO_TopSoil(double estSQFT, double estDepth, double estSoilReq, double estSoilSupply, double estManHours, double estSoilInstall, double estDelivery, double actSQFT, double actDepth, double actSoilReq, double actSoilSupply, double actManHours, double actSoilInstall, double actDelivery) {
+        
         this.estSQFT = estSQFT;
         this.estDepth = estDepth;
         this.estSoilReq = estSoilReq;

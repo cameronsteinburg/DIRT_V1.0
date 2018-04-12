@@ -44,7 +44,7 @@ public class Project {
     private double actualCost; //the bottom line at end of project for what the client paid in the end
 
     private String clientName; //for use with TableView
-    
+
     private boolean completed;
 
     /**
@@ -53,53 +53,6 @@ public class Project {
      */
     public Project(boolean isActive) {
         this.isActive = isActive;
-    }
-
-    /**
-     * @Matthew
-     *
-     * @param projectName
-     * @param projectDescription
-     * @param client
-     * @param siteAddress
-     * @param workOrders
-     * @param labourers
-     * @param prelimStartDate
-     * @param actualStartDate
-     * @param estimatedEndDate
-     * @param actualEndDate
-     * @param clientOwing
-     * @param clientPaid
-     * @param allowanceCost
-     * @param extraneousExpenses
-     * @param quote
-     * @param actualCost
-     * @param id
-     * @param isActive
-     */
-    public Project(String projectName, String projectDescription, Client client, String siteAddress, ArrayList<WorkOrder> workOrders, ArrayList<Labourer> labourers, Date prelimStartDate, Date actualStartDate, Date estimatedEndDate, Date actualEndDate, double clientOwing, boolean clientPaid, double allowanceCost, double extraneousExpenses, double quote, double actualCost, int id, boolean completed, boolean isActive) {
-
-        this.projectName = projectName;
-        this.description = projectDescription;
-        this.client = client;
-        this.siteAddress = siteAddress;
-        this.isActive = isActive;
-        this.workOrders = workOrders; //get fks from objects
-        this.labourers = labourers; //get fks from objects
-        this.startDate = prelimStartDate;
-        this.endDate = estimatedEndDate;
-        this.clientOwing = clientOwing;
-        this.clientPaid = clientPaid;
-        this.allowanceCost = allowanceCost;
-        this.extraneousExpenses = extraneousExpenses;
-        this.quote = quote;
-        this.actualCost = actualCost;
-        this.projectNum = id; //pk, only not null
-        this.completed = completed;
-        
-        if(client != null){
-            this.clientName = client.getClientFirstName() + " " + client.getClientLastName();
-        }
     }
 
     //for new project 1
@@ -201,6 +154,10 @@ public class Project {
 
     public void setClient(Client client) {
         this.client = client;
+
+        if (client != null) {
+            this.clientName = client.getClientFirstName() + " " + client.getClientLastName();
+        }
     }
 
     public Date getStartDate() {

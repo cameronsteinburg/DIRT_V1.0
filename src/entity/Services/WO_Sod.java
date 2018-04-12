@@ -11,48 +11,36 @@ import entity.WorkOrder;
  *
  * @author 645011
  */
-public class WO_Sod extends WorkOrder{
-    
-    private double estSQFT;
-    private double estManHours;
-    private double estInstallRate;
-    
-    private double actSQFT;
-    private double actManHours;
-    private double actInstallRate;  
-    
-    /**
-     * 
-     */
-    public WO_Sod() {
+public class WO_Sod extends WorkOrder {
 
-    }
-    
-    /**
-     * 
-     * @param estSQFT
-     * @param estManHours
-     * @param estInstallRate
-     * @param actSQFT
-     * @param actManHours
-     * @param actInstallRate 
-     */
-    public WO_Sod(double estSQFT, double estManHours, double estInstallRate, double actSQFT, double actManHours, double actInstallRate) {
-        this.estSQFT = estSQFT;
-        this.estManHours = estManHours;
-        this.estInstallRate = estInstallRate;
-        this.actSQFT = actSQFT;
-        this.actManHours = actManHours;
-        this.actInstallRate = actInstallRate;
+    private double estSQFT;
+    private double estSupplyCost;
+    private double estManHours;
+    private double estInstallCost;
+
+    private double actSQFT;
+    private double actSupplyCost;
+    private double actManHours;
+    private double actInstallCost;
+
+    public WO_Sod(boolean isActive) {
         this.isActive = isActive;
-    }    
-    
+    }
+
     public double getEstSQFT() {
         return estSQFT;
     }
 
     public void setEstSQFT(double estSQFT) {
         this.estSQFT = estSQFT;
+    }
+
+    public double getEstSupplyCost() {
+        return estSupplyCost;
+    }
+
+    public void setEstSupplyCost(double estSupplyCost) {
+        this.estSupplyCost = estSupplyCost;
     }
 
     public double getEstManHours() {
@@ -63,12 +51,12 @@ public class WO_Sod extends WorkOrder{
         this.estManHours = estManHours;
     }
 
-    public double getEstInstallRate() {
-        return estInstallRate;
+    public double getEstInstallCost() {
+        return estInstallCost;
     }
 
-    public void setEstInstallRate(double estInstallRate) {
-        this.estInstallRate = estInstallRate;
+    public void setEstInstallCost(double estInstallCost) {
+        this.estInstallCost = estInstallCost;
     }
 
     public double getActSQFT() {
@@ -79,6 +67,14 @@ public class WO_Sod extends WorkOrder{
         this.actSQFT = actSQFT;
     }
 
+    public double getActSupplyCost() {
+        return actSupplyCost;
+    }
+
+    public void setActSupplyCost(double actSupplyCost) {
+        this.actSupplyCost = actSupplyCost;
+    }
+
     public double getActManHours() {
         return actManHours;
     }
@@ -87,13 +83,12 @@ public class WO_Sod extends WorkOrder{
         this.actManHours = actManHours;
     }
 
-    public double getActInstallRate() {
-        return actInstallRate;
+    public double getActInstallCost() {
+        return actInstallCost;
     }
 
-    public void setActInstallRate(double actInstallRate) {
-        this.actInstallRate = actInstallRate;
+    public void setActInstallCost(double actInstallCost) {
+        this.actInstallCost = actInstallCost;
     }
-    
-    
+
 }

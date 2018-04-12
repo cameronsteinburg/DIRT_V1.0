@@ -9,10 +9,13 @@ import java.util.ArrayList;
 public class WorkOrder {
    
     protected String description;
+    
     protected double quotedTotal;
     protected double actualTotal;
+    
     protected String woid;
     protected String projectID;
+    
     protected boolean isActive;
 
     public String getDescription() {
@@ -63,4 +66,5 @@ public class WorkOrder {
         this.isActive = isActive;
     }
 
+   
 }
