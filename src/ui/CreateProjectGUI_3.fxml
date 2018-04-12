@@ -13,18 +13,18 @@
           <AnchorPane fx:id="anc" minHeight="0.0" minWidth="0.0" />
         </content>
       </ScrollPane>
-      <Label layoutX="4.0" layoutY="466.0" text="Total Quoted:" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="4.0">
+      <Label layoutX="5.0" layoutY="473.0" prefHeight="34.0" prefWidth="136.0" text="Total Quoted:" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="5.0">
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Label>
       <Button fx:id="saveBtn" disable="true" layoutX="928.0" layoutY="474.0" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="42.0" prefWidth="143.0" styleClass="grn-button" text="Save In New Project" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="7.0" />
       <Button layoutX="839.0" layoutY="475.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="42.0" prefWidth="81.0" styleClass="red_button" text="Cancel" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="158.0" />
-      <Label fx:id="bottomLine" layoutX="135.0" layoutY="471.0" prefHeight="42.0" prefWidth="189.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="135.0">
+      <Label fx:id="bottomLine" layoutX="144.0" layoutY="469.0" prefHeight="42.0" prefWidth="189.0" underline="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="144.0">
          <font>
-            <Font size="20.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="6.0" layoutY="496.0" text="GST &amp; PST Included" />
+      <Label layoutX="7.0" layoutY="505.0" text="GST &amp; PST Included" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" />
    </children>
 </AnchorPane>
