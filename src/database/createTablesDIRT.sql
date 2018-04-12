@@ -128,7 +128,7 @@ create table ExcavationBySkidWorkOrder (workOrderNum mediumint unsigned not null
     actHours numeric(8,2),
     actLabour numeric(8,2),
     actTrucking numeric(8,2),
-    actDisposal numeric(8,2), 
+    actDisposal numeric(8,2),
     constraint fk_WorkOrderExcBySkid foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #creates workorder bed table

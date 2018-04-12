@@ -114,7 +114,7 @@
                                     <Button fx:id="newProjectBtn" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Project" textAlignment="RIGHT" GridPane.rowIndex="1" />
                                     <Button mnemonicParsing="false" onAction="#viewProjectsAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="List Projects" />
                                     <Button fx:id="newProjectBtn1" disable="true" mnemonicParsing="false" onAction="#newProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="New Snow Removal" textAlignment="RIGHT" wrapText="true" GridPane.rowIndex="3" />
-                                    <Button disable="true" mnemonicParsing="false" onAction="#editProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Edit Project" GridPane.rowIndex="2" />
+                                    <Button fx:id="editProjectBtn" disable="true" mnemonicParsing="false" onAction="#editProjectAction" prefHeight="125.0" prefWidth="200.0" styleClass="navButton" text="Edit Project" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
