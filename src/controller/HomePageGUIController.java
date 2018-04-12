@@ -912,6 +912,9 @@ public class HomePageGUIController extends Controller implements Initializable {
         viewLabourerProfileBtn.setDisable(true);
         editLabourerBtn.setDisable(true);
         removeLabourerBtn.setDisable(true);
+        
+        //todo editProject button
+        //todo remove project button
     }
 
     /**
