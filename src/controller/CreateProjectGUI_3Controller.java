@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -143,6 +142,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             } else if (allItems.get(i).contains("Sod")) {
 
                 elements.add(addSod());
+
             } else if (allItems.get(i).contains("Bed")) {
 
                 elements.add(addBed());
@@ -162,24 +162,24 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     private ArrayList<Control> addSod() {
-        
-        WO_Sod newSod = new WO_Sod();
+
+        WO_Sod newSod = new WO_Sod(true);
         orders.add(newSod);
-        
+
         ArrayList<Control> sod = new ArrayList();
-        
+
         Label label = new Label("Sod:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 3, 0, 0));
         label.setFont(new Font(16));
         sod.add(label);
-        
+
         sod.add(addLabel("SQ.FT"));
         sod.add(addField(true));
-        
-        
+
         return sod;
     }
+
     /**
      *
      * @return
