@@ -4,6 +4,7 @@ import entity.Project;
 import entity.WorkOrder;
 import entity.Client;
 import entity.Labourer;
+import entity.Services.WO_Bed;
 import entity.Services.WO_Excavation;
 import java.sql.Connection;
 import java.sql.Date;
@@ -1011,50 +1012,68 @@ public class JDBCCommands {
 
     public void insertWorkOrderType(int wkodrNum, WorkOrder wkodr) {
 
-        if (wkodr instanceof WO_Excavation) {
-            try {
-                if (((WO_Excavation) wkodr).getType() == 'h') {
-                    String excavationByHandQuery = "insert into ExcavationByHandWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preparedStmtExcavationByHand = conn.prepareStatement(excavationByHandQuery);
-                    preparedStmtExcavationByHand.setInt(1, wkodrNum);
-                    preparedStmtExcavationByHand.setDouble(2, ((WO_Excavation) wkodr).getEstSQFT());
-                    preparedStmtExcavationByHand.setDouble(3, ((WO_Excavation) wkodr).getEstDepth());
-                    preparedStmtExcavationByHand.setDouble(4, ((WO_Excavation) wkodr).getEstReqYards());
-                    preparedStmtExcavationByHand.setDouble(5, ((WO_Excavation) wkodr).getEstHours());
-                    preparedStmtExcavationByHand.setDouble(6, ((WO_Excavation) wkodr).getEstLabour());
-                    preparedStmtExcavationByHand.setDouble(7, ((WO_Excavation) wkodr).getEstTrucking());
-                    preparedStmtExcavationByHand.setDouble(8, ((WO_Excavation) wkodr).getEstDisposal());
-                    preparedStmtExcavationByHand.setDouble(9, ((WO_Excavation) wkodr).getActSQFT());
-                    preparedStmtExcavationByHand.setDouble(10, ((WO_Excavation) wkodr).getActDepth());
-                    preparedStmtExcavationByHand.setDouble(11, ((WO_Excavation) wkodr).getActReqYards());
-                    preparedStmtExcavationByHand.setDouble(12, ((WO_Excavation) wkodr).getActHours());
-                    preparedStmtExcavationByHand.setDouble(13, ((WO_Excavation) wkodr).getActLabour());
-                    preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
-                    preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
-                    preparedStmtExcavationByHand.execute();
-                } else {
-                    String excavationByHandQuery = "insert into ExcavationBySkidWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preparedStmtExcavationByHand = conn.prepareStatement(excavationByHandQuery);
-                    preparedStmtExcavationByHand.setInt(1, wkodrNum);
-                    preparedStmtExcavationByHand.setDouble(2, ((WO_Excavation) wkodr).getEstSQFT());
-                    preparedStmtExcavationByHand.setDouble(3, ((WO_Excavation) wkodr).getEstDepth());
-                    preparedStmtExcavationByHand.setDouble(4, ((WO_Excavation) wkodr).getEstReqYards());
-                    preparedStmtExcavationByHand.setDouble(5, ((WO_Excavation) wkodr).getEstHours());
-                    preparedStmtExcavationByHand.setDouble(6, ((WO_Excavation) wkodr).getEstLabour());
-                    preparedStmtExcavationByHand.setDouble(7, ((WO_Excavation) wkodr).getEstTrucking());
-                    preparedStmtExcavationByHand.setDouble(8, ((WO_Excavation) wkodr).getEstDisposal());
-                    preparedStmtExcavationByHand.setDouble(9, ((WO_Excavation) wkodr).getActSQFT());
-                    preparedStmtExcavationByHand.setDouble(10, ((WO_Excavation) wkodr).getActDepth());
-                    preparedStmtExcavationByHand.setDouble(11, ((WO_Excavation) wkodr).getActReqYards());
-                    preparedStmtExcavationByHand.setDouble(12, ((WO_Excavation) wkodr).getActHours());
-                    preparedStmtExcavationByHand.setDouble(13, ((WO_Excavation) wkodr).getActLabour());
-                    preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
-                    preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
-                    preparedStmtExcavationByHand.execute();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            if (wkodr instanceof WO_Excavation) {
+                    if (((WO_Excavation) wkodr).getType() == 'h') {
+                        String excavationByHandQuery = "insert into ExcavationByHandWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        PreparedStatement preparedStmtExcavationByHand = conn.prepareStatement(excavationByHandQuery);
+                        preparedStmtExcavationByHand.setInt(1, wkodrNum);
+                        preparedStmtExcavationByHand.setDouble(2, ((WO_Excavation) wkodr).getEstSQFT());
+                        preparedStmtExcavationByHand.setDouble(3, ((WO_Excavation) wkodr).getEstDepth());
+                        preparedStmtExcavationByHand.setDouble(4, ((WO_Excavation) wkodr).getEstReqYards());
+                        preparedStmtExcavationByHand.setDouble(5, ((WO_Excavation) wkodr).getEstHours());
+                        preparedStmtExcavationByHand.setDouble(6, ((WO_Excavation) wkodr).getEstLabour());
+                        preparedStmtExcavationByHand.setDouble(7, ((WO_Excavation) wkodr).getEstTrucking());
+                        preparedStmtExcavationByHand.setDouble(8, ((WO_Excavation) wkodr).getEstDisposal());
+                        preparedStmtExcavationByHand.setDouble(9, ((WO_Excavation) wkodr).getActSQFT());
+                        preparedStmtExcavationByHand.setDouble(10, ((WO_Excavation) wkodr).getActDepth());
+                        preparedStmtExcavationByHand.setDouble(11, ((WO_Excavation) wkodr).getActReqYards());
+                        preparedStmtExcavationByHand.setDouble(12, ((WO_Excavation) wkodr).getActHours());
+                        preparedStmtExcavationByHand.setDouble(13, ((WO_Excavation) wkodr).getActLabour());
+                        preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
+                        preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
+                        preparedStmtExcavationByHand.execute();
+                    } else {
+                        String excavationByHandQuery = "insert into ExcavationBySkidWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        PreparedStatement preparedStmtExcavationByHand = conn.prepareStatement(excavationByHandQuery);
+                        preparedStmtExcavationByHand.setInt(1, wkodrNum);
+                        preparedStmtExcavationByHand.setDouble(2, ((WO_Excavation) wkodr).getEstSQFT());
+                        preparedStmtExcavationByHand.setDouble(3, ((WO_Excavation) wkodr).getEstDepth());
+                        preparedStmtExcavationByHand.setDouble(4, ((WO_Excavation) wkodr).getEstReqYards());
+                        preparedStmtExcavationByHand.setDouble(5, ((WO_Excavation) wkodr).getEstHours());
+                        preparedStmtExcavationByHand.setDouble(6, ((WO_Excavation) wkodr).getEstLabour());
+                        preparedStmtExcavationByHand.setDouble(7, ((WO_Excavation) wkodr).getEstTrucking());
+                        preparedStmtExcavationByHand.setDouble(8, ((WO_Excavation) wkodr).getEstDisposal());
+                        preparedStmtExcavationByHand.setDouble(9, ((WO_Excavation) wkodr).getActSQFT());
+                        preparedStmtExcavationByHand.setDouble(10, ((WO_Excavation) wkodr).getActDepth());
+                        preparedStmtExcavationByHand.setDouble(11, ((WO_Excavation) wkodr).getActReqYards());
+                        preparedStmtExcavationByHand.setDouble(12, ((WO_Excavation) wkodr).getActHours());
+                        preparedStmtExcavationByHand.setDouble(13, ((WO_Excavation) wkodr).getActLabour());
+                        preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
+                        preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
+                        preparedStmtExcavationByHand.execute();
+                    }
             }
+            else if(wkodr instanceof WO_Bed){
+                String query = "insert into BedWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        PreparedStatement preparedStmt = conn.prepareStatement(query);
+                        preparedStmt.setInt(1, wkodrNum);
+                        preparedStmt.setDouble(2, ((WO_Bed) wkodr).getEstSQFT());
+                        preparedStmt.setDouble(3, ((WO_Bed) wkodr).getEstDepth());
+                        preparedStmt.setDouble(4, ((WO_Bed) wkodr).getEstReqYards());
+                        preparedStmt.setDouble(5, ((WO_Bed) wkodr).getEstHours());
+                        preparedStmt.setDouble(6, ((WO_Bed) wkodr).getEstLabour());
+                        preparedStmt.setDouble(7, ((WO_Bed) wkodr).getAggCost());
+                        preparedStmt.setDouble(8, ((WO_Bed) wkodr).getActSQFT());
+                        preparedStmt.setDouble(9, ((WO_Bed) wkodr).getActDepth());
+                        preparedStmt.setDouble(10, ((WO_Bed) wkodr).getActReqYards());
+                        preparedStmt.setDouble(11, ((WO_Bed) wkodr).getActHours());
+                        preparedStmt.setDouble(12, ((WO_Bed) wkodr).getActLabour());
+                        preparedStmt.setString(13, ((WO_Bed) wkodr).getAggregate());
+                        preparedStmt.execute();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
