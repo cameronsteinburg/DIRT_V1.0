@@ -13,6 +13,7 @@ drop table excavationbyhandworkorder;
 drop table excavationbyskidworkorder;
 drop table bedworkorder;
 drop table sodworkorder;
+drop table topsoilworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
@@ -157,6 +158,22 @@ create table SodWorkOrder (workOrderNum mediumint unsigned not null,
     actManHours numeric(8,2),
     actInstallCost numeric(8,2),
     constraint fk_WorkOrderSod foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+#create workorder topsoil table
+create table TopSoilWorkOrder (workOrderNum mediumint unsigned not null,
+    estSQFT numeric(8,2),
+    estDepth numeric(8,2),
+    estReqYards numeric(8,2),
+    estSupplyCost numeric(8,2),
+    estManHours numeric(8,2),
+    estInstall numeric(8,2),
+    actSQFT numeric(8,2),
+    actDepth numeric(8,2),
+    actReqYards numeric(8,2),
+    actSupplyCost numeric(8,2),
+    actManHours numeric(8,2),
+    actInstall numeric(8,2),
+    constraint fk_WorkOrderTopSoil foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
