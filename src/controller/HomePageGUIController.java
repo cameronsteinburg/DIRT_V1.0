@@ -57,7 +57,7 @@ import services.DBServices;
  */
 public class HomePageGUIController extends Controller implements Initializable {
 
-    /*======================================Client actions======================================*/
+    /*==============================================Client actions==================================================*/
  /*============Outer Frame Client Dropdown===============*/
     private boolean editFlagClient = false; //indicatse user clicks edit client instead of new in outer gui, after picking from table
     private boolean viewClientProfileFlag = false; //indicates user has clicked view client in outer gui, after picking from table
@@ -73,9 +73,11 @@ public class HomePageGUIController extends Controller implements Initializable {
     private Button editClientBtn;
     @FXML
     private Button removeClientBtn;
-
+    @FXML
+    private Button editProjectBtn;
     private Client selectedClient;
 
+    private Project selectedProject;
     /**
      *
      * @param event
@@ -155,7 +157,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
 
-    /*============Inner Frame Client Dropdown===============*/
+    /*======================================Inner Frame Client Dropdown======================================*/
     @FXML
     private TableView<Client> clientTable;
     @FXML
@@ -245,7 +247,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
-    /*============Controls===============*/
+    /*================================================Controls==============================================*/
     /**
      *
      * @param event
@@ -292,11 +294,25 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
-    /*======================================Project Actions======================================*/
+    /*============================================Project Actions==============================================*/
  /*============Outer Frame Project Dropdown===============*/
     private boolean createProjectFlag = false;
     boolean newProjectFlag = false;
 
+    
+    /**
+     * 
+     */
+    private void getSelectedProject() {
+        
+        if (currentProjectsTable.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedProject = currentProjectsTable.getSelectionModel().getSelectedItem();
+
+            //Enable buttons once project is selected
+            editProjectBtn.setDisable(false);
+        }
+    }
     /**
      *
      * @throws IOException
@@ -331,7 +347,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         navigateTo("/ui/CreateProjectGUI_1.fxml");
     }
 
-    /*============Inner Frame Project Dropdown===============*/
+    /*=======================================Inner Frame Project Dropdown================================*/
     @FXML
     private TableView<Project> currentProjectsTable;
     @FXML
@@ -384,7 +400,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
 
-    /*======================================Labourer Actions======================================*/
+    /*==============================================Labourer Actions============================================*/
  /*============Outer Frame Labourer Dropdown===============*/
     private boolean editLabourerFlag = false;
     private boolean viewLabourerProfileFlag = false;
@@ -467,7 +483,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         navigateTo("/ui/ViewLabourerGUI.fxml");
     }
 
-    /*============Inner Frame Labourer Dropdown===============*/
+    /*======================================Inner Frame Labourer Dropdown=====================================*/
     @FXML
     private TableView<Labourer> labourerTable; //the table loading the attributes of the labourers
 
@@ -496,7 +512,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private TextField labSearchBox;
 
-    /*============Controls===============*/
+    /*===============================================Controls============================================*/
     /**
      * gets the labourer objects based on what user clicked in labourers table
      */
@@ -598,7 +614,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
-    /*======================================Menu Bar  Controls======================================*/
+    /*==============================================Menu Bar  Controls=============================================*/
     private boolean constantsFlag = false;
 
     /**
@@ -660,7 +676,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
 
-    /*======================================Home Page Controls======================================*/
+    /*============================================Home Page Controls===============================================*/
     private boolean tableFlag = false;
     
     public void setTableFlag(Boolean state){
@@ -881,18 +897,18 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
         
         try {
-            node = root.lookup("#projectsTable");
+            node = root.lookup("#currentProjectsTable");
         } catch (NullPointerException e) {
             //ignore
         }
 
         if (node != null) {
 
-            this.currentProjectsTable = (TableView<Project>) root.lookup("#projectsTable");
+            this.currentProjectsTable = (TableView<Project>) root.lookup("#currentProjectsTable");
             this.currentProjectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    //getSelectedProject(); todo
+                    getSelectedProject();
                 }
             });
         }
