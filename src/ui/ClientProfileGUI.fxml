@@ -18,13 +18,13 @@
       <URL value="@createclientgui.css" />
    </stylesheets>
    <children>
-      <TableView fx:id="ongoing" layoutX="637.0" layoutY="316.0" prefHeight="178.0" prefWidth="419.0" AnchorPane.leftAnchor="637.0">
+      <TableView fx:id="ongoing" layoutX="637.0" layoutY="316.0" prefHeight="178.0" prefWidth="419.0" AnchorPane.leftAnchor="637.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="316.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <TableView fx:id="completed" layoutX="637.0" layoutY="35.0" prefHeight="247.0" prefWidth="419.0" AnchorPane.leftAnchor="637.0">
+      <TableView fx:id="completed" layoutX="637.0" layoutY="35.0" prefHeight="247.0" prefWidth="419.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="35.0">
          <columns>
             <TableColumn prefWidth="75.0" text="C1" />
             <TableColumn prefWidth="75.0" text="C2" />
@@ -104,17 +104,17 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label layoutX="638.0" layoutY="7.0" text="Ongoing Projects Contracted:" AnchorPane.rightAnchor="192.0">
+      <Label layoutX="638.0" layoutY="7.0" text="Ongoing Projects Contracted:" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="7.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="256.0" text="Notes on Client:">
+      <Label layoutX="43.0" layoutY="256.0" text="Notes on Client:" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="43.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="640.0" layoutY="291.0" text="Previous Projects Contracted:" AnchorPane.rightAnchor="192.0">
+      <Label layoutX="640.0" layoutY="291.0" text="Previous Projects Contracted:" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="192.0">
          <font>
             <Font size="19.0" />
          </font>

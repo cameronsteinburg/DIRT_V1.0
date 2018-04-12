@@ -323,7 +323,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab style="-fx-background-color: #e9fcae;" text="Excavation">
+                      <Tab text="Excavation">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -497,560 +497,556 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab style="-fx-background-color: #e9fcae;" text="Walkway">
+                        <Tab text="Walkway">
                            <content>
-                              <AnchorPane prefWidth="200.0" style="-fx-background-color: #e9fcae;">
+                              <AnchorPane style="-fx-background-color: #e9fcae;">
                                  <children>
                                     <ScrollPane maxHeight="-Infinity" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" style="-fx-background-color: #e9fcae;">
+                                          <HBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" style="-fx-background-color: #e9fcae;">
                                              <children>
-                                                <HBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="1172.0" prefWidth="2180.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="-292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-552.0" AnchorPane.topAnchor="0.0">
+                                                <AnchorPane maxWidth="-Infinity" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <AnchorPane prefHeight="600.0" prefWidth="229.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                      <Label alignment="CENTER" text="Stone Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane layoutX="4.0" layoutY="359.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
                                                          <children>
-                                                            <Label alignment="CENTER" text="Stone Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Estimated Man Hours" wrapText="true">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field23" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <GridPane layoutX="3.0" layoutY="101.0" prefWidth="225.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
-                                                               <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                               </columnConstraints>
-                                                               <rowConstraints>
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                               </rowConstraints>
-                                                               <children>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Estimated Man Hours" wrapText="true">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field23" GridPane.columnIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="1">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label text="/ hour" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field24" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                  <Label prefHeight="60.0" prefWidth="39.0" text="/ 100 s.f." wrapText="true" GridPane.columnIndex="3" />
-                                                               </children>
-                                                            </GridPane>
-                                                         </children>
-                                                         <opaqueInsets>
-                                                            <Insets bottom="10.0" />
-                                                         </opaqueInsets>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <Label alignment="CENTER" text="Geotextile Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                               <font>
-                                                                  <Font size="18.0" />
-                                                               </font>
+                                                            <Label text="/ hour" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
                                                             </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                                                               <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                               </columnConstraints>
-                                                               <rowConstraints>
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                               </rowConstraints>
-                                                               <children>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Weed Barrier Cost" wrapText="true">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field25" GridPane.columnIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Fabric Staple Use" wrapText="true" GridPane.rowIndex="1">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="44.0" prefWidth="45.0" text="/ 1/5 s.f." GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field26" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                                  <Label text="/ s.f." GridPane.columnIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Fabric Staple Cost" wrapText="true" GridPane.rowIndex="2">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field27" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="/ staple" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Fabric Man Hours" wrapText="true" GridPane.rowIndex="3">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label text="/ 100 s.f." GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                                  <TextField fx:id="field28" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefWidth="105.0" text="Fabric Install Rate" wrapText="true" GridPane.rowIndex="4">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label text="/ hour" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                                                  <TextField fx:id="field29" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                               </children>
-                                                            </GridPane>
+                                                            <TextField fx:id="field24" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                            <Label prefHeight="60.0" prefWidth="39.0" text="/ 100 s.f." wrapText="true" GridPane.columnIndex="3" />
                                                          </children>
-                                                         <opaqueInsets>
-                                                            <Insets bottom="10.0" />
-                                                         </opaqueInsets>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-background-color: #e9fcae; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <Label alignment="CENTER" text="Walkway Base" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                               <font>
-                                                                  <Font size="18.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                                                               <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                               </columnConstraints>
-                                                               <rowConstraints>
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                               </rowConstraints>
-                                                               <children>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Crushed Base" wrapText="true">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field30" GridPane.columnIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Crushed Cost" wrapText="true" GridPane.rowIndex="1">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="44.0" prefWidth="32.0" text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field31" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                                  <Label prefHeight="50.0" prefWidth="55.0" text="/ s.f. /in /yard" wrapText="true" GridPane.columnIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field32" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                                  <TextField fx:id="field33" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                               </children>
-                                                            </GridPane>
-                                                         </children>
-                                                         <opaqueInsets>
-                                                            <Insets bottom="10.0" />
-                                                         </opaqueInsets>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <Label alignment="CENTER" text="Screed Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                               <font>
-                                                                  <Font size="18.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <GridPane layoutX="-9.0" layoutY="50.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                                                               <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                               </columnConstraints>
-                                                               <rowConstraints>
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                               </rowConstraints>
-                                                               <children>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Depth" wrapText="true">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field34" GridPane.columnIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Cost" wrapText="true" GridPane.rowIndex="1">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="44.0" prefWidth="32.0" text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field35" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                                  <Label prefHeight="50.0" prefWidth="55.0" text="s.f. / yard" wrapText="true" GridPane.columnIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field36" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                                  <TextField fx:id="field37" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                               </children>
-                                                            </GridPane>
-                                                         </children>
-                                                         <opaqueInsets>
-                                                            <Insets bottom="10.0" />
-                                                         </opaqueInsets>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <Label alignment="CENTER" text="Edge Restraint" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                               <font>
-                                                                  <Font size="18.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                                                               <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                               </columnConstraints>
-                                                               <rowConstraints>
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                               </rowConstraints>
-                                                               <children>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Cost" wrapText="true">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field38" GridPane.columnIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Restraint Nails" wrapText="true" GridPane.rowIndex="1">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="44.0" prefWidth="32.0" text="/ nail" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field39" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                                  <Label prefHeight="50.0" prefWidth="55.0" text="/ 8 ft" wrapText="true" GridPane.columnIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field40" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                                  <TextField fx:id="field41" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                               </children>
-                                                            </GridPane>
-                                                         </children>
-                                                         <opaqueInsets>
-                                                            <Insets bottom="10.0" />
-                                                         </opaqueInsets>
-                                                      </AnchorPane>
-                                                      <AnchorPane prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <Label alignment="CENTER" text="Jointing Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                               <font>
-                                                                  <Font size="18.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <GridPane layoutX="2.0" layoutY="101.0" maxHeight="1.7976931348623157E308" prefWidth="226.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                                                               <columnConstraints>
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
-                                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                                                               </columnConstraints>
-                                                               <rowConstraints>
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                                  <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-                                                               </rowConstraints>
-                                                               <children>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Quantity" wrapText="true">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field42" GridPane.columnIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Cost" wrapText="true" GridPane.rowIndex="1">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="44.0" prefWidth="32.0" text="/ kg" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field43" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                                  <Label prefHeight="50.0" prefWidth="55.0" text="kg / sf @ 1/4 inch" wrapText="true" GridPane.columnIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <TextField fx:id="field45" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="/ kg" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </Label>
-                                                                  <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                                  <TextField fx:id="field44" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                                     <GridPane.margin>
-                                                                        <Insets left="5.0" right="5.0" />
-                                                                     </GridPane.margin>
-                                                                  </TextField>
-                                                                  <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                               </children>
-                                                            </GridPane>
-                                                         </children>
-                                                         <opaqueInsets>
-                                                            <Insets bottom="10.0" />
-                                                         </opaqueInsets>
-                                                      </AnchorPane>
+                                                      </GridPane>
                                                    </children>
-                                                </HBox>
+                                                   <opaqueInsets>
+                                                      <Insets bottom="10.0" />
+                                                   </opaqueInsets>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" text="Geotextile Walkway" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane layoutX="2.0" layoutY="101.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Weed Barrier Cost" wrapText="true">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field25" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Fabric Staple Use" wrapText="true" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label prefHeight="44.0" prefWidth="45.0" text="/ 1/5 s.f." GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field26" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                            <Label text="/ s.f." GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Fabric Staple Cost" wrapText="true" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field27" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="/ staple" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Fabric Man Hours" wrapText="true" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="/ 100 s.f." GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                            <TextField fx:id="field28" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefWidth="105.0" text="Fabric Install Rate" wrapText="true" GridPane.rowIndex="4">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="/ hour" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                            <TextField fx:id="field29" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets bottom="10.0" />
+                                                   </opaqueInsets>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-color: black; -fx-background-color: #e9fcae; -fx-border-width: 0 1 0 1;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" text="Walkway Base" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane layoutX="2.0" layoutY="101.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Crushed Base" wrapText="true">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field30" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Crushed Cost" wrapText="true" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label prefHeight="44.0" prefWidth="32.0" text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field31" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                            <Label prefHeight="50.0" prefWidth="55.0" text="/ s.f. /in /yard" wrapText="true" GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field32" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                            <TextField fx:id="field33" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets bottom="10.0" />
+                                                   </opaqueInsets>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" text="Screed Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane layoutX="-9.0" layoutY="50.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Depth" wrapText="true">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field34" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Cost" wrapText="true" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label prefHeight="44.0" prefWidth="32.0" text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field35" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                            <Label prefHeight="50.0" prefWidth="55.0" text="s.f. / yard" wrapText="true" GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field36" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                            <TextField fx:id="field37" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets bottom="10.0" />
+                                                   </opaqueInsets>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" text="Edge Restraint" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane layoutX="2.0" layoutY="101.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Cost" wrapText="true">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field38" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Restraint Nails" wrapText="true" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label prefHeight="44.0" prefWidth="32.0" text="/ nail" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field39" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                            <Label prefHeight="50.0" prefWidth="55.0" text="/ 8 ft" wrapText="true" GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field40" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="/ yard" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                            <TextField fx:id="field41" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets bottom="10.0" />
+                                                   </opaqueInsets>
+                                                </AnchorPane>
+                                                <AnchorPane maxWidth="-Infinity" prefHeight="600.0" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER" text="Jointing Sand" underline="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane layoutX="2.0" layoutY="101.0" style="-fx-background-color: #e9fcae;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="0.0" prefWidth="62.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Quantity" wrapText="true">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field42" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Cost" wrapText="true" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label prefHeight="44.0" prefWidth="32.0" text="/ kg" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field43" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                            <Label prefHeight="50.0" prefWidth="55.0" text="kg / sf @ 1/4 inch" wrapText="true" GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Man Hours" wrapText="true" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField fx:id="field45" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="/ kg" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="105.0" text="Install Rate" wrapText="true" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="/ hours" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                            <TextField fx:id="field44" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="5.0" right="5.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <Label text="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets bottom="10.0" />
+                                                   </opaqueInsets>
+                                                </AnchorPane>
                                              </children>
-                                          </AnchorPane>
+                                          </HBox>
                                        </content>
                                     </ScrollPane>
                                  </children></AnchorPane>
