@@ -139,21 +139,18 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                 }
 
             } else if (allItems.get(i).contains("Sod")) {
-                
+
                 //todo elements.add(addSod());
-                
             } else if (allItems.get(i).contains("Bed")) {
 
                 elements.add(addBed());
 
             } else if (allItems.get(i).contains("Irrigation")) {
-                
+
                 //todo elements.add(addIrrigation());
-
             } else if (allItems.get(i).contains("Barrier")) {
-                
-                //todo elements.add(addBarrier());
 
+                //todo elements.add(addBarrier());
             } else if (allItems.get(i).contains("Wall")) {
 
             } else if (allItems.get(i).contains("Custom")) {
@@ -163,8 +160,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     private ArrayList<Control> addBed() {
 
@@ -180,14 +177,14 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         bed.add(label);
 
         ObservableList<String> options = FXCollections.observableArrayList(
-                        "Crushed Rock",
-                        "Pea Rock",
-                        "River Rock",
-                        "Western Red Cedar Mulch",
-                        "Premium Top Soil",
-                        "Crusher Dust",
-                        "Red Shale",
-                        "Sod /10 sq.ft");
+                "Crushed Rock",
+                "Pea Rock",
+                "River Rock",
+                "Western Red Cedar Mulch",
+                "Premium Top Soil",
+                "Crusher Dust",
+                "Red Shale",
+                "Sod /10 sq.ft");
 
         ComboBox aggs = new ComboBox(options);
         aggs.setMaxHeight(10);
@@ -223,15 +220,37 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setPadding(new Insets(0, 0, 0, 100));
         bed.add(label);
         bed.add(addField(false));
-        
+
         bed.add(new Label(""));
         bed.add(new Label(""));
-        
+
         double labourRate = dbs.bed_LabourPerHour();
         double hoursPeryard = dbs.bed_ManHoursPerYard();
-        
-        //String aggChosen = "" + aggs.getValue();
 
+        //String aggChosen = "" + aggs.getValue();
+        for (int i = 0; i < bed.size(); i++) {
+
+            String currentEl = bed.get(i).getId();
+
+            if (currentEl == null) {
+                currentEl = "-1";
+            }
+
+            if (currentEl.equals("0") || currentEl.equals("1")) {
+
+                TextField sqft = (TextField) bed.get(4);
+
+                int place;
+
+                if (currentEl.equals("0")) {
+                    place = 2;
+                } else {
+                    place = 4;
+                }
+
+            }
+        }
+        
         fieldCount = 0;
         return bed;
     }
