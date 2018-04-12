@@ -313,7 +313,7 @@ public class HomePageGUIController extends Controller implements Initializable {
      * @param event
      */
     @FXML
-    private void editProjectAction() throws IOException {
+    private void editProjectAction(ActionEvent event) throws IOException {
         
         navigateTo("/ui/EditProjectGUI.fxml");
     }
