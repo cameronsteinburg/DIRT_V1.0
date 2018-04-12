@@ -188,6 +188,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                 "Sod /10 sq.ft");
 
         ComboBox aggs = new ComboBox(options);
+
         aggs.setMaxHeight(10);
         aggs.setMaxWidth(175);
 
@@ -220,7 +221,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         label.setPadding(new Insets(0, 0, 0, 100));
         bed.add(label);
-        bed.add(addField(false));
+        TextField totalField = new TextField("0");
+        totalField.setId(fieldCount + "");
+        totalField.setMaxWidth(100);
+        totalField.setMinWidth(100);
+        totalField.setAlignment(Pos.CENTER);
+        totalField.setEditable(false);
+        bed.add(totalField);
 
         double labourRate = dbs.bed_LabourPerHour();
         double hoursPeryard = dbs.bed_ManHoursPerYard();
@@ -316,9 +323,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double aggMatCost = reqyardsdbl * aggDbl;
                         aggCost.setText(f.format(aggMatCost));
 
-                        //TextField serTotal = (TextField) hand.get
-                  
-                        //botCheck();
+                        TextField serTotal = (TextField) bed.get(17);
+                        Double serTotalDbl = aggMatCost + labourCostDouble;
+                        serTotal.setText(f.format(serTotalDbl));
+
+                        botCheck();
                     }
                 });
 
@@ -337,7 +346,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         WO_Excavation newHand = new WO_Excavation('h', true);
         orders.add(newHand);
-        
+
         int pointTo = orders.size() - 1;
 
         ArrayList<Control> hand = new ArrayList();
@@ -378,7 +387,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         label.setPadding(new Insets(0, 0, 0, 100));
         hand.add(label);
-        hand.add(addField(false));
+        TextField totalField = new TextField("0");
+        totalField.setId(fieldCount + "");
+        totalField.setMaxWidth(100);
+        totalField.setMinWidth(100);
+        totalField.setAlignment(Pos.CENTER);
+        totalField.setEditable(false);
+        hand.add(totalField);
 
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
         double labourRate = dbs.excavation_ManHoursByHandPerHours();
@@ -447,7 +462,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
                         trucking.setText(f.format(truckingDbl));
 
-                        //update disposl
+                        //update disposal
                         TextField disp = (TextField) hand.get(15);
                         Double disDbl = (reqyardsdbl * disposalRate);
                         disp.setText(f.format(disDbl));
@@ -456,30 +471,23 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
                         serTotal.setText(f.format(serTotalDbl));
 
-                        
-                        WO_Excavation newnew = new WO_Excavation('h', true);
-                        
-                       // orders.remove(orders.get(pointTo));
-                        
-                        newnew.setEstDepth(depthdbl);
-                        newnew.setEstSQFT(sqftdbl);
-                        newnew.setEstReqYards(reqyardsdbl);
-                        newnew.setEstHours(estimatedManHourDbl);
-                        newnew.setEstLabour(labourCostDouble);
-                        newnew.setEstTrucking(truckingDbl);
-                        newnew.setEstDisposal(disDbl);
-                        newnew.setQuotedTotal(serTotalDbl);
+                        newHand.setEstDepth(depthdbl);
+                        newHand.setEstSQFT(sqftdbl);
+                        newHand.setEstReqYards(reqyardsdbl);
+                        newHand.setEstHours(estimatedManHourDbl);
+                        newHand.setEstLabour(labourCostDouble);
+                        newHand.setEstTrucking(truckingDbl);
+                        newHand.setEstDisposal(disDbl);
+                        newHand.setQuotedTotal(serTotalDbl);
 
-                        newnew.setActDepth(depthdbl);
-                        newnew.setActSQFT(sqftdbl);
-                        newnew.setActReqYards(reqyardsdbl);
-                        newnew.setActLabour(labourCostDouble);
-                        newnew.setActHours(estimatedManHourDbl);
-                        newnew.setActTrucking(truckingDbl);
-                        newnew.setActDisposal(disDbl);
-                        newnew.setActualTotal(serTotalDbl);
-                        
-                       // orders.add(pointTo, newnew);
+                        newHand.setActDepth(depthdbl);
+                        newHand.setActSQFT(sqftdbl);
+                        newHand.setActReqYards(reqyardsdbl);
+                        newHand.setActLabour(labourCostDouble);
+                        newHand.setActHours(estimatedManHourDbl);
+                        newHand.setActTrucking(truckingDbl);
+                        newHand.setActDisposal(disDbl);
+                        newHand.setActualTotal(serTotalDbl);
 
                         botCheck();
                     }
@@ -538,7 +546,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         label.setPadding(new Insets(0, 0, 0, 100));
         skid.add(label);
-        skid.add(addField(false));
+        TextField totalField = new TextField("0");
+        totalField.setId(fieldCount + "");
+        totalField.setMaxWidth(100);
+        totalField.setMinWidth(100);
+        totalField.setAlignment(Pos.CENTER);
+        totalField.setEditable(false);
+        skid.add(totalField);
 
         double labourhours = dbs.excavation_ManHoursBySkidPerYards();
         double labourRate = dbs.excavation_ManHoursBySkidPerHours();
@@ -642,7 +656,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     private TextField addField(boolean editable) {
 
-        TextField field = new TextField("00.00");
+        TextField field = new TextField("0");
         field.setMaxWidth(60);
         field.setMinWidth(60);
         field.setId(fieldCount + "");
@@ -668,18 +682,16 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      *
      */
     private void botCheck() {
-        
+
         double ttl = 0;
 
         for (int i = 0; i < orders.size(); i++) {
 
             ttl += orders.get(i).getQuotedTotal();
         }
-        
+
         projectTotal = ttl;
 
-        System.out.println("1: " + projectTotal);
-        System.out.println("2: " + taxMultiplier);
         bottomLine.setText(f.format(projectTotal + (taxMultiplier * projectTotal)));
 
         double eh = -1;

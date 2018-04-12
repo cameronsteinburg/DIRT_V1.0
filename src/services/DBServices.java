@@ -229,11 +229,11 @@ public class DBServices {
         return (double) Main.jdbcc.getConstant("excavation", "labour cost by skid /hours").get(0);
     }
     
-    public double bed_LabourPerHour(){
+    public double bed_ManHoursPerYard(){
         return (double) Main.jdbcc.getConstant("bed","hours /yards").get(0);
     }
     
-    public double bed_ManHoursPerYard(){
+    public double bed_LabourPerHour(){
         return (double) Main.jdbcc.getConstant("bed","install /hours").get(0);
     }
 
