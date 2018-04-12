@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.ArrayList;
 
 /**
  * This class represents the work order entity and communicates with the persistence layer
@@ -65,6 +64,4 @@ public class WorkOrder {
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
-
-   
 }
