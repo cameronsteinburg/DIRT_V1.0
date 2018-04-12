@@ -6,6 +6,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,19 +17,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" stylesheets="@createclientgui.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.EditProjectGUIController">
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" style="-fx-background-color: #e9fcae;" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditProjectGUIController">
    <children>
       <BorderPane prefHeight="521.0" prefWidth="1078.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Project Name Place Holder" underline="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <Label text="Project Name Place Holder" underline="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Button layoutX="993.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="137.0" styleClass="grn-button" text="Project Completed" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Button layoutX="993.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="137.0" styleClass="grn-button" text="Project Completed" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="930.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
          </top>
@@ -90,15 +91,14 @@
                         </DatePicker>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="315.0" layoutY="220.0" prefHeight="160.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="205.0">
+                  <GridPane layoutX="315.0" layoutY="220.0" prefHeight="81.0" prefWidth="210.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="205.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="137.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints vgrow="SOMETIMES" />
-                      <RowConstraints vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Client: ">
@@ -132,6 +132,12 @@
                         <TextArea prefHeight="186.0" prefWidth="353.0" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
+                  <TableView layoutX="320.0" layoutY="286.0" prefHeight="75.0" prefWidth="210.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="286.0">
+                    <columns>
+                      <TableColumn prefWidth="132.0" text="Labours Involved" />
+                      <TableColumn prefWidth="77.0" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
          </center>

@@ -503,7 +503,7 @@
                                  <children>
                                     <ScrollPane fitToHeight="true" maxHeight="-Infinity" style="-fx-border-color: grey; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
-                                          <HBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" style="-fx-background-color: #e9fcae;">
+                                          <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" style="-fx-background-color: #e9fcae;">
                                              <children>
                                                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" style="-fx-border-color: black; -fx-border-width: 0 1 0 1; -fx-background-color: #e9fcae;" HBox.hgrow="ALWAYS">
                                                    <children>
