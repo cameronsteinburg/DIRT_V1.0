@@ -87,6 +87,10 @@ public class Project {
     public void setCompleted(boolean val){
         this.completed = val;
     }
+    
+    public boolean getCompleted(){
+        return this.completed;
+    }
 
     public String getClientName() {
         return this.clientName;

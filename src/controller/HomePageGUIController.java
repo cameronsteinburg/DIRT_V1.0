@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,6 +32,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -73,8 +77,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private Button editClientBtn;
     @FXML
     private Button removeClientBtn;
-    @FXML
-    private Button editProjectBtn;
+
     private Client selectedClient;
 
     private Project selectedProject;
@@ -301,6 +304,11 @@ public class HomePageGUIController extends Controller implements Initializable {
     boolean newProjectFlag = false;
     private boolean editProjectFlag = false;
 
+    @FXML
+    private Button editProjectBtn;
+    @FXML
+    private Button removeProjectBtn;
+
     /**
      *
      * @throws IOException
@@ -340,7 +348,8 @@ public class HomePageGUIController extends Controller implements Initializable {
      *
      * @param event
      */
-    private void removeProjectAction(ActionEvent event) {
+    @FXML
+    private void removeProjectAction(ActionEvent event) throws IOException {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Project Confirmation");
@@ -355,8 +364,10 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             DBServices dbs = new DBServices();
 
-            //todo + @matt
-            //dbs.deleteProject(selectedProject); 
+            dbs.deleteProject(selectedProject);
+
+            setMessage("Project Successfully Removed", this.errorMessage);
+            navigateTo("/ui/OngoingProjectsGUI.fxml");
         }
 
     }
@@ -441,8 +452,8 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
             }
 
-            //TODO: Implement
-            //updateProjectTable(matches);
+        
+            updateCompleteProjectTable(matches);
         }
     }
 
@@ -522,6 +533,29 @@ public class HomePageGUIController extends Controller implements Initializable {
             }
         }
     }
+    
+    public void updateCompleteProjectTable(ObservableList<Project> newList) {
+
+        if (comProjNamecol != null) {
+
+            currProjNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+            currProjClientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
+            currProjStartCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+            currProjEndCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+            currProjDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            DBServices dbs = new DBServices();
+
+            if (newList != null) {
+
+                currentProjectsTable.setItems(newList);
+
+            } else {
+
+                this.currProjList = dbs.getAllProjectsForTable();
+                currentProjectsTable.setItems(currProjList);
+            }
+        }
+    }
 
     /*============Controls===============*/
     /**
@@ -535,6 +569,8 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             //Enable buttons once project is selected
             editProjectBtn.setDisable(false);
+            removeProjectBtn.setDisable(false);
+
         }
     }
 
@@ -891,16 +927,37 @@ public class HomePageGUIController extends Controller implements Initializable {
             clgc.setErrorMessage(errorMessage);
             editLabourerFlag = false;
         }
-        
-        if(editProjectFlag == true){
-            
-            EditProjectGUIController epgc = loader.getController();
-            epgc.setSelected(selectedProject);
-        
-        }
-        
-        //if (editWorkOrdersFlag == true{} todo
 
+        if (editProjectFlag == true) {
+
+            EditProjectGUIController epgc = loader.getController();
+
+            if (selectedProject.getCompleted() == false) {
+                epgc.setCompletedBtn("Set Project Completed");
+            } else {
+                epgc.setCompletedBtn("Set Project Incomplete");
+            }
+
+            epgc.setSelected(selectedProject);
+            epgc.setAddressField(selectedProject.getSiteAddress());
+            // epgc.setClientDropdown(clientDropdown);
+            epgc.setNameField(selectedProject.getProjectName());
+            epgc.setErrorMessage(errorMessage);
+
+//           Date start = selectedProject.getStartDate();
+//           LocalDate ld = LocalDate.(start.toInstant(), ZoneId.systemDefault());
+//           epgc.getStartField().setValue(ld);
+//           
+//           Date end = selectedProject.getEndDate();
+//           LocalDate ld2 = end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
+//           epgc.getStartField().setValue(ld2);
+            editProjectFlag = false;
+        }
+
+        //if (editWorkOrdersFlag == true{} todo
+        
+        
+        
         //if the user is viewing the profile page of a labourer
         if (viewLabourerProfileFlag == true) {
 
@@ -1083,7 +1140,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         removeLabourerBtn.setDisable(true);
 
         editProjectBtn.setDisable(true);
-        //todo remove project button
+        removeProjectBtn.setDisable(true);
     }
 
     /**
