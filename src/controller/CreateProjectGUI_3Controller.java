@@ -41,7 +41,7 @@ import services.DBServices;
  * @author 734972
  */
 public class CreateProjectGUI_3Controller extends Controller implements Initializable {
-
+    
     public ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
 
     @FXML
@@ -50,17 +50,17 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private Label bottomLine;
     @FXML
     private Button saveBtn;
-
+    
     private Label errorMessage;
     private static BorderPane outerPane;
-
+    
     private static int fieldCount = 0;
     private double projectTotal = 0;
     private ArrayList<WorkOrder> orders = new ArrayList();
     private DecimalFormat f = new DecimalFormat("#.00");
     private final DBServices dbs = new DBServices();
     private double taxMultiplier = dbs.tax_GST() + dbs.tax_PST();
-
+    
     private ObservableList<String> allItems;
     private Project inProgress;
 
@@ -85,23 +85,23 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     @FXML
     private void saveBtnAction(ActionEvent event) {
-
+        
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Save New Project?");
         Optional<ButtonType> result = alert.showAndWait();
-
+        
         if (result.get() == ButtonType.OK) {
-
+            
             inProgress.setWorkOrders(orders);
             inProgress.setQuote(projectTotal);
             inProgress.setActualCost(projectTotal);
             inProgress.setCompleted(false);
             inProgress.setClient(null);
-
+            
             dbs.persistProject(inProgress);
-
+            
             setMessage("Project Successfully Created!", errorMessage);
-
+            
             navigateTo("/ui/EditProjectGUI.fxml", this.outerPane);
         }
     }
@@ -112,11 +112,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     @FXML
     private void cancelBtnAction(ActionEvent event) {
-
+        
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Cancel Entire Project Creation?");
         Optional<ButtonType> result = alert.showAndWait();
-
+        
         if (result.get() == ButtonType.OK) {
             navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
@@ -126,28 +126,28 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      *
      */
     private void addToList() {
-
+        
         for (int i = 0; i < allItems.size(); i++) {
-
+            
             if (allItems.get(i).contains("Excavation")) {
-
+                
                 if (allItems.get(i).contains("Hand")) {
-
+                    
                     elements.add(addByHand());
-
+                    
                 } else if (allItems.get(i).contains("Skid")) {
-
+                    
                     elements.add(addBySkid());
                 }
-
+                
             } else if (allItems.get(i).contains("Sod")) {
-
+                
                 elements.add(addSod());
-
+                
             } else if (allItems.get(i).contains("Bed")) {
-
+                
                 elements.add(addBed());
-
+                
             } else if (allItems.get(i).contains("Irrigation")) {
 
                 //todo elements.add(addIrrigation());
@@ -156,28 +156,114 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                 //todo elements.add(addBarrier());
             } else if (allItems.get(i).contains("Wall")) {
 
+                //todo elements.add(addRetWall());
             } else if (allItems.get(i).contains("Custom")) {
 
+                //todo elements.add(addCustom());
             }
         }
     }
-
+    
     private ArrayList<Control> addSod() {
-
+        
         WO_Sod newSod = new WO_Sod(true);
         orders.add(newSod);
-
+        
         ArrayList<Control> sod = new ArrayList();
-
+        
         Label label = new Label("Sod:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 3, 0, 0));
         label.setFont(new Font(16));
         sod.add(label);
-
+        
         sod.add(addLabel("SQ.FT"));
         sod.add(addField(true));
-
+        
+        label = new Label("    | ");
+        label.setFont(new Font(20));
+        sod.add(label);
+        
+        sod.add(addLabel("Supply Cost"));
+        sod.add(addField(false));
+        
+        sod.add(addLabel("Est. Man Hours"));
+        sod.add(addField(false));
+        
+        sod.add(addLabel("Labour Cost"));
+        sod.add(addField(false));
+        
+        sod.add(addLabel(""));
+        sod.add(addLabel(""));
+        sod.add(addLabel(""));
+        sod.add(addLabel(""));
+        sod.add(addLabel(""));
+        sod.add(addLabel(""));
+        
+        addServTotal(sod);
+        
+        double supplyPerYard = dbs.sod_SupplyPerYard();
+        double estManPer10 = dbs.sod_ManHoursPer10SQFT();
+        double labourPerHours = dbs.sod_InstallRatePerHours();
+        
+        for (int i = 0; i < sod.size(); i++) {
+            
+            String currentEl = sod.get(i).getId();
+            
+            if (currentEl == null) {
+                currentEl = "-1";
+            }
+            
+            if (currentEl.equals("0")) {
+                
+                sod.get(2).setOnKeyReleased(new EventHandler<KeyEvent>() {
+                    @Override
+                    public void handle(KeyEvent event) {
+                        
+                        double sqftDbl;
+                        TextField sqft = (TextField) sod.get(2);
+                        
+                        try {
+                            sqftDbl = Double.parseDouble(sqft.getText());
+                        } catch (Exception e) {
+                            sqftDbl = 0;
+                        }
+                        
+                        TextField supplyField = (TextField) sod.get(5);
+                        Double supplyCostDbl = supplyPerYard * sqftDbl;
+                        supplyField.setText(f.format(supplyCostDbl));
+                        
+                        TextField hoursField = (TextField) sod.get(7);
+                        Double hoursDbl = (sqftDbl/10) * estManPer10;
+                        hoursField.setText(f.format(hoursDbl));
+                        
+                        TextField labourCostField = (TextField) sod.get(9);
+                        Double labDbl = labourPerHours * hoursDbl;
+                        labourCostField.setText(f.format(labDbl));
+                        
+                        TextField totField = (TextField) sod.get(sod.size()-1);
+                        Double totDbl = labDbl + supplyCostDbl;
+                        totField.setText(f.format(totDbl));
+                        
+                        newSod.setEstSQFT(sqftDbl);
+                        newSod.setEstSupplyCost(supplyCostDbl);
+                        newSod.setEstManHours(hoursDbl);
+                        newSod.setEstInstallCost(labDbl);
+                        newSod.setQuotedTotal(totDbl);
+                        
+                        newSod.setActSQFT(sqftDbl);
+                        newSod.setActSupplyCost(supplyCostDbl);
+                        newSod.setActManHours(hoursDbl);
+                        newSod.setActInstallCost(labDbl);
+                        newSod.setActualTotal(totDbl);
+                        
+                        botCheck();
+                    }
+                });
+            }
+        }
+        
+        fieldCount = 0;
         return sod;
     }
 
@@ -186,18 +272,18 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      * @return
      */
     private ArrayList<Control> addBed() {
-
+        
         WO_Bed newBed = new WO_Bed(true);
         orders.add(newBed);
-
+        
         ArrayList<Control> bed = new ArrayList();
-
+        
         Label label = new Label("Aggregate Bed:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         bed.add(label);
-
+        
         bed.add(addLabel("Material"));
         ObservableList<String> options = FXCollections.observableArrayList(
                 "Crushed Rock",
@@ -208,87 +294,76 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                 "Crusher Dust",
                 "Red Shale",
                 "Sod /10 sq.ft");
-
+        
         ComboBox aggs = new ComboBox(options);
-
-        aggs.setMaxHeight(10);
-        aggs.setMaxWidth(175);
-
+        
+        //aggs.setMaxHeight(10);
+        aggs.setMaxWidth(100);
+        
         bed.add(aggs);
-
+        
         bed.add(addLabel("SQ.FT"));
         bed.add(addField(true));
-
+        
         bed.add(addLabel("Depth In Inches"));
         bed.add(addField(true));
-
+        
         label = new Label("    | ");
         label.setFont(new Font(20));
         bed.add(label);
-
+        
         bed.add(addLabel("Required Yards"));
         bed.add(addField(false));
-
+        
         bed.add(addLabel("Est. Man Hours"));
         bed.add(this.addField(false));
-
+        
         bed.add(addLabel("Labour Cost"));
         bed.add(addField(false));
-
+        
         bed.add(addLabel("Aggregate Cost"));
         bed.add(this.addField(false));
-
-        label = addLabel("Service Total");
-        label.setUnderline(true);
-        label.setFont(new Font(16));
-        label.setPadding(new Insets(0, 0, 0, 100));
-        bed.add(label);
-        TextField totalField = new TextField("0");
-        totalField.setId(fieldCount + "");
-        totalField.setMaxWidth(100);
-        totalField.setMinWidth(100);
-        totalField.setAlignment(Pos.CENTER);
-        totalField.setEditable(false);
-        bed.add(totalField);
-
+        
+        addServTotal(bed);
+        
         double labourRate = dbs.bed_LabourPerHour();
         double hoursPeryard = dbs.bed_ManHoursPerYard();
-
+        
         for (int i = 0; i < bed.size(); i++) {
-
+            
             String currentEl = bed.get(i).getId();
-
+            
             if (currentEl == null) {
                 currentEl = "-1";
             }
-
+            
             if (currentEl.equals("0") || currentEl.equals("1")) {
-
+                
                 int place;
-
+                
                 if (currentEl.equals("0")) {
                     place = 4;
                 } else {
                     place = 6;
                 }
-
+                
                 bed.get(place).setOnKeyReleased(new EventHandler<KeyEvent>() {
-
+                    
                     @Override
                     public void handle(KeyEvent event) {
-
+                        
                         double sqftdbl;
                         double depthdbl;
-
+                        
                         TextField sqft = (TextField) bed.get(4);
                         TextField depth = (TextField) bed.get(6);
-
+                        
                         try {
                             sqftdbl = Double.parseDouble(sqft.getText());
                         } catch (Exception e) {
                             sqftdbl = 0;
                         }
-
+                        
                         try {
                             depthdbl = Double.parseDouble(depth.getText());
                         } catch (Exception e) {
@@ -299,75 +374,75 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         TextField reqyards = (TextField) bed.get(9);
                         Double reqyardsdbl = (depthdbl / 12.0) * (sqftdbl / 27.0);
                         reqyards.setText(f.format(reqyardsdbl));
-
+                        
                         TextField estManHours = (TextField) bed.get(11);
                         Double manHoursDbl = hoursPeryard * reqyardsdbl;
                         estManHours.setText(f.format(manHoursDbl));
-
+                        
                         TextField labourCost = (TextField) bed.get(13);
                         Double labourCostDouble = (manHoursDbl * labourRate);
                         labourCost.setText(f.format(labourCostDouble));
-
+                        
                         TextField aggCost = (TextField) bed.get(15);
                         String aggChosen = "" + aggs.getValue();
                         Double aggDbl = 0.0;
-
+                        
                         if (aggChosen.contains("Crushed")) {
-
+                            
                             aggDbl = dbs.materials_CrushedRockUnit();
-
+                            
                         } else if (aggChosen.contains("Pea")) {
-
+                            
                             aggDbl = dbs.materials_PeaRockUnit();
-
+                            
                         } else if (aggChosen.contains("River")) {
-
+                            
                             aggDbl = dbs.materials_RiverRockUnit();
-
+                            
                         } else if (aggChosen.contains("Mulch")) {
-
+                            
                             aggDbl = dbs.materials_MulchWesternRedCedarUnit();
-
+                            
                         } else if (aggChosen.contains("Dust")) {
-
+                            
                             aggDbl = dbs.materials_CrusherDustUnit();
-
+                            
                         } else if (aggChosen.contains("Shale")) {
-
+                            
                             aggDbl = dbs.materials_RedShaleUnit();
-
+                            
                         } else if (aggChosen.contains("Sod")) {
-
+                            
                             aggDbl = dbs.materials_TopSoilPremiumMixUnit();
-
+                            
                         }
-
+                        
                         Double aggMatCost = reqyardsdbl * aggDbl;
                         aggCost.setText(f.format(aggMatCost));
-
+                        
                         TextField serTotal = (TextField) bed.get(17);
                         Double serTotalDbl = aggMatCost + labourCostDouble;
                         serTotal.setText(f.format(serTotalDbl));
-
+                        
                         newBed.setEstSQFT(sqftdbl);
                         newBed.setEstHours(manHoursDbl);
                         newBed.setEstLabour(labourCostDouble);
                         newBed.setEstReqYards(reqyardsdbl);
                         newBed.setQuotedTotal(serTotalDbl);
-
+                        
                         newBed.setActSQFT(sqftdbl);
                         newBed.setActHours(manHoursDbl);
                         newBed.setActLabour(labourCostDouble);
                         newBed.setActReqYards(reqyardsdbl);
                         newBed.setActualTotal(serTotalDbl);
-
+                        
                         botCheck();
                     }
                 });
-
+                
             }
         }
-
+        
         fieldCount = 0;
         return bed;
     }
@@ -377,99 +452,88 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      * @return
      */
     private ArrayList<Control> addByHand() {
-
+        
         WO_Excavation newHand = new WO_Excavation('h', true);
         orders.add(newHand);
-
+        
         int pointTo = orders.size() - 1;
-
+        
         ArrayList<Control> hand = new ArrayList();
-
+        
         Label label = new Label("Excavation By Hand:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         hand.add(label);
-
+        
         hand.add(addLabel("SQ.FT"));
         hand.add(addField(true));
-
+        
         hand.add(addLabel("Depth In Inches"));
         hand.add(addField(true));
-
+        
         label = new Label("   |");
         label.setFont(new Font(20));
         hand.add(label);
-
+        
         hand.add(addLabel("Required Yards"));
         hand.add(addField(false));
-
+        
         hand.add(addLabel("Est. Man Hours"));
         hand.add(this.addField(false));
-
+        
         hand.add(addLabel("Excavation Labour Cost"));
         hand.add(addField(false));
-
+        
         hand.add(addLabel("Trucking Fees"));
         hand.add(addField(false));
-
+        
         hand.add(addLabel("Disposal Fees"));
         hand.add(addField(false));
-
-        label = addLabel("Service Total");
-        label.setUnderline(true);
-        label.setFont(new Font(16));
-        label.setPadding(new Insets(0, 0, 0, 100));
-        hand.add(label);
-        TextField totalField = new TextField("0");
-        totalField.setId(fieldCount + "");
-        totalField.setMaxWidth(100);
-        totalField.setMinWidth(100);
-        totalField.setAlignment(Pos.CENTER);
-        totalField.setEditable(false);
-        hand.add(totalField);
-
+        
+        addServTotal(hand);
+        
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
         double labourRate = dbs.excavation_ManHoursByHandPerHours();
         double truckingRate = dbs.excavation_TruckingFeeByHand();
         double disposalRate = dbs.excavation_DisposalFee();
-
+        
         for (int i = 0; i < hand.size(); i++) {
-
+            
             String currentEl = hand.get(i).getId();
-
+            
             if (currentEl == null) {
                 currentEl = "-1";
             }
-
+            
             if (currentEl.equals("0") || currentEl.equals("1")) {
-
+                
                 int place;
-
+                
                 if (currentEl.equals("0")) {
                     place = 2;
                 } else {
                     place = 4;
                 }
-
+                
                 hand.get(place).setOnKeyReleased(new EventHandler<KeyEvent>() {
-
+                    
                     @Override
                     public void handle(KeyEvent event) {
 
                         //update required yards
                         double sqftdbl;
                         double depthdbl;
-
+                        
                         TextField sqft = (TextField) hand.get(2);
                         TextField depth = (TextField) hand.get(4);
-
+                        
                         try {
                             sqftdbl = Double.parseDouble(sqft.getText());
                         } catch (Exception e) {
                             sqftdbl = 0;
                         }
-
+                        
                         try {
                             depthdbl = Double.parseDouble(depth.getText());
                         } catch (Exception e) {
@@ -500,11 +564,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         TextField disp = (TextField) hand.get(15);
                         Double disDbl = (reqyardsdbl * disposalRate);
                         disp.setText(f.format(disDbl));
-
+                        
                         TextField serTotal = (TextField) hand.get(17);
                         Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
                         serTotal.setText(f.format(serTotalDbl));
-
+                        
                         newHand.setEstDepth(depthdbl);
                         newHand.setEstSQFT(sqftdbl);
                         newHand.setEstReqYards(reqyardsdbl);
@@ -513,7 +577,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newHand.setEstTrucking(truckingDbl);
                         newHand.setEstDisposal(disDbl);
                         newHand.setQuotedTotal(serTotalDbl);
-
+                        
                         newHand.setActDepth(depthdbl);
                         newHand.setActSQFT(sqftdbl);
                         newHand.setActReqYards(reqyardsdbl);
@@ -522,13 +586,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newHand.setActTrucking(truckingDbl);
                         newHand.setActDisposal(disDbl);
                         newHand.setActualTotal(serTotalDbl);
-
+                        
                         botCheck();
                     }
                 });
             }
         }
-
+        
         fieldCount = 0;
         return hand;
     }
@@ -538,96 +602,85 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      * @return
      */
     private ArrayList<Control> addBySkid() {
-
+        
         ArrayList<Control> skid = new ArrayList();
-
+        
         WO_Excavation newSkid = new WO_Excavation('s', true);
         orders.add(newSkid);
-
+        
         Label label = new Label("Excavation By Skid Steer:");
         label.setUnderline(true);
         label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         skid.add(label);
-
+        
         skid.add(addLabel("SQ.FT"));
         skid.add(addField(true));
-
+        
         skid.add(addLabel("Depth In Inches"));
         skid.add(addField(true));
-
+        
         label = new Label("   | ");
         label.setFont(new Font(20));
         skid.add(label);
-
+        
         skid.add(addLabel("Required Yards"));
         skid.add(addField(false));
-
+        
         skid.add(addLabel("Est. Man Hours"));
         skid.add(this.addField(false));
-
+        
         skid.add(addLabel("Excavation Labour Cost"));
         skid.add(addField(false));
-
+        
         skid.add(addLabel("Trucking Fees"));
         skid.add(addField(false));
-
+        
         skid.add(addLabel(""));
         skid.add(addLabel(""));
-
-        label = addLabel("Service Total");
-        label.setUnderline(true);
-        label.setFont(new Font(16));
-        label.setPadding(new Insets(0, 0, 0, 100));
-        skid.add(label);
-        TextField totalField = new TextField("0");
-        totalField.setId(fieldCount + "");
-        totalField.setMaxWidth(100);
-        totalField.setMinWidth(100);
-        totalField.setAlignment(Pos.CENTER);
-        totalField.setEditable(false);
-        skid.add(totalField);
-
+        
+        addServTotal(skid);
+        
         double labourhours = dbs.excavation_ManHoursBySkidPerYards();
         double labourRate = dbs.excavation_ManHoursBySkidPerHours();
         double truckingRate = dbs.excavation_TruckingFeeBySkid();
-
+        
         for (int i = 0; i < skid.size(); i++) {
-
+            
             String currentEl = skid.get(i).getId();
-
+            
             if (currentEl == null) {
                 currentEl = "-1";
             }
-
+            
             if (currentEl.equals("0") || currentEl.equals("1")) {
-
+                
                 int place;
-
+                
                 if (currentEl.equals("0")) {
                     place = 2;
                 } else {
                     place = 4;
                 }
-
+                
                 skid.get(place).setOnKeyReleased(new EventHandler<KeyEvent>() {
-
+                    
                     @Override
                     public void handle(KeyEvent event) {
 
                         //update required yards
                         double sqftdbl;
                         double depthdbl;
-
+                        
                         TextField sqft = (TextField) skid.get(2);
                         TextField depth = (TextField) skid.get(4);
-
+                        
                         try {
                             sqftdbl = Double.parseDouble(sqft.getText());
                         } catch (Exception e) {
                             sqftdbl = 0;
                         }
-
+                        
                         try {
                             depthdbl = Double.parseDouble(depth.getText());
                         } catch (Exception e) {
@@ -653,11 +706,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         TextField trucking = (TextField) skid.get(13);
                         Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
                         trucking.setText(f.format(truckingDbl));
-
+                        
                         TextField serTotal = (TextField) skid.get(17);
                         Double serTotalDbl = labourCostDouble + truckingDbl;
                         serTotal.setText(f.format(serTotalDbl));
-
+                        
                         newSkid.setEstDepth(depthdbl);
                         newSkid.setEstSQFT(sqftdbl);
                         newSkid.setEstReqYards(reqyardsdbl);
@@ -665,7 +718,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newSkid.setEstLabour(labourCostDouble);
                         newSkid.setEstTrucking(truckingDbl);
                         newSkid.setQuotedTotal(serTotalDbl);
-
+                        
                         newSkid.setActDepth(depthdbl);
                         newSkid.setActSQFT(sqftdbl);
                         newSkid.setActReqYards(reqyardsdbl);
@@ -673,15 +726,32 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         newSkid.setActHours(estimatedManHourDbl);
                         newSkid.setActTrucking(truckingDbl);
                         newSkid.setActualTotal(serTotalDbl);
-
+                        
                         botCheck();
                     }
                 });
             }
         }
-
+        
         fieldCount = 0;
         return skid;
+    }
+    
+    private void addServTotal(ArrayList<Control> list) {
+        
+        Label label = new Label("Service Total");
+        label.setUnderline(true);
+        label.setFont(new Font(16));
+        label.setPadding(new Insets(0, 0, 0, 100));
+        list.add(label);
+        
+        TextField totalField = new TextField("0");
+        totalField.setId(fieldCount + "");
+        totalField.setMaxWidth(100);
+        totalField.setMinWidth(100);
+        totalField.setAlignment(Pos.CENTER);
+        totalField.setEditable(false);
+        list.add(totalField);
     }
 
     /**
@@ -689,7 +759,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      * @return
      */
     private TextField addField(boolean editable) {
-
+        
         TextField field = new TextField("0");
         field.setMaxWidth(60);
         field.setMinWidth(60);
@@ -706,7 +776,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      * @return
      */
     private Label addLabel(String text) {
-
+        
         Label label = new Label(text);
         label.setPadding(new Insets(0, 0, 0, 5));
         return label;
@@ -716,26 +786,26 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      *
      */
     private void botCheck() {
-
+        
         double ttl = 0;
-
+        
         for (int i = 0; i < orders.size(); i++) {
-
+            
             ttl += orders.get(i).getQuotedTotal();
         }
-
+        
         projectTotal = ttl;
-
+        
         bottomLine.setText(f.format(projectTotal + (taxMultiplier * projectTotal)));
-
+        
         double eh = -1;
-
+        
         try {
             eh = Double.parseDouble(bottomLine.getText());
         } catch (Exception e) {
             saveBtn.setDisable(true);
         }
-
+        
         if (eh == 0 || eh == -1) {
             saveBtn.setDisable(true);
         } else {
@@ -783,22 +853,22 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         addToList();
-
+        
         GridPane newGrid = new GridPane();
-
+        
         for (int i = 0; i < elements.size(); i++) {
-
+            
             for (int j = 0; j < elements.get(i).size(); j++) {
-
+                
                 newGrid.addRow(i, (Node) elements.get(i).get(j));
             }
         }
-
+        
         newGrid.setTranslateX(5);
         newGrid.setTranslateY(5);
-
+        
         ColumnConstraints cc = new ColumnConstraints();
 
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
@@ -812,11 +882,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         newGrid.setHgap(5);
         newGrid.setVgap(5);
         newGrid.setPadding(new Insets(0, 0, 15, 0));
-
+        
         RowConstraints rc = new RowConstraints();
         rc.setMinHeight(50);
         newGrid.getRowConstraints().add(rc);
-
+        
         anc.getChildren().add(newGrid);
     }
 }
