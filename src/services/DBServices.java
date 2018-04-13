@@ -69,6 +69,10 @@ public class DBServices {
     public void updateClient(Client clientOld, Client clientNew) {
         Main.jdbcc.updateClient(clientOld, clientNew);
     }
+    
+    public void updateProject(Project old, Project newProj){
+        Main.jdbcc.updateProject(old, newProj);
+    }
 
     /**
      * Logically deletes a client from the database via jdbccommands
@@ -580,6 +584,8 @@ public class DBServices {
     public double tax_PST() {
         return (double) Main.jdbcc.getConstant("tax", "PST").get(0);
     }
+    
+   
 
     //Constant Setters
     /**

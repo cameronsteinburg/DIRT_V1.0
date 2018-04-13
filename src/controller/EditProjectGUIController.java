@@ -8,6 +8,7 @@ package controller;
 import entity.Project;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import services.DBServices;
 
 /**
  * 
@@ -52,6 +54,9 @@ public class EditProjectGUIController extends Controller implements Initializabl
     @FXML
     private void completedAction(ActionEvent event){
     
+        
+        Project old = selectedProject;
+        
         if(selectedProject.getCompleted() == false){
         
             selectedProject.setCompleted(true);
@@ -64,7 +69,8 @@ public class EditProjectGUIController extends Controller implements Initializabl
             setMessage("Project Set as Incomplete", errorMessage);
         }
         
-        
+        DBServices dbs = new DBServices();
+        dbs.updateProject(old, selectedProject);
     }
     
     public void setErrorMessage(Label label){
@@ -132,6 +138,9 @@ public class EditProjectGUIController extends Controller implements Initializabl
 //       } else {
 //           this.completedBtn.setText("Set Project Incomplete");
 //       }
+
+        DBServices dbs = new DBServices();
+        
     }
 
 }

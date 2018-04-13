@@ -547,12 +547,12 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             if (newList != null) {
 
-                //compProjectsTable.setItems(newList);
+                compProjectsTable.setItems(newList);
 
             } else {
 
-               // this.compProjList = dbs.getAllProjectsForTable();
-              //  compProjectsTable.setItems(compProjList);
+                this.compProjList = dbs.getCompletedProjectsForTable();
+                compProjectsTable.setItems(compProjList);
             }
         }
     }
