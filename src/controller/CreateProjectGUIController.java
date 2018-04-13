@@ -219,6 +219,17 @@ public class CreateProjectGUIController extends Controller implements Initializa
         allItems.add("Weed Barrier");
         updateTable(allItems);
     }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void wallAction(ActionEvent event){
+    
+        allItems.add("Retaining Wall");
+        updateTable(allItems);
+    }
 
     /**
      *

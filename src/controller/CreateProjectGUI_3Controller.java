@@ -179,7 +179,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Retaining Wall:");
         label.setUnderline(true);
-        //label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         wall.add(label);
 
@@ -222,55 +221,150 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         wall.add(addLabel("Block"));
         wall.add(addField(false));
+        
+        addServTotal(wall);
 
         double baseSupplyPerYard = dbs.retainingwall_CrushedBaseCostPerYard();
         double baseHoursPerYard = dbs.retainingwall_CrushedBaseInstallHoursPerYard();
         double baseInstallPerHour = dbs.retainingwall_CrushedBaseInstallRatePerHour();
         double rowInstallPerLF = dbs.retainingwall_BaseRowInstallHoursPerLineFeet();
         double rowLabourPerHour = dbs.retainingwall_BaseRowInstallRatePerHour();
-        
-        for(int i = 0; i < wall.size(); i++){
-            
+        double blockPerLF = dbs.retainingwall_BlockCostPerLineFeet();
+
+        for (int i = 0; i < wall.size(); i++) {
+
             String currentEl = wall.get(i).getId();
-        
+
             if (currentEl == null) {
                 currentEl = "-1";
             }
-            
+
             if (currentEl.equals("0") || currentEl.equals("1") || currentEl.equals("2") || currentEl.equals("3")) {
 
                 int place = -1;
 
                 if (currentEl.equals("0")) {
                     place = 2;
-                } else if(currentEl.equals("1")) {
+                } else if (currentEl.equals("1")) {
                     place = 4;
-                } else if(currentEl.equals("2")) {
+                } else if (currentEl.equals("2")) {
                     place = 6;
-                } else if(currentEl.equals("3")) {
+                } else if (currentEl.equals("3")) {
                     place = 8;
                 }
-                
-                wall.get(place).setOnKeyReleased(new EventHandler<KeyEvent>(){
-                    
+
+                wall.get(place).setOnKeyReleased(new EventHandler<KeyEvent>() {
+
                     @Override
                     public void handle(KeyEvent event) {
-                       
-                        double lfDbl,heightDbl, baseDepthDbl, baseWidthDbl;
-                        
-                        
-                        
+
+                        double lfDbl, heightDbl, baseDepthDbl, baseWidthDbl;
+
+                        TextField lfF = (TextField) wall.get(2);
+                        TextField heightF = (TextField) wall.get(4);
+                        TextField baseDepthF = (TextField) wall.get(6);
+                        TextField baseWidthF = (TextField) wall.get(8);
+
+                        try {
+                            lfDbl = Double.parseDouble(lfF.getText());
+                        } catch (Exception e) {
+                            lfDbl = 0;
+                        }
+
+                        try {
+                            heightDbl = Double.parseDouble(heightF.getText());
+                        } catch (Exception e) {
+                            heightDbl = 0;
+                        }
+
+                        try {
+                            baseDepthDbl = Double.parseDouble(baseDepthF.getText());
+                        } catch (Exception e) {
+                            baseDepthDbl = 0;
+                        }
+
+                        try {
+                            baseWidthDbl = Double.parseDouble(baseWidthF.getText());
+                        } catch (Exception e) {
+                            baseWidthDbl = 0;
+                        }
+
+                        TextField sqftF = (TextField) wall.get(11);
+                        Double sqftDbl = (heightDbl / 12.0) * lfDbl;
+                        sqftF.setText(f.format(sqftDbl));
+
+                        TextField baseYardsF = (TextField) wall.get(13);
+                        Double baseReqYardsDbl = (baseDepthDbl / 12.0) * (lfDbl * (baseWidthDbl / 12.0) / 27.0);
+                        baseYardsF.setText(f.format(baseReqYardsDbl));
+
+                        TextField baseSupplyF = (TextField) wall.get(15);
+                        Double baseSupplyDbl = baseReqYardsDbl * baseSupplyPerYard;
+                        baseSupplyF.setText(f.format(baseSupplyDbl));
+
+                        TextField baseHoursF = (TextField) wall.get(17);
+                        Double baseHoursDbl = baseHoursPerYard * baseReqYardsDbl;
+                        baseHoursF.setText(f.format(baseHoursDbl));
+
+                        TextField baseLabourF = (TextField) wall.get(19);
+                        Double baseLabourDbl = baseInstallPerHour * baseHoursDbl;
+                        baseLabourF.setText(f.format(baseLabourDbl));
+
+                        TextField rowHoursF = (TextField) wall.get(21);
+                        Double rowHoursDbl = lfDbl * rowInstallPerLF;
+                        rowHoursF.setText(f.format(rowHoursDbl));
+
+                        TextField rowLabourF = (TextField) wall.get(23);
+                        Double rowLabourDbl = rowHoursDbl * rowLabourPerHour;
+                        rowLabourF.setText(f.format(rowLabourDbl));
+
+                        TextField blockF = (TextField) wall.get(25);
+                        Double blockDbl = lfDbl * blockPerLF;
+                        blockF.setText(f.format(blockDbl));
+
+                        TextField servTotal = (TextField) wall.get(27);
+                        Double servTotalDbl = rowLabourDbl + blockDbl + baseLabourDbl + baseSupplyDbl;
+                        servTotal.setText(f.format(servTotalDbl));
+
+                        newWall.setEstBaseDepth(baseDepthDbl);
+                        newWall.setEstBaseHours(baseHoursDbl);
+                        newWall.setEstBaseLabour(baseLabourDbl);
+                        newWall.setEstBaseReqYards(baseReqYardsDbl);
+                        newWall.setEstBaseRowHours(rowHoursDbl);
+                        newWall.setEstBaseRowLabour(rowLabourDbl);
+                        newWall.setEstBaseSupply(baseSupplyDbl);
+                        newWall.setEstBaseWidth(baseWidthDbl);
+                        newWall.setEstBlock(blockDbl);
+                        newWall.setEstHeight(heightDbl);
+                        newWall.setEstLineFT(lfDbl);
+                        newWall.setEstSQFT(sqftDbl);
+                        newWall.setQuotedTotal(servTotalDbl);
+
+                        newWall.setActBaseDepth(baseDepthDbl);
+                        newWall.setActBaseHours(baseHoursDbl);
+                        newWall.setActBaseLabour(baseLabourDbl);
+                        newWall.setActBaseReqYards(baseReqYardsDbl);
+                        newWall.setActBaseRowHours(rowHoursDbl);
+                        newWall.setActBaseRowLabour(rowLabourDbl);
+                        newWall.setActBaseSupply(baseSupplyDbl);
+                        newWall.setActBaseWidth(baseWidthDbl);
+                        newWall.setActBlock(blockDbl);
+                        newWall.setActHeight(heightDbl);
+                        newWall.setActLineFT(lfDbl);
+                        newWall.setActSQFT(sqftDbl);
+                        newWall.setActualTotal(servTotalDbl);
+
+                        botCheck();
+
                     }
-                
-                
                 });
-                
+
             }
-            
-            
+
         }
-        
+
         fieldCount = 0;
+
+        
         return wall;
     }
 
