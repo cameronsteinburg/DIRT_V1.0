@@ -142,7 +142,7 @@ public class DBServices {
      * @return the list of projects found
      */
     public ObservableList<Project> getActiveProjectsForTable(){
-        return Main.jdbcc.getProjectsForTable(false);
+        return Main.jdbcc.getProjectsForTable(false,false);
     }
     
     /**
@@ -150,7 +150,15 @@ public class DBServices {
      * @return the list of projects found
      */
     public ObservableList<Project> getAllProjectsForTable(){
-        return Main.jdbcc.getProjectsForTable(true);
+        return Main.jdbcc.getProjectsForTable(true,false);
+    }
+    
+    /**
+     * gets all projects in a list excluding logically deleted ones and one's that have not been completed
+     * @return 
+     */
+    public ObservableList<Project> getCompletedProjectsForTable(){
+        return Main.jdbcc.getProjectsForTable(false, true);
     }
     
     /**

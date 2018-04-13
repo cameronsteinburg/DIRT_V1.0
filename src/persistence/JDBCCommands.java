@@ -451,9 +451,10 @@ public class JDBCCommands {
     /**
      * gets all the projects by calling the get project method one by one and adds them to a list that can be parsed by jfxml
      * @param getDeleted gets logically deleted projects if true
+     * @param getCompleted only gets completed projects when true
      * @return the list of projects
      */
-    public ObservableList<Project> getProjectsForTable(boolean getDeleted) {
+    public ObservableList<Project> getProjectsForTable(boolean getDeleted, boolean getCompleted) {
         try {
             ObservableList<Project> projectList = FXCollections.observableArrayList();
             Statement statement = conn.createStatement();
@@ -465,7 +466,13 @@ public class JDBCCommands {
             while (results.next()) {
                 String projectName = results.getString("projectName");
                 Project project = getProject(projectName,getDeleted);
-                projectList.add(project);
+                
+                if (getCompleted == true && project.getCompleted() == false){
+                    
+                }
+                else {
+                    projectList.add(project);
+                }
             }
             return projectList;
 
