@@ -2,6 +2,7 @@ package controller;
 
 import entity.Project;
 import entity.Services.WO_Bed;
+import entity.Services.WO_Custom;
 import entity.Services.WO_Excavation;
 import entity.Services.WO_Irrigation;
 import entity.Services.WO_Sod;
@@ -108,8 +109,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
     }
-    
-    
 
     /**
      *
@@ -167,7 +166,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             } else if (allItems.get(i).contains("Custom")) {
 
-                elements.add(addCustom());
+                String number = allItems.get(i);
+
+                elements.add(addCustom(number));
             }
         }
     }
@@ -176,9 +177,99 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      *
      * @return
      */
-    private ArrayList<Control> addCustom() {
+    private ArrayList<Control> addCustom(String number) {
 
-        return null;
+        WO_Custom newCustom = new WO_Custom(true);
+        orders.add(newCustom);
+
+        ArrayList<Control> custom = new ArrayList();
+
+        Label label = new Label(number);
+        label.setUnderline(true);
+        label.setPadding(new Insets(0, 3, 0, 0));
+        label.setFont(new Font(16));
+        custom.add(label);//0
+
+        custom.add(addLabel("    Name/Description  ")); //1
+        TextField descF = new TextField();
+        descF.setMaxSize(100, 25);
+        descF.setMinSize(100, 25);
+        custom.add(descF); //2
+        custom.get(custom.size() - 1).setId("0");
+
+        custom.add(addLabel(" Expense $  "));//3
+        custom.add(addField(true));//4
+        custom.get(custom.size() - 1).setId("1");
+        custom.add(addLabel(" x "));
+        custom.add(addField(true));//6
+        custom.get(custom.size() - 1).setId("2");
+
+        addServTotal(custom);
+
+        for (int i = 0; i < custom.size(); i++) {
+
+            String currentEl = custom.get(i).getId();
+
+            if (currentEl == null) {
+                currentEl = "-1";
+            }
+
+            if (currentEl.equals("0") || currentEl.equals("1") || currentEl.equals("2")) {
+
+                int place = 0;
+
+                if (currentEl.equals("0")) {
+                    place = 2;
+                } else if (currentEl.equals("1")) {
+                    place = 4;
+                } else if (currentEl.equals("2")){
+                    place = 6;
+                }
+
+                custom.get(place).setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+                    @Override
+                    public void handle(KeyEvent event) {
+                        
+                        double expense;
+                        TextField expenseF = (TextField) custom.get(4);
+                        double multi;
+                        TextField multiF = (TextField) custom.get(6);
+                        
+                        try {
+                            expense = Double.parseDouble(expenseF.getText());
+                        } catch (Exception e) {
+                            expense = 0;
+                        }
+                        
+                        try {
+                            multi = Double.parseDouble(multiF.getText());
+                        } catch (Exception e) {
+                            multi = 0;
+                        }
+                        
+                        TextField servTotalF = (TextField) custom.get(custom.size()-1);
+                        Double total = multi*expense;
+                        servTotalF.setText(f.format(total));
+                        
+                        TextField descF = (TextField) custom.get(2);
+                        newCustom.setDescription(descF.getText());
+                        newCustom.setMulti(multi);
+                        newCustom.setExpense(expense);
+                        newCustom.setQuotedTotal(total);
+                        newCustom.setActualTotal(total);
+                  
+                        botCheck();
+                    }
+
+                });
+
+            }
+
+        }
+
+        fieldCount = 0;
+        return custom;
     }
 
     /**
@@ -748,13 +839,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         sod.add(addLabel("Labour Cost"));
         sod.add(addField(false));
-
-        sod.add(addLabel(""));
-        sod.add(addLabel(""));
-        sod.add(addLabel(""));
-        sod.add(addLabel(""));
-        sod.add(addLabel(""));
-        sod.add(addLabel(""));
 
         addServTotal(sod);
 

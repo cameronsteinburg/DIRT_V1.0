@@ -28,7 +28,7 @@ public class WO_Custom extends WorkOrder{
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setExpense(double rate) {
         this.rate = rate;
     }
     

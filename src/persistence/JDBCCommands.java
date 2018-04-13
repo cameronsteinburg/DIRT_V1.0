@@ -1591,7 +1591,7 @@ public class JDBCCommands {
                 workOrder.setActualTotal(result.getDouble("actualTotal"));
 
                 workOrder.setMulti(result.getDouble("multi"));
-                workOrder.setRate(result.getDouble("rate"));
+                workOrder.setExpense(result.getDouble("rate"));
                 
                 return workOrder;
             }
