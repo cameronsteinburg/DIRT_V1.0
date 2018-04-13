@@ -16,11 +16,11 @@
       </Label>
       <TableView fx:id="currentProjectsTable" layoutX="15.0" layoutY="29.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
          <columns>
-            <TableColumn fx:id="projNameCol" prefWidth="188.0" text="Project Name" />
-            <TableColumn fx:id="clientCol" prefWidth="188.0" text="Client" />
-            <TableColumn fx:id="startCol" prefWidth="99.0" text="Start Date" />
-            <TableColumn fx:id="endCol" prefWidth="99.0" text="End Date" />
-            <TableColumn fx:id="descCol" prefWidth="475.0" text="Description" />
+            <TableColumn fx:id="currProjNameCol" prefWidth="188.0" text="Project Name" />
+            <TableColumn fx:id="currProjClientCol" prefWidth="188.0" text="Client" />
+            <TableColumn fx:id="currProjStartCol" prefWidth="99.0" text="Start Date" />
+            <TableColumn fx:id="currProjEndCol" prefWidth="99.0" text="End Date" />
+            <TableColumn fx:id="currProjDescCol" prefWidth="475.0" text="Description" />
          </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="261.0" text="Completed Projects" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="260.0">
@@ -30,16 +30,16 @@
       </Label>
       <TableView fx:id="completedProjectsTable" layoutX="15.0" layoutY="291.0" prefHeight="216.0" prefWidth="1048.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="290.0">
          <columns>
-            <TableColumn fx:id="oldprojNameCol" prefWidth="188.0" text="Project Name" />
-            <TableColumn fx:id="oldclientCol" prefWidth="188.0" text="Client" />
-            <TableColumn fx:id="oldstartCol" prefWidth="99.0" text="Start Date" />
-            <TableColumn fx:id="oldendCol" prefWidth="99.0" text="End Date" />
-            <TableColumn fx:id="olddescCol1" prefWidth="475.0" text="Description" />
+            <TableColumn fx:id="comProjNameCol" prefWidth="188.0" text="Project Name" />
+            <TableColumn fx:id="comProjClientCol" prefWidth="188.0" text="Client" />
+            <TableColumn fx:id="comProjStartCol" prefWidth="99.0" text="Start Date" />
+            <TableColumn fx:id="comProjEndCol" prefWidth="99.0" text="End Date" />
+            <TableColumn fx:id="comProjDescCol" prefWidth="475.0" text="Description" />
          </columns>
       </TableView>
-      <TextField fx:id="searchCurrProj" layoutX="914.0" layoutY="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
+      <TextField fx:id="currentProjField" layoutX="914.0" layoutY="13.0" onAction="#searchCurrProj" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
       <Label layoutX="873.0" layoutY="17.0" text="Search: " AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="13.0" />
-      <TextField fx:id="searchCompProj" layoutX="914.0" layoutY="263.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="261.0" />
+      <TextField fx:id="compProjField" layoutX="914.0" layoutY="263.0" onAction="#searchCompProj" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="261.0" />
       <Label layoutX="873.0" layoutY="267.0" text="Search: " AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="265.0" />
    </children>
 </AnchorPane>
