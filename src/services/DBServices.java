@@ -15,15 +15,6 @@ import javafx.collections.ObservableList;
  */
 public class DBServices {
 
-    /**
-     * Sends a Client Object to be saved to the database
-     *
-     * @param obj Object to be saved
-     * @return true if successful, false otherwise
-     */
-    public boolean persistObject(Object obj) {
-        return false;
-    }
 
     /**
      * gets a client object from the database via jdbccommands based on name
@@ -36,51 +27,51 @@ public class DBServices {
     }
     
     /**
-     * 
-     * @param first
-     * @param last
-     * @return 
+     * gets a client from the database based ont he first and last name via jdbccommands
+     * @param first the first name of the client to look for
+     * @param last the last name of the client to look for
+     * @return  the client object retrieved
      */
     public Client getClient(String first, String last) {
         return Main.jdbcc.getClient(first, last);
     }
 
     /**
-     * gets all the client objects from the database via jdbccommands
-     *
-     * @return a Client arraylist object
+     * gets all clients from the database as an arraylist via jdbccommands
+     * @param getDeleted if true also gets logically deleted clients
+     * @return an arraylist of the clients found
      */
     public ArrayList<Client> getClients(boolean getDeleted) {
         return Main.jdbcc.getClients(getDeleted);
     }
 
     /**
-     *
-     * @return
+     * gets all clients from the database as an observable list which can be parsed by jfxml via jdbccommands
+     * @return the list of clients found
      */
     public ObservableList<Client> getClientsForTable() {
         return Main.jdbcc.getClientsForTable(false);
     }
 
     /**
-     *
-     * @param client
+     * persists the passed client to the database via jdbccommands
+     * @param client the client to be saved
      */
     public void persistClient(Client client) {
         Main.jdbcc.persistClient(client);
     }
 
     /**
-     *
-     * @param clientOld
-     * @param clientNew
+     * updates a client in the database via jdbccommands
+     * @param clientOld the data of the old client object
+     * @param clientNew the data from the edited client object being saved
      */
     public void updateClient(Client clientOld, Client clientNew) {
         Main.jdbcc.updateClient(clientOld, clientNew);
     }
 
     /**
-     * Logically deletes a client from the database
+     * Logically deletes a client from the database via jdbccommands
      *
      * @param client the client to be logically deleted
      * @return true if no errors occur
@@ -90,16 +81,16 @@ public class DBServices {
     }
 
     /**
-     *
-     * @param lab
-     * @return
+     * deletes a labourer from the database via jdbccommands
+     * @param lab the labourer to be deleted
+     * @return true if no errors occur
      */
     public boolean deleteLabourer(Labourer lab) {
         return Main.jdbcc.deleteLabourer(lab);
     }
 
     /**
-     * gets a labourer object from the database via jdbccommands based on name
+     * gets a labourer object from the database based on the name via jdbccommands
      *
      * @param name the name of the labourer to retrieve
      * @return the Labourer object
@@ -109,9 +100,9 @@ public class DBServices {
     }
 
     /**
-     *
-     * @param lab
-     * @return
+     * persists a labourer to the database via jdbccommands
+     * @param lab the labourer to be persisted
+     * @return true if no errors occur
      */
     public boolean persistLabourer(Labourer lab) {
         return Main.jdbcc.persistLabourer(lab);
@@ -130,26 +121,34 @@ public class DBServices {
     }
 
     /**
-     *
-     * @return
+     * gets all labourers in a list that can be parsed by jfxml via jdbccommands
+     * @return the list of labourers found
      */
     public ObservableList<Labourer> getLabourersForTable() {
         return Main.jdbcc.getLabourersForTable(false);
     }
 
     /**
-     * 
-     * @param proj
-     * @return 
+     * persists a project to the database via jdbccommands
+     * @param proj the project object to be persisted
+     * @return true if no errors occur
      */
     public boolean persistProject(Project proj){
         return Main.jdbcc.persistProject(proj);
     }
     
+    /**
+     * gets all projects in a list that can be parsed by jfxml via jdbccommands
+     * @return the list of projects found
+     */
     public ObservableList<Project> getActiveProjectsForTable(){
         return Main.jdbcc.getProjectsForTable(false);
     }
     
+    /**
+     * gets all projects in a list including logically deleted ones that can parsed by jfxml via jdbccommands
+     * @return the list of projects found
+     */
     public ObservableList<Project> getAllProjectsForTable(){
         return Main.jdbcc.getProjectsForTable(true);
     }
@@ -209,6 +208,10 @@ public class DBServices {
         return false;
     }
 
+    /**
+     * the following methods are getters for the constants table using jdbccommands
+     * @return the constant based on the method
+     */
     public double excavation_TruckingFeeByHand() {
         return (double) Main.jdbcc.getConstant("excavation", "trucking by hand /2 yards").get(0);
     }
@@ -558,6 +561,11 @@ public class DBServices {
     }
 
     //Constant Setters
+    /**
+     * the following methods are setters for editing the constants in the constants table in mysql, this is done via a method in jdbccommands
+     * @param constant the value to change the constant to
+     * @return true if no errors occur
+     */
     public boolean setexcavation_TruckingFeeByHand(double constant) {
         return Main.jdbcc.setConstant("excavation", "trucking by hand /2 yards", constant);
     }
