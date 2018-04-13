@@ -640,7 +640,7 @@ public class JDBCCommands {
      */
     public boolean updateProject(Project projectOld, Project projectNew){
         try {
-            // the mysql prepared insert statement
+            // the mysql prepared update statement
             String query = "update projects set clientNum=?, projectName=?, description=?, siteAddress=?, startDate=?, endDate=?, clientOwing=?, clientPaid=?, allowanceCost=?, extraneousExpenses=?, quote=?, actualCost=? where projectNum = ?";
 
             // create the mysql insert preparedstatement
@@ -974,9 +974,44 @@ public class JDBCCommands {
      * @return true if no error occurs
      */
     public boolean deleteProject(Project project) {
-            //todo
-        return false;
+        try {
+            // the mysql prepared delete statement
+            String query = "delete from projects where projectNum=?";
 
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+
+            preparedStmt.setInt(1, project.getProjectNum());
+
+            //delete labourers from the projectlabourer table so no fkey errors happen upon removing projects
+            String deleteProjectLabourerQuery = "delete from projectLabourer where projectNum=?";
+            PreparedStatement preparedStmtDeleteProjectLabourer = conn.prepareStatement(deleteProjectLabourerQuery);
+            preparedStmtDeleteProjectLabourer.setInt(1, project.getProjectNum());
+            preparedStmtDeleteProjectLabourer.executeUpdate();
+            
+            //delete subtype workorders so there's no fkey error when deleting superworkorders
+            for (int j = 0; j < project.getWorkOrders().size(); j++){
+                int workOrderNum =Integer.parseInt(project.getWorkOrders().get(j).getWoid());
+                String workOrderType = getWorkOrderType(project.getWorkOrders().get(j));
+                String deleteSubWorkOrderQuery = "delete from " + workOrderType + " where workordernum = ?;";
+                PreparedStatement preparedStmtDeleteSubWorkOrder = conn.prepareStatement(deleteSubWorkOrderQuery);
+                preparedStmtDeleteSubWorkOrder.setInt(1, workOrderNum);
+                preparedStmtDeleteSubWorkOrder.executeUpdate();
+            }
+            
+            //delete workorders from workorders table now that the fkeys are gone
+            String deleteSupWorkOrderQuery = "delete from workorders where projectNum=?";
+            PreparedStatement preparedStmtDeleteSupWorkOrder = conn.prepareStatement(deleteSupWorkOrderQuery);
+            preparedStmtDeleteSupWorkOrder.setInt(1, project.getProjectNum());
+            preparedStmtDeleteSupWorkOrder.executeUpdate();
+                      
+            // execute the delete preparedstatement (after deleting the foreign references it should now work)
+            preparedStmt.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     /**
