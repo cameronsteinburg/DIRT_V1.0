@@ -187,7 +187,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         irrig.add(label);// 0
 
-        irrig.add(addLabel("3/4\" Line: ")); 
+        irrig.add(addLabel("3/4\" Line: "));
         irrig.add(addField(true));//2
         irrig.add(new Label("Feet   "));
 
@@ -210,7 +210,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         irrig.add(new Label(""));
         irrig.add(new Label(""));
 
-        irrig.add(addLabel("Drip Emitter  x  ")); 
+        irrig.add(addLabel("Drip Emitter  x  "));
         irrig.add(addField(true));//18
 
         irrig.add(addLabel("Timer Control  x  "));
@@ -238,62 +238,169 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         double hoseL = dbs.irrigation_RotaryHeadLabour();
         double shutM = dbs.irrigation_ShutOffValveMaterial();
         double shutL = dbs.irrigation_ShutOffValveLabour();
-        double rotaryM = dbs.irrigation_RotaryHeadMaterial();
-        double rotaryL = dbs.irrigation_RotaryHeadLabour();
-        double sprayM = dbs.irrigation_SprayHeadMaterial();
-        double sprayL = dbs.irrigation_SprayHeadLabour();
+        double rotM = dbs.irrigation_RotaryHeadMaterial();
+        double rotL = dbs.irrigation_RotaryHeadLabour();
+        double patM = dbs.irrigation_SprayHeadMaterial();
+        double patL = dbs.irrigation_SprayHeadLabour();
         double oneQM = dbs.irrigation_Drip1QuarterInchPerFootMaterial();
         double oneQL = dbs.irrigation_Drip1QuarterInchPerFootLabour();
-        double emitM = dbs.irrigation_DripEmitterMaterial();
-        double emiL = dbs.irrigation_DripEmitterLabour();
+        double emmM = dbs.irrigation_DripEmitterMaterial();
+        double emmL = dbs.irrigation_DripEmitterLabour();
         double timerM = dbs.irrigation_TimerControlMaterial();
         double timerL = dbs.irrigation_TimerControlLabour();
         double wireM = dbs.irrigation_ControlWirePer100FeetMaterial();
         double wireL = dbs.irrigation_ControlWirePer100FeetLabour();
-        double boxM = dbs.irrigation_ValveBoxMaterial();
-        double boxL = dbs.irrigation_ValveBoxLabour();
-        double valveM = dbs.irrigation_ControlValveMaterial();
-        double valveL = dbs.irrigation_ControlValveLabour();
+        double valveM = dbs.irrigation_ValveBoxMaterial();
+        double valveL = dbs.irrigation_ValveBoxLabour();
+        double contM = dbs.irrigation_ControlValveMaterial();
+        double contL = dbs.irrigation_ControlValveLabour();
 
-        for(int i = 0; i < irrig.size(); i++){
-        
+        for (int i = 0; i < irrig.size(); i++) {
+
             String currentEl = irrig.get(i).getId();
 
             if (currentEl == null) {
                 currentEl = "-1";
             }
 
-            if(currentEl != null && currentEl!= "-1"){
-                
-                 irrig.get(i).setOnKeyReleased(new EventHandler<KeyEvent>() {
-                     
-                     @Override
-                     public void handle(KeyEvent event) {
-                         
-                         TextField threeQF = (TextField) irrig.get(2);
-                         TextField hoseF = (TextField) irrig.get(5);
-                         TextField shutF = (TextField) irrig.get(7);
-                         TextField rotF = (TextField) irrig.get(9);
-                         TextField patF = (TextField) irrig.get(11);
-                         TextField oneQF = (TextField) irrig.get(13);
-                         TextField emmF = (TextField) irrig.get(18);
-                         TextField timerF = (TextField) irrig.get(20);
-                         TextField wireF = (TextField) irrig.get(22);
-                         TextField valveF = (TextField) irrig.get(25);
-                         TextField contF = (TextField) irrig.get(27);
-                         
-                         double three = Double.parseDouble(threeQF.getText());
-                         
-                     }
-                 });
-                
+            if (currentEl != null && currentEl != "-1") {
+
+                irrig.get(i).setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+                    @Override
+                    public void handle(KeyEvent event) {
+
+                        TextField threeQF = (TextField) irrig.get(2);
+                        TextField hoseF = (TextField) irrig.get(5);
+                        TextField shutF = (TextField) irrig.get(7);
+                        TextField rotF = (TextField) irrig.get(9);
+                        TextField patF = (TextField) irrig.get(11);
+                        TextField oneQF = (TextField) irrig.get(13);
+                        TextField emmF = (TextField) irrig.get(18);
+                        TextField timerF = (TextField) irrig.get(20);
+                        TextField wireF = (TextField) irrig.get(22);
+                        TextField valveF = (TextField) irrig.get(25);
+                        TextField contF = (TextField) irrig.get(27);
+
+                        double threeQ, hose, shut, rot, pat, oneQ, emm, timer, wire, valve, cont;
+
+                        try {
+                            cont = Double.parseDouble(contF.getText());
+                        } catch (Exception e) {
+                            cont = 0.0;
+                        }
+
+                        try {
+                            valve = Double.parseDouble(valveF.getText());
+                        } catch (Exception e) {
+                            valve = 0.0;
+                        }
+
+                        try {
+                            wire = Double.parseDouble(wireF.getText());
+                        } catch (Exception e) {
+                            wire = 0.0;
+                        }
+
+                        try {
+                            timer = Double.parseDouble(timerF.getText());
+                        } catch (Exception e) {
+                            timer = 0.0;
+                        }
+
+                        try {
+                            emm = Double.parseDouble(emmF.getText());
+                        } catch (Exception e) {
+                            emm = 0.0;
+                        }
+
+                        try {
+                            oneQ = Double.parseDouble(oneQF.getText());
+                        } catch (Exception e) {
+                            oneQ = 0.0;
+                        }
+
+                        try {
+                            pat = Double.parseDouble(patF.getText());
+                        } catch (Exception e) {
+                            pat = 0.0;
+                        }
+
+                        try {
+                            rot = Double.parseDouble(rotF.getText());
+                        } catch (Exception e) {
+                            rot = 0.0;
+                        }
+
+                        try {
+                            shut = Double.parseDouble(shutF.getText());
+                        } catch (Exception e) {
+                            shut = 0.0;
+                        }
+
+                        try {
+                            hose = Double.parseDouble(hoseF.getText());
+                        } catch (Exception e) {
+                            hose = 0.0;
+                        }
+
+                        try {
+                            threeQ = Double.parseDouble(threeQF.getText());
+                        } catch (Exception e) {
+                            threeQ = 0.0;
+                        }
+
+                        double total = 0.0;
+
+                        total += (threeQM * threeQ) + (threeQL * threeQ);
+                        total += (hoseM * hose) + (hoseL * hose);
+                        total += (shutM * shut) + (shutL * shut);
+                        total += (rotM * rot) + (rotL * rot);
+                        total += (patM * pat) + (patL * pat);
+                        total += (oneQM * oneQ) + (oneQL * oneQ);
+                        total += (emmM * emm) + (emmL * emm);
+                        total += (timerM * timer) + (timerL * timer);
+                        total += (wireM * wire) + (wireL * wire);
+                        total += (valveM * valve) + (valveL * valve);
+                        total += (contM * cont) + (contL * cont);
+
+                        TextField servTotal = (TextField) irrig.get(irrig.size() - 1);
+                        servTotal.setText(f.format(total));
+
+                        newIrrig.setEstControlValve(cont);
+                        newIrrig.setEstControlWire(wire);
+                        newIrrig.setEstDripEmitter(emm);
+                        newIrrig.setEstDripLine(oneQ);
+                        newIrrig.setEstHoseBibs(hose);
+                        newIrrig.setEstOffValves(shut);
+                        newIrrig.setEstRotaryHeads(rot);
+                        newIrrig.setEstSprayHaeds(pat);
+                        newIrrig.setEstThreeQuarterLine(threeQ);
+                        newIrrig.setEstTimerControl(cont);
+                        newIrrig.setEstValveBox(valve);
+                        newIrrig.setQuotedTotal(total);
+
+                        newIrrig.setActControlValve(cont);
+                        newIrrig.setActControlWire(wire);
+                        newIrrig.setActDripEmitter(emm);
+                        newIrrig.setActDripLine(oneQ);
+                        newIrrig.setActHoseBibs(hose);
+                        newIrrig.setActOffValves(shut);
+                        newIrrig.setActRotaryHeads(rot);
+                        newIrrig.setActSprayHaeds(pat);
+                        newIrrig.setActThreeQuarterLine(threeQ);
+                        newIrrig.setActTimerControl(cont);
+                        newIrrig.setActValveBox(valve);
+                        newIrrig.setActualTotal(total);
+
+                        botCheck();
+                    }
+                });
             }
-            
         }
-        
+
         fieldCount = 0;
-        elements.add(irrig); //add 2 different rows because theres a lot of elements
-        return irrig2;
+        return irrig;
     }
 
     /**
@@ -1007,7 +1114,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         newGrid.setTranslateX(5);
         newGrid.setTranslateY(5);
 
-       // ColumnConstraints cc = new ColumnConstraints();
+        // ColumnConstraints cc = new ColumnConstraints();
         //cc.setHgrow(Priority.ALWAYS);
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
         //AnchorPane.setTopAnchor(newGrid, Double.NaN);
@@ -1024,9 +1131,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //RowConstraints rc = new RowConstraints();
         //rc.setVgrow(Priority.ALWAYS);
         //rc.setMinHeight(50);
-         //newGrid.getRowConstraints().add(rc);
-
+        //newGrid.getRowConstraints().add(rc);
         anc.getChildren().add(newGrid);
-      //  newGrid.addRow(0, (Node) elements.get(0).get(0));
+        //  newGrid.addRow(0, (Node) elements.get(0).get(0));
     }
 }
