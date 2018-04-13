@@ -14,6 +14,10 @@ drop table excavationbyskidworkorder;
 drop table bedworkorder;
 drop table sodworkorder;
 drop table topsoilworkorder;
+drop table retwallworkorder;
+drop table weedbarrierworkorder;
+drop table irrigationworkorder;
+drop table customworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
@@ -174,6 +178,90 @@ create table TopSoilWorkOrder (workOrderNum mediumint unsigned not null,
     actManHours numeric(8,2),
     actInstall numeric(8,2),
     constraint fk_WorkOrderTopSoil foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+#create workorder retwall table
+create table RetWallWorkOrder (workOrderNum mediumint unsigned not null,
+    estLineFT numeric(8,2),
+    estHeight numeric(8,2),
+    estBaseDepth numeric(8,2),
+    estBaseWidth numeric(8,2),
+    estSQFT numeric(8,2),
+    estBaseReqYards numeric(8,2),
+    estBaseSupply numeric(8,2),
+    estBaseHours numeric(8,2),
+    estBaseLabour numeric(8,2),
+    estBaseRowHours numeric(8,2),
+    estBaseRowLabour numeric(8,2),
+    estBlock numeric(8,2),
+
+    actLineFT numeric(8,2),
+    actHeight numeric(8,2),
+    actBaseDepth numeric(8,2),
+    actBaseWidth numeric(8,2),
+    actSQFT numeric(8,2),
+    actBaseReqYards numeric(8,2),
+    actBaseSupply numeric(8,2),
+    actBaseHours numeric(8,2),
+    actBaseLabour numeric(8,2),
+    actBaseRowHours numeric(8,2),
+    actBaseRowLabour numeric(8,2),
+    actBlock numeric(8,2),
+    constraint fk_WorkOrderRetWall foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+
+#create workorder weed barrier table
+create table WeedBarrierWorkOrder (workOrderNum mediumint unsigned not null,
+    estSQFT numeric(8,2),
+    estLayers numeric(8,2),
+    estReqSQFT numeric(8,2),
+    estHours numeric(8,2),
+    estStaples numeric(8,2),
+    estStaplesSupply numeric(8,2),
+    estBarrierSupply numeric(8,2),
+    estLabour numeric(8,2),
+
+    actSQFT numeric(8,2),
+    actLayers numeric(8,2),
+    actReqSQFT numeric(8,2),
+    actHours numeric(8,2),
+    actStaples numeric(8,2),
+    actStaplesSupply numeric(8,2),
+    actBarrierSupply numeric(8,2),
+    actLabour numeric(8,2),
+    constraint fk_WorkOrderWeedBarrier foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+#create workorder irrigation table
+create table IrrigationWorkOrder (workOrderNum mediumint unsigned not null,
+    estThreeQuarterLine numeric(8,2),
+    estHoseBibs numeric(8,2),
+    estOffValves numeric(8,2),
+    estRotaryHeads numeric(8,2),
+    estSprayHaeds numeric(8,2),
+    estDripLine numeric(8,2),
+    estDripEmitter numeric(8,2),
+    estTimerControl numeric(8,2),
+    estControlWire numeric(8,2),
+    estValveBox numeric(8,2),
+    estControlValve numeric(8,2),
+
+    actThreeQuarterLine numeric(8,2),
+    actHoseBibs numeric(8,2),
+    actOffValves numeric(8,2),
+    actRotaryHeads numeric(8,2),
+    actSprayHaeds numeric(8,2),
+    actDripLine numeric(8,2),
+    actDripEmitter numeric(8,2),
+    actTimerControl numeric(8,2),
+    actControlWire numeric(8,2),
+    actValveBox numeric(8,2),
+    actControlValve numeric(8,2),
+    constraint fk_WorkOrderIrrigation foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+#create workorder custom table
+create table CustomWorkOrder (workOrderNum mediumint unsigned not null,
+    multi numeric(8,2),
+    rate numeric(8,2),
+    constraint fk_WorkOrderCustom foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);

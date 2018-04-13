@@ -27,6 +27,7 @@ public class JDBCCommands {
 
     /**
      * default JDBCCommands constructor
+     * gets the connection object of the passed DBAccessor
      */
     public JDBCCommands(DBAccessor dbAccess) {
         this.conn = dbAccess.getConn();
@@ -100,12 +101,11 @@ public class JDBCCommands {
         return true;
     }
 
-    /**
-     *
-     * Retrieves all clients from the database and returns an array of them
-     *
-     * @return an arrayList of client objects
-     */
+   /**
+    * Retrieves all clients from the database and returns an array of them
+    * @param getDeleted when true, will also retrieve clients that have been logically deleted
+    * @return an arrayList of client objects
+    */
     public ArrayList<Client> getClients(boolean getDeleted) {
 
         try {
@@ -149,9 +149,8 @@ public class JDBCCommands {
 
     /**
      * Retrieves client information from MySQL database
-     *
-     * @return clientList List of clients in an observableList to populate
-     * tables
+     * @param getDeleted if true, also retrieves clients that have been logically deleted
+     * @return clientList List of clients in an observableList to populate tables
      */
     public ObservableList<Client> getClientsForTable(boolean getDeleted) {
         try {
@@ -195,11 +194,10 @@ public class JDBCCommands {
 
     /**
      *
-     * Retrieves a client from the database from the name passed to the method
+     * Retrieves a client from the database from the client number passed to the method
      *
-     * @param clientName the name of the client to be searched for
-     * @return a client object created from the information found in the clients
-     * table
+     * @param clientName the number of the client to be searched for
+     * @return a client object created from the information found in the clients table
      */
     public Client getClient(int num) {
 
@@ -239,10 +237,10 @@ public class JDBCCommands {
     }
 
     /**
-     *
-     * @param first
-     * @param last
-     * @return
+     * Retrieves a client from the database from the entered first and last names
+     * @param first the first name of the client to search for
+     * @param last the 
+     * @return 
      */
     public Client getClient(String first, String last) {
 
@@ -360,7 +358,7 @@ public class JDBCCommands {
     }
 
     /**
-     * persists project to MySQL
+     * persists project to MySQL with all its internals (clients/labourers/workorders)
      *
      * @param project project to be persisted
      * @return true if no error occurs
@@ -450,10 +448,9 @@ public class JDBCCommands {
     }
 
     /**
-     * Retrieves project information from MySQL database
-     *
-     * @return projectList List of projects in an observableList to populate
-     * tables
+     * gets all the projects by calling the get project method one by one and adds them to a list that can be parsed by jfxml
+     * @param getDeleted gets logically deleted projects if true
+     * @return the list of projects
      */
     public ObservableList<Project> getProjectsForTable(boolean getDeleted) {
         try {
@@ -466,7 +463,7 @@ public class JDBCCommands {
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
                 String projectName = results.getString("projectName");
-                Project project = getProject(projectName,false);
+                Project project = getProject(projectName,getDeleted);
                 projectList.add(project);
             }
             return projectList;
@@ -477,6 +474,12 @@ public class JDBCCommands {
         return null;
     }
 
+    /**
+     * Gets a project based on the name of the project passed into the mehtod
+     * @param projectName the name of the project to search for and return
+     * @param getDeleted gets logically deleted projects if true
+     * @return 
+     */
     public Project getProject(String projectName, boolean getDeleted) {
 
         try {
@@ -559,6 +562,11 @@ public class JDBCCommands {
         return null;
     }
 
+    /**
+     * Obtains the labourers for a given project, this is a method used by getProject()
+     * @param projectNum the projectnumber of the labourers to search for in the projectlabourer table
+     * @return and arraylist of the labourers
+     */
     public ArrayList<Labourer> getLabourersForProject(int projectNum) {
         try {
             ArrayList<Labourer> labourers = new ArrayList();
@@ -593,6 +601,11 @@ public class JDBCCommands {
         return null;
     }
 
+    /**
+     * Obtains the workorders for a given project, this is a method used by getProject()
+     * @param projectNum the project number of the workorders to search for in the workorders table
+     * @return an array list of the found workorders
+     */
     public ArrayList<WorkOrder> getWorkOrdersForProject(int projectNum) {
         try {
             ArrayList<WorkOrder> workOrders = new ArrayList();
@@ -619,7 +632,12 @@ public class JDBCCommands {
         return null;
     }
     
-    
+    /**
+     * updates all of a project's values from the old ones to new ones
+     * @param projectOld the data of the old project object
+     * @param projectNew the data of the new project object
+     * @return true if there are no errors
+     */
     public boolean updateProject(Project projectOld, Project projectNew){
         try {
             // the mysql prepared insert statement
@@ -793,6 +811,12 @@ public class JDBCCommands {
         return true;
     }
 
+    /**
+     * updates a labourer's values based on new data
+     * @param labourerOld the data of the old labourer
+     * @param labourerNew the data of the new labourer
+     * @return true if no errors occur 
+     */
     public boolean updateLabourer(Labourer labourerOld, Labourer labourerNew) {
 
         try {
@@ -902,10 +926,9 @@ public class JDBCCommands {
     }
 
     /**
-     * Retrieves laborer information from MySQL database
-     *
-     * @return labourerList List of laborers in an observableList to populate
-     * tables
+     * gets all labourers in order to populate and return an array that can be used to populate a jfxml table
+     * @param getDeleted if true also obtains the logically deleted labourers
+     * @return a list that can be used with jfxml
      */
     public ObservableList<Labourer> getLabourersForTable(boolean getDeleted) {
         try {
@@ -945,17 +968,6 @@ public class JDBCCommands {
     }
 
     /**
-     * exports a project to QuickBooks
-     *
-     * @param project project to be exported to QuickBooks
-     * @return true if no error occurs
-     */
-    public boolean exportProjectQuote(Project project) {
-        return false;
-
-    }
-
-    /**
      * deletes a project from MySQL
      *
      * @param project project to be found and deleted
@@ -964,36 +976,6 @@ public class JDBCCommands {
     public boolean deleteProject(Project project) {
         return false;
 
-    }
-
-    /**
-     * retrieves database information to be backed up
-     *
-     * @return data to back up
-     */
-    public ResultSet backup() {
-        return null;
-
-    }
-
-    /**
-     * deletes a work order from MySQL
-     *
-     * @param wk the WorkOrder to be found and deleted
-     * @return true if no error occurs
-     */
-    public boolean deleteProject(WorkOrder wk) {
-        return false;
-
-    }
-
-    /**
-     * fetches all of the labourers from the MySQL database
-     *
-     * @return an array list of the labourers
-     */
-    public ArrayList<Labourer> fetchLabourers() {
-        return null;
     }
 
     /**
@@ -1040,6 +1022,13 @@ public class JDBCCommands {
         return narray;
     }
 
+    /**
+     * Edits the stored constant
+     * @param superService the superservice of the constant passed in (irrigation/bed/etc)
+     * @param subService the subservice of the constant passed in (x/yard,rate/hours,etc)
+     * @param constant the new constant
+     * @return true if no errors occur
+     */
     public boolean setConstant(String superService, String subService, double constant) {
 
         try {
@@ -1061,6 +1050,14 @@ public class JDBCCommands {
         }
     }
 
+    /**
+     * Edits the stored constant
+     * @param superService the superservice of the constant passed in (irrigation/bed/etc)
+     * @param subService the subservice of the constant passed in (x/yard,rate/hours,etc)
+     * @param lowOrHigh indicates which constant is changed as some subservices have two
+     * @param constant the new constant
+     * @return true if no errors occur
+     */
     public boolean setConstant(String superService, String subService, String lowOrHigh, double constant) {
         try {
             // update to be done
@@ -1086,6 +1083,11 @@ public class JDBCCommands {
     }
     
     //SCALE
+    /**
+     * gets the workorder type based on the object passed into it
+     * @param wkodr the generic workorder to find the type of
+     * @return A string to be used in a sql statement (for the type column in workorders)
+     */
     public String getWorkOrderType(WorkOrder wkodr) {
         if (wkodr instanceof WO_Excavation) {
             if (((WO_Excavation) wkodr).getType() == 'h') {
@@ -1102,10 +1104,27 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_TopSoil){
             return "TopSoilWorkOrder";
         }
+        else if(wkodr instanceof WO_RetWall){
+            return "RetWallWorkOrder";
+        }
+        else if(wkodr instanceof WO_WeedBarrier){
+            return "WeedBarrierWorkOrder";
+        }
+        else if(wkodr instanceof WO_Irrigation){
+            return "IrrigationWorkOrder";
+    }
+        else if(wkodr instanceof WO_Custom){
+            return "CustomWorkOrder";
+        }
         return null;
     }
 
     //SCALE
+    /**
+     * inserts a work order into the database based on which type of work order it is
+     * @param wkodrNum the work order number to be inserted into the workordernum column of the dynamically found subworkorder table
+     * @param wkodr the rest of the workorder information to be added into the dynamically found subworkorder table
+     */
     public void insertWorkOrderType(int wkodrNum, WorkOrder wkodr) {
 
         try {
@@ -1200,6 +1219,94 @@ public class JDBCCommands {
                 preparedStmt.setDouble(13, ((WO_TopSoil) wkodr).getActInstall());
                 preparedStmt.execute();
             }
+            else if(wkodr instanceof WO_TopSoil){
+                String query = "insert into RetWallWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(1, ((WO_RetWall) wkodr).getEstLineFT());
+                preparedStmt.setDouble(2, ((WO_RetWall) wkodr).getEstHeight());
+                preparedStmt.setDouble(3, ((WO_RetWall) wkodr).getEstBaseDepth());
+                preparedStmt.setDouble(4, ((WO_RetWall) wkodr).getEstBaseWidth());
+                preparedStmt.setDouble(5, ((WO_RetWall) wkodr).getEstSQFT());
+                preparedStmt.setDouble(6, ((WO_RetWall) wkodr).getEstBaseReqYards());
+                preparedStmt.setDouble(7, ((WO_RetWall) wkodr).getEstBaseSupply());
+                preparedStmt.setDouble(8, ((WO_RetWall) wkodr).getEstBaseHours());
+                preparedStmt.setDouble(9, ((WO_RetWall) wkodr).getEstBaseLabour());
+                preparedStmt.setDouble(10, ((WO_RetWall) wkodr).getEstBaseRowHours());
+                preparedStmt.setDouble(11, ((WO_RetWall) wkodr).getEstBaseRowLabour());
+                preparedStmt.setDouble(12, ((WO_RetWall) wkodr).getEstBlock());
+                preparedStmt.setDouble(13, ((WO_RetWall) wkodr).getActLineFT());
+                preparedStmt.setDouble(14, ((WO_RetWall) wkodr).getActHeight());
+                preparedStmt.setDouble(15, ((WO_RetWall) wkodr).getActBaseDepth());
+                preparedStmt.setDouble(16, ((WO_RetWall) wkodr).getActBaseWidth());
+                preparedStmt.setDouble(17, ((WO_RetWall) wkodr).getActSQFT());
+                preparedStmt.setDouble(18, ((WO_RetWall) wkodr).getActBaseReqYards());
+                preparedStmt.setDouble(19, ((WO_RetWall) wkodr).getActBaseSupply());
+                preparedStmt.setDouble(20, ((WO_RetWall) wkodr).getActBaseHours());
+                preparedStmt.setDouble(21, ((WO_RetWall) wkodr).getActBaseLabour());
+                preparedStmt.setDouble(22, ((WO_RetWall) wkodr).getActBaseRowHours());
+                preparedStmt.setDouble(23, ((WO_RetWall) wkodr).getActBaseRowLabour());
+                preparedStmt.setDouble(24, ((WO_RetWall) wkodr).getActBlock());
+                preparedStmt.execute();
+            }
+            else if (wkodr instanceof WO_WeedBarrier) {
+                String query = "insert into WeedBarrierWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(2, ((WO_WeedBarrier) wkodr).getEstSQFT());
+                preparedStmt.setDouble(3, ((WO_WeedBarrier) wkodr).getEstLayers());
+                preparedStmt.setDouble(4, ((WO_WeedBarrier) wkodr).getEstReqSQFT());
+                preparedStmt.setDouble(5, ((WO_WeedBarrier) wkodr).getEstHours());
+                preparedStmt.setDouble(6, ((WO_WeedBarrier) wkodr).getEstStaples());
+                preparedStmt.setDouble(7, ((WO_WeedBarrier) wkodr).getEstStaplesSupply());
+                preparedStmt.setDouble(8, ((WO_WeedBarrier) wkodr).getEstBarrierSupply());
+                preparedStmt.setDouble(9, ((WO_WeedBarrier) wkodr).getEstLabour());
+                preparedStmt.setDouble(10, ((WO_WeedBarrier) wkodr).getActSQFT());
+                preparedStmt.setDouble(11, ((WO_WeedBarrier) wkodr).getActLayers());
+                preparedStmt.setDouble(12, ((WO_WeedBarrier) wkodr).getActReqSQFT());
+                preparedStmt.setDouble(13, ((WO_WeedBarrier) wkodr).getActHours());
+                preparedStmt.setDouble(14, ((WO_WeedBarrier) wkodr).getActStaples());
+                preparedStmt.setDouble(15, ((WO_WeedBarrier) wkodr).getActStaplesSupply());
+                preparedStmt.setDouble(16, ((WO_WeedBarrier) wkodr).getActBarrierSupply());
+                preparedStmt.setDouble(17, ((WO_WeedBarrier) wkodr).getActLabour());
+                preparedStmt.execute();
+            }
+            else if (wkodr instanceof WO_Irrigation) {
+                String query = "insert into IrrigationWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(2, ((WO_Irrigation) wkodr).getEstThreeQuarterLine());
+                preparedStmt.setDouble(3, ((WO_Irrigation) wkodr).getEstHoseBibs());
+                preparedStmt.setDouble(4, ((WO_Irrigation) wkodr).getEstOffValves());
+                preparedStmt.setDouble(5, ((WO_Irrigation) wkodr).getEstRotaryHeads());
+                preparedStmt.setDouble(6, ((WO_Irrigation) wkodr).getEstSprayHaeds());
+                preparedStmt.setDouble(7, ((WO_Irrigation) wkodr).getEstDripLine());
+                preparedStmt.setDouble(8, ((WO_Irrigation) wkodr).getEstDripEmitter());
+                preparedStmt.setDouble(9, ((WO_Irrigation) wkodr).getEstTimerControl());
+                preparedStmt.setDouble(10, ((WO_Irrigation) wkodr).getEstControlWire());
+                preparedStmt.setDouble(11, ((WO_Irrigation) wkodr).getEstValveBox());
+                preparedStmt.setDouble(12, ((WO_Irrigation) wkodr).getEstControlValve());
+                preparedStmt.setDouble(13, ((WO_Irrigation) wkodr).getActThreeQuarterLine());
+                preparedStmt.setDouble(14, ((WO_Irrigation) wkodr).getActHoseBibs());
+                preparedStmt.setDouble(15, ((WO_Irrigation) wkodr).getActOffValves());
+                preparedStmt.setDouble(16, ((WO_Irrigation) wkodr).getActRotaryHeads());
+                preparedStmt.setDouble(17, ((WO_Irrigation) wkodr).getActSprayHaeds());
+                preparedStmt.setDouble(18, ((WO_Irrigation) wkodr).getActDripLine());
+                preparedStmt.setDouble(19, ((WO_Irrigation) wkodr).getActDripEmitter());
+                preparedStmt.setDouble(20, ((WO_Irrigation) wkodr).getActTimerControl());
+                preparedStmt.setDouble(21, ((WO_Irrigation) wkodr).getActControlWire());
+                preparedStmt.setDouble(22, ((WO_Irrigation) wkodr).getActValveBox());
+                preparedStmt.setDouble(23, ((WO_Irrigation) wkodr).getActControlValve());
+                preparedStmt.execute();
+            }
+            else if(wkodr instanceof WO_Custom){
+                String query = "insert into BedWorkOrder values(?, ?, ?)";
+                        PreparedStatement preparedStmt = conn.prepareStatement(query);
+                        preparedStmt.setInt(1, wkodrNum);
+                        preparedStmt.setDouble(2, ((WO_Custom) wkodr).getMulti());
+                        preparedStmt.setDouble(3, ((WO_Custom) wkodr).getRate());
+                        preparedStmt.execute();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1207,6 +1314,14 @@ public class JDBCCommands {
     }
 
     //SCALE
+    /**
+     * Creates a workorder subtype based on information retrieved from the database
+     * @param workOrderType the type of work order to create
+     * @param workOrderNum the workorder number to be set in the new sub type workorder object
+     * @param projectNum the project number to be set in the new sub type workorder object
+     * @param result the result set which contains the information needed to make the work order sub type
+     * @return the completed workorder object
+     */
     public WorkOrder createWorkOrderForProject(String workOrderType, int workOrderNum, int projectNum, ResultSet result) {
         try {
             if (workOrderType.equalsIgnoreCase("excavationbyhandworkorder") || workOrderType.equalsIgnoreCase("excavationbyskidworkorder")) {
@@ -1237,13 +1352,13 @@ public class JDBCCommands {
                 workOrder.setEstTrucking(result.getDouble("estTrucking"));
                 workOrder.setEstDisposal(result.getDouble("estDisposal"));
 
-                workOrder.setActSQFT(result.getDouble("ActSQFT"));
-                workOrder.setActDepth(result.getDouble("ActDepth"));
-                workOrder.setActReqYards(result.getDouble("ActReqYards"));
-                workOrder.setActHours(result.getDouble("ActHours"));
-                workOrder.setActLabour(result.getDouble("ActLabour"));
-                workOrder.setActTrucking(result.getDouble("ActTrucking"));
-                workOrder.setActDisposal(result.getDouble("ActDisposal"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActDepth(result.getDouble("actDepth"));
+                workOrder.setActReqYards(result.getDouble("actReqYards"));
+                workOrder.setActHours(result.getDouble("actHours"));
+                workOrder.setActLabour(result.getDouble("actLabour"));
+                workOrder.setActTrucking(result.getDouble("actTrucking"));
+                workOrder.setActDisposal(result.getDouble("actDisposal"));
 
                 return workOrder;
             }
@@ -1271,10 +1386,10 @@ public class JDBCCommands {
                 workOrder.setEstLabour(result.getDouble("estLabour"));
                 workOrder.setAggCost(result.getDouble("aggCost"));
 
-                workOrder.setActSQFT(result.getDouble("ActSQFT"));
-                workOrder.setActDepth(result.getDouble("ActDepth"));
-                workOrder.setActReqYards(result.getDouble("ActReqYards"));
-                workOrder.setActHours(result.getDouble("ActHours"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActDepth(result.getDouble("actDepth"));
+                workOrder.setActReqYards(result.getDouble("actReqYards"));
+                workOrder.setActHours(result.getDouble("actHours"));
                 workOrder.setActLabour(result.getDouble("ActLabour"));
                 workOrder.setAggregate(result.getString("aggregate"));
 
@@ -1300,10 +1415,10 @@ public class JDBCCommands {
                 workOrder.setEstManHours(result.getDouble("estManHours"));
                 workOrder.setEstInstallCost(result.getDouble("estInstallCost"));
 
-                workOrder.setActSQFT(result.getDouble("ActSQFT"));
-                workOrder.setActSupplyCost(result.getDouble("ActSupplyCost"));
-                workOrder.setActManHours(result.getDouble("ActReqManHours"));
-                workOrder.setActInstallCost(result.getDouble("ActInstallCost"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActSupplyCost(result.getDouble("actSupplyCost"));
+                workOrder.setActManHours(result.getDouble("actReqManHours"));
+                workOrder.setActInstallCost(result.getDouble("actInstallCost"));
 
                 return workOrder;
             }
@@ -1340,6 +1455,145 @@ public class JDBCCommands {
                 return workOrder;
             }
             
+            else if (workOrderType.equalsIgnoreCase("retwallworkorder")) {
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_RetWall workOrder = new WO_RetWall(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstLineFT(result.getDouble("estLineFT"));
+                workOrder.setEstHeight(result.getDouble("estHeight"));
+                workOrder.setEstBaseDepth(result.getDouble("estBaseDepth"));
+                workOrder.setEstBaseWidth(result.getDouble("estBaseWidth"));
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstBaseReqYards(result.getDouble("estBaseReqYards"));
+                workOrder.setEstBaseSupply(result.getDouble("estBaseSupply"));
+                workOrder.setEstBaseHours(result.getDouble("estBaseHours"));
+                workOrder.setEstBaseLabour(result.getDouble("estBaseLabour"));
+                workOrder.setEstBaseRowHours(result.getDouble("estBaseRowHours"));
+                workOrder.setEstBaseRowLabour(result.getDouble("estBaseRowLabour"));
+                workOrder.setEstBlock(result.getDouble("estBlock"));
+                
+                workOrder.setActLineFT(result.getDouble("actLineFT"));
+                workOrder.setActHeight(result.getDouble("actHeight"));
+                workOrder.setActBaseDepth(result.getDouble("actBaseDepth"));
+                workOrder.setActBaseWidth(result.getDouble("actBaseWidth"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActBaseReqYards(result.getDouble("actBaseReqYards"));
+                workOrder.setActBaseSupply(result.getDouble("actBaseSupply"));
+                workOrder.setActBaseHours(result.getDouble("actBaseHours"));
+                workOrder.setActBaseLabour(result.getDouble("actBaseLabour"));
+                workOrder.setActBaseRowHours(result.getDouble("actBaseRowHours"));
+                workOrder.setActBaseRowLabour(result.getDouble("actBaseRowLabour"));
+                workOrder.setActBlock(result.getDouble("actBlock"));
+                
+                return workOrder;
+            }
+            else if (workOrderType.equalsIgnoreCase("weedbarrierworkorder")) {
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_WeedBarrier workOrder = new WO_WeedBarrier(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstLayers(result.getDouble("estLayers"));
+                workOrder.setEstReqSQFT(result.getDouble("estReqSQFT"));
+                workOrder.setEstHours(result.getDouble("estHours"));
+                workOrder.setEstStaples(result.getDouble("estStaples"));
+                workOrder.setEstStaplesSupply(result.getDouble("estStaplesSupply"));
+                workOrder.setEstBarrierSupply(result.getDouble("estBarrierSupply"));
+                workOrder.setEstLabour(result.getDouble("estLabour"));
+
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActLayers(result.getDouble("actLayers"));
+                workOrder.setActReqSQFT(result.getDouble("actReqSQFT"));
+                workOrder.setActHours(result.getDouble("actHours"));
+                workOrder.setActStaples(result.getDouble("actStaples"));
+                workOrder.setActStaplesSupply(result.getDouble("actStaplesSupply"));
+                workOrder.setActBarrierSupply(result.getDouble("actBarrierSupply"));
+                workOrder.setActLabour(result.getDouble("actLabour"));
+
+                return workOrder;
+            }
+            
+            else if(workOrderType.equalsIgnoreCase("irrigationworkorder")){
+                
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_Irrigation workOrder = new WO_Irrigation(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstThreeQuarterLine(result.getDouble("estThreeQuarterLine"));
+                workOrder.setEstHoseBibs(result.getDouble("estHoseBibs"));
+                workOrder.setEstOffValves(result.getDouble("estOffValves"));
+                workOrder.setEstRotaryHeads(result.getDouble("estRotaryHeads"));
+                workOrder.setEstSprayHaeds(result.getDouble("estSprayHaeds"));
+                workOrder.setEstDripLine(result.getDouble("estDripLine"));
+                workOrder.setEstDripEmitter(result.getDouble("estDripEmitter"));
+                workOrder.setEstTimerControl(result.getDouble("estTimerControl"));
+                workOrder.setEstControlWire(result.getDouble("estControlWire"));
+                workOrder.setEstValveBox(result.getDouble("estValveBox"));
+                workOrder.setEstControlValve(result.getDouble("estControlValve"));
+
+                workOrder.setActThreeQuarterLine(result.getDouble("actThreeQuarterLine"));
+                workOrder.setActHoseBibs(result.getDouble("actHoseBibs"));
+                workOrder.setActOffValves(result.getDouble("actOffValves"));
+                workOrder.setActRotaryHeads(result.getDouble("actRotaryHeads"));
+                workOrder.setActSprayHaeds(result.getDouble("actSprayHaeds"));
+                workOrder.setActDripLine(result.getDouble("actDripLine"));
+                workOrder.setActDripEmitter(result.getDouble("actDripEmitter"));
+                workOrder.setActTimerControl(result.getDouble("actTimerControl"));
+                workOrder.setActControlWire(result.getDouble("actControlWire"));
+                workOrder.setActValveBox(result.getDouble("actValveBox"));
+                workOrder.setActControlValve(result.getDouble("actControlValve"));
+
+                return workOrder;
+            }
+            
+            
+            else if(workOrderType.equalsIgnoreCase("customworkorder")){
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_Custom workOrder = new WO_Custom(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setMulti(result.getDouble("multi"));
+                workOrder.setRate(result.getDouble("rate"));
+                
+                return workOrder;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }

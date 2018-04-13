@@ -28,7 +28,8 @@ public class DBAccessor {
 
     /**
      * creates MySQL connection and JDBCCommands instance
-     *
+     * If the program detects that the DIRT database has not yet been created it calls the initializedatabase method and then continues to pass back a conn object as normal
+     * 
      * @return true if no errors occur connecting to the database
      */
     public boolean connectToMySQL() {
@@ -74,6 +75,10 @@ public class DBAccessor {
         return conn;
     }
 
+    /**
+     * creates the dirt database and the user that the user of this application will use for mysql
+     * @return the created connection to the newly populated database
+     */
     public Connection initializeDatabase() {
 
         try {
@@ -141,6 +146,11 @@ public class DBAccessor {
         }
     }
 
+    /**
+     * saves a copy of the default tables and table data based on a previously generated mysql dump script.
+     * this information is saved in the user's mydocuments folder so it can be accessed by the program back in initializedatabase
+     * @return true if successful
+     */
     public boolean copyStartupScript() {
 
         StringBuilder path = new StringBuilder("");
