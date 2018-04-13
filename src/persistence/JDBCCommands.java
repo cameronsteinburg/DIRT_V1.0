@@ -1354,7 +1354,7 @@ public class JDBCCommands {
                 preparedStmt.execute();
             }
             else if(wkodr instanceof WO_Custom){
-                String query = "insert into BedWorkOrder values(?, ?, ?)";
+                String query = "insert into CustomWorkOrder values(?, ?, ?)";
                         PreparedStatement preparedStmt = conn.prepareStatement(query);
                         preparedStmt.setInt(1, wkodrNum);
                         preparedStmt.setDouble(2, ((WO_Custom) wkodr).getMulti());
