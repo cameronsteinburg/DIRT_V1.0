@@ -363,7 +363,8 @@ insert into serviceconstants values('irrigation','control valve',51.0,15.0);
 insert into serviceconstants values('weedbarrier','man hours /500 sqft',1.0,null);
 insert into serviceconstants values('weedbarrier','staples /500 sqft',60.0,null);
 insert into serviceconstants values('weedbarrier','cost per staples',0.10,null);
-insert into serviceconstants values('weedbarrier','barrier supply /500 sqft',55.0,null);
+insert into serviceconstants values('weedbarrier','barrier supply /500 sqft',80.88,null);
+insert into serviceconstants values('weedbarrier','barrier install /500 sqft',55.00,null);
 
 insert into serviceconstants values('sod','supply /yard',0.6,null);
 insert into serviceconstants values('sod','man hours /10 sqft',0.12,null);

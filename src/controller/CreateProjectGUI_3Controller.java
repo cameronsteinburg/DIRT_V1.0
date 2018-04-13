@@ -5,6 +5,7 @@ import entity.Services.WO_Bed;
 import entity.Services.WO_Excavation;
 import entity.Services.WO_Irrigation;
 import entity.Services.WO_Sod;
+import entity.Services.WO_WeedBarrier;
 import entity.WorkOrder;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -158,7 +159,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             } else if (allItems.get(i).contains("Barrier")) {
 
-                //todo elements.add(addBarrier());
+                elements.add(addBarrier());
+
             } else if (allItems.get(i).contains("Wall")) {
 
                 //todo elements.add(addRetWall());
@@ -169,19 +171,123 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    private ArrayList<Control> addBarrier() {
+
+        WO_WeedBarrier newWeed = new WO_WeedBarrier(true);
+        orders.add(newWeed);
+
+        ArrayList<Control> weed = new ArrayList<Control>();
+
+        Label label = new Label("Weed Barrier:");
+        label.setUnderline(true);
+        label.setFont(new Font(16));
+        weed.add(label);
+
+        weed.add(addLabel("SQ.FT"));
+        weed.add(addField(true));
+
+        label = new Label("    | ");
+        label.setFont(new Font(20));
+        weed.add(label);
+
+        weed.add(addLabel("Est. Man Hours"));
+        weed.add(addField(false));
+
+        weed.add(addLabel("Fabric Staples Required"));
+        weed.add(addField(false));
+
+        weed.add(addLabel("Fabric Staples Supply"));
+        weed.add(addField(false));
+
+        weed.add(addLabel("Barrier Supply"));
+        weed.add(addField(false));
+
+        weed.add(addLabel("Labour Cost"));
+        weed.add(addField(false));
+
+        addServTotal(weed);
+
+        double barrierSupply = dbs.weedbarrier_BarrierSupplyPer500SQFT();
+        double stapleRate = dbs.weedbarrier_CostPerStaples();
+        double estHoursRate = dbs.weedbarrier_ManHoursPer500SQFT();
+        double amountOfStaples = dbs.weedbarrier_StaplesPer500SQFT();
+        double installrate = dbs.weedbarrier_InstallPer500SQFT();
+
+        weed.get(2).setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                double sqftDbl;
+
+                TextField sqft = (TextField) weed.get(2);
+
+                try {
+                    sqftDbl = Double.parseDouble(sqft.getText());
+                } catch (Exception e) {
+                    sqftDbl = 0;
+                }
+
+                TextField estHours = (TextField) weed.get(5);
+                Double hoursDbl = (sqftDbl / 500) * estHoursRate;
+                estHours.setText(f.format(hoursDbl));
+
+                TextField staples = (TextField) weed.get(7);
+                Double staplesDbl = (sqftDbl / 500) * amountOfStaples;
+                staples.setText(f.format(staplesDbl));
+
+                TextField staplesCost = (TextField) weed.get(9);
+                Double staplesCostDbl = (sqftDbl / 500) * stapleRate;
+                staplesCost.setText(f.format(staplesCostDbl));
+
+                TextField barrierSupplyF = (TextField) weed.get(11);
+                Double barrierSupplyDbl = (sqftDbl / 500) * barrierSupply;
+                barrierSupplyF.setText(f.format(barrierSupplyDbl));
+
+                TextField barrierInstallF = (TextField) weed.get(13);
+                Double installDbl = (sqftDbl / 500) * installrate;
+                barrierInstallF.setText(f.format(installDbl));
+
+                TextField serTotal = (TextField) weed.get(15);
+                Double serTotalDbl = installDbl + staplesCostDbl + barrierSupplyDbl;
+                serTotal.setText(f.format(serTotalDbl));
+
+                newWeed.setEstBarrierSupply(barrierSupplyDbl);
+                newWeed.setEstHours(hoursDbl);
+                newWeed.setEstLabour(installDbl);
+                newWeed.setEstStaples(staplesDbl);
+                newWeed.setEstStaplesSupply(staplesCostDbl);
+                newWeed.setQuotedTotal(serTotalDbl);
+
+                newWeed.setActBarrierSupply(barrierSupplyDbl);
+                newWeed.setActHours(hoursDbl);
+                newWeed.setActLabour(installDbl);
+                newWeed.setActStaples(staplesDbl);
+                newWeed.setActStaplesSupply(staplesCostDbl);
+                newWeed.setActualTotal(serTotalDbl);
+
+                botCheck();
+
+            }
+        });
+
+        fieldCount = 0;
+        return weed;
+    }
+
     /**
      *
      * @return
      */
+
     private ArrayList<Control> addIrrigation() {
 
         WO_Irrigation newIrrig = new WO_Irrigation(true);
         orders.add(newIrrig);
 
         ArrayList<Control> irrig = new ArrayList();
-        ArrayList<Control> irrig2 = new ArrayList();
+        //ArrayList<Control> irrig2 = new ArrayList();
 
-        Label label = new Label("Underground Irrigation");
+        Label label = new Label("Underground Irrigation:");
         label.setUnderline(true);
         //label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
@@ -207,9 +313,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         irrig.add(addField(true)); //13
         irrig.add(new Label("Feet"));// 14 split here
 
-        irrig.add(new Label(""));
-        irrig.add(new Label(""));
-
+        //irrig.add(new Label(""));
+        //irrig.add(new Label(""));
         irrig.add(addLabel("Drip Emitter  x  "));
         irrig.add(addField(true));//18
 
@@ -226,10 +331,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         irrig.add(addLabel("Control Valve  x  "));
         irrig.add(addField(true));//27
 
-        irrig.add(new Label(""));
-        irrig.add(new Label(""));
-        irrig.add(new Label(""));
-        irrig.add(new Label(""));
+        // irrig.add(new Label(""));
+        // irrig.add(new Label(""));
+        // irrig.add(new Label(""));
+        // irrig.add(new Label(""));
         addServTotal(irrig); //size - 1
 
         double threeQM = dbs.irrigation_3QuarterLiningMaterial();

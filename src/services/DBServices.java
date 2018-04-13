@@ -531,6 +531,10 @@ public class DBServices {
     public double weedbarrier_BarrierSupplyPer500SQFT() {
         return (double) Main.jdbcc.getConstant("weedbarrier", "barrier supply /500 sqft").get(0);
     }
+    //insert into serviceconstants values('weedbarrier','barrier install /500 sqft',55.00,null);
+    public double weedbarrier_InstallPer500SQFT(){
+        return (double) Main.jdbcc.getConstant("weedbarrier", "barrier install /500 sqft").get(0);
+    }
 
     public double sod_SupplyPerYard() {
         return (double) Main.jdbcc.getConstant("sod", "supply /yard").get(0);

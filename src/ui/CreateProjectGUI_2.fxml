@@ -44,7 +44,7 @@
             <Button fx:id="byHandBtn" mnemonicParsing="false" onAction="#byHandAction" prefHeight="40.0" prefWidth="530.0" styleClass="blue-button" text="Excavation by Hand" />
             <Button fx:id="bySkidBtn" mnemonicParsing="false" onAction="#bySkidAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Excavation by Skid" GridPane.columnIndex="2" />
             <Button fx:id="bedBtn" mnemonicParsing="false" onAction="#bedAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Bed (Soil/Mulch/Aggregate/Rock)" GridPane.rowIndex="1" />
-            <Button fx:id="barrierBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="3" />
+            <Button fx:id="barrierBtn" mnemonicParsing="false" onAction="#barrierAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="3" />
             <Button fx:id="walkwayBtn" disable="true" mnemonicParsing="false" onAction="#patioAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button fx:id="sodBtn" mnemonicParsing="false" onAction="#sodAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="wallBtn" disable="true" mnemonicParsing="false" prefHeight="42.0" prefWidth="328.0" styleClass="blue-button" text="Retaining Wall" GridPane.rowIndex="2" />

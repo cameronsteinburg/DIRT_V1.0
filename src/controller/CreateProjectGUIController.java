@@ -209,6 +209,16 @@ public class CreateProjectGUIController extends Controller implements Initializa
         allItems.add("Excavation by Skid");
         updateTable(allItems);
     }
+    
+    /**
+     * 
+     */
+    @FXML
+    private void barrierAction(ActionEvent event){
+        
+        allItems.add("Weed Barrier");
+        updateTable(allItems);
+    }
 
     /**
      *
