@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="1078.0" stylesheets="@createclientgui.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane pannable="true" prefHeight="468.0" prefWidth="1078.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane maxWidth="1850.0" pannable="true" prefHeight="468.0" prefWidth="1078.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
           <AnchorPane fx:id="anc" minHeight="0.0" minWidth="0.0" />
         </content>

@@ -412,8 +412,8 @@ public class DBServices {
         return (double) Main.jdbcc.getConstant("retainingwall", "crushed base install hours / yard").get(0);
     }
 
-    public double retainingwall_CrushedBaseInstallRatePerYard() {
-        return (double) Main.jdbcc.getConstant("retainingwall", "crushed base install rate / yard").get(0);
+    public double retainingwall_CrushedBaseInstallRatePerHour() {
+        return (double) Main.jdbcc.getConstant("retainingwall", "crushed base install rate / hour").get(0);
     }
 
     public double retainingwall_BaseRowInstallHoursPerLineFeet() {
@@ -531,7 +531,7 @@ public class DBServices {
     public double weedbarrier_BarrierSupplyPer500SQFT() {
         return (double) Main.jdbcc.getConstant("weedbarrier", "barrier supply /500 sqft").get(0);
     }
-    //insert into serviceconstants values('weedbarrier','barrier install /500 sqft',55.00,null);
+
     public double weedbarrier_InstallPer500SQFT(){
         return (double) Main.jdbcc.getConstant("weedbarrier", "barrier install /500 sqft").get(0);
     }

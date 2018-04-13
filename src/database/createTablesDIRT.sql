@@ -343,7 +343,7 @@ insert into serviceconstants values('materials','Sod (per 10 s.f.)',3.60,4.80);
     
 insert into serviceconstants values('retainingwall','crushed base cost / yard',45.0,null);
 insert into serviceconstants values('retainingwall','crushed base install hours / yard',2.0,null);
-insert into serviceconstants values('retainingwall','crushed base install rate / yard',55.0,null);
+insert into serviceconstants values('retainingwall','crushed base install rate / hour',55.0,null);
 insert into serviceconstants values('retainingwall','base row install hours /line feet',0.2,null);
 insert into serviceconstants values('retainingwall','base row install rate / hour',55.0,null);
 insert into serviceconstants values('retainingwall','block cost /line feet',13.37,null);

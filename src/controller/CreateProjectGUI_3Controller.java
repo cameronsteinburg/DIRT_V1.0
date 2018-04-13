@@ -6,6 +6,7 @@ import entity.Services.WO_Excavation;
 import entity.Services.WO_Irrigation;
 import entity.Services.WO_Sod;
 import entity.Services.WO_WeedBarrier;
+import entity.Services.WO_RetWall;
 import entity.WorkOrder;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -20,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -31,10 +31,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import services.DBServices;
 
@@ -163,7 +161,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             } else if (allItems.get(i).contains("Wall")) {
 
-                //todo elements.add(addRetWall());
+                elements.add(addRetWall());
+
             } else if (allItems.get(i).contains("Custom")) {
 
                 //todo elements.add(addCustom());
@@ -171,9 +170,113 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    private ArrayList<Control> addRetWall() {
+
+        WO_RetWall newWall = new WO_RetWall(true);
+        orders.add(newWall);
+
+        ArrayList<Control> wall = new ArrayList();
+
+        Label label = new Label("Retaining Wall:");
+        label.setUnderline(true);
+        //label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
+        label.setFont(new Font(16));
+        wall.add(label);
+
+        wall.add(addLabel("Line Feet"));
+        wall.add(addField(true));//2
+
+        wall.add(addLabel("Height"));
+        wall.add(addField(true));//4
+
+        wall.add(addLabel("Crushed Base Depth"));
+        wall.add(addField(true));//6
+
+        wall.add(addLabel("Crushed Base Width"));
+        wall.add(addField(true));//8
+
+        label = new Label("    | ");
+        label.setFont(new Font(20));
+        wall.add(label);
+
+        wall.add(addLabel("SQ.FT"));
+        wall.add(addField(false));//11
+
+        wall.add(addLabel("Base Req Yards"));
+        wall.add(addField(false));
+
+        wall.add(addLabel("Base Supply"));
+        wall.add(addField(false));
+
+        wall.add(addLabel("Base Hours"));
+        wall.add(addField(false));
+
+        wall.add(addLabel("Base Labour"));
+        wall.add(addField(false));
+
+        wall.add(addLabel("Base Row Hours"));
+        wall.add(addField(false));
+
+        wall.add(addLabel("Base Row Labour"));
+        wall.add(addField(false));
+
+        wall.add(addLabel("Block"));
+        wall.add(addField(false));
+
+        double baseSupplyPerYard = dbs.retainingwall_CrushedBaseCostPerYard();
+        double baseHoursPerYard = dbs.retainingwall_CrushedBaseInstallHoursPerYard();
+        double baseInstallPerHour = dbs.retainingwall_CrushedBaseInstallRatePerHour();
+        double rowInstallPerLF = dbs.retainingwall_BaseRowInstallHoursPerLineFeet();
+        double rowLabourPerHour = dbs.retainingwall_BaseRowInstallRatePerHour();
+        
+        for(int i = 0; i < wall.size(); i++){
+            
+            String currentEl = wall.get(i).getId();
+        
+            if (currentEl == null) {
+                currentEl = "-1";
+            }
+            
+            if (currentEl.equals("0") || currentEl.equals("1") || currentEl.equals("2") || currentEl.equals("3")) {
+
+                int place = -1;
+
+                if (currentEl.equals("0")) {
+                    place = 2;
+                } else if(currentEl.equals("1")) {
+                    place = 4;
+                } else if(currentEl.equals("2")) {
+                    place = 6;
+                } else if(currentEl.equals("3")) {
+                    place = 8;
+                }
+                
+                wall.get(place).setOnKeyReleased(new EventHandler<KeyEvent>(){
+                    
+                    @Override
+                    public void handle(KeyEvent event) {
+                       
+                        double lfDbl,heightDbl, baseDepthDbl, baseWidthDbl;
+                        
+                        
+                        
+                    }
+                
+                
+                });
+                
+            }
+            
+            
+        }
+        
+        fieldCount = 0;
+        return wall;
+    }
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     private ArrayList<Control> addBarrier() {
 
@@ -842,6 +945,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         addServTotal(hand);
 
+        hand.add(addLabel(""));
+        hand.add(addLabel(""));
+
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
         double labourRate = dbs.excavation_ManHoursByHandPerHours();
         double truckingRate = dbs.excavation_TruckingFeeByHand();
@@ -1209,19 +1315,29 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         addToList();
 
-        newGrid = new GridPane();
+        FlowPane helpMe = new FlowPane();
 
         for (int i = 0; i < elements.size(); i++) {
 
-            for (int j = 0; j < elements.get(i).size(); j++) {
-
-                newGrid.addRow(i, (Node) elements.get(i).get(j));
-            }
+            helpMe.getChildren().addAll(elements.get(i));
         }
 
-        newGrid.setTranslateX(5);
-        newGrid.setTranslateY(5);
+        helpMe.setPrefWrapLength(1850);
 
+        anc.getChildren().add(helpMe);
+
+//        newGrid = new GridPane();
+//
+//        for (int i = 0; i < elements.size(); i++) {
+//
+//            for (int j = 0; j < elements.get(i).size(); j++) {
+//
+//                newGrid.addRow(i, (Node) elements.get(i).get(j));
+//            }
+//        }
+//
+//        newGrid.setTranslateX(5);
+//        newGrid.setTranslateY(5);
         // ColumnConstraints cc = new ColumnConstraints();
         //cc.setHgrow(Priority.ALWAYS);
         //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
@@ -1229,18 +1345,17 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         //AnchorPane.setRightAnchor(newGrid, Double.NaN);
         //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
         //todo anchor constraints
-        newGrid.setMaxWidth(1900);
+        //newGrid.setMaxWidth(1900);
         // newGrid.getColumnConstraints().add(cc);
         //newGrid.getColumnConstraints().add(new ColumnConstraints(200));
-        newGrid.setHgap(5);
-        newGrid.setVgap(5);
-        newGrid.setPadding(new Insets(0, 0, 15, 0));
-
+        // newGrid.setHgap(5);
+        // newGrid.setVgap(5);
+        // newGrid.setPadding(new Insets(0, 0, 15, 0));
         //RowConstraints rc = new RowConstraints();
         //rc.setVgrow(Priority.ALWAYS);
         //rc.setMinHeight(50);
         //newGrid.getRowConstraints().add(rc);
-        anc.getChildren().add(newGrid);
+        //anc.getChildren().add(newGrid);
         //  newGrid.addRow(0, (Node) elements.get(0).get(0));
     }
 }

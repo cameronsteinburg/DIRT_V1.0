@@ -339,7 +339,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
         //retaining wall tab
         field48.setText(f.format(dbs.retainingwall_CrushedBaseCostPerYard()));
         field49.setText(f.format(dbs.retainingwall_CrushedBaseInstallHoursPerYard()));
-        field50.setText(f.format(dbs.retainingwall_CrushedBaseInstallRatePerYard()));
+        field50.setText(f.format(dbs.retainingwall_CrushedBaseInstallRatePerHour()));
         field51.setText(f.format(dbs.retainingwall_BaseRowInstallHoursPerLineFeet()));
         field52.setText(f.format(dbs.retainingwall_BaseRowInstallRatePerHour()));
         field53.setText(f.format(dbs.retainingwall_BlockCostPerLineFeet()));
