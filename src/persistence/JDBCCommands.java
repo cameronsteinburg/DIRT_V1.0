@@ -405,6 +405,7 @@ public class JDBCCommands {
             preparedStmt.setDouble(11, project.getQuote());
             preparedStmt.setDouble(12, project.getActualCost());
             preparedStmt.setBoolean(13, project.isIsActive());
+            preparedStmt.setBoolean(14, false);
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -504,14 +505,19 @@ public class JDBCCommands {
                 double quote = results.getDouble("quote");
                 double actualCost = results.getDouble("actualCost");
                 char isActive = results.getString("isActive").charAt(0);
+                char completed = results.getString("completed").charAt(0);
                 boolean clientPaidToBoolean = false;
                 boolean isActiveToBoolean = false;
+                boolean completedToBoolean = false;
 
                 if (clientPaid == '1') {
                     clientPaidToBoolean = true;
                 }
                 if (isActive == '1') {
                     isActiveToBoolean = true;
+                }
+                if (completed == '1'){
+                    completedToBoolean = true;
                 }
 
                 if (isActive == '0' && getDeleted == true) {
@@ -525,6 +531,8 @@ public class JDBCCommands {
                     project.setExtraneousExpenses(extraneousExpenses);
                     project.setQuote(quote);
                     project.setActualCost(actualCost);
+                    project.setIsActive(isActiveToBoolean);
+                    project.setCompleted(completedToBoolean);
 
                     Client client = getClient(clientNum);
                     project.setClient(client);
@@ -544,6 +552,8 @@ public class JDBCCommands {
                     project.setExtraneousExpenses(extraneousExpenses);
                     project.setQuote(quote);
                     project.setActualCost(actualCost);
+                    project.setIsActive(isActiveToBoolean);
+                    project.setCompleted(completedToBoolean);
 
                     Client client = getClient(clientNum);
                     project.setClient(client);
@@ -641,7 +651,7 @@ public class JDBCCommands {
     public boolean updateProject(Project projectOld, Project projectNew){
         try {
             // the mysql prepared update statement
-            String query = "update projects set clientNum=?, projectName=?, description=?, siteAddress=?, startDate=?, endDate=?, clientOwing=?, clientPaid=?, allowanceCost=?, extraneousExpenses=?, quote=?, actualCost=? where projectNum = ?";
+            String query = "update projects set clientNum=?, projectName=?, description=?, siteAddress=?, startDate=?, endDate=?, clientOwing=?, clientPaid=?, allowanceCost=?, extraneousExpenses=?, quote=?, actualCost=?, completed=? where projectNum = ?";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -679,6 +689,7 @@ public class JDBCCommands {
             preparedStmt.setDouble(11, projectNew.getQuote());
             preparedStmt.setDouble(12, projectNew.getActualCost());
             preparedStmt.setInt(13, getProjectNum(projectOld.getProjectName()));
+            preparedStmt.setBoolean(14, projectNew.getCompleted());
 
             // execute the preparedstatement
             preparedStmt.execute();

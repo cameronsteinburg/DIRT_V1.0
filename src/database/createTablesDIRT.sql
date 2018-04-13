@@ -59,6 +59,7 @@ create table Projects (projectNum smallint unsigned not null auto_increment,
     quote numeric(8,2),
     actualCost numeric(8,2),
     isActive boolean not null, 
+    completed boolean,
     constraint pk_Project primary key (projectNum), 
     constraint fk_ProjectClient foreign key (clientNum) references Clients (clientNum));
 
