@@ -1108,6 +1108,9 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_WeedBarrier){
             return "WeedBarrierWorkOrder";
         }
+        else if(wkodr instanceof WO_Irrigation){
+            return "IrrigationWorkOrder";
+    }
         return null;
     }
 
@@ -1207,7 +1210,7 @@ public class JDBCCommands {
                 preparedStmt.execute();
             }
             else if(wkodr instanceof WO_TopSoil){
-                String query = "insert into RetWallWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String query = "insert into RetWallWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setInt(1, wkodrNum);
                 preparedStmt.setDouble(1, ((WO_RetWall) wkodr).getEstLineFT());
@@ -1237,7 +1240,7 @@ public class JDBCCommands {
                 preparedStmt.execute();
             }
             else if (wkodr instanceof WO_WeedBarrier) {
-                String query = "insert into WeedBarrierWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String query = "insert into WeedBarrierWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setInt(1, wkodrNum);
                 preparedStmt.setDouble(2, ((WO_WeedBarrier) wkodr).getEstSQFT());
@@ -1256,6 +1259,34 @@ public class JDBCCommands {
                 preparedStmt.setDouble(15, ((WO_WeedBarrier) wkodr).getActStaplesSupply());
                 preparedStmt.setDouble(16, ((WO_WeedBarrier) wkodr).getActBarrierSupply());
                 preparedStmt.setDouble(17, ((WO_WeedBarrier) wkodr).getActLabour());
+                preparedStmt.execute();
+            }
+            else if (wkodr instanceof WO_Irrigation) {
+                String query = "insert into IrrigationWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(2, ((WO_Irrigation) wkodr).getEstThreeQuarterLine());
+                preparedStmt.setDouble(3, ((WO_Irrigation) wkodr).getEstHoseBibs());
+                preparedStmt.setDouble(4, ((WO_Irrigation) wkodr).getEstOffValves());
+                preparedStmt.setDouble(5, ((WO_Irrigation) wkodr).getEstRotaryHeads());
+                preparedStmt.setDouble(6, ((WO_Irrigation) wkodr).getEstSprayHaeds());
+                preparedStmt.setDouble(7, ((WO_Irrigation) wkodr).getEstDripLine());
+                preparedStmt.setDouble(8, ((WO_Irrigation) wkodr).getEstDripEmitter());
+                preparedStmt.setDouble(9, ((WO_Irrigation) wkodr).getEstTimerControl());
+                preparedStmt.setDouble(10, ((WO_Irrigation) wkodr).getEstControlWire());
+                preparedStmt.setDouble(11, ((WO_Irrigation) wkodr).getEstValveBox());
+                preparedStmt.setDouble(12, ((WO_Irrigation) wkodr).getEstControlValve());
+                preparedStmt.setDouble(13, ((WO_Irrigation) wkodr).getActThreeQuarterLine());
+                preparedStmt.setDouble(14, ((WO_Irrigation) wkodr).getActHoseBibs());
+                preparedStmt.setDouble(15, ((WO_Irrigation) wkodr).getActOffValves());
+                preparedStmt.setDouble(16, ((WO_Irrigation) wkodr).getActRotaryHeads());
+                preparedStmt.setDouble(17, ((WO_Irrigation) wkodr).getActSprayHaeds());
+                preparedStmt.setDouble(18, ((WO_Irrigation) wkodr).getActDripLine());
+                preparedStmt.setDouble(19, ((WO_Irrigation) wkodr).getActDripEmitter());
+                preparedStmt.setDouble(20, ((WO_Irrigation) wkodr).getActTimerControl());
+                preparedStmt.setDouble(21, ((WO_Irrigation) wkodr).getActControlWire());
+                preparedStmt.setDouble(22, ((WO_Irrigation) wkodr).getActValveBox());
+                preparedStmt.setDouble(23, ((WO_Irrigation) wkodr).getActControlValve());
                 preparedStmt.execute();
             }
         } catch (SQLException ex) {
@@ -1295,13 +1326,13 @@ public class JDBCCommands {
                 workOrder.setEstTrucking(result.getDouble("estTrucking"));
                 workOrder.setEstDisposal(result.getDouble("estDisposal"));
 
-                workOrder.setActSQFT(result.getDouble("ActSQFT"));
-                workOrder.setActDepth(result.getDouble("ActDepth"));
-                workOrder.setActReqYards(result.getDouble("ActReqYards"));
-                workOrder.setActHours(result.getDouble("ActHours"));
-                workOrder.setActLabour(result.getDouble("ActLabour"));
-                workOrder.setActTrucking(result.getDouble("ActTrucking"));
-                workOrder.setActDisposal(result.getDouble("ActDisposal"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActDepth(result.getDouble("actDepth"));
+                workOrder.setActReqYards(result.getDouble("actReqYards"));
+                workOrder.setActHours(result.getDouble("actHours"));
+                workOrder.setActLabour(result.getDouble("actLabour"));
+                workOrder.setActTrucking(result.getDouble("actTrucking"));
+                workOrder.setActDisposal(result.getDouble("actDisposal"));
 
                 return workOrder;
             }
@@ -1329,10 +1360,10 @@ public class JDBCCommands {
                 workOrder.setEstLabour(result.getDouble("estLabour"));
                 workOrder.setAggCost(result.getDouble("aggCost"));
 
-                workOrder.setActSQFT(result.getDouble("ActSQFT"));
-                workOrder.setActDepth(result.getDouble("ActDepth"));
-                workOrder.setActReqYards(result.getDouble("ActReqYards"));
-                workOrder.setActHours(result.getDouble("ActHours"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActDepth(result.getDouble("actDepth"));
+                workOrder.setActReqYards(result.getDouble("actReqYards"));
+                workOrder.setActHours(result.getDouble("actHours"));
                 workOrder.setActLabour(result.getDouble("ActLabour"));
                 workOrder.setAggregate(result.getString("aggregate"));
 
@@ -1358,10 +1389,10 @@ public class JDBCCommands {
                 workOrder.setEstManHours(result.getDouble("estManHours"));
                 workOrder.setEstInstallCost(result.getDouble("estInstallCost"));
 
-                workOrder.setActSQFT(result.getDouble("ActSQFT"));
-                workOrder.setActSupplyCost(result.getDouble("ActSupplyCost"));
-                workOrder.setActManHours(result.getDouble("ActReqManHours"));
-                workOrder.setActInstallCost(result.getDouble("ActInstallCost"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActSupplyCost(result.getDouble("actSupplyCost"));
+                workOrder.setActManHours(result.getDouble("actReqManHours"));
+                workOrder.setActInstallCost(result.getDouble("actInstallCost"));
 
                 return workOrder;
             }
@@ -1471,6 +1502,48 @@ public class JDBCCommands {
                 workOrder.setActStaplesSupply(result.getDouble("actStaplesSupply"));
                 workOrder.setActBarrierSupply(result.getDouble("actBarrierSupply"));
                 workOrder.setActLabour(result.getDouble("actLabour"));
+
+                return workOrder;
+            }
+            
+            else if(workOrderType.equalsIgnoreCase("irrigationworkorder")){
+                
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_Irrigation workOrder = new WO_Irrigation(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstThreeQuarterLine(result.getDouble("estThreeQuarterLine"));
+                workOrder.setEstHoseBibs(result.getDouble("estHoseBibs"));
+                workOrder.setEstOffValves(result.getDouble("estOffValves"));
+                workOrder.setEstRotaryHeads(result.getDouble("estRotaryHeads"));
+                workOrder.setEstSprayHaeds(result.getDouble("estSprayHaeds"));
+                workOrder.setEstDripLine(result.getDouble("estDripLine"));
+                workOrder.setEstDripEmitter(result.getDouble("estDripEmitter"));
+                workOrder.setEstTimerControl(result.getDouble("estTimerControl"));
+                workOrder.setEstControlWire(result.getDouble("estControlWire"));
+                workOrder.setEstValveBox(result.getDouble("estValveBox"));
+                workOrder.setEstControlValve(result.getDouble("estControlValve"));
+
+                workOrder.setActThreeQuarterLine(result.getDouble("actThreeQuarterLine"));
+                workOrder.setActHoseBibs(result.getDouble("actHoseBibs"));
+                workOrder.setActOffValves(result.getDouble("actOffValves"));
+                workOrder.setActRotaryHeads(result.getDouble("actRotaryHeads"));
+                workOrder.setActSprayHaeds(result.getDouble("actSprayHaeds"));
+                workOrder.setActDripLine(result.getDouble("actDripLine"));
+                workOrder.setActDripEmitter(result.getDouble("actDripEmitter"));
+                workOrder.setActTimerControl(result.getDouble("actTimerControl"));
+                workOrder.setActControlWire(result.getDouble("actControlWire"));
+                workOrder.setActValveBox(result.getDouble("actValveBox"));
+                workOrder.setActControlValve(result.getDouble("actControlValve"));
 
                 return workOrder;
             }
