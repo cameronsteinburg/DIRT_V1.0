@@ -88,7 +88,8 @@ public class Main extends Application {
         HomePageGUIController cont = loader.getController();
         cont.setTableFlag(true);
         cont.navigateTo("/ui/OngoingProjectsGUI.fxml");
-       // cont.updateProjectTable(null);
+        cont.updateCompleteProjectTable(null);
+        cont.updateProjectTable(null);
     }
 
     /**

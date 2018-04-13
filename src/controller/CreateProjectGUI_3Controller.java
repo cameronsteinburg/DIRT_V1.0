@@ -173,6 +173,16 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    private void addPad(ArrayList<Control> list) {
+
+        double take = 1090.0 - takenUp(list);
+        Label pad = new Label();
+        pad.setMinWidth(take);
+        pad.setMaxWidth(take);
+        list.add(pad);
+
+    }
+
     /**
      *
      * @return
@@ -184,9 +194,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         ArrayList<Control> custom = new ArrayList();
 
-        Label label = new Label(number);
+        Label label = new Label(number + ":");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 3, 0, 0));
         label.setFont(new Font(16));
         custom.add(label);//0
 
@@ -197,12 +206,14 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         custom.add(descF); //2
         custom.get(custom.size() - 1).setId("0");
 
-        custom.add(addLabel(" Expense $  "));//3
+        custom.add(addLabel("     Expense $  "));//3
         custom.add(addField(true));//4
         custom.get(custom.size() - 1).setId("1");
         custom.add(addLabel(" x "));
         custom.add(addField(true));//6
         custom.get(custom.size() - 1).setId("2");
+
+        addPad(custom);
 
         addServTotal(custom);
 
@@ -222,7 +233,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                     place = 2;
                 } else if (currentEl.equals("1")) {
                     place = 4;
-                } else if (currentEl.equals("2")){
+                } else if (currentEl.equals("2")) {
                     place = 6;
                 }
 
@@ -230,35 +241,35 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
                     @Override
                     public void handle(KeyEvent event) {
-                        
+
                         double expense;
                         TextField expenseF = (TextField) custom.get(4);
                         double multi;
                         TextField multiF = (TextField) custom.get(6);
-                        
+
                         try {
                             expense = Double.parseDouble(expenseF.getText());
                         } catch (Exception e) {
                             expense = 0;
                         }
-                        
+
                         try {
                             multi = Double.parseDouble(multiF.getText());
                         } catch (Exception e) {
                             multi = 0;
                         }
-                        
-                        TextField servTotalF = (TextField) custom.get(custom.size()-1);
-                        Double total = multi*expense;
+
+                        TextField servTotalF = (TextField) custom.get(custom.size() - 1);
+                        Double total = multi * expense;
                         servTotalF.setText(f.format(total));
-                        
+
                         TextField descF = (TextField) custom.get(2);
                         newCustom.setDescription(descF.getText());
                         newCustom.setMulti(multi);
                         newCustom.setExpense(expense);
                         newCustom.setQuotedTotal(total);
                         newCustom.setActualTotal(total);
-                  
+
                         botCheck();
                     }
 
@@ -820,7 +831,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Sod:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 3, 0, 0));
         label.setFont(new Font(16));
         sod.add(label);
 
@@ -839,6 +849,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         sod.add(addLabel("Labour Cost"));
         sod.add(addField(false));
+
+        addPad(sod);
 
         addServTotal(sod);
 
@@ -920,7 +932,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Aggregate Bed:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         bed.add(label);
 
@@ -1100,7 +1111,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Excavation By Hand:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         hand.add(label);
 
@@ -1251,7 +1261,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         Label label = new Label("Excavation By Skid Steer:");
         label.setUnderline(true);
-        label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         skid.add(label);
 
@@ -1384,10 +1393,9 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      */
     private void addServTotal(ArrayList<Control> list) {
 
-        Label label = new Label("Service Total");
+        Label label = new Label("Service Total  ");
         label.setUnderline(true);
         label.setFont(new Font(16));
-        label.setPadding(new Insets(0, 0, 0, 100));
         list.add(label);
 
         TextField totalField = new TextField("0");
@@ -1415,6 +1423,27 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         return field;
     }
 
+    private double takenUp(ArrayList<Control> list) {
+
+        double total = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+
+            total += list.get(i).getWidth();
+
+        }
+        ArrayList<Control> servSpace = new ArrayList();
+        addServTotal(servSpace);
+
+        for (int i = 0; i < servSpace.size(); i++) {
+
+            total += servSpace.get(i).getWidth();
+
+        }
+
+        return total;
+    }
+
     /**
      *
      * @param text
@@ -1423,7 +1452,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private Label addLabel(String text) {
 
         Label label = new Label(text);
-        label.setPadding(new Insets(0, 0, 0, 5));
         return label;
     }
 
@@ -1509,6 +1537,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
 
         flo.setPrefWrapLength(1850);
+        flo.setMinWidth(1850);
+        flo.setMaxWidth(1850);
 
         anc.getChildren().add(flo);
     }

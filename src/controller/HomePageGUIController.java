@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -462,7 +463,7 @@ public class HomePageGUIController extends Controller implements Initializable {
      * @param event
      */
     @FXML
-    private void searchCurrProj(ActionEvent event) {
+    private void searchCurrProj(ActionEvent event) throws InstantiationException, IllegalAccessException {
 
         String input = currentProjField.getText().toLowerCase();
 
@@ -511,7 +512,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     /**
      *
      */
-    public void updateProjectTable(ObservableList<Project> newList) {
+    public void updateProjectTable(ObservableList<Project> newList) throws InstantiationException, IllegalAccessException {
 
         if (currProjNameCol != null) {
 
@@ -528,7 +529,19 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             } else {
 
-                this.currProjList = dbs.getAllProjectsForTable();
+                ObservableList<Project> all = dbs.getAllProjectsForTable();
+                ObservableList<Project> list = FXCollections.observableArrayList();
+
+                for(int i = 0; i < all.size(); i++){
+                
+                    if(all.get(i).getCompleted() == false){
+                    
+                        list.add(all.get(i));
+                    }
+                    
+                }
+                
+                this.currProjList = list;
                 currentProjectsTable.setItems(currProjList);
             }
         }
@@ -546,12 +559,27 @@ public class HomePageGUIController extends Controller implements Initializable {
             DBServices dbs = new DBServices();
 
             if (newList != null) {
+                
+                
 
                 compProjectsTable.setItems(newList);
 
             } else {
+                
+                ObservableList<Project> all = dbs.getAllProjectsForTable();
+                ObservableList<Project> list = FXCollections.observableArrayList();
 
-                this.compProjList = dbs.getCompletedProjectsForTable();
+                for(int i = 0; i < all.size(); i++){
+                
+                    if(all.get(i).getCompleted() == true){
+                    
+                        list.add(all.get(i));
+                    }
+                    
+                }
+                
+
+                this.compProjList = list;
                 compProjectsTable.setItems(compProjList);
             }
         }
@@ -1121,6 +1149,23 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
             });
         }
+        
+        try {
+            node = root.lookup("#compProjectsTable");
+        } catch (NullPointerException e) {
+            //ignore
+        }
+
+        if (node != null) {
+
+            this.compProjectsTable = (TableView<Project>) root.lookup("#compProjectsTable");
+            this.compProjectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    getSelectedProject();
+                }
+            });
+        }
     }
 
     /**
@@ -1154,11 +1199,13 @@ public class HomePageGUIController extends Controller implements Initializable {
     /**
      *
      */
-    protected void updateTables() {
+    protected void updateTables() throws InstantiationException, IllegalAccessException {
 
         this.updateClientTable(null); //for viewing all clients in a table   
         this.updateLabourerTable(null); //for viewing all labourer in a table
         this.updateProjectTable(null);// for viewing all projects in a table
+        this.updateCompleteProjectTable(null);
+      
     }
 
     /**
@@ -1170,6 +1217,12 @@ public class HomePageGUIController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        updateTables();
+        try {
+            updateTables();
+        } catch (InstantiationException ex) {
+            Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(HomePageGUIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
