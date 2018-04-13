@@ -538,21 +538,21 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         if (comProjNamecol != null) {
 
-            currProjNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
-            currProjClientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
-            currProjStartCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-            currProjEndCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
-            currProjDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            comProjNamecol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+            comProjClientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
+            comProjStartCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+            comProjEndCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+            comProjDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
             DBServices dbs = new DBServices();
 
             if (newList != null) {
 
-                currentProjectsTable.setItems(newList);
+                //compProjectsTable.setItems(newList);
 
             } else {
 
-                this.currProjList = dbs.getAllProjectsForTable();
-                currentProjectsTable.setItems(currProjList);
+               // this.compProjList = dbs.getAllProjectsForTable();
+              //  compProjectsTable.setItems(compProjList);
             }
         }
     }
