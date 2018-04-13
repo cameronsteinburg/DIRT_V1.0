@@ -27,6 +27,7 @@ public class JDBCCommands {
 
     /**
      * default JDBCCommands constructor
+     * gets the connection object of the passed DBAccessor
      */
     public JDBCCommands(DBAccessor dbAccess) {
         this.conn = dbAccess.getConn();
@@ -100,12 +101,11 @@ public class JDBCCommands {
         return true;
     }
 
-    /**
-     *
-     * Retrieves all clients from the database and returns an array of them
-     *
-     * @return an arrayList of client objects
-     */
+   /**
+    * Retrieves all clients from the database and returns an array of them
+    * @param getDeleted when true, will also retrieve clients that have been logically deleted
+    * @return an arrayList of client objects
+    */
     public ArrayList<Client> getClients(boolean getDeleted) {
 
         try {
@@ -149,9 +149,8 @@ public class JDBCCommands {
 
     /**
      * Retrieves client information from MySQL database
-     *
-     * @return clientList List of clients in an observableList to populate
-     * tables
+     * @param getDeleted if true, also retrieves clients that have been logically deleted
+     * @return clientList List of clients in an observableList to populate tables
      */
     public ObservableList<Client> getClientsForTable(boolean getDeleted) {
         try {
@@ -195,11 +194,10 @@ public class JDBCCommands {
 
     /**
      *
-     * Retrieves a client from the database from the name passed to the method
+     * Retrieves a client from the database from the client number passed to the method
      *
-     * @param clientName the name of the client to be searched for
-     * @return a client object created from the information found in the clients
-     * table
+     * @param clientName the number of the client to be searched for
+     * @return a client object created from the information found in the clients table
      */
     public Client getClient(int num) {
 
@@ -239,10 +237,10 @@ public class JDBCCommands {
     }
 
     /**
-     *
-     * @param first
-     * @param last
-     * @return
+     * Retrieves a client from the database from the entered first and last names
+     * @param first the first name of the client to search for
+     * @param last the 
+     * @return 
      */
     public Client getClient(String first, String last) {
 
@@ -360,7 +358,7 @@ public class JDBCCommands {
     }
 
     /**
-     * persists project to MySQL
+     * persists project to MySQL with all its internals (clients/labourers/workorders)
      *
      * @param project project to be persisted
      * @return true if no error occurs
@@ -450,10 +448,9 @@ public class JDBCCommands {
     }
 
     /**
-     * Retrieves project information from MySQL database
-     *
-     * @return projectList List of projects in an observableList to populate
-     * tables
+     * gets all the projects by calling the get project method one by one and adds them to a list that can be parsed by jfxml
+     * @param getDeleted gets logically deleted projects if true
+     * @return the list of projects
      */
     public ObservableList<Project> getProjectsForTable(boolean getDeleted) {
         try {
@@ -466,7 +463,7 @@ public class JDBCCommands {
             //.next() retreives the next row, think of it like a cursor fetching
             while (results.next()) {
                 String projectName = results.getString("projectName");
-                Project project = getProject(projectName,false);
+                Project project = getProject(projectName,getDeleted);
                 projectList.add(project);
             }
             return projectList;
@@ -477,6 +474,12 @@ public class JDBCCommands {
         return null;
     }
 
+    /**
+     * Gets a project based on the name of the project passed into the mehtod
+     * @param projectName the name of the project to search for and return
+     * @param getDeleted gets logically deleted projects if true
+     * @return 
+     */
     public Project getProject(String projectName, boolean getDeleted) {
 
         try {
@@ -559,6 +562,11 @@ public class JDBCCommands {
         return null;
     }
 
+    /**
+     * Obtains the labourers for a given project, this is a method used by getProject()
+     * @param projectNum the projectnumber of the labourers to search for in the projectlabourer table
+     * @return and arraylist of the labourers
+     */
     public ArrayList<Labourer> getLabourersForProject(int projectNum) {
         try {
             ArrayList<Labourer> labourers = new ArrayList();
@@ -593,6 +601,11 @@ public class JDBCCommands {
         return null;
     }
 
+    /**
+     * Obtains the workorders for a given project, this is a method used by getProject()
+     * @param projectNum the project number of the workorders to search for in the workorders table
+     * @return an array list of the found workorders
+     */
     public ArrayList<WorkOrder> getWorkOrdersForProject(int projectNum) {
         try {
             ArrayList<WorkOrder> workOrders = new ArrayList();
@@ -619,7 +632,12 @@ public class JDBCCommands {
         return null;
     }
     
-    
+    /**
+     * updates all of a project's values from the old ones to new ones
+     * @param projectOld the data of the old project object
+     * @param projectNew the data of the new project object
+     * @return true if there are no errors
+     */
     public boolean updateProject(Project projectOld, Project projectNew){
         try {
             // the mysql prepared insert statement
@@ -793,6 +811,12 @@ public class JDBCCommands {
         return true;
     }
 
+    /**
+     * updates a labourer's values based on new data
+     * @param labourerOld the data of the old labourer
+     * @param labourerNew the data of the new labourer
+     * @return true if no errors occur 
+     */
     public boolean updateLabourer(Labourer labourerOld, Labourer labourerNew) {
 
         try {
@@ -902,10 +926,9 @@ public class JDBCCommands {
     }
 
     /**
-     * Retrieves laborer information from MySQL database
-     *
-     * @return labourerList List of laborers in an observableList to populate
-     * tables
+     * gets all labourers in order to populate and return an array that can be used to populate a jfxml table
+     * @param getDeleted if true also obtains the logically deleted labourers
+     * @return a list that can be used with jfxml
      */
     public ObservableList<Labourer> getLabourersForTable(boolean getDeleted) {
         try {
@@ -945,17 +968,6 @@ public class JDBCCommands {
     }
 
     /**
-     * exports a project to QuickBooks
-     *
-     * @param project project to be exported to QuickBooks
-     * @return true if no error occurs
-     */
-    public boolean exportProjectQuote(Project project) {
-        return false;
-
-    }
-
-    /**
      * deletes a project from MySQL
      *
      * @param project project to be found and deleted
@@ -964,36 +976,6 @@ public class JDBCCommands {
     public boolean deleteProject(Project project) {
         return false;
 
-    }
-
-    /**
-     * retrieves database information to be backed up
-     *
-     * @return data to back up
-     */
-    public ResultSet backup() {
-        return null;
-
-    }
-
-    /**
-     * deletes a work order from MySQL
-     *
-     * @param wk the WorkOrder to be found and deleted
-     * @return true if no error occurs
-     */
-    public boolean deleteProject(WorkOrder wk) {
-        return false;
-
-    }
-
-    /**
-     * fetches all of the labourers from the MySQL database
-     *
-     * @return an array list of the labourers
-     */
-    public ArrayList<Labourer> fetchLabourers() {
-        return null;
     }
 
     /**
@@ -1040,6 +1022,13 @@ public class JDBCCommands {
         return narray;
     }
 
+    /**
+     * Edits the stored constant
+     * @param superService the superservice of the constant passed in (irrigation/bed/etc)
+     * @param subService the subservice of the constant passed in (x/yard,rate/hours,etc)
+     * @param constant the new constant
+     * @return true if no errors occur
+     */
     public boolean setConstant(String superService, String subService, double constant) {
 
         try {
@@ -1061,6 +1050,14 @@ public class JDBCCommands {
         }
     }
 
+    /**
+     * Edits the stored constant
+     * @param superService the superservice of the constant passed in (irrigation/bed/etc)
+     * @param subService the subservice of the constant passed in (x/yard,rate/hours,etc)
+     * @param lowOrHigh indicates which constant is changed as some subservices have two
+     * @param constant the new constant
+     * @return true if no errors occur
+     */
     public boolean setConstant(String superService, String subService, String lowOrHigh, double constant) {
         try {
             // update to be done
@@ -1086,6 +1083,11 @@ public class JDBCCommands {
     }
     
     //SCALE
+    /**
+     * gets the workorder type based on the object passed into it
+     * @param wkodr the generic workorder to find the type of
+     * @return A string to be used in a sql statement (for the type column in workorders)
+     */
     public String getWorkOrderType(WorkOrder wkodr) {
         if (wkodr instanceof WO_Excavation) {
             if (((WO_Excavation) wkodr).getType() == 'h') {
@@ -1118,6 +1120,11 @@ public class JDBCCommands {
     }
 
     //SCALE
+    /**
+     * inserts a work order into the database based on which type of work order it is
+     * @param wkodrNum the work order number to be inserted into the workordernum column of the dynamically found subworkorder table
+     * @param wkodr the rest of the workorder information to be added into the dynamically found subworkorder table
+     */
     public void insertWorkOrderType(int wkodrNum, WorkOrder wkodr) {
 
         try {
@@ -1307,6 +1314,14 @@ public class JDBCCommands {
     }
 
     //SCALE
+    /**
+     * Creates a workorder subtype based on information retrieved from the database
+     * @param workOrderType the type of work order to create
+     * @param workOrderNum the workorder number to be set in the new sub type workorder object
+     * @param projectNum the project number to be set in the new sub type workorder object
+     * @param result the result set which contains the information needed to make the work order sub type
+     * @return the completed workorder object
+     */
     public WorkOrder createWorkOrderForProject(String workOrderType, int workOrderNum, int projectNum, ResultSet result) {
         try {
             if (workOrderType.equalsIgnoreCase("excavationbyhandworkorder") || workOrderType.equalsIgnoreCase("excavationbyskidworkorder")) {
