@@ -78,6 +78,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private Client selectedClient;
 
     private Project selectedProject;
+
     /**
      *
      * @param event
@@ -316,7 +317,7 @@ public class HomePageGUIController extends Controller implements Initializable {
      */
     @FXML
     private void editProjectAction(ActionEvent event) throws IOException {
-        
+
         navigateTo("/ui/EditProjectGUI.fxml");
     }
 
@@ -331,6 +332,31 @@ public class HomePageGUIController extends Controller implements Initializable {
 
         newProjectFlag = true;
         navigateTo("/ui/CreateProjectGUI_1.fxml");
+    }
+
+    /**
+     *
+     * @param event
+     */
+    private void removeProjectAction(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Labourer Confirmation");
+        alert.setHeaderText("Confirm Deletion");
+        alert.setContentText("Delete labourer with the name: " + selectedLabourer.getFirstName() + "?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+
+            getSelectedProject();
+
+            DBServices dbs = new DBServices();
+
+            //todo + @matt
+            //dbs.deleteProject(selectedProject); 
+        }
+
     }
 
     /*=======================================Inner Frame Project Dropdown================================*/
@@ -367,8 +393,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     private ObservableList<Project> compProjList;
 
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void searchCompProj(ActionEvent event) {
@@ -404,10 +430,10 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
 
                 if (name.contains(input)
-                    || client.contains(input)
-                    || startDate.contains(input)
-                    || endDate.contains(input)
-                    || desc.contains(input)) {
+                        || client.contains(input)
+                        || startDate.contains(input)
+                        || endDate.contains(input)
+                        || desc.contains(input)) {
 
                     matches.add(compProjList.get(i));
                 }
@@ -417,10 +443,10 @@ public class HomePageGUIController extends Controller implements Initializable {
             //updateProjectTable(matches);
         }
     }
-    
+
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void searchCurrProj(ActionEvent event) {
@@ -456,10 +482,10 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
 
                 if (name.contains(input)
-                    || client.contains(input)
-                    || startDate.contains(input)
-                    || endDate.contains(input)
-                    || desc.contains(input)) {
+                        || client.contains(input)
+                        || startDate.contains(input)
+                        || endDate.contains(input)
+                        || desc.contains(input)) {
 
                     matches.add(currProjList.get(i));
                 }
@@ -468,7 +494,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             updateProjectTable(matches);
         }
     }
-    
+
     /**
      *
      */
@@ -494,14 +520,13 @@ public class HomePageGUIController extends Controller implements Initializable {
             }
         }
     }
-    
+
     /*============Controls===============*/
-    
     /**
-     * 
+     *
      */
     private void getSelectedProject() {
-        
+
         if (currentProjectsTable.getSelectionModel().getSelectedItem() != null) {
 
             this.selectedProject = currentProjectsTable.getSelectionModel().getSelectedItem();
@@ -545,6 +570,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         alert.setContentText("Delete labourer with the name: " + selectedLabourer.getFirstName() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
+
         if (result.get() == ButtonType.OK) {
 
             DBServices dbs = new DBServices();
@@ -789,12 +815,12 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*============================================Home Page Controls===============================================*/
     private boolean tableFlag = false;
-    
+
     /**
-     * 
-     * @param state 
+     *
+     * @param state
      */
-    public void setTableFlag(Boolean state){
+    public void setTableFlag(Boolean state) {
         this.tableFlag = state;
     }
 
@@ -1010,7 +1036,7 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
             });
         }
-        
+
         try {
             node = root.lookup("#currentProjectsTable");
         } catch (NullPointerException e) {
@@ -1044,7 +1070,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         viewLabourerProfileBtn.setDisable(true);
         editLabourerBtn.setDisable(true);
         removeLabourerBtn.setDisable(true);
-        
+
         editProjectBtn.setDisable(true);
         //todo remove project button
     }

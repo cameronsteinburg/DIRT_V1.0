@@ -974,6 +974,7 @@ public class JDBCCommands {
      * @return true if no error occurs
      */
     public boolean deleteProject(Project project) {
+            //todo
         return false;
 
     }

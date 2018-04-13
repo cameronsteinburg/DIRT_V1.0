@@ -152,6 +152,15 @@ public class DBServices {
     public ObservableList<Project> getAllProjectsForTable(){
         return Main.jdbcc.getProjectsForTable(true);
     }
+    
+    /**
+     * deletes a project from the database via jdbccommands
+     * @param proj the project to be deleted
+     * @return true if no errors occur
+     */
+    public boolean deleteProject(Project proj){
+        return Main.jdbcc.deleteProject(proj);
+    }
 
     /**
      * restores the database from the chosen file path

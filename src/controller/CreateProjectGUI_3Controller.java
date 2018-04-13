@@ -108,6 +108,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
     }
+    
+    
 
     /**
      *
@@ -541,10 +543,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         irrig.add(addLabel("Control Valve  x  "));
         irrig.add(addField(true));//25
 
-        // irrig.add(new Label(""));
-        // irrig.add(new Label(""));
-        // irrig.add(new Label(""));
-        // irrig.add(new Label(""));
         addServTotal(irrig); //size - 1
 
         double threeQM = dbs.irrigation_3QuarterLiningMaterial();
