@@ -10,7 +10,6 @@ public class WO_Custom extends WorkOrder{
     
     private double multi;
     private double rate;
-    //need description as well @steinburg
     
     public WO_Custom(boolean isActive){
         this.isActive = isActive;

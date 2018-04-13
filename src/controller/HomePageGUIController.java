@@ -341,9 +341,9 @@ public class HomePageGUIController extends Controller implements Initializable {
     private void removeProjectAction(ActionEvent event) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete Labourer Confirmation");
+        alert.setTitle("Delete Project Confirmation");
         alert.setHeaderText("Confirm Deletion");
-        alert.setContentText("Delete labourer with the name: " + selectedLabourer.getFirstName() + "?");
+        alert.setContentText("Delete Project with the name: " + selectedProject.getProjectName() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
 
