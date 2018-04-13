@@ -299,6 +299,7 @@ public class HomePageGUIController extends Controller implements Initializable {
  /*============Outer Frame Project Dropdown===============*/
     private boolean createProjectFlag = false;
     boolean newProjectFlag = false;
+    private boolean editProjectFlag = false;
 
     /**
      *
@@ -318,6 +319,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void editProjectAction(ActionEvent event) throws IOException {
 
+        editProjectFlag = true;
         navigateTo("/ui/EditProjectGUI.fxml");
     }
 
@@ -889,6 +891,15 @@ public class HomePageGUIController extends Controller implements Initializable {
             clgc.setErrorMessage(errorMessage);
             editLabourerFlag = false;
         }
+        
+        if(editProjectFlag == true){
+            
+            EditProjectGUIController epgc = loader.getController();
+            epgc.setSelected(selectedProject);
+        
+        }
+        
+        //if (editWorkOrdersFlag == true{} todo
 
         //if the user is viewing the profile page of a labourer
         if (viewLabourerProfileFlag == true) {
