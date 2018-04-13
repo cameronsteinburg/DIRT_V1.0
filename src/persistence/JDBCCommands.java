@@ -367,7 +367,7 @@ public class JDBCCommands {
 
         try {
             // the mysql prepared insert statement
-            String query = " insert into projects (clientNum, projectName, description, siteAddress, startDate, endDate, clientOwing, clientPaid, allowanceCost, extraneousExpenses, quote, actualCost, isActive) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = " insert into projects (clientNum, projectName, description, siteAddress, startDate, endDate, clientOwing, clientPaid, allowanceCost, extraneousExpenses, quote, actualCost, isActive) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
