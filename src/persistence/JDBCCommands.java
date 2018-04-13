@@ -629,7 +629,8 @@ public class JDBCCommands {
             Statement gettingWorkOrderTypes = conn.createStatement();
             Statement statement = conn.createStatement();
 
-            ResultSet typeResults = gettingWorkOrderTypes.executeQuery("select workordernum, workordertype from workorders where projectnum = " + projectNum + ";");
+            String query = "select workordernum, workordertype from workorders where projectnum = " + projectNum + ";";
+            ResultSet typeResults = gettingWorkOrderTypes.executeQuery(query);
 
             while (typeResults.next()) {
                 int workOrderNum = typeResults.getInt("workordernum");
@@ -695,8 +696,8 @@ public class JDBCCommands {
             preparedStmt.setDouble(10, projectNew.getExtraneousExpenses());
             preparedStmt.setDouble(11, projectNew.getQuote());
             preparedStmt.setDouble(12, projectNew.getActualCost());
-            preparedStmt.setInt(13, getProjectNum(projectOld.getProjectName()));
-            preparedStmt.setBoolean(14, projectNew.getCompleted());
+            preparedStmt.setBoolean(13, projectNew.getCompleted());
+            preparedStmt.setInt(14, getProjectNum(projectOld.getProjectName()));
 
             // execute the preparedstatement
             preparedStmt.execute();
