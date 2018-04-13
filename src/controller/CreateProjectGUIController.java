@@ -254,6 +254,17 @@ public class CreateProjectGUIController extends Controller implements Initializa
         allItems.add("Paver");
         updateTable(allItems);
     }
+    
+     /**
+     *
+     * @param event
+     */
+    @FXML
+    private void irrigAction(ActionEvent event) {
+
+        allItems.add("Underground Irrigation");
+        updateTable(allItems);
+    }
 
     /**
      * updates the table of services when the user clicks buttons of services
