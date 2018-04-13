@@ -1105,6 +1105,9 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_RetWall){
             return "RetWallWorkOrder";
         }
+        else if(wkodr instanceof WO_WeedBarrier){
+            return "WeedBarrierWorkOrder";
+        }
         return null;
     }
 
@@ -1231,6 +1234,28 @@ public class JDBCCommands {
                 preparedStmt.setDouble(22, ((WO_RetWall) wkodr).getActBaseRowHours());
                 preparedStmt.setDouble(23, ((WO_RetWall) wkodr).getActBaseRowLabour());
                 preparedStmt.setDouble(24, ((WO_RetWall) wkodr).getActBlock());
+                preparedStmt.execute();
+            }
+            else if (wkodr instanceof WO_WeedBarrier) {
+                String query = "insert into WeedBarrierWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmt.setDouble(2, ((WO_WeedBarrier) wkodr).getEstSQFT());
+                preparedStmt.setDouble(3, ((WO_WeedBarrier) wkodr).getEstLayers());
+                preparedStmt.setDouble(4, ((WO_WeedBarrier) wkodr).getEstReqSQFT());
+                preparedStmt.setDouble(5, ((WO_WeedBarrier) wkodr).getEstHours());
+                preparedStmt.setDouble(6, ((WO_WeedBarrier) wkodr).getEstStaples());
+                preparedStmt.setDouble(7, ((WO_WeedBarrier) wkodr).getEstStaplesSupply());
+                preparedStmt.setDouble(8, ((WO_WeedBarrier) wkodr).getEstBarrierSupply());
+                preparedStmt.setDouble(9, ((WO_WeedBarrier) wkodr).getEstLabour());
+                preparedStmt.setDouble(10, ((WO_WeedBarrier) wkodr).getActSQFT());
+                preparedStmt.setDouble(11, ((WO_WeedBarrier) wkodr).getActLayers());
+                preparedStmt.setDouble(12, ((WO_WeedBarrier) wkodr).getActReqSQFT());
+                preparedStmt.setDouble(13, ((WO_WeedBarrier) wkodr).getActHours());
+                preparedStmt.setDouble(14, ((WO_WeedBarrier) wkodr).getActStaples());
+                preparedStmt.setDouble(15, ((WO_WeedBarrier) wkodr).getActStaplesSupply());
+                preparedStmt.setDouble(16, ((WO_WeedBarrier) wkodr).getActBarrierSupply());
+                preparedStmt.setDouble(17, ((WO_WeedBarrier) wkodr).getActLabour());
                 preparedStmt.execute();
             }
         } catch (SQLException ex) {
@@ -1415,7 +1440,40 @@ public class JDBCCommands {
                 
                 return workOrder;
             }
-            
+            else if (workOrderType.equalsIgnoreCase("weedbarrierworkorder")) {
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_WeedBarrier workOrder = new WO_WeedBarrier(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstLayers(result.getDouble("estLayers"));
+                workOrder.setEstReqSQFT(result.getDouble("estReqSQFT"));
+                workOrder.setEstHours(result.getDouble("estHours"));
+                workOrder.setEstStaples(result.getDouble("estStaples"));
+                workOrder.setEstStaplesSupply(result.getDouble("estStaplesSupply"));
+                workOrder.setEstBarrierSupply(result.getDouble("estBarrierSupply"));
+                workOrder.setEstLabour(result.getDouble("estLabour"));
+
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActLayers(result.getDouble("actLayers"));
+                workOrder.setActReqSQFT(result.getDouble("actReqSQFT"));
+                workOrder.setActHours(result.getDouble("actHours"));
+                workOrder.setActStaples(result.getDouble("actStaples"));
+                workOrder.setActStaplesSupply(result.getDouble("actStaplesSupply"));
+                workOrder.setActBarrierSupply(result.getDouble("actBarrierSupply"));
+                workOrder.setActLabour(result.getDouble("actLabour"));
+
+                return workOrder;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }

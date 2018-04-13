@@ -15,6 +15,7 @@ drop table bedworkorder;
 drop table sodworkorder;
 drop table topsoilworkorder;
 drop table retwallworkorder;
+drop table weedbarrierworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
@@ -205,6 +206,27 @@ create table RetWallWorkOrder (workOrderNum mediumint unsigned not null,
     actBlock numeric(8,2),
     constraint fk_WorkOrderRetWall foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
+
+#create workorder weed barrier table
+create table WeedBarrierWorkOrder (workOrderNum mediumint unsigned not null,
+    estSQFT numeric(8,2),
+    estLayers numeric(8,2),
+    estReqSQFT numeric(8,2),
+    estHours numeric(8,2),
+    estStaples numeric(8,2),
+    estStaplesSupply numeric(8,2),
+    estBarrierSupply numeric(8,2),
+    estLabour numeric(8,2),
+
+    actSQFT numeric(8,2),
+    actLayers numeric(8,2),
+    actReqSQFT numeric(8,2),
+    actHours numeric(8,2),
+    actStaples numeric(8,2),
+    actStaplesSupply numeric(8,2),
+    actBarrierSupply numeric(8,2),
+    actLabour numeric(8,2),
+    constraint fk_WorkOrderWeedBarrier foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
