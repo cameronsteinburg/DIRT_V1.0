@@ -14,6 +14,7 @@ drop table excavationbyskidworkorder;
 drop table bedworkorder;
 drop table sodworkorder;
 drop table topsoilworkorder;
+drop table retwallworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
@@ -174,6 +175,35 @@ create table TopSoilWorkOrder (workOrderNum mediumint unsigned not null,
     actManHours numeric(8,2),
     actInstall numeric(8,2),
     constraint fk_WorkOrderTopSoil foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+#create workorder retwall table
+create table RetWallWorkOrder (workOrderNum mediumint unsigned not null,
+    estLineFT numeric(8,2),
+    estHeight numeric(8,2),
+    estBaseDepth numeric(8,2),
+    estBaseWidth numeric(8,2),
+    estSQFT numeric(8,2),
+    estBaseReqYards numeric(8,2),
+    estBaseSupply numeric(8,2),
+    estBaseHours numeric(8,2),
+    estBaseLabour numeric(8,2),
+    estBaseRowHours numeric(8,2),
+    estBaseRowLabour numeric(8,2),
+    estBlock numeric(8,2),
+    actLineFT numeric(8,2),
+    actHeight numeric(8,2),
+    actBaseDepth numeric(8,2),
+    actBaseWidth numeric(8,2),
+    actSQFT numeric(8,2),
+    actBaseReqYards numeric(8,2),
+    actBaseSupply numeric(8,2),
+    actBaseHours numeric(8,2),
+    actBaseLabour numeric(8,2),
+    actBaseRowHours numeric(8,2),
+    actBaseRowLabour numeric(8,2),
+    actBlock numeric(8,2),
+    constraint fk_WorkOrderRetWall foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);

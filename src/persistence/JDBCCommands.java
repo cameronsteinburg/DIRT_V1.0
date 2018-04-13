@@ -1102,6 +1102,9 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_TopSoil){
             return "TopSoilWorkOrder";
         }
+        else if(wkodr instanceof WO_RetWall){
+            return "RetWallWorkOrder";
+        }
         return null;
     }
 
@@ -1198,6 +1201,26 @@ public class JDBCCommands {
                 preparedStmt.setDouble(11, ((WO_TopSoil) wkodr).getActSupplyCost());
                 preparedStmt.setDouble(12, ((WO_TopSoil) wkodr).getActManHours());
                 preparedStmt.setDouble(13, ((WO_TopSoil) wkodr).getActInstall());
+                preparedStmt.execute();
+            }
+            else if(wkodr instanceof WO_TopSoil){
+                String query = "insert into RetWallWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setInt(1, wkodrNum);
+                preparedStmtExcavationByHand.setDouble(2, ((WO_Excavation) wkodr).getEstSQFT());
+                preparedStmtExcavationByHand.setDouble(3, ((WO_Excavation) wkodr).getEstDepth());
+                preparedStmtExcavationByHand.setDouble(4, ((WO_Excavation) wkodr).getEstReqYards());
+                preparedStmtExcavationByHand.setDouble(5, ((WO_Excavation) wkodr).getEstHours());
+                preparedStmtExcavationByHand.setDouble(6, ((WO_Excavation) wkodr).getEstLabour());
+                preparedStmtExcavationByHand.setDouble(7, ((WO_Excavation) wkodr).getEstTrucking());
+                preparedStmtExcavationByHand.setDouble(8, ((WO_Excavation) wkodr).getEstDisposal());
+                preparedStmtExcavationByHand.setDouble(9, ((WO_Excavation) wkodr).getActSQFT());
+                preparedStmtExcavationByHand.setDouble(10, ((WO_Excavation) wkodr).getActDepth());
+                preparedStmtExcavationByHand.setDouble(11, ((WO_Excavation) wkodr).getActReqYards());
+                preparedStmtExcavationByHand.setDouble(12, ((WO_Excavation) wkodr).getActHours());
+                preparedStmtExcavationByHand.setDouble(13, ((WO_Excavation) wkodr).getActLabour());
+                preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
+                preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
                 preparedStmt.execute();
             }
         } catch (SQLException ex) {
