@@ -299,7 +299,6 @@ public class HomePageGUIController extends Controller implements Initializable {
     private boolean createProjectFlag = false;
     boolean newProjectFlag = false;
 
-
     /**
      *
      * @throws IOException
@@ -336,44 +335,152 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*=======================================Inner Frame Project Dropdown================================*/
     @FXML
+    private TextField currentProjField;
+    @FXML
+    private TextField compProjField;
+    @FXML
     private TableView<Project> currentProjectsTable;
     @FXML
-    private TableColumn<?, ?> projNameCol;
+    private TableView<Project> compProjectsTable;
     @FXML
-    private TableColumn<?, ?> clientCol;
+    private TableColumn<?, ?> currProjNameCol;
     @FXML
-    private TableColumn<?, ?> startCol;
+    private TableColumn<?, ?> currProjClientCol;
     @FXML
-    private TableColumn<?, ?> endCol;
+    private TableColumn<?, ?> currProjStartCol;
     @FXML
-    private TableColumn<?, ?> descCol;
+    private TableColumn<?, ?> currProjEndCol;
     @FXML
-    private TableColumn<?, ?> oldprojNameCol;
+    private TableColumn<?, ?> currProjDescCol;
     @FXML
-    private TableColumn<?, ?> oldclientCol;
+    private TableColumn<?, ?> comProjNamecol;
     @FXML
-    private TableColumn<?, ?> oldstartCol;
+    private TableColumn<?, ?> comProjClientCol;
     @FXML
-    private TableColumn<?, ?> oldendCol;
+    private TableColumn<?, ?> comProjStartCol;
     @FXML
-    private TableColumn<?, ?> olddescCol;
+    private TableColumn<?, ?> comProjEndCol;
+    @FXML
+    private TableColumn<?, ?> comProjDescCol;
 
-    private ObservableList<Project> projectsList;
+    private ObservableList<Project> currProjList;
+    private ObservableList<Project> compProjList;
+
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void searchCompProj(ActionEvent event) {
+
+        String input = currentProjField.getText().toLowerCase();
+
+        if (input != null) {
+
+            ObservableList<Project> matches = FXCollections.observableArrayList();
+
+            for (int i = 0; i < compProjList.size(); i++) {
+
+                String name = compProjList.get(i).getProjectName().toLowerCase();
+                String client = compProjList.get(i).getClientName().toLowerCase();
+                String startDate = compProjList.get(i).getStartDate() + "";
+                String endDate = compProjList.get(i).getEndDate() + "";
+                String desc = compProjList.get(i).getDescription();
+
+                if (name == null) {
+                    name = "";
+                }
+                if (client == null) {
+                    client = "";
+                }
+                if (startDate == null) {
+                    startDate = "";
+                }
+                if (endDate == null) {
+                    endDate = "";
+                }
+                if (desc == null) {
+                    desc = "";
+                }
+
+                if (name.contains(input)
+                    || client.contains(input)
+                    || startDate.contains(input)
+                    || endDate.contains(input)
+                    || desc.contains(input)) {
+
+                    matches.add(compProjList.get(i));
+                }
+            }
+
+            //TODO: Implement
+            //updateProjectTable(matches);
+        }
+    }
     
-    private Project selectedPoject;
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void searchCurrProj(ActionEvent event) {
 
+        String input = currentProjField.getText().toLowerCase();
+
+        if (input != null) {
+
+            ObservableList<Project> matches = FXCollections.observableArrayList();
+
+            for (int i = 0; i < currProjList.size(); i++) {
+
+                String name = currProjList.get(i).getProjectName().toLowerCase();
+                String client = currProjList.get(i).getClientName().toLowerCase();
+                String startDate = currProjList.get(i).getStartDate() + "";
+                String endDate = currProjList.get(i).getEndDate() + "";
+                String desc = currProjList.get(i).getDescription();
+
+                if (name == null) {
+                    name = "";
+                }
+                if (client == null) {
+                    client = "";
+                }
+                if (startDate == null) {
+                    startDate = "";
+                }
+                if (endDate == null) {
+                    endDate = "";
+                }
+                if (desc == null) {
+                    desc = "";
+                }
+
+                if (name.contains(input)
+                    || client.contains(input)
+                    || startDate.contains(input)
+                    || endDate.contains(input)
+                    || desc.contains(input)) {
+
+                    matches.add(currProjList.get(i));
+                }
+            }
+
+            updateProjectTable(matches);
+        }
+    }
+    
     /**
      *
      */
     public void updateProjectTable(ObservableList<Project> newList) {
 
-        if (projNameCol != null) {
+        if (currProjNameCol != null) {
 
-            projNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
-            clientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
-            startCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-            endCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
-            descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            currProjNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+            currProjClientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
+            currProjStartCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+            currProjEndCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+            currProjDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
             DBServices dbs = new DBServices();
 
             if (newList != null) {
@@ -382,8 +489,8 @@ public class HomePageGUIController extends Controller implements Initializable {
 
             } else {
 
-                this.projectsList = dbs.getAllProjectsForTable();
-                currentProjectsTable.setItems(projectsList);
+                this.currProjList = dbs.getAllProjectsForTable();
+                currentProjectsTable.setItems(currProjList);
             }
         }
     }

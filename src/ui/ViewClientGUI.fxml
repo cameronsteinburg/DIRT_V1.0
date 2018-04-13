@@ -19,8 +19,8 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label layoutX="780.0" layoutY="70.0" prefHeight="17.0" prefWidth="49.0" text="Search: " AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="249.0" />
-                  <TextField fx:id="searchBox" layoutX="833.0" layoutY="46.0" onAction="#searchClients" prefHeight="25.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" />
+                  <Label layoutX="780.0" layoutY="70.0" prefHeight="17.0" prefWidth="49.0" text="Search: " AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="240.0" />
+                  <TextField fx:id="searchBox" layoutX="833.0" layoutY="46.0" onAction="#searchClients" prefHeight="25.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="15.0" />
                   <Label fx:id="errorMessage" layoutX="316.0" layoutY="57.0" prefHeight="28.0" prefWidth="396.0" textFill="RED">
                      <font>
                         <Font size="19.0" />
@@ -32,7 +32,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="373.0" prefWidth="1025.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
+                  <TableView fx:id="clientTable" layoutY="14.0" prefHeight="373.0" prefWidth="1025.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
                     <columns>
                       <TableColumn fx:id="firstNameCol" prefWidth="113.0" text="First Name" />
                         <TableColumn fx:id="lastNameCol" prefWidth="113.0" text="Last Name" />
