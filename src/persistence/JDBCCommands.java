@@ -1111,6 +1111,9 @@ public class JDBCCommands {
         else if(wkodr instanceof WO_Irrigation){
             return "IrrigationWorkOrder";
     }
+        else if(wkodr instanceof WO_Custom){
+            return "CustomWorkOrder";
+        }
         return null;
     }
 
@@ -1288,6 +1291,14 @@ public class JDBCCommands {
                 preparedStmt.setDouble(22, ((WO_Irrigation) wkodr).getActValveBox());
                 preparedStmt.setDouble(23, ((WO_Irrigation) wkodr).getActControlValve());
                 preparedStmt.execute();
+            }
+            else if(wkodr instanceof WO_Custom){
+                String query = "insert into BedWorkOrder values(?, ?, ?)";
+                        PreparedStatement preparedStmt = conn.prepareStatement(query);
+                        preparedStmt.setInt(1, wkodrNum);
+                        preparedStmt.setDouble(2, ((WO_Custom) wkodr).getMulti());
+                        preparedStmt.setDouble(3, ((WO_Custom) wkodr).getRate());
+                        preparedStmt.execute();
             }
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
@@ -1545,6 +1556,27 @@ public class JDBCCommands {
                 workOrder.setActValveBox(result.getDouble("actValveBox"));
                 workOrder.setActControlValve(result.getDouble("actControlValve"));
 
+                return workOrder;
+            }
+            
+            
+            else if(workOrderType.equalsIgnoreCase("customworkorder")){
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_Custom workOrder = new WO_Custom(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setMulti(result.getDouble("multi"));
+                workOrder.setRate(result.getDouble("rate"));
+                
                 return workOrder;
             }
         } catch (SQLException ex) {

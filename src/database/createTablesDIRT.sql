@@ -17,6 +17,7 @@ drop table topsoilworkorder;
 drop table retwallworkorder;
 drop table weedbarrierworkorder;
 drop table irrigationworkorder;
+drop table customworkorder;
 drop table workorders;
 drop table projectlabourer;
 drop table labourers;
@@ -255,6 +256,12 @@ create table IrrigationWorkOrder (workOrderNum mediumint unsigned not null,
     actValveBox numeric(8,2),
     actControlValve numeric(8,2),
     constraint fk_WorkOrderIrrigation foreign key (workOrderNum) references WorkOrders (workOrderNum));
+
+#create workorder custom table
+create table CustomWorkOrder (workOrderNum mediumint unsigned not null,
+    multi numeric(8,2),
+    rate numeric(8,2),
+    constraint fk_WorkOrderCustom foreign key (workOrderNum) references WorkOrders (workOrderNum));
 
 #dummy test data
 insert into Labourers (fname, lname, title, phone1, phone2, email, address, sin, wage, emergcontact, emergcontactphone1, emergcontactphone2, isActive) values ('Eric', 'Stillman', 'FT Labourer', 4035687426, 4286452588, 'eric.still@gmail.com', '344 Auburn St Unit #69', 111222333, '18.25', 'Phillip DeFranco', 403568521, 684525655, 1);
