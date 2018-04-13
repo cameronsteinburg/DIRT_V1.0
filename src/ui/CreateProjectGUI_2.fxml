@@ -45,10 +45,10 @@
             <Button fx:id="bySkidBtn" mnemonicParsing="false" onAction="#bySkidAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Excavation by Skid" GridPane.columnIndex="2" />
             <Button fx:id="bedBtn" mnemonicParsing="false" onAction="#bedAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Bed (Soil/Mulch/Aggregate/Rock)" GridPane.rowIndex="1" />
             <Button fx:id="barrierBtn" mnemonicParsing="false" onAction="#barrierAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Weed Barrier" GridPane.rowIndex="3" />
-            <Button fx:id="walkwayBtn" disable="true" mnemonicParsing="false" onAction="#patioAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Paver Patio/Walkway" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button fx:id="sodBtn" mnemonicParsing="false" onAction="#sodAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Sod" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="wallBtn" disable="true" mnemonicParsing="false" prefHeight="42.0" prefWidth="328.0" styleClass="blue-button" text="Retaining Wall" GridPane.rowIndex="2" />
             <Button fx:id="irrigationBtn" mnemonicParsing="false" onAction="#irrigAction" prefHeight="40.0" prefWidth="527.0" styleClass="blue-button" text="Underground Irrigation" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="customBtn" disable="true" mnemonicParsing="false" onAction="#addCustomAction" prefHeight="40.0" prefWidth="331.0" styleClass="blue-button" text="Add Custom" GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <TableView fx:id="table" layoutX="647.0" layoutY="14.0" prefHeight="445.0" prefWidth="417.0">
@@ -56,7 +56,6 @@
           <TableColumn fx:id="servCol" prefWidth="415.0" text="Services for Project" />
         </columns>
       </TableView>
-      <Button fx:id="customBtn" disable="true" layoutX="154.0" layoutY="356.0" mnemonicParsing="false" onAction="#addCustomAction" prefHeight="40.0" prefWidth="331.0" styleClass="blue-button" text="Add Custom" />
       <Button fx:id="removeBtn" disable="true" layoutX="904.0" layoutY="471.0" mnemonicParsing="false" onAction="#removeServiceAction" styleClass="red_button" text="Remove Service" />
    </children>
 </AnchorPane>
