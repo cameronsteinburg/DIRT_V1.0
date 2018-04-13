@@ -190,6 +190,7 @@ create table RetWallWorkOrder (workOrderNum mediumint unsigned not null,
     estBaseRowHours numeric(8,2),
     estBaseRowLabour numeric(8,2),
     estBlock numeric(8,2),
+
     actLineFT numeric(8,2),
     actHeight numeric(8,2),
     actBaseDepth numeric(8,2),

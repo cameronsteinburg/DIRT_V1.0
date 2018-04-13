@@ -1207,20 +1207,30 @@ public class JDBCCommands {
                 String query = "insert into RetWallWorkOrder values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setInt(1, wkodrNum);
-                preparedStmtExcavationByHand.setDouble(2, ((WO_Excavation) wkodr).getEstSQFT());
-                preparedStmtExcavationByHand.setDouble(3, ((WO_Excavation) wkodr).getEstDepth());
-                preparedStmtExcavationByHand.setDouble(4, ((WO_Excavation) wkodr).getEstReqYards());
-                preparedStmtExcavationByHand.setDouble(5, ((WO_Excavation) wkodr).getEstHours());
-                preparedStmtExcavationByHand.setDouble(6, ((WO_Excavation) wkodr).getEstLabour());
-                preparedStmtExcavationByHand.setDouble(7, ((WO_Excavation) wkodr).getEstTrucking());
-                preparedStmtExcavationByHand.setDouble(8, ((WO_Excavation) wkodr).getEstDisposal());
-                preparedStmtExcavationByHand.setDouble(9, ((WO_Excavation) wkodr).getActSQFT());
-                preparedStmtExcavationByHand.setDouble(10, ((WO_Excavation) wkodr).getActDepth());
-                preparedStmtExcavationByHand.setDouble(11, ((WO_Excavation) wkodr).getActReqYards());
-                preparedStmtExcavationByHand.setDouble(12, ((WO_Excavation) wkodr).getActHours());
-                preparedStmtExcavationByHand.setDouble(13, ((WO_Excavation) wkodr).getActLabour());
-                preparedStmtExcavationByHand.setDouble(14, ((WO_Excavation) wkodr).getActTrucking());
-                preparedStmtExcavationByHand.setDouble(15, ((WO_Excavation) wkodr).getActDisposal());
+                preparedStmt.setDouble(1, ((WO_RetWall) wkodr).getEstLineFT());
+                preparedStmt.setDouble(2, ((WO_RetWall) wkodr).getEstHeight());
+                preparedStmt.setDouble(3, ((WO_RetWall) wkodr).getEstBaseDepth());
+                preparedStmt.setDouble(4, ((WO_RetWall) wkodr).getEstBaseWidth());
+                preparedStmt.setDouble(5, ((WO_RetWall) wkodr).getEstSQFT());
+                preparedStmt.setDouble(6, ((WO_RetWall) wkodr).getEstBaseReqYards());
+                preparedStmt.setDouble(7, ((WO_RetWall) wkodr).getEstBaseSupply());
+                preparedStmt.setDouble(8, ((WO_RetWall) wkodr).getEstBaseHours());
+                preparedStmt.setDouble(9, ((WO_RetWall) wkodr).getEstBaseLabour());
+                preparedStmt.setDouble(10, ((WO_RetWall) wkodr).getEstBaseRowHours());
+                preparedStmt.setDouble(11, ((WO_RetWall) wkodr).getEstBaseRowLabour());
+                preparedStmt.setDouble(12, ((WO_RetWall) wkodr).getEstBlock());
+                preparedStmt.setDouble(13, ((WO_RetWall) wkodr).getActLineFT());
+                preparedStmt.setDouble(14, ((WO_RetWall) wkodr).getActHeight());
+                preparedStmt.setDouble(15, ((WO_RetWall) wkodr).getActBaseDepth());
+                preparedStmt.setDouble(16, ((WO_RetWall) wkodr).getActBaseWidth());
+                preparedStmt.setDouble(17, ((WO_RetWall) wkodr).getActSQFT());
+                preparedStmt.setDouble(18, ((WO_RetWall) wkodr).getActBaseReqYards());
+                preparedStmt.setDouble(19, ((WO_RetWall) wkodr).getActBaseSupply());
+                preparedStmt.setDouble(20, ((WO_RetWall) wkodr).getActBaseHours());
+                preparedStmt.setDouble(21, ((WO_RetWall) wkodr).getActBaseLabour());
+                preparedStmt.setDouble(22, ((WO_RetWall) wkodr).getActBaseRowHours());
+                preparedStmt.setDouble(23, ((WO_RetWall) wkodr).getActBaseRowLabour());
+                preparedStmt.setDouble(24, ((WO_RetWall) wkodr).getActBlock());
                 preparedStmt.execute();
             }
         } catch (SQLException ex) {
@@ -1360,6 +1370,49 @@ public class JDBCCommands {
                 workOrder.setActManHours(result.getDouble("actManHours"));
                 workOrder.setActInstall(result.getDouble("actInstall"));
 
+                return workOrder;
+            }
+            
+            else if (workOrderType.equalsIgnoreCase("retwallworkorder")) {
+                char isActive = result.getString("isActive").charAt(0);
+                boolean isActiveToBoolean = false;
+                if (isActive == '1') {
+                    isActiveToBoolean = true;
+                }
+                WO_RetWall workOrder = new WO_RetWall(isActiveToBoolean);
+
+                workOrder.setProjectID("" + projectNum);
+                workOrder.setWoid("" + workOrderNum);
+                workOrder.setDescription(result.getString("description"));
+                workOrder.setQuotedTotal(result.getDouble("quotedTotal"));
+                workOrder.setActualTotal(result.getDouble("actualTotal"));
+
+                workOrder.setEstLineFT(result.getDouble("estLineFT"));
+                workOrder.setEstHeight(result.getDouble("estHeight"));
+                workOrder.setEstBaseDepth(result.getDouble("estBaseDepth"));
+                workOrder.setEstBaseWidth(result.getDouble("estBaseWidth"));
+                workOrder.setEstSQFT(result.getDouble("estSQFT"));
+                workOrder.setEstBaseReqYards(result.getDouble("estBaseReqYards"));
+                workOrder.setEstBaseSupply(result.getDouble("estBaseSupply"));
+                workOrder.setEstBaseHours(result.getDouble("estBaseHours"));
+                workOrder.setEstBaseLabour(result.getDouble("estBaseLabour"));
+                workOrder.setEstBaseRowHours(result.getDouble("estBaseRowHours"));
+                workOrder.setEstBaseRowLabour(result.getDouble("estBaseRowLabour"));
+                workOrder.setEstBlock(result.getDouble("estBlock"));
+                
+                workOrder.setActLineFT(result.getDouble("actLineFT"));
+                workOrder.setActHeight(result.getDouble("actHeight"));
+                workOrder.setActBaseDepth(result.getDouble("actBaseDepth"));
+                workOrder.setActBaseWidth(result.getDouble("actBaseWidth"));
+                workOrder.setActSQFT(result.getDouble("actSQFT"));
+                workOrder.setActBaseReqYards(result.getDouble("actBaseReqYards"));
+                workOrder.setActBaseSupply(result.getDouble("actBaseSupply"));
+                workOrder.setActBaseHours(result.getDouble("actBaseHours"));
+                workOrder.setActBaseLabour(result.getDouble("actBaseLabour"));
+                workOrder.setActBaseRowHours(result.getDouble("actBaseRowHours"));
+                workOrder.setActBaseRowLabour(result.getDouble("actBaseRowLabour"));
+                workOrder.setActBlock(result.getDouble("actBlock"));
+                
                 return workOrder;
             }
             
