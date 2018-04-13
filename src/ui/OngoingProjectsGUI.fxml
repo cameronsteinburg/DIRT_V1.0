@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -36,5 +37,9 @@
             <TableColumn fx:id="olddescCol1" prefWidth="475.0" text="Description" />
          </columns>
       </TableView>
+      <TextField fx:id="searchCurrProj" layoutX="914.0" layoutY="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
+      <Label layoutX="873.0" layoutY="17.0" text="Search: " AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="13.0" />
+      <TextField fx:id="searchCompProj" layoutX="914.0" layoutY="263.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="261.0" />
+      <Label layoutX="873.0" layoutY="267.0" text="Search: " AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="265.0" />
    </children>
 </AnchorPane>
