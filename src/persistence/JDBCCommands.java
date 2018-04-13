@@ -1417,7 +1417,7 @@ public class JDBCCommands {
 
                 workOrder.setActSQFT(result.getDouble("actSQFT"));
                 workOrder.setActSupplyCost(result.getDouble("actSupplyCost"));
-                workOrder.setActManHours(result.getDouble("actReqManHours"));
+                workOrder.setActManHours(result.getDouble("actManHours"));
                 workOrder.setActInstallCost(result.getDouble("actInstallCost"));
 
                 return workOrder;

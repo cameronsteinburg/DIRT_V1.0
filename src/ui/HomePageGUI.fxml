@@ -32,9 +32,9 @@
                         <Image url="@images/vls.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="errorMessage" layoutX="740.0" layoutY="84.0" prefHeight="34.0" prefWidth="526.0" textFill="RED">
+                  <Label fx:id="errorMessage" layoutX="730.0" layoutY="84.0" prefHeight="35.0" prefWidth="548.0" textAlignment="JUSTIFY" textFill="RED">
                      <font>
-                        <Font size="19.0" />
+                        <Font name="Garamond" size="30.0" />
                      </font>
                   </Label>
                   <MenuBar layoutX="723.0" layoutY="-1.0" prefHeight="30.0" prefWidth="491.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

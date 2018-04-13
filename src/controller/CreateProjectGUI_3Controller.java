@@ -43,8 +43,6 @@ import services.DBServices;
  */
 public class CreateProjectGUI_3Controller extends Controller implements Initializable {
 
-    public ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task
-
     @FXML
     private AnchorPane anc;
     @FXML
@@ -57,15 +55,17 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
     private static int fieldCount = 0;
     private double projectTotal = 0;
-    private ArrayList<WorkOrder> orders = new ArrayList();
     private DecimalFormat f = new DecimalFormat("#.00");
+
     private final DBServices dbs = new DBServices();
     private double taxMultiplier = dbs.tax_GST() + dbs.tax_PST();
 
-    private ObservableList<String> allItems;
-    private Project inProgress;
+    private ArrayList<WorkOrder> orders = new ArrayList(); //work orders made by addToList which will receive data from elements and save to objects and to db by extensions if the user saves the project at the end
 
-    private GridPane newGrid;
+    private ArrayList<ArrayList> elements = new ArrayList<ArrayList>(); //list of each list of elements that will be used to get info for each task as well as labels
+    private ObservableList<String> allItems; //the list of strings from page 2, indicates which services were selected for the project
+
+    private Project inProgress;
 
     /**
      *
@@ -105,7 +105,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             setMessage("Project Successfully Created!", errorMessage);
 
-            navigateTo("/ui/EditProjectGUI.fxml", this.outerPane);
+            navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
     }
 
@@ -165,11 +165,24 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
             } else if (allItems.get(i).contains("Custom")) {
 
-                //todo elements.add(addCustom());
+                elements.add(addCustom());
             }
         }
     }
 
+    /**
+     *
+     * @return
+     */
+    private ArrayList<Control> addCustom() {
+
+        return null;
+    }
+
+    /**
+     *
+     * @return
+     */
     private ArrayList<Control> addRetWall() {
 
         WO_RetWall newWall = new WO_RetWall(true);
@@ -221,7 +234,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         wall.add(addLabel("Block"));
         wall.add(addField(false));
-        
+
         addServTotal(wall);
 
         double baseSupplyPerYard = dbs.retainingwall_CrushedBaseCostPerYard();
@@ -364,7 +377,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         fieldCount = 0;
 
-        
         return wall;
     }
 
@@ -513,23 +525,21 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         irrig.add(addField(true)); //13
         irrig.add(new Label("Feet"));// 14 split here
 
-        //irrig.add(new Label(""));
-        //irrig.add(new Label(""));
         irrig.add(addLabel("Drip Emitter  x  "));
-        irrig.add(addField(true));//18
+        irrig.add(addField(true));//16
 
         irrig.add(addLabel("Timer Control  x  "));
-        irrig.add(addField(true));//20
+        irrig.add(addField(true));//18
 
         irrig.add(addLabel("Control Wire: "));
-        irrig.add(addField(true));//22
+        irrig.add(addField(true));//20
         irrig.add(new Label("  x 100 Feet   "));
 
         irrig.add(addLabel("Valve Box  x  "));
-        irrig.add(addField(true));//25
+        irrig.add(addField(true));//23
 
         irrig.add(addLabel("Control Valve  x  "));
-        irrig.add(addField(true));//27
+        irrig.add(addField(true));//25
 
         // irrig.add(new Label(""));
         // irrig.add(new Label(""));
@@ -581,11 +591,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         TextField rotF = (TextField) irrig.get(9);
                         TextField patF = (TextField) irrig.get(11);
                         TextField oneQF = (TextField) irrig.get(13);
-                        TextField emmF = (TextField) irrig.get(18);
-                        TextField timerF = (TextField) irrig.get(20);
-                        TextField wireF = (TextField) irrig.get(22);
-                        TextField valveF = (TextField) irrig.get(25);
-                        TextField contF = (TextField) irrig.get(27);
+                        TextField emmF = (TextField) irrig.get(16);
+                        TextField timerF = (TextField) irrig.get(18);
+                        TextField wireF = (TextField) irrig.get(20);
+                        TextField valveF = (TextField) irrig.get(23);
+                        TextField contF = (TextField) irrig.get(25);
 
                         double threeQ, hose, shut, rot, pat, oneQ, emm, timer, wire, valve, cont;
 
@@ -1409,47 +1419,15 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         addToList();
 
-        FlowPane helpMe = new FlowPane();
+        FlowPane flo = new FlowPane();
 
         for (int i = 0; i < elements.size(); i++) {
 
-            helpMe.getChildren().addAll(elements.get(i));
+            flo.getChildren().addAll(elements.get(i));
         }
 
-        helpMe.setPrefWrapLength(1850);
+        flo.setPrefWrapLength(1850);
 
-        anc.getChildren().add(helpMe);
-
-//        newGrid = new GridPane();
-//
-//        for (int i = 0; i < elements.size(); i++) {
-//
-//            for (int j = 0; j < elements.get(i).size(); j++) {
-//
-//                newGrid.addRow(i, (Node) elements.get(i).get(j));
-//            }
-//        }
-//
-//        newGrid.setTranslateX(5);
-//        newGrid.setTranslateY(5);
-        // ColumnConstraints cc = new ColumnConstraints();
-        //cc.setHgrow(Priority.ALWAYS);
-        //AnchorPane.setLeftAnchor(newGrid, Double.NaN);
-        //AnchorPane.setTopAnchor(newGrid, Double.NaN);
-        //AnchorPane.setRightAnchor(newGrid, Double.NaN);
-        //AnchorPane.setBottomAnchor(newGrid, Double.NaN); 
-        //todo anchor constraints
-        //newGrid.setMaxWidth(1900);
-        // newGrid.getColumnConstraints().add(cc);
-        //newGrid.getColumnConstraints().add(new ColumnConstraints(200));
-        // newGrid.setHgap(5);
-        // newGrid.setVgap(5);
-        // newGrid.setPadding(new Insets(0, 0, 15, 0));
-        //RowConstraints rc = new RowConstraints();
-        //rc.setVgrow(Priority.ALWAYS);
-        //rc.setMinHeight(50);
-        //newGrid.getRowConstraints().add(rc);
-        //anc.getChildren().add(newGrid);
-        //  newGrid.addRow(0, (Node) elements.get(0).get(0));
+        anc.getChildren().add(flo);
     }
 }
