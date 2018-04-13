@@ -171,6 +171,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     private ArrayList<Control> addBarrier() {
 
         WO_WeedBarrier newWeed = new WO_WeedBarrier(true);
@@ -278,7 +282,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
      *
      * @return
      */
-
     private ArrayList<Control> addIrrigation() {
 
         WO_Irrigation newIrrig = new WO_Irrigation(true);
