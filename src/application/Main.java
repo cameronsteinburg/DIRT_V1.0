@@ -85,7 +85,7 @@ public class Main extends Application {
         stage = newstage;
         stage.show();
         stage.setTitle("DIRT - Dynamic Interface Regarding Terrain");
-        stage.getIcons().add(new Image("/ui/images/DIRTlogo.png"));
+        stage.getIcons().add(new Image("/ui/images/DIRTLogo.png"));
 
         HomePageGUIController cont = loader.getController();
         cont.setTableFlag(true);
