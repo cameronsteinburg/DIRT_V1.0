@@ -23,7 +23,7 @@ public class WO_Bed extends WorkOrder {
 
     /**
      *
-     * @param aggregate
+     * 
      * @param isActive
      */
     public WO_Bed(boolean isActive) {

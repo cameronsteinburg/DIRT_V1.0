@@ -48,6 +48,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import persistence.DBAccessor;
 import persistence.JDBCCommands;
@@ -84,6 +85,7 @@ public class Main extends Application {
         stage = newstage;
         stage.show();
         stage.setTitle("DIRT - Dynamic Interface Regarding Terrain");
+        stage.getIcons().add(new Image("/ui/images/DIRTlogo.png"));
 
         HomePageGUIController cont = loader.getController();
         cont.setTableFlag(true);
