@@ -8,10 +8,7 @@ package controller;
 import entity.Project;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -95,34 +92,13 @@ public class CreateProjectGUIController extends Controller implements Initializa
             return;
         }
 
-        Instant instant;
-        Instant instant2;
-        Date startDate;
-        Date endDate;
-
-        try {
-            instant = Instant.from(start.atStartOfDay(ZoneId.systemDefault()));//some hoop jumping to get the dates picked from the User in GUI
-            startDate = Date.from(instant);
-        } catch (NullPointerException e) {
-            instant = null;
-            startDate = null;
-        }
-
-        try {
-            instant2 = Instant.from(end.atStartOfDay(ZoneId.systemDefault()));//some hoop jumping to get the dates picked from the User in GUI
-            endDate = Date.from(instant);
-        } catch (NullPointerException e) {
-            instant2 = null;
-            endDate = null;
-        }
-
-        if (start != null && end != null && startDate.compareTo(endDate) > 0) { //in can user set the first date to be after the end date
+        if (start != null && end != null && start.compareTo(end) > 0) { //in can user set the first date to be after the end date
 
             setMessage("Preliminary Date Must Be Before End Date", errorMessage);
             return;
         }//all data is valid at this point
 
-        inProgress = new Project(name, startDate, endDate, description, address, true);
+        inProgress = new Project(name, start, end, description, address, true);
 
         FXMLLoader loader = navigateTo("/ui/CreateProjectGUI_2.fxml", this.outerPane);
         CreateProjectGUIController cont = loader.getController();

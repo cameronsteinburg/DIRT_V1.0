@@ -372,20 +372,11 @@ public class JDBCCommands {
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
-            java.sql.Date start;
-            java.sql.Date end;
+            java.sql.Date start = Date.valueOf(project.getStartDate());
+            java.sql.Date end = Date.valueOf(project.getEndDate());
             
-            try{
-                start = new java.sql.Date(project.getStartDate().getTime());
-            } catch(NullPointerException e){
-                start = null;
-            }       
             
-            try{
-                end = new java.sql.Date(project.getEndDate().getTime());
-            } catch(NullPointerException e){
-                end = null;
-            }    
+         
 
             if (project.getClient() == null) {
                 preparedStmt.setInt(1, 1);
@@ -528,7 +519,7 @@ public class JDBCCommands {
                 }
 
                 if (isActive == '0' && getDeleted == true) {
-                    Project project = new Project(projectName, startDate, endDate, description, isActiveToBoolean);
+                    Project project = new Project(projectName, startDate.toLocalDate(), endDate.toLocalDate(), description, isActiveToBoolean);
 
                     project.setProjectNum(projectNum);
                     project.setSiteAddress(siteAddress);
@@ -549,7 +540,8 @@ public class JDBCCommands {
                     project.setWorkOrders(workOrders);
                     return project;
                 } else if (isActive == '1') {
-                    Project project = new Project(projectName, startDate, endDate, description, isActiveToBoolean);
+                    
+                    Project project = new Project(projectName, startDate.toLocalDate(), endDate.toLocalDate(), description, isActiveToBoolean);
 
                     project.setProjectNum(projectNum);
                     project.setSiteAddress(siteAddress);
@@ -664,20 +656,10 @@ public class JDBCCommands {
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
-            java.sql.Date start;
-            java.sql.Date end;
+            java.sql.Date start = Date.valueOf(projectNew.getStartDate());
+            java.sql.Date end = Date.valueOf(projectNew.getEndDate());
             
-            try{
-                start = new java.sql.Date(projectNew.getStartDate().getTime());
-            } catch(NullPointerException e){
-                start = null;
-            }       
-            
-            try{
-                end = new java.sql.Date(projectNew.getEndDate().getTime());
-            } catch(NullPointerException e){
-                end = null;
-            }    
+         
 
             if (projectNew.getClient() == null) {
                 preparedStmt.setInt(1, 1);

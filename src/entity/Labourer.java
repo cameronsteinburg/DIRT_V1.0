@@ -29,18 +29,23 @@ public class Labourer {
     private String wage;
     private ArrayList<String> skills;
     private boolean isActive;
+    private String fullName;
 
     /**
-     * default Laborer constructor
+     * 
+     * @param firstName
+     * @param lastName
+     * @param title
+     * @param phone1
+     * @param phone2
+     * @param email
+     * @param address
+     * @param emergContactName
+     * @param emergContactPhone1
+     * @param emergContactPhone2
+     * @param sin
+     * @param wage 
      */
-    public Labourer() {
-
-    }
-
-    public Labourer(String firstname) {
-        this.firstName = firstname;
-    }
-
     public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, String wage) {
 
         this.firstName = firstName;
@@ -56,10 +61,27 @@ public class Labourer {
         this.sin = sin;
         this.wage = wage;
         this.skills = null;
+        this.fullName = firstName + " " + lastName;
         this.isActive = true;
     }
-    
-     public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, String wage, int labNum) {
+
+    /**
+     * 
+     * @param firstName
+     * @param lastName
+     * @param title
+     * @param phone1
+     * @param phone2
+     * @param email
+     * @param address
+     * @param emergContactName
+     * @param emergContactPhone1
+     * @param emergContactPhone2
+     * @param sin
+     * @param wage
+     * @param labNum 
+     */
+    public Labourer(String firstName, String lastName, String title, String phone1, String phone2, String email, String address, String emergContactName, String emergContactPhone1, String emergContactPhone2, String sin, String wage, int labNum) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,6 +98,11 @@ public class Labourer {
         this.skills = null;
         this.isActive = true;
         this.labNum = labNum;
+        this.fullName = firstName + " " + lastName;
+    }
+
+    public String getFullName() {
+        return this.fullName;
     }
 
     public String getFirstName() {

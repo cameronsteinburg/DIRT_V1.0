@@ -5,8 +5,8 @@
  */
 package entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Project {
 
@@ -26,8 +26,8 @@ public class Project {
     private Client client; //user has to make a client to assign to this project beforehand
 
     //dates
-    private Date startDate; //date entered by user when first making new project, used for quote calculation NOT NULL
-    private Date endDate; //estimated date of project end used in new project to calculate initial quote NOT NULL
+    private LocalDate startDate; //date entered by user when first making new project, used for quote calculation NOT NULL
+    private LocalDate endDate; //estimated date of project end used in new project to calculate initial quote NOT NULL
 
     //track clients payments
     private double clientOwing; //what client still owes
@@ -56,7 +56,7 @@ public class Project {
     }
 
     //for new project 1
-    public Project(String name, Date startDate, Date endDate, String description, String address, boolean isActive) {
+    public Project(String name, LocalDate startDate, LocalDate endDate, String description, String address, boolean isActive) {
 
         this.projectName = name;
         this.startDate = startDate;
@@ -75,7 +75,7 @@ public class Project {
      * @param isActive
      */
     //for tables
-    public Project(String projectName, Date startDate, Date endDate, String description, boolean isActive) {
+    public Project(String projectName, LocalDate startDate, LocalDate endDate, String description, boolean isActive) {
 
         this.projectName = projectName;
         this.startDate = startDate;
@@ -168,19 +168,19 @@ public class Project {
         }
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

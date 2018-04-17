@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.text.DecimalFormat;
+import java.time.Instant;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -33,7 +33,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -381,7 +380,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private TableView<Project> currentProjectsTable;
     @FXML
-    private TableView<Project> compProjectsTable;
+    private TableView<Project> completedProjectsTable;
     @FXML
     private TableColumn<?, ?> currProjNameCol;
     @FXML
@@ -393,7 +392,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private TableColumn<?, ?> currProjDescCol;
     @FXML
-    private TableColumn<?, ?> comProjNamecol;
+    private TableColumn<?, ?> comProjNameCol;
     @FXML
     private TableColumn<?, ?> comProjClientCol;
     @FXML
@@ -413,7 +412,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     @FXML
     private void searchCompProj(ActionEvent event) {
 
-        String input = currentProjField.getText().toLowerCase();
+        String input = compProjField.getText().toLowerCase();
 
         if (input != null) {
 
@@ -452,8 +451,6 @@ public class HomePageGUIController extends Controller implements Initializable {
                     matches.add(compProjList.get(i));
                 }
             }
-
-        
             updateCompleteProjectTable(matches);
         }
     }
@@ -532,26 +529,26 @@ public class HomePageGUIController extends Controller implements Initializable {
                 ObservableList<Project> all = dbs.getAllProjectsForTable();
                 ObservableList<Project> list = FXCollections.observableArrayList();
 
-                for(int i = 0; i < all.size(); i++){
-                
-                    if(all.get(i).getCompleted() == false){
-                    
+                for (int i = 0; i < all.size(); i++) {
+
+                    if (all.get(i).getCompleted() == false) {
+
                         list.add(all.get(i));
                     }
-                    
+
                 }
-                
+
                 this.currProjList = list;
                 currentProjectsTable.setItems(currProjList);
             }
         }
     }
-    
+
     public void updateCompleteProjectTable(ObservableList<Project> newList) {
 
-        if (comProjNamecol != null) {
+        if (comProjNameCol != null) {
 
-            comProjNamecol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+            comProjNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
             comProjClientCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
             comProjStartCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
             comProjEndCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
@@ -559,28 +556,25 @@ public class HomePageGUIController extends Controller implements Initializable {
             DBServices dbs = new DBServices();
 
             if (newList != null) {
-                
-                
 
-                compProjectsTable.setItems(newList);
+                completedProjectsTable.setItems(newList);
 
             } else {
-                
+
                 ObservableList<Project> all = dbs.getAllProjectsForTable();
                 ObservableList<Project> list = FXCollections.observableArrayList();
 
-                for(int i = 0; i < all.size(); i++){
-                
-                    if(all.get(i).getCompleted() == true){
-                    
+                for (int i = 0; i < all.size(); i++) {
+
+                    if (all.get(i).getCompleted() == true) {
+
                         list.add(all.get(i));
                     }
-                    
+
                 }
-                
 
                 this.compProjList = list;
-                compProjectsTable.setItems(compProjList);
+                completedProjectsTable.setItems(compProjList);
             }
         }
     }
@@ -600,6 +594,24 @@ public class HomePageGUIController extends Controller implements Initializable {
             removeProjectBtn.setDisable(false);
 
         }
+
+    }
+
+    /**
+     *
+     */
+    private void getSelectedComp() {
+
+        if (completedProjectsTable.getSelectionModel().getSelectedItem() != null) {
+
+            this.selectedProject = completedProjectsTable.getSelectionModel().getSelectedItem();
+
+            //Enable buttons once project is selected
+            editProjectBtn.setDisable(false);
+            removeProjectBtn.setDisable(false);
+
+        }
+
     }
 
 
@@ -966,26 +978,28 @@ public class HomePageGUIController extends Controller implements Initializable {
                 epgc.setCompletedBtn("Set Project Incomplete");
             }
 
+            DecimalFormat f = new DecimalFormat("#.00");
+
             epgc.setSelected(selectedProject);
+            epgc.setQuote(selectedProject.getQuote() + "");
+            epgc.setFinal(selectedProject.getActualCost() + "");
             epgc.setAddressField(selectedProject.getSiteAddress());
-            // epgc.setClientDropdown(clientDropdown);
             epgc.setNameField(selectedProject.getProjectName());
             epgc.setErrorMessage(errorMessage);
+            epgc.setOuterPane(this.borderpane);
+            epgc.setPreLabs(selectedProject.getLabourers());
+            epgc.setNotesField(selectedProject.getDescription());
+            epgc.getStartField().setValue(selectedProject.getStartDate());
+            epgc.getEndField().setValue(selectedProject.getEndDate());
 
-//           Date start = selectedProject.getStartDate();
-//           LocalDate ld = LocalDate.(start.toInstant(), ZoneId.systemDefault());
-//           epgc.getStartField().setValue(ld);
-//           
-//           Date end = selectedProject.getEndDate();
-//           LocalDate ld2 = end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
-//           epgc.getStartField().setValue(ld2);
+            ObservableList<Client> clients = FXCollections.observableArrayList();
+            DBServices dbs = new DBServices();
+            clients.addAll(dbs.getClientsForTable());
+
             editProjectFlag = false;
         }
 
         //if (editWorkOrdersFlag == true{} todo
-        
-        
-        
         //if the user is viewing the profile page of a labourer
         if (viewLabourerProfileFlag == true) {
 
@@ -1073,7 +1087,6 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
 
         this.borderpane.setCenter(root);
-
     }
 
     /**
@@ -1149,20 +1162,21 @@ public class HomePageGUIController extends Controller implements Initializable {
                 }
             });
         }
-        
+
+        //Node newNode = null;
         try {
-            node = root.lookup("#compProjectsTable");
+            node = root.lookup("#completedProjectsTable");
         } catch (NullPointerException e) {
             //ignore
         }
 
         if (node != null) {
 
-            this.compProjectsTable = (TableView<Project>) root.lookup("#compProjectsTable");
-            this.compProjectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            this.completedProjectsTable = (TableView<Project>) root.lookup("#completedProjectsTable");
+            this.completedProjectsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    getSelectedProject();
+                    getSelectedComp();
                 }
             });
         }
@@ -1205,7 +1219,7 @@ public class HomePageGUIController extends Controller implements Initializable {
         this.updateLabourerTable(null); //for viewing all labourer in a table
         this.updateProjectTable(null);// for viewing all projects in a table
         this.updateCompleteProjectTable(null);
-      
+
     }
 
     /**

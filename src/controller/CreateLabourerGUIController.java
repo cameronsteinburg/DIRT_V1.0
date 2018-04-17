@@ -244,9 +244,14 @@ public class CreateLabourerGUIController extends Controller implements Initializ
         } else {
             alert.close();
         }
+        
+        clearFields();
 
     }
 
+    /**
+     * 
+     */
     private void clearFields() {
 
         addressField.clear();
