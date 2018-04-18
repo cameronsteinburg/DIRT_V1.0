@@ -772,7 +772,7 @@ public class JDBCCommands {
                 }
                 insertWorkOrderType(workOrderNum, projectNew.getWorkOrders().get(n));
             }
-
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCommands.class.getName()).log(Level.SEVERE, null, ex);
         }
