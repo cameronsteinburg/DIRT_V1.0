@@ -66,6 +66,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private ObservableList<String> allItems; //the list of strings from page 2, indicates which services were selected for the project
 
     private Project inProgress;
+    
+    private Project selectedProject;
 
     /**
      *
@@ -173,20 +175,12 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
                 elements.add(addCustom(number));
             }
+            TextField oi = new TextField();
+            oi.setMinWidth(1850);
+            ArrayList<Control> cmon = new ArrayList();
+            cmon.add(oi);
+            elements.add(cmon);
         }
-    }
-
-    /**
-     * 
-     * @param list 
-     */
-    private void addPad(ArrayList<Control> list) {
-
-        double take = 1090.0 - takenUp(list);
-        Label pad = new Label();
-        pad.setMinWidth(take);
-        pad.setMaxWidth(take);
-        list.add(pad);
     }
 
     /**
@@ -205,14 +199,14 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         custom.add(label);//0
 
-        custom.add(addLabel("    Name/Description  ")); //1
+        custom.add(addLabel("               Name/Description  ")); //1
         TextField descF = new TextField();
         descF.setMaxSize(100, 25);
         descF.setMinSize(100, 25);
         custom.add(descF); //2
         custom.get(custom.size() - 1).setId("0");
 
-        custom.add(addLabel("     Expense $  "));//3
+        custom.add(addLabel("                  Expense $  "));//3
         custom.add(addField(true));//4
         custom.get(custom.size() - 1).setId("1");
         custom.add(addLabel(" x "));
@@ -345,6 +339,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         wall.add(addLabel("Block"));
         wall.add(addField(false));
 
+        addPad(wall);
+        
         addServTotal(wall);
 
         double baseSupplyPerYard = dbs.retainingwall_CrushedBaseCostPerYard();
@@ -607,50 +603,52 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         orders.add(newIrrig);
 
         ArrayList<Control> irrig = new ArrayList();
-        //ArrayList<Control> irrig2 = new ArrayList();
 
         Label label = new Label("Underground Irrigation:");
         label.setUnderline(true);
-        //label.setPadding(new Insets(0, 3, 0, 0));//top, right, bottom, left
         label.setFont(new Font(16));
         irrig.add(label);// 0
 
-        irrig.add(addLabel("3/4\" Line: "));
+        irrig.add(addLabel("      3/4\" Line: "));
         irrig.add(addField(true));//2
-        irrig.add(new Label("Feet   "));
+        irrig.add(new Label(" Feet   "));
 
-        irrig.add(addLabel("Hose Bibs  x  "));
+        irrig.add(addLabel("      Hose Bibs  x  "));
         irrig.add(addField(true));//5
 
-        irrig.add(addLabel("Shut Off Valve  x  "));
+        irrig.add(addLabel("      Shut Off Valve  x  "));
         irrig.add(addField(true));//7
 
-        irrig.add(addLabel("Rotary Heads  x  "));
+        irrig.add(addLabel("      Rotary Heads  x  "));
         irrig.add(addField(true));//9
 
-        irrig.add(addLabel("Pattern Heads  x  "));
+        irrig.add(addLabel("      Pattern Heads  x  "));
         irrig.add(addField(true)); //11
 
-        irrig.add(addLabel("1/4\" Drip Line  x  "));
+        irrig.add(addLabel("      1/4\" Drip Line  x  "));
         irrig.add(addField(true)); //13
         irrig.add(new Label("Feet"));// 14 split here
 
-        irrig.add(addLabel("Drip Emitter  x  "));
+        irrig.add(addLabel("      Drip Emitter  x  "));
         irrig.add(addField(true));//16
-
-        irrig.add(addLabel("Timer Control  x  "));
+        
+        irrig.add(addLabel("                                               Timer Control  x  "));
         irrig.add(addField(true));//18
 
-        irrig.add(addLabel("Control Wire: "));
+        irrig.add(addLabel("   Control Wire: "));
         irrig.add(addField(true));//20
         irrig.add(new Label("  x 100 Feet   "));
 
-        irrig.add(addLabel("Valve Box  x  "));
+        irrig.add(addLabel("    Valve Box  x  "));
         irrig.add(addField(true));//23
 
-        irrig.add(addLabel("Control Valve  x  "));
+        irrig.add(addLabel("      Control Valve  x  "));
         irrig.add(addField(true));//25
-
+        
+        Label paddy = new Label();
+        paddy.setMinWidth(555);
+        irrig.add(paddy);
+        
         addServTotal(irrig); //size - 1
 
         double threeQM = dbs.irrigation_3QuarterLiningMaterial();
@@ -840,20 +838,20 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         sod.add(label);
 
-        sod.add(addLabel("SQ.FT"));
+        sod.add(addLabel("            SQ.FT"));
         sod.add(addField(true));
 
-        label = new Label("    | ");
+        label = new Label("    |    ");
         label.setFont(new Font(20));
         sod.add(label);
 
         sod.add(addLabel("Supply Cost"));
         sod.add(addField(false));
 
-        sod.add(addLabel("Est. Man Hours"));
+        sod.add(addLabel("      Est. Man Hours"));
         sod.add(addField(false));
 
-        sod.add(addLabel("Labour Cost"));
+        sod.add(addLabel("      Labour Cost"));
         sod.add(addField(false));
 
         addPad(sod);
@@ -1120,35 +1118,34 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         hand.add(label);
 
-        hand.add(addLabel("SQ.FT"));
+        hand.add(addLabel("    SQ.FT"));
         hand.add(addField(true));
 
-        hand.add(addLabel("Depth In Inches"));
+        hand.add(addLabel("    Depth In Inches"));
         hand.add(addField(true));
 
-        label = new Label("   |");
+        label = new Label("      |   ");
         label.setFont(new Font(20));
         hand.add(label);
 
-        hand.add(addLabel("Required Yards"));
+        hand.add(addLabel("    Required Yards"));
         hand.add(addField(false));
 
-        hand.add(addLabel("Est. Man Hours"));
+        hand.add(addLabel("    Est. Man Hours"));
         hand.add(this.addField(false));
 
-        hand.add(addLabel("Excavation Labour Cost"));
+        hand.add(addLabel("    Excavation Labour Cost"));
         hand.add(addField(false));
 
-        hand.add(addLabel("Trucking Fees"));
+        hand.add(addLabel("    Trucking Fees"));
         hand.add(addField(false));
 
-        hand.add(addLabel("Disposal Fees"));
+        hand.add(addLabel("    Disposal Fees"));
         hand.add(addField(false));
+        
+        hand.add(addLabel("                                          "));
 
         addServTotal(hand);
-
-        hand.add(addLabel(""));
-        hand.add(addLabel(""));
 
         double labourhours = dbs.excavation_ManHoursByHandPerYards();
         double labourRate = dbs.excavation_ManHoursByHandPerHours();
@@ -1222,7 +1219,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double disDbl = (reqyardsdbl * disposalRate);
                         disp.setText(f.format(disDbl));
 
-                        TextField serTotal = (TextField) hand.get(17);
+                        TextField serTotal = (TextField) hand.get(hand.size()-1);
                         Double serTotalDbl = disDbl + labourCostDouble + truckingDbl;
                         serTotal.setText(f.format(serTotalDbl));
 
@@ -1270,31 +1267,31 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         label.setFont(new Font(16));
         skid.add(label);
 
-        skid.add(addLabel("SQ.FT"));
+        skid.add(addLabel("    SQ.FT"));
         skid.add(addField(true));
 
-        skid.add(addLabel("Depth In Inches"));
+        skid.add(addLabel("    Depth In Inches"));
         skid.add(addField(true));
 
-        label = new Label("   | ");
+        label = new Label("      |   ");
         label.setFont(new Font(20));
         skid.add(label);
 
-        skid.add(addLabel("Required Yards"));
+        skid.add(addLabel("    Required Yards"));
         skid.add(addField(false));
 
-        skid.add(addLabel("Est. Man Hours"));
+        skid.add(addLabel("    Est. Man Hours"));
         skid.add(this.addField(false));
 
-        skid.add(addLabel("Excavation Labour Cost"));
+        skid.add(addLabel("    Excavation Labour Cost"));
         skid.add(addField(false));
 
-        skid.add(addLabel("Trucking Fees"));
+        skid.add(addLabel("    Trucking Fees"));
         skid.add(addField(false));
-
-        skid.add(addLabel(""));
-        skid.add(addLabel(""));
-
+        
+        skid.add(addLabel("                                      "));
+        skid.add(addLabel("                                      "));
+        
         addServTotal(skid);
 
         double labourhours = dbs.excavation_ManHoursBySkidPerYards();
@@ -1363,7 +1360,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double truckingDbl = ((reqyardsdbl / 2) * truckingRate);
                         trucking.setText(f.format(truckingDbl));
 
-                        TextField serTotal = (TextField) skid.get(17);
+                        TextField serTotal = (TextField) skid.get(skid.size()-1);
                         Double serTotalDbl = labourCostDouble + truckingDbl;
                         serTotal.setText(f.format(serTotalDbl));
 
@@ -1429,6 +1426,11 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         return field;
     }
 
+    /**
+     * 
+     * @param list
+     * @return 
+     */
     private double takenUp(ArrayList<Control> list) {
 
         double total = 0;
@@ -1438,6 +1440,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             total += list.get(i).getWidth();
 
         }
+        
         ArrayList<Control> servSpace = new ArrayList();
         addServTotal(servSpace);
 
@@ -1448,6 +1451,19 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
 
         return total;
+    }
+    
+    /**
+     * 
+     * @param list 
+     */
+    private void addPad(ArrayList<Control> list) {
+
+        double take = 750.0 - takenUp(list);
+        Label pad = new Label();
+        pad.setMinWidth(take);
+        pad.setMaxWidth(take);
+        list.add(pad);
     }
 
     /**
@@ -1542,11 +1558,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
             flo.getChildren().addAll(elements.get(i));
         }
 
-        flo.setPrefWrapLength(1850);
-        flo.setMinWidth(1850);
-        flo.setMaxWidth(1850);
-       // flo.setHgap(2);
-        flo.setVgap(2);
+        flo.setPrefWrapLength(1600);
+        flo.setMinWidth(1600);
+        flo.setMaxWidth(1600);
+        flo.setVgap(10);
 
         anc.getChildren().add(flo);
     }

@@ -78,8 +78,6 @@ public class EditProjectGUIController extends Controller implements Initializabl
     private Label errorMessage;
 
     private static BorderPane outerPane; //for navigatingout of this page
-
-    private ObservableList<Client> clients = FXCollections.observableArrayList(); //from db
    
 
     /**
@@ -195,6 +193,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
         outerPane.setCenter(root);
        
+        System.out.println(selectedProject.getWorkOrders().get(0).getName());
     }
 
     /**
