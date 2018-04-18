@@ -14,9 +14,6 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -987,15 +984,19 @@ public class HomePageGUIController extends Controller implements Initializable {
             epgc.setNameField(selectedProject.getProjectName());
             epgc.setErrorMessage(errorMessage);
             epgc.setOuterPane(this.borderpane);
-            epgc.setPreLabs(selectedProject.getLabourers());
             epgc.setNotesField(selectedProject.getDescription());
             epgc.getStartField().setValue(selectedProject.getStartDate());
             epgc.getEndField().setValue(selectedProject.getEndDate());
-
-            ObservableList<Client> clients = FXCollections.observableArrayList();
-            DBServices dbs = new DBServices();
-            clients.addAll(dbs.getClientsForTable());
-
+            
+            String wowie = "";
+            
+            for(int i = 0; i < selectedProject.getLabourers().size(); i++){
+            
+                wowie += selectedProject.getLabourers().get(i).getFullName() + "\n";
+            
+            }
+            epgc.setClientNameField(selectedProject.getClientName());
+            epgc.setCurrLabs(wowie);
             editProjectFlag = false;
         }
 

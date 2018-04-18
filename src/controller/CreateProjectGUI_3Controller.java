@@ -1545,6 +1545,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         flo.setPrefWrapLength(1850);
         flo.setMinWidth(1850);
         flo.setMaxWidth(1850);
+       // flo.setHgap(2);
+        flo.setVgap(2);
 
         anc.getChildren().add(flo);
     }

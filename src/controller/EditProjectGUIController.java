@@ -64,14 +64,16 @@ public class EditProjectGUIController extends Controller implements Initializabl
     private TextField quoteField;
     @FXML
     private TextField finalField;
+    @FXML
+    private TextField clientNameField;
+    @FXML
+    private Label currLabs;
 
     private Project selectedProject;
 
     private Label errorMessage;
 
     private static BorderPane outerPane; //for navigatingout of this page
-
-    private ArrayList<Labourer> preLabs = new ArrayList(); //selected labourers
 
     private ObservableList<Client> clients = FXCollections.observableArrayList(); //from db
 
@@ -91,12 +93,24 @@ public class EditProjectGUIController extends Controller implements Initializabl
             String newName = nameField.getText();
             String newAdd = addressField.getText();
             String newNotes = notesField.getText();
-            String cliName = (String) clientDropdown.getValue();
+            String cliName = "";
             ObservableList<Labourer> labs = labTable.getSelectionModel().getSelectedItems();
             ArrayList<Labourer> labsList = new ArrayList();
-            labsList.addAll(labs);
+
             LocalDate newStart = startField.getValue();
             LocalDate newEnd = endField.getValue();
+
+            if (labs.size() > 0) {
+                labsList.addAll(labs);
+            } else {
+                labsList = selectedProject.getLabourers();
+            }
+
+            if (clientDropdown.getValue().equals("-- Assign Client --")) {
+                cliName = selectedProject.getClientName();
+            } else {
+                cliName = (String) clientDropdown.getValue();
+            }
 
             if (newAdd.length() > 30 || newName.length() > 50 || newNotes.length() > 5000) {
 
@@ -116,22 +130,24 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
             ArrayList<Client> clients = dbs.getClients(false);
 
-            for (int i = 0; i < clients.size(); i++) {
+            if (cliName != null) {
+                for (int i = 0; i < clients.size(); i++) {
 
-                if (cliName == clients.get(i).getFullName()) {
+                    if (cliName.equals(clients.get(i).getFullName())) {
 
-                    chosenClient = clients.get(i);
+                        chosenClient = clients.get(i);
 
+                    }
                 }
             }
-            
+
             ArrayList<WorkOrder> woList = selectedProject.getWorkOrders();
-            
+
             Project newProj = new Project(newName, newAdd, newNotes, newStart, newEnd, chosenClient, labsList, woList, selectedProject.isIsActive());
             newProj.setQuote(selectedProject.getQuote());
             newProj.setActualCost(selectedProject.getActualCost());
-            newProj.setLabourers(selectedProject.getLabourers());
-           
+            newProj.setLabourers(labsList);
+
             dbs.updateProject(selectedProject, newProj);
 
             setMessage("Project Changes Saved!", this.errorMessage);
@@ -154,15 +170,15 @@ public class EditProjectGUIController extends Controller implements Initializabl
             navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
     }
-    
+
     /**
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @FXML
-    private void editOrdersAction(ActionEvent event){
-    
-      FXMLLoader loader =  navigateTo("CreateProjectGUI_3.fxml", outerPane);
+    private void editOrdersAction(ActionEvent event) {
+
+        FXMLLoader loader = navigateTo("CreateProjectGUI_3.fxml", outerPane);
     }
 
     /**
@@ -188,6 +204,11 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
         DBServices dbs = new DBServices();
         dbs.updateProject(old, selectedProject);
+
+    }
+
+    public void setClientNameField(String name) {
+        this.clientNameField.setText(name);
     }
 
     public DatePicker getStartField() {
@@ -198,16 +219,16 @@ public class EditProjectGUIController extends Controller implements Initializabl
         return this.endField;
     }
 
-    public void setPreLabs(ArrayList<Labourer> curr) {
-        this.preLabs = curr;
-    }
-
     public void setErrorMessage(Label label) {
         this.errorMessage = label;
     }
 
     public void setSelected(Project proj) {
         this.selectedProject = proj;
+    }
+
+    public void setCurrLabs(String text) {
+        this.currLabs.setText(text);
     }
 
     public void setCompletedBtn(String value) {
@@ -261,19 +282,14 @@ public class EditProjectGUIController extends Controller implements Initializabl
         clients.addAll(dbs.getClients(false));
         allLabs.addAll(dbs.getLabourersForTable());
 
+        names.add("-- Assign Client --");
+
         for (int i = 0; i < clients.size(); i++) {
             names.add(clients.get(i).getFirstName() + " " + clients.get(i).getLastName());
         }
 
         clientDropdown.setItems(names);
-
-        try {
-            if (this.selectedProject.getClient() != null) {
-                clientDropdown.setValue(selectedProject.getClientName());
-            }
-        } catch (NullPointerException e) {
-            clientDropdown.setValue("-- Assign Client --");
-        }
+        clientDropdown.getSelectionModel().select(0);
 
         this.col.setCellValueFactory(new PropertyValueFactory<>("fullName"));
 
@@ -281,20 +297,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
         this.labTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        for (int i = 0; i < labTable.getItems().size(); i++) {
-
-            String cur;
-            cur = (String) col.getCellObservableValue(i).getValue();
-
-            for (int j = 0; j < preLabs.size(); j++) {
-
-                if (cur == preLabs.get(j).getFullName()) {
-
-                    labTable.getSelectionModel().select(i);
-
-                }
-            }
-        }
+        System.out.println(this.clientNameField.getText());
 
     }
 }

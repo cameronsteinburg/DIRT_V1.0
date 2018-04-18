@@ -24,6 +24,13 @@ public class Client {
     
     /**
      * 
+     */
+    public Client(){
+    
+    }
+    
+    /**
+     * 
      * @param clientFirstName
      * @param clientLastName
      * @param company
