@@ -14,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -992,12 +993,21 @@ public class HomePageGUIController extends Controller implements Initializable {
             String almost = "";
             
             for(int i = 0; i < selectedProject.getWorkOrders().size(); i++){
-            
+                
                 almost += selectedProject.getWorkOrders().get(i).getName() + ":         Quoted: ";
                 almost += selectedProject.getWorkOrders().get(i).getQuotedTotal() + "   Actual: ";
                 almost += selectedProject.getWorkOrders().get(i).getActualTotal() + "\n";
             
             }
+            
+            String names = "";
+            
+            for(int i = 0; i < selectedProject.getLabourers().size(); i++){
+            
+                names += selectedProject.getLabourers().get(i).getFullName() + "\n";
+            
+            }
+            epgc.setCurrLabs(names);
             
             epgc.setOrders(almost);
             

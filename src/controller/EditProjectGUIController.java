@@ -149,7 +149,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
             Project newProj = new Project(newName, newAdd, newNotes, newStart, newEnd, chosenClient, labsList, woList, selectedProject.isIsActive());
             newProj.setQuote(selectedProject.getQuote());
             newProj.setActualCost(selectedProject.getActualCost());
-            newProj.setLabourers(labsList);
+            //newProj.setLabourers(labsList);
 
             dbs.updateProject(selectedProject, newProj);
 
