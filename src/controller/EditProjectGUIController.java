@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -127,7 +128,10 @@ public class EditProjectGUIController extends Controller implements Initializabl
             ArrayList<WorkOrder> woList = selectedProject.getWorkOrders();
             
             Project newProj = new Project(newName, newAdd, newNotes, newStart, newEnd, chosenClient, labsList, woList, selectedProject.isIsActive());
-            
+            newProj.setQuote(selectedProject.getQuote());
+            newProj.setActualCost(selectedProject.getActualCost());
+            newProj.setLabourers(selectedProject.getLabourers());
+           
             dbs.updateProject(selectedProject, newProj);
 
             setMessage("Project Changes Saved!", this.errorMessage);
@@ -149,6 +153,16 @@ public class EditProjectGUIController extends Controller implements Initializabl
         if (result.get() == ButtonType.OK) {
             navigateTo("/ui/OngoingProjectsGUI.fxml", this.outerPane);
         }
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void editOrdersAction(ActionEvent event){
+    
+      FXMLLoader loader =  navigateTo("CreateProjectGUI_3.fxml", outerPane);
     }
 
     /**

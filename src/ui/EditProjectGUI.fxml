@@ -38,7 +38,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="8.0" layoutY="167.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="blue-button" text="Edit Work Orders" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="167.0" />
+                  <Button layoutX="8.0" layoutY="167.0" mnemonicParsing="false" onAction="#editOrdersAction" prefHeight="40.0" prefWidth="166.0" styleClass="blue-button" text="Edit Work Orders" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="167.0" />
                   <GridPane layoutX="10.0" layoutY="205.0" prefHeight="190.0" prefWidth="300.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="205.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="100.0" />
@@ -82,7 +82,7 @@
                         </DatePicker>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="552.0" layoutY="203.0" prefHeight="295.0" prefWidth="519.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+                  <GridPane layoutX="552.0" layoutY="203.0" prefHeight="281.0" prefWidth="519.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -96,7 +96,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="notesField" prefHeight="260.0" prefWidth="518.0" wrapText="true" GridPane.rowIndex="1" />
+                        <TextArea fx:id="notesField" prefHeight="264.0" prefWidth="519.0" wrapText="true" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <TableView fx:id="workOrdersTable" layoutX="6.0" layoutY="-10.0" prefHeight="172.0" prefWidth="804.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="-10.0">
@@ -108,7 +108,7 @@
                   </TableView>
                   <Button layoutX="93.0" layoutY="416.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefWidth="80.0" styleClass="red_button" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="100.0" />
                   <Button layoutX="6.0" layoutY="415.0" mnemonicParsing="false" onAction="#saveBtnAction" prefWidth="80.0" styleClass="grn-button" text="Save" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
-                  <TableView fx:id="labTable" layoutX="320.0" layoutY="212.0" maxHeight="241.0" maxWidth="226.0" prefHeight="241.0" prefWidth="226.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="532.0">
+                  <TableView fx:id="labTable" layoutX="320.0" layoutY="212.0" maxHeight="241.0" maxWidth="226.0" prefHeight="234.0" prefWidth="226.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="532.0">
                     <columns>
                       <TableColumn fx:id="col" prefWidth="225.0" text="Select Labourers (CTRL + Click)" />
                     </columns>
