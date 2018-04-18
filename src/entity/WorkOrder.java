@@ -16,6 +16,12 @@ public class WorkOrder {
     protected String projectID;
     
     protected boolean isActive;
+    
+    protected String name;
+    
+    public String getName(){
+        return name;
+    }
 
     public String getDescription() {
         return description;

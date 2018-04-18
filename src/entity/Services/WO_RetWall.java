@@ -36,6 +36,7 @@ public class WO_RetWall extends WorkOrder {
 
     public WO_RetWall(boolean active) {
         this.isActive = isActive;
+        this.name = "Retaining Wall";
     }
 
     public double getEstLineFT() {

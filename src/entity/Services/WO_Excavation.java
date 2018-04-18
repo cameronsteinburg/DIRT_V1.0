@@ -34,6 +34,14 @@ public class WO_Excavation extends WorkOrder {
     public WO_Excavation(char type, boolean isActive){
         this.type = type;
         this.isActive = isActive;
+        
+        if(type == 'h'){
+            this.name = "Excavation By Hand";
+        } else if(type == 's'){
+            this.name = "Excavation BY Skid";
+        }
+        
+        
     }
 
     public double getEstSQFT() {

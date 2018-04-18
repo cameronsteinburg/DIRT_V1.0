@@ -987,16 +987,20 @@ public class HomePageGUIController extends Controller implements Initializable {
             epgc.setNotesField(selectedProject.getDescription());
             epgc.getStartField().setValue(selectedProject.getStartDate());
             epgc.getEndField().setValue(selectedProject.getEndDate());
+            epgc.setClientNameField(selectedProject.getClientName());
             
-            String wowie = "";
+            String almost = "";
             
-            for(int i = 0; i < selectedProject.getLabourers().size(); i++){
+            for(int i = 0; i < selectedProject.getWorkOrders().size(); i++){
             
-                wowie += selectedProject.getLabourers().get(i).getFullName() + "\n";
+                almost += selectedProject.getWorkOrders().get(i).getName() + ":         Quoted: ";
+                almost += selectedProject.getWorkOrders().get(i).getQuotedTotal() + "   Actual: ";
+                almost += selectedProject.getWorkOrders().get(i).getActualTotal() + "\n";
             
             }
-            epgc.setClientNameField(selectedProject.getClientName());
-            epgc.setCurrLabs(wowie);
+            
+            epgc.setOrders(almost);
+            
             editProjectFlag = false;
         }
 
@@ -1086,6 +1090,7 @@ public class HomePageGUIController extends Controller implements Initializable {
             cpgc.setOuterPane(borderpane);
             createProjectFlag = false;
         }
+
 
         this.borderpane.setCenter(root);
     }

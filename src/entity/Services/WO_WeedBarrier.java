@@ -28,6 +28,7 @@ public class WO_WeedBarrier extends WorkOrder{
     
     public WO_WeedBarrier (boolean isActive){
         this.isActive = isActive;
+        this.name = "Weed Barrier";
     }
 
     public double getEstSQFT() {

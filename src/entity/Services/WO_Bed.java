@@ -28,6 +28,7 @@ public class WO_Bed extends WorkOrder {
      */
     public WO_Bed(boolean isActive) {
         this.isActive = isActive;
+        this.name = "Bed";
     }
 
 

@@ -13,6 +13,7 @@ public class WO_Custom extends WorkOrder{
     
     public WO_Custom(boolean isActive){
         this.isActive = isActive;
+        this.name = "Custom";
     }
 
     public double getMulti() {

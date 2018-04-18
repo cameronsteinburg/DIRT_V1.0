@@ -30,6 +30,7 @@ public class WO_TopSoil extends WorkOrder{
     
     public WO_TopSoil(boolean isActive){
         this.isActive = isActive;
+        this.name = "Top Soil";
     }
 
     public double getEstSQFT() {

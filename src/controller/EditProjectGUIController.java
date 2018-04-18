@@ -9,6 +9,7 @@ import entity.Client;
 import entity.Labourer;
 import entity.Project;
 import entity.WorkOrder;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -68,6 +70,8 @@ public class EditProjectGUIController extends Controller implements Initializabl
     private TextField clientNameField;
     @FXML
     private Label currLabs;
+    @FXML
+    private Label ordersLabel;
 
     private Project selectedProject;
 
@@ -76,6 +80,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
     private static BorderPane outerPane; //for navigatingout of this page
 
     private ObservableList<Client> clients = FXCollections.observableArrayList(); //from db
+   
 
     /**
      *
@@ -176,9 +181,20 @@ public class EditProjectGUIController extends Controller implements Initializabl
      * @param event
      */
     @FXML
-    private void editOrdersAction(ActionEvent event) {
+    private void editOrdersAction(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateProjectGUI_3.fxml"));
+        CreateProjectGUI_3Controller cont = new CreateProjectGUI_3Controller();
+        loader.setController(cont);
+        ObservableList<String> allItems = FXCollections.observableArrayList();
+        cont.setEls(allItems);
+        cont.setInProgress(null);
+        cont.setErrorMessage(errorMessage);
+        cont.setOuterPane(outerPane);
+        Parent root = loader.load();
 
-        FXMLLoader loader = navigateTo("CreateProjectGUI_3.fxml", outerPane);
+        outerPane.setCenter(root);
+       
     }
 
     /**
@@ -230,6 +246,10 @@ public class EditProjectGUIController extends Controller implements Initializabl
     public void setCurrLabs(String text) {
         this.currLabs.setText(text);
     }
+    
+    public void setOrders(String oivey){
+        this.ordersLabel.setText(oivey);
+    }
 
     public void setCompletedBtn(String value) {
         this.completedBtn.setText(value);
@@ -265,6 +285,10 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
     public void setFinal(String val) {
         this.finalField.setText(val);
+    }
+    
+    public TableView getWOTable(){
+        return this.workOrdersTable;
     }
 
     /**

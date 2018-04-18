@@ -25,6 +25,7 @@ public class WO_Sod extends WorkOrder {
 
     public WO_Sod(boolean isActive) {
         this.isActive = isActive;
+        this.name = "Sod";
     }
 
     public double getEstSQFT() {

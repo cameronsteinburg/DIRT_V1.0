@@ -34,6 +34,7 @@ public class WO_Irrigation extends WorkOrder{
     
     public WO_Irrigation(boolean isActive){
         this.isActive = isActive;
+        this.name = "Irrigation";
     }
 
     public double getEstThreeQuarterLine() {
