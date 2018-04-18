@@ -981,8 +981,8 @@ public class HomePageGUIController extends Controller implements Initializable {
             DecimalFormat f = new DecimalFormat("#.00");
 
             epgc.setSelected(selectedProject);
-            epgc.setQuote(selectedProject.getQuote() + "");
-            epgc.setFinal(selectedProject.getActualCost() + "");
+            epgc.setQuote(f.format(selectedProject.getQuote()));
+            epgc.setFinal(f.format(selectedProject.getActualCost()));
             epgc.setAddressField(selectedProject.getSiteAddress());
             epgc.setNameField(selectedProject.getProjectName());
             epgc.setErrorMessage(errorMessage);

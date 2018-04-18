@@ -109,7 +109,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
                 return;
             }//all data is valid at this point
 
-            Client chosenClient;
+            Client chosenClient = null;
 
             DBServices dbs = new DBServices();
 
@@ -126,7 +126,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
             
             ArrayList<WorkOrder> woList = selectedProject.getWorkOrders();
             
-            Project newProj = new Project(newName, newAdd, newNotes, newStart, newEnd, labsList, woList, selectedProject.isIsActive());
+            Project newProj = new Project(newName, newAdd, newNotes, newStart, newEnd, chosenClient, labsList, woList, selectedProject.isIsActive());
             
             dbs.updateProject(selectedProject, newProj);
 

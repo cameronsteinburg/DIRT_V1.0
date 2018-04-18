@@ -95,9 +95,13 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         if (result.get() == ButtonType.OK) {
 
+            DBServices dbs = new DBServices();
+            
+           double tax = dbs.tax_GST() + dbs.tax_PST();
+            
             inProgress.setWorkOrders(orders);
-            inProgress.setQuote(projectTotal);
-            inProgress.setActualCost(projectTotal);
+            inProgress.setQuote(projectTotal + (tax * projectTotal));
+            inProgress.setActualCost(projectTotal + (tax * projectTotal));
             inProgress.setCompleted(false);
             inProgress.setClient(null);
 
@@ -183,7 +187,6 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         pad.setMinWidth(take);
         pad.setMaxWidth(take);
         list.add(pad);
-
     }
 
     /**

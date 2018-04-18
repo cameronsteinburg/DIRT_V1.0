@@ -101,11 +101,13 @@ public class Project {
      * @param newNotes
      * @param newStart
      * @param newEnd
+     * @param chosen
      * @param labs
+     * @param woList
      * @param isActive 
      */
     //for updating project
-    public Project(String newName, String newAdd, String newNotes, LocalDate newStart, LocalDate newEnd, ArrayList<Labourer> labs, ArrayList<WorkOrder> woList, boolean isActive) {
+    public Project(String newName, String newAdd, String newNotes, LocalDate newStart, LocalDate newEnd, Client chosen, ArrayList<Labourer> labs, ArrayList<WorkOrder> woList, boolean isActive) {
        
         this.projectName = newName;
         this.siteAddress = newAdd;
@@ -114,6 +116,7 @@ public class Project {
         this.endDate = newEnd;
         this.labourers = labs;
         this.workOrders = woList;
+        this.client = chosen;
         this.isActive = isActive;
     }
         
