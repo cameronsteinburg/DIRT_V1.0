@@ -20,7 +20,8 @@ public class Client {
     private List<Project> ongoingProjects; //Projects this Client is affiliated with 
     private List<Project> completedProjects; //Projects this Client was previously affiliated with that have already completed
     private boolean isActive; //false if user deleted this entity, true if he hasn't NOT NULL
-
+    private String fullName;
+    
     /**
      * 
      * @param clientFirstName
@@ -43,6 +44,7 @@ public class Client {
         this.email = email;
         this.address = address;
         this.isActive = isActive;
+        this.fullName = clientFirstName + " " + clientLastName;
     }
     
     public Client(String clientFirstName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive, int clientNum) {
@@ -56,8 +58,12 @@ public class Client {
         this.address = address;
         this.isActive = isActive;
         this.clientNum = clientNum;
+        this.fullName = clientFirstName + " " + clientLastName;
     }
 
+    public String getFullName(){
+        return fullName;
+    }
 
     public String getLastName() {
         return clientLastName;

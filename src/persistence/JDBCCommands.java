@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -372,11 +373,21 @@ public class JDBCCommands {
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
-            java.sql.Date start = Date.valueOf(project.getStartDate());
-            java.sql.Date end = Date.valueOf(project.getEndDate());
+            java.sql.Date start;
+            java.sql.Date end;
+
+            try{
+                start = Date.valueOf(project.getStartDate());
+            } catch(NullPointerException e){
+                start = null;
+            }
             
+            try{
+                end = Date.valueOf(project.getEndDate());
+            } catch(NullPointerException e){
+                end = null;
+            }
             
-         
 
             if (project.getClient() == null) {
                 preparedStmt.setInt(1, 1);
@@ -541,7 +552,22 @@ public class JDBCCommands {
                     return project;
                 } else if (isActive == '1') {
                     
-                    Project project = new Project(projectName, startDate.toLocalDate(), endDate.toLocalDate(), description, isActiveToBoolean);
+                    LocalDate start;
+                    LocalDate end;
+                    
+                    try{
+                        start = startDate.toLocalDate();
+                    } catch(NullPointerException e){
+                        start= null;
+                    }
+                    
+                    try{
+                        end = endDate.toLocalDate();
+                    } catch(NullPointerException e){
+                        end = null;
+                    }
+                    
+                    Project project = new Project(projectName, start, end, description, isActiveToBoolean);
 
                     project.setProjectNum(projectNum);
                     project.setSiteAddress(siteAddress);
@@ -656,11 +682,22 @@ public class JDBCCommands {
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
-            java.sql.Date start = Date.valueOf(projectNew.getStartDate());
-            java.sql.Date end = Date.valueOf(projectNew.getEndDate());
+            java.sql.Date start;
+            java.sql.Date end;
             
-         
-
+            try{
+                start = Date.valueOf(projectNew.getStartDate());
+            } catch(NullPointerException e){
+                start = null;
+            }
+            
+            try{
+                end = Date.valueOf(projectNew.getEndDate());
+            } catch(NullPointerException e){
+                end = null;
+            }
+            
+            
             if (projectNew.getClient() == null) {
                 preparedStmt.setInt(1, 1);
             } else {

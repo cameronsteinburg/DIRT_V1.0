@@ -7,6 +7,7 @@ package entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 public class Project {
 
@@ -55,6 +56,15 @@ public class Project {
         this.isActive = isActive;
     }
 
+    /**
+     * 
+     * @param name
+     * @param startDate
+     * @param endDate
+     * @param description
+     * @param address
+     * @param isActive 
+     */
     //for new project 1
     public Project(String name, LocalDate startDate, LocalDate endDate, String description, String address, boolean isActive) {
 
@@ -83,7 +93,30 @@ public class Project {
         this.description = description;
         this.isActive = isActive;
     }
-    
+
+    /**
+     * 
+     * @param newName
+     * @param newAdd
+     * @param newNotes
+     * @param newStart
+     * @param newEnd
+     * @param labs
+     * @param isActive 
+     */
+    //for updating project
+    public Project(String newName, String newAdd, String newNotes, LocalDate newStart, LocalDate newEnd, ArrayList<Labourer> labs, ArrayList<WorkOrder> woList, boolean isActive) {
+       
+        this.projectName = newName;
+        this.siteAddress = newAdd;
+        this.description = newNotes;
+        this.startDate = newStart;
+        this.endDate = newEnd;
+        this.labourers = labs;
+        this.workOrders = woList;
+        this.isActive = isActive;
+    }
+        
     public void setCompleted(boolean val){
         this.completed = val;
     }

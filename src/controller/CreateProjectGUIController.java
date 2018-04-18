@@ -88,13 +88,13 @@ public class CreateProjectGUIController extends Controller implements Initializa
 
         if (name.length() > 50 || description.length() > 5000 || address.length() > 30) {
 
-            setMessage("One or more text boxes have too many characters", errorMessage);
+            setMessage("One or More of the Fields is Too Long", errorMessage);
             return;
         }
 
         if (start != null && end != null && start.compareTo(end) > 0) { //in can user set the first date to be after the end date
 
-            setMessage("Preliminary Date Must Be Before End Date", errorMessage);
+            setMessage("Start Date Must Be Before End Date", errorMessage);
             return;
         }//all data is valid at this point
 

@@ -8,10 +8,10 @@ package controller;
 import entity.Client;
 import entity.Labourer;
 import entity.Project;
+import entity.WorkOrder;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -66,7 +66,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
     private Project selectedProject;
 
-    private Label errorMessage; //
+    private Label errorMessage;
 
     private static BorderPane outerPane; //for navigatingout of this page
 
@@ -79,10 +79,71 @@ public class EditProjectGUIController extends Controller implements Initializabl
      * @param event
      */
     @FXML
+    private void saveBtnAction(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Save These Changes?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+
+            String newName = nameField.getText();
+            String newAdd = addressField.getText();
+            String newNotes = notesField.getText();
+            String cliName = (String) clientDropdown.getValue();
+            ObservableList<Labourer> labs = labTable.getSelectionModel().getSelectedItems();
+            ArrayList<Labourer> labsList = new ArrayList();
+            labsList.addAll(labs);
+            LocalDate newStart = startField.getValue();
+            LocalDate newEnd = endField.getValue();
+
+            if (newAdd.length() > 30 || newName.length() > 50 || newNotes.length() > 5000) {
+
+                setMessage("One or More of the Fields is Too Long", errorMessage);
+                return;
+            }
+
+            if (newStart != null && newEnd != null && newStart.compareTo(newEnd) > 0) { //in can user set the first date to be after the end date
+
+                setMessage("Start Date Must Be Before End Date", errorMessage);
+                return;
+            }//all data is valid at this point
+
+            Client chosenClient;
+
+            DBServices dbs = new DBServices();
+
+            ArrayList<Client> clients = dbs.getClients(false);
+
+            for (int i = 0; i < clients.size(); i++) {
+
+                if (cliName == clients.get(i).getFullName()) {
+
+                    chosenClient = clients.get(i);
+
+                }
+            }
+            
+            ArrayList<WorkOrder> woList = selectedProject.getWorkOrders();
+            
+            Project newProj = new Project(newName, newAdd, newNotes, newStart, newEnd, labsList, woList, selectedProject.isIsActive());
+            
+            dbs.updateProject(selectedProject, newProj);
+
+            setMessage("Project Changes Saved!", this.errorMessage);
+            navigateTo("/ui/OngoingProjectsGUI.fxml", outerPane);
+        }
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
     private void cancelBtnAction(ActionEvent event) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Cancel And Discard Edits?");
+        alert.setContentText("Cancel and Discard Edits?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == ButtonType.OK) {
@@ -166,7 +227,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
     public void setQuote(String val) {
         this.quoteField.setText(val);
     }
-    
+
     public void setFinal(String val) {
         this.finalField.setText(val);
     }

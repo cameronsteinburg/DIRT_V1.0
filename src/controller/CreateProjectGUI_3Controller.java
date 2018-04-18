@@ -172,6 +172,10 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
         }
     }
 
+    /**
+     * 
+     * @param list 
+     */
     private void addPad(ArrayList<Control> list) {
 
         double take = 1090.0 - takenUp(list);
