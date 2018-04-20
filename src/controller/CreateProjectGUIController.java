@@ -1,8 +1,3 @@
-/*
- * 
- *  This is the class that controls what happens when the user is on the page that lets them make a new client i.e /ui/CreateProjectGUI.fxml
-    Also controls child pages of /ui/CreateProjectGUI.fxml
- */
 package controller;
 
 import entity.Project;
@@ -27,10 +22,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
+/*
+ * 
+ * This is the class that controls what happens when the user is on the page that lets them make a new client i.e /ui/CreateProjectGUI.fxml
+ * Also controls /ui/CreateProjectGUI_2.fxml
+ */
 public class CreateProjectGUIController extends Controller implements Initializable {
 
     //try to keeps this in the relative order they appear on the page
-    //elements from the GUI.fxml page
     @FXML
     private Button removeBtn;
     @FXML
@@ -63,6 +62,9 @@ public class CreateProjectGUIController extends Controller implements Initializa
     private ObservableList<String> allItems = FXCollections.observableArrayList();
 
     /**
+     * When user clicks next button on _1, system begins creating the new
+     * project object, saves users data that they wish to define for this
+     * project, then navigates to next page for creating the rest of the project
      *
      * @param event
      * @throws IOException
@@ -107,6 +109,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
     } //the project object is not committed to db until the quote has been produced
 
     /**
+     * When user clicks Next button on _2, takes selected services from _2 and
+     * data/object from _1 and navigates to _3 with previously created data
      *
      * @param event
      */
@@ -127,6 +131,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
+     * Takes off selected service from table on _2
      *
      * @param event
      */
@@ -149,7 +154,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
+     * Gets service that user selected from table
      * @param event
      */
     private void selectServiceFromList() {
@@ -165,7 +170,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
+     * adds an Excavation By Hand service to table
      * @param event
      */
     @FXML
@@ -176,7 +181,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
+     * adds an Excavation By Skid Steer service to table
      * @param event
      */
     @FXML
@@ -185,30 +190,31 @@ public class CreateProjectGUIController extends Controller implements Initializa
         allItems.add("Excavation by Skid");
         updateTable(allItems);
     }
-    
+
     /**
-     * 
-     */
-    @FXML
-    private void barrierAction(ActionEvent event){
-        
-        allItems.add("Weed Barrier");
-        updateTable(allItems);
-    }
-    
-    /**
-     * 
+     * adds a Weed Barrier service to the table
      * @param event 
      */
     @FXML
-    private void wallAction(ActionEvent event){
-    
+    private void barrierAction(ActionEvent event) {
+
+        allItems.add("Weed Barrier");
+        updateTable(allItems);
+    }
+
+    /**
+     * adds a Retaining Wall service to the table
+     * @param event
+     */
+    @FXML
+    private void wallAction(ActionEvent event) {
+
         allItems.add("Retaining Wall");
         updateTable(allItems);
     }
 
     /**
-     *
+     * adds Aggregate bed service to table
      * @param event
      */
     @FXML
@@ -219,18 +225,18 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     * 
-     * @param event 
+     * adds Sod service to table
+     * @param event
      */
     @FXML
     private void sodAction(ActionEvent event) {
-        
+
         allItems.add("Sod");
         updateTable(allItems);
     }
-    
+
     /**
-     *
+     * adds Custom service to table
      * @param event
      */
     @FXML
@@ -242,18 +248,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
-     * @param event
-     */
-    @FXML
-    private void patioAction(ActionEvent event) {
-
-        allItems.add("Paver");
-        updateTable(allItems);
-    }
-    
-     /**
-     *
+     * adds Underground Irrigation service to table
      * @param event
      */
     @FXML
@@ -288,7 +283,7 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
+     * resets reference to outer pane and it's elements
      * @param pane
      */
     protected void setOuterPane(BorderPane pane) {
@@ -296,8 +291,8 @@ public class CreateProjectGUIController extends Controller implements Initializa
     }
 
     /**
-     *
-     * @param error
+     * Resets reference to outer error message label
+     * @param error 
      */
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;

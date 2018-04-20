@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import entity.Client;
@@ -37,8 +32,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import services.DBServices;
 
-/**
- *
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 public class EditProjectGUIController extends Controller implements Initializable {
 
@@ -81,7 +78,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
    
 
     /**
-     *
+     * When user clicks Save button, saves changes to the selected project entity and updates the database
      * @param event
      */
     @FXML
@@ -158,7 +155,9 @@ public class EditProjectGUIController extends Controller implements Initializabl
         }
     }
 
-    /**
+   /**
+     * Cancels users action and takes them back to the OngoingProjectsGUI.fxml
+     * page.
      *
      * @param event
      */
@@ -175,7 +174,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
     }
 
     /**
-     *
+     * Currently Unimplemented
      * @param event
      */
     @FXML
@@ -290,9 +289,7 @@ public class EditProjectGUIController extends Controller implements Initializabl
         return this.workOrdersTable;
     }
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

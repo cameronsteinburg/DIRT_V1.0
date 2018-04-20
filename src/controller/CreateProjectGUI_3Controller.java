@@ -37,9 +37,8 @@ import javafx.scene.text.Font;
 import services.DBServices;
 
 /**
- * FXML Controller class
- *
- * @author 734972
+ * This is the class the finalizes the creation of a project and provides user
+ * with quote based on information entered in _1 and _2
  */
 public class CreateProjectGUI_3Controller extends Controller implements Initializable {
 
@@ -70,6 +69,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     private Project selectedProject;
 
     /**
+     * Instantiates allItems before initialize runs
      *
      * @param allItems
      */
@@ -78,13 +78,16 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
+     * for use in other controllers to define elements for use in initialize
      */
     protected CreateProjectGUI_3Controller() {
         this(null);
     }
 
     /**
+     * when user clicks Save button, system saves all data provided by user and
+     * all work orders and their details in a project object and saves it in the
+     * database
      *
      * @param event
      */
@@ -116,6 +119,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * Cancels users action and takes them back to the OngoingProjectsGUI.fxml
+     * page.
      *
      * @param event
      */
@@ -132,7 +137,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
+     * Takes users selected services form _2 and adds elements needed for each
+     * service and puts them in a list to be generated on the page
      */
     private void addToList() {
 
@@ -184,6 +190,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for a Custom service
      *
      * @return
      */
@@ -284,6 +291,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for a Custom service for a Retaining Wall service
      *
      * @return
      */
@@ -442,7 +450,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double blockDbl = lfDbl * blockPerLF;
                         blockF.setText(f.format(blockDbl));
 
-                        TextField servTotal = (TextField) wall.get(wall.size()-1);
+                        TextField servTotal = (TextField) wall.get(wall.size() - 1);
                         Double servTotalDbl = rowLabourDbl + blockDbl + baseLabourDbl + baseSupplyDbl;
                         servTotal.setText(f.format(servTotalDbl));
 
@@ -489,6 +497,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for a Weed Barrier service
      *
      * @return
      */
@@ -600,6 +609,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for an Underground Irrigation service
      *
      * @return
      */
@@ -829,6 +839,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for a Sod service
      *
      * @return
      */
@@ -930,6 +941,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for an Aggregate Bed service
      *
      * @return
      */
@@ -967,7 +979,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         bed.add(addLabel("    Depth In Inches"));
         bed.add(addField(true));
-        
+
         label = new Label("    |    ");
         label.setFont(new Font(20));
         bed.add(label);
@@ -983,7 +995,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
 
         bed.add(addLabel("    Aggregate Cost"));
         bed.add(this.addField(false));
-        
+
         Label paddy = new Label();
         paddy.setMinWidth(216);
         bed.add(paddy);
@@ -1084,7 +1096,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double aggMatCost = reqyardsdbl * aggDbl;
                         aggCost.setText(f.format(aggMatCost));
 
-                        TextField serTotal = (TextField) bed.get(bed.size()-1);
+                        TextField serTotal = (TextField) bed.get(bed.size() - 1);
                         Double serTotalDbl = aggMatCost + labourCostDouble;
                         serTotal.setText(f.format(serTotalDbl));
 
@@ -1112,6 +1124,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for an Excavation By Hand service
      *
      * @return
      */
@@ -1261,6 +1274,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds elements needed for an Excavation By Skid Steer service
      *
      * @return
      */
@@ -1400,6 +1414,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds an elements needed for a service total at the end of every service
      *
      * @param list
      */
@@ -1420,6 +1435,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds field for a service with desired attributes
      *
      * @return
      */
@@ -1436,6 +1452,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * Calculates how much space is left on a row of a flow pane after elements
+     * have been entered in to it
      *
      * @param list
      * @return
@@ -1463,6 +1481,8 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds padding to a flow pane row after elements have been added to the row
+     * for a service to make it fit on the page
      *
      * @param list
      */
@@ -1476,6 +1496,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
+     * adds label for a service with the desired attributes
      *
      * @param text
      * @return
@@ -1487,7 +1508,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
+     * refreshes project total as fields are edited
      */
     private void botCheck() {
 
@@ -1518,16 +1539,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
-     * @param error
-     */
-    @Override
-    protected void setErrorMessage(Label error) {
-        this.errorMessage = error;
-    }
-
-    /**
-     *
+     * sets services to have elements made for 
      * @param els
      */
     protected void setEls(ObservableList<String> els) {
@@ -1535,7 +1547,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
+     * updates reference to the unfinished project entity created in _1
      * @param prog
      */
     protected void setInProgress(Project prog) {
@@ -1543,7 +1555,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
+     * resets reference to outer frame and its elements
      * @param pane
      */
     protected void setOuterPane(BorderPane pane) {
@@ -1551,7 +1563,16 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
     }
 
     /**
-     *
+     * Resets reference to outer error message label
+     * @param error 
+     */
+    @Override
+    protected void setErrorMessage(Label error) {
+        this.errorMessage = error;
+    }
+
+    /**
+     * Code that runs when the page loads, generates elements for services entered by user in _2
      * @param url
      * @param rb
      */

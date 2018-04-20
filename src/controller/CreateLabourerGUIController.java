@@ -1,7 +1,3 @@
-/*
- * 
- *  This is the class that controls what happens when the user is on the page that lets them make a new labourer
- */
 package controller;
 
 import entity.Labourer;
@@ -19,6 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.DBServices;
 
+/*
+ *  This is the class that controls what happens when the user is on the page that lets them make a new labourer
+ */
 public class CreateLabourerGUIController extends Controller implements Initializable {
 
     //try to keeps this in the relative order they appear on the page
@@ -47,14 +46,14 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     private TextField lnameField; //not null
     @FXML
     private TextField fnameField; //not null
-    
-    private Label errorMessage;
     @FXML
     private Button saveBtn;
     @FXML
     private Button editBtn;
     @FXML
     private Label titleLabel;
+
+    private Label errorMessage;
 
     private Labourer selected;
 
@@ -93,6 +92,15 @@ public class CreateLabourerGUIController extends Controller implements Initializ
         }
     }
 
+    /**
+     * When user clicks Edit button when this page is being used to edit a
+     * labourer instead of creating a new one, attempts to save new information
+     * user has entered into the fields to update labourer entity and update
+     * database
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void editBtnAction(ActionEvent event) throws IOException {
 
@@ -101,6 +109,8 @@ public class CreateLabourerGUIController extends Controller implements Initializ
     }
 
     /**
+     * When user clicks Save button, system attempts to save information entered
+     * by user to create new labourer entity and save it in the database
      *
      * @param event
      */
@@ -244,13 +254,13 @@ public class CreateLabourerGUIController extends Controller implements Initializ
         } else {
             alert.close();
         }
-        
+
         clearFields();
 
     }
 
     /**
-     * 
+     * Empties all fields in the GUI fxml
      */
     private void clearFields() {
 
@@ -376,23 +386,31 @@ public class CreateLabourerGUIController extends Controller implements Initializ
         this.editFlag = editFlag;
     }
 
+    /**
+     * Flips the Save button label to and Edit button when the fxml is being used to edit a client instead of creating a new one
+     */
     public void switchButtons() {
 
         this.saveBtn.setVisible(false);
         this.editBtn.setVisible(true);
     }
 
+    /**
+     * Resets reference to outer error message label
+     *
+     * @param error
+     */
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
     }
 
     /**
-     *
+     * Code that runs when page loads, unused in this case
      * @param url
-     * @param rb
+     * @param rb 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // nothing to load to the page beforehand 
+        // nothing to load
     }
 }

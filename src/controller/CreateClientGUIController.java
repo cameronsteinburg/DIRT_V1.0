@@ -1,7 +1,3 @@
-/*
- * 
- *  This is the class that controls what happens when the user is on the page that lets them make a new client
- */
 package controller;
 
 import entity.Client;
@@ -17,10 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import services.DBServices;
 
+/*
+ *  This is the class that controls what happens when the user is on the page that lets them make a new client
+ */
 public class CreateClientGUIController extends Controller implements Initializable {
 
     //try to keeps this in the relative order they appear on the page
-    //elements from the GUI.fxml page
     @FXML
     private TextField fNameField;
     @FXML
@@ -55,7 +53,7 @@ public class CreateClientGUIController extends Controller implements Initializab
     boolean editFlag = false;
 
     /**
-     * empties all the form fields for the User if they want to start over
+     * Empties all the form fields for the User if they want to start over
      *
      * @param event
      * @throws IOException
@@ -83,6 +81,11 @@ public class CreateClientGUIController extends Controller implements Initializab
         }
     }
 
+    /**
+     * When user clicks on Edit Button, system attempts to save the changes the user has made to the client entity and update the database
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void editBtnAction(ActionEvent event) throws IOException {
 
@@ -91,7 +94,7 @@ public class CreateClientGUIController extends Controller implements Initializab
     }
 
     /**
-     *
+     * When user clicks on edit button
      * @param event
      * @throws IOException
      */
@@ -190,6 +193,9 @@ public class CreateClientGUIController extends Controller implements Initializab
         }
     }
 
+    /**
+     * Clears all of the fields in the GUI fxml page
+     */
     private void clearFields() {
 
         fNameField.clear();
@@ -202,60 +208,116 @@ public class CreateClientGUIController extends Controller implements Initializab
         notesField.clear();
     }
 
+    /**
+     * Flips the Save button label to and Edit button when the fxml is being used to edit a client instead of creating a new one
+     */
     public void switchButtons() {
 
         this.saveBtn.setVisible(false);
         this.editBtn.setVisible(true);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setTitleField(String value) {
         this.titleField.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setFirstName(String value) {
         this.fNameField.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setLastName(String value) {
         this.lNameField.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setCompanyName(String value) {
         this.companyField.setText(value);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public TextField getPhone1Field() {
         return phone1Field;
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setPhone1Field(String value) {
         this.phone1Field.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setPhone2Field(String value) {
         this.phone2Field.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setEmailField(String value) {
         this.emailField.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setAddressField(String value) {
         this.addressField.setText(value);
     }
 
+    /**
+     * 
+     * @param value 
+     */
     public void setNotesField(String value) {
         this.notesField.setText(value);
     }
 
+    /**
+     * 
+     * @param sel 
+     */
     public void setSelected(Client sel) {
         this.selected = sel;
     }
 
+    /**
+     * Resets reference to outer error message label
+     * @param error 
+     */
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
     }
 
+    /**
+     * Code that runs when page loads, unused in this case
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //nothing to load

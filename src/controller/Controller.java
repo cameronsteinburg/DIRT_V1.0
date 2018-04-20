@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
@@ -14,19 +13,14 @@ import javafx.util.Duration;
 
 /**
  *
- * @author 734972
+ * Abstract parent of all controllers, gives children the ability to set the manner message tit he user and to navigate to other pages within the inner frame
  */
 public abstract class Controller {
 
     /**
-     * 
-     */
-    protected Controller() {
-    }
-
-    /**
      *
      * @param value
+     * @param errorMessage
      */
     protected void setMessage(String value, Label errorMessage) {
 
@@ -40,6 +34,13 @@ public abstract class Controller {
         timeline.play();
     }
 
+    /**
+     * 
+     * Gives controllers the ability to navigate to other pages
+     * @param url
+     * @param pane
+     * @return
+     */
     protected FXMLLoader navigateTo(String url, BorderPane pane) {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
@@ -52,10 +53,13 @@ public abstract class Controller {
         }
 
         pane.setCenter(root);
-        
+
         return loader;
     }
-    
 
+    /**
+     * To be inherited by all child controllers, resets the reference to the outer frame error label for the inner frame controllers
+     * @param error
+     */
     protected abstract void setErrorMessage(Label error);
 }
