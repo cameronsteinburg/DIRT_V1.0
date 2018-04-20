@@ -29,6 +29,7 @@ public class JDBCCommands {
     /**
      * default JDBCCommands constructor
      * gets the connection object of the passed DBAccessor
+     * @param dbAccess
      */
     public JDBCCommands(DBAccessor dbAccess) {
         this.conn = dbAccess.getConn();
@@ -192,12 +193,10 @@ public class JDBCCommands {
         }
         return null;
     }
-
+  
     /**
-     *
      * Retrieves a client from the database from the client number passed to the method
-     *
-     * @param clientName the number of the client to be searched for
+     * @param num 
      * @return a client object created from the information found in the clients table
      */
     public Client getClient(int num) {
@@ -340,7 +339,7 @@ public class JDBCCommands {
      * Logically deletes client from the app by setting the isActive value to
      * false/0
      *
-     * @param client the client to be logically deleted
+     * @param lab
      * @return true if no errors occur
      */
     public boolean deleteLabourer(Labourer lab) {

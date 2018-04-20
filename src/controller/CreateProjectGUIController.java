@@ -22,10 +22,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
-/*
+/**
  * 
  * This is the class that controls what happens when the user is on the page that lets them make a new client i.e /ui/CreateProjectGUI.fxml
  * Also controls /ui/CreateProjectGUI_2.fxml
+ * @author 734972
  */
 public class CreateProjectGUIController extends Controller implements Initializable {
 

@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import services.DBServices;
 
 /**
- * This class controls what happens under Edit-> User Constants in Menu Bar in
+ * This class controls what happens under Edit - User Constants in Menu Bar in
  * GUI
  */
 public class ConstantsGUIController extends Controller implements Initializable {

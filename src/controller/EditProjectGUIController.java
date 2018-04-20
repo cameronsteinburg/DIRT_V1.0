@@ -32,11 +32,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import services.DBServices;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This is the class that allows the user to edit the details of a project entity ad update the database
+ * @author 734972
  */
+
 public class EditProjectGUIController extends Controller implements Initializable {
 
     @FXML
@@ -219,14 +219,26 @@ public class EditProjectGUIController extends Controller implements Initializabl
 
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setClientNameField(String name) {
         this.clientNameField.setText(name);
     }
 
+    /**
+     *
+     * @return
+     */
     public DatePicker getStartField() {
         return this.startField;
     }
 
+    /**
+     *
+     * @return
+     */
     public DatePicker getEndField() {
         return this.endField;
     }
@@ -235,54 +247,106 @@ public class EditProjectGUIController extends Controller implements Initializabl
         this.errorMessage = label;
     }
 
+    /**
+     *
+     * @param proj
+     */
     public void setSelected(Project proj) {
         this.selectedProject = proj;
     }
 
+    /**
+     *
+     * @param text
+     */
     public void setCurrLabs(String text) {
         this.currLabs.setText(text);
     }
     
+    /**
+     *
+     * @param oivey
+     */
     public void setOrders(String oivey){
         this.ordersLabel.setText(oivey);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setCompletedBtn(String value) {
         this.completedBtn.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setNotesField(String value) {
         this.notesField.setText(value);
     }
 
+    /**
+     *
+     * @param workOrdersTable
+     */
     public void setWorkOrdersTable(TableView workOrdersTable) {
         this.workOrdersTable = workOrdersTable;
     }
 
+    /**
+     *
+     * @param clientDropdown
+     */
     public void setClientDropdown(ComboBox clientDropdown) {
         this.clientDropdown = clientDropdown;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setNameField(String value) {
         this.nameField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setAddressField(String value) {
         this.addressField.setText(value);
     }
 
+    /**
+     *
+     * @param p
+     */
     public void setOuterPane(BorderPane p) {
         outerPane = p;
     }
 
+    /**
+     *
+     * @param val
+     */
     public void setQuote(String val) {
         this.quoteField.setText(val);
     }
 
+    /**
+     *
+     * @param val
+     */
     public void setFinal(String val) {
         this.finalField.setText(val);
     }
     
+    /**
+     *
+     * @return
+     */
     public TableView getWOTable(){
         return this.workOrdersTable;
     }

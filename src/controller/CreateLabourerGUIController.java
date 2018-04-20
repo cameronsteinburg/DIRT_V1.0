@@ -15,8 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.DBServices;
 
-/*
+/**
  *  This is the class that controls what happens when the user is on the page that lets them make a new labourer
+ *  @author 734972
  */
 public class CreateLabourerGUIController extends Controller implements Initializable {
 
@@ -278,110 +279,218 @@ public class CreateLabourerGUIController extends Controller implements Initializ
         titleField.clear();
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getAddressField() {
         return addressField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setAddressField(String value) {
         this.addressField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getEmergencyNameField() {
         return emergencyNameField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmergencyNameField(String value) {
         this.emergencyNameField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getEmergencyPhone1Field() {
         return emergencyPhone1Field;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmergencyPhone1Field(String value) {
         this.emergencyPhone1Field.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getEmergencyPhone2Field() {
         return emergencyPhone2Field;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmergencyPhone2Field(String value) {
         this.emergencyPhone2Field.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getWageField() {
         return wageField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setWageField(String value) {
         this.wageField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getSinField() {
         return sinField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setSinField(String value) {
         this.sinField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getEmailField() {
         return emailField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmailField(String value) {
         this.emailField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getPhone2Field() {
         return phone2Field;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setTitleLable(String value) {
         this.titleLabel.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setPhone2Field(String value) {
         this.phone2Field.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getPhone1Field() {
         return phone1Field;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setPhone1Field(String value) {
         this.phone1Field.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setTitleField(String value) {
         this.titleField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getLnameField() {
         return lnameField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setLnameField(String value) {
         this.lnameField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getFnameField() {
         return fnameField;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setFnameField(String value) {
         this.fnameField.setText(value);
     }
 
+    /**
+     *
+     * @return
+     */
     public Labourer getSelected() {
         return selected;
     }
 
+    /**
+     *
+     * @param selected
+     */
     public void setSelected(Labourer selected) {
         this.selected = selected;
     }
 
+    /**
+     *
+     * @param editFlag
+     */
     public void setEditFlag(boolean editFlag) {
         this.editFlag = editFlag;
     }

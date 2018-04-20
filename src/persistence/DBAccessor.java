@@ -71,6 +71,10 @@ public class DBAccessor {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     public Connection getConn() {
         return conn;
     }

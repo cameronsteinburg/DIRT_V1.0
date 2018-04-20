@@ -13,12 +13,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import services.DBServices;
 
-/*
+/**
  *  This is the class that controls what happens when the user is on the page that lets them make a new client
+ * 
+ *  @author 734972
  */
+
+
 public class CreateClientGUIController extends Controller implements Initializable {
 
-    //try to keeps this in the relative order they appear on the page
+    //try to keeps this in the relative order the appear on the page
     @FXML
     private TextField fNameField;
     @FXML
@@ -64,7 +68,7 @@ public class CreateClientGUIController extends Controller implements Initializab
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Clear Form?");
         Optional<ButtonType> result = alert.showAndWait();
-        
+
         if (result.get() == ButtonType.OK) {
 
             fNameField.clear();
@@ -82,9 +86,11 @@ public class CreateClientGUIController extends Controller implements Initializab
     }
 
     /**
-     * When user clicks on Edit Button, system attempts to save the changes the user has made to the client entity and update the database
+     * When user clicks on Edit Button, system attempts to save the changes the
+     * user has made to the client entity and update the database
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void editBtnAction(ActionEvent event) throws IOException {
@@ -95,6 +101,7 @@ public class CreateClientGUIController extends Controller implements Initializab
 
     /**
      * When user clicks on edit button
+     *
      * @param event
      * @throws IOException
      */
@@ -209,7 +216,8 @@ public class CreateClientGUIController extends Controller implements Initializab
     }
 
     /**
-     * Flips the Save button label to and Edit button when the fxml is being used to edit a client instead of creating a new one
+     * Flips the Save button label to and Edit button when the fxml is being
+     * used to edit a client instead of creating a new one
      */
     public void switchButtons() {
 
@@ -218,88 +226,88 @@ public class CreateClientGUIController extends Controller implements Initializab
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setTitleField(String value) {
         this.titleField.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setFirstName(String value) {
         this.fNameField.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setLastName(String value) {
         this.lNameField.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setCompanyName(String value) {
         this.companyField.setText(value);
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public TextField getPhone1Field() {
         return phone1Field;
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setPhone1Field(String value) {
         this.phone1Field.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setPhone2Field(String value) {
         this.phone2Field.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setEmailField(String value) {
         this.emailField.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setAddressField(String value) {
         this.addressField.setText(value);
     }
 
     /**
-     * 
-     * @param value 
+     *
+     * @param value
      */
     public void setNotesField(String value) {
         this.notesField.setText(value);
     }
 
     /**
-     * 
-     * @param sel 
+     *
+     * @param sel
      */
     public void setSelected(Client sel) {
         this.selected = sel;
@@ -307,7 +315,8 @@ public class CreateClientGUIController extends Controller implements Initializab
 
     /**
      * Resets reference to outer error message label
-     * @param error 
+     *
+     * @param error
      */
     protected void setErrorMessage(Label error) {
         this.errorMessage = error;
@@ -315,8 +324,9 @@ public class CreateClientGUIController extends Controller implements Initializab
 
     /**
      * Code that runs when page loads, unused in this case
+     *
      * @param url
-     * @param rb 
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

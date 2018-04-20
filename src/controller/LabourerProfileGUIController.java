@@ -35,47 +35,90 @@ public class LabourerProfileGUIController extends Controller implements Initiali
     @FXML
     private Label nameField;
 
-    
+    /**
+     *
+     * @param value
+     */
     public void setAddressField(String value) {
         this.addressField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmergencyNameField(String value) {
         this.emergencyNameField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmergencyPhone1Field(String value) {
         this.emergencyPhone1Field.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmergencyPhone2Field(String value) {
         this.emergencyPhone2Field.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setWageField(String value) {
         this.wageField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setSinField(String value) {
         this.sinField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setEmailField(String value) {
         this.emailField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setTitleLable(String value) {
         this.nameField.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setPhone2Field(String value) {
         this.phone2Field.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setPhone1Field(String value) {
         this.phone1Field.setText(value);
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setTitleField(String value) {
         this.titleField.setText(value);
     }

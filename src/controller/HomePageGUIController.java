@@ -1,7 +1,3 @@
-/*
- * 
- *  This is the class that controls what happens when the user is on the apps main page
- */
 package controller;
 
 import application.Main;

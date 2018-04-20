@@ -6,16 +6,39 @@ package entity;
  */
 public class WorkOrder {
    
+    /**
+     *
+     */
     protected String description;
     
+    /**
+     *
+     */
     protected double quotedTotal;
+
+    /**
+     *
+     */
     protected double actualTotal;
     
+    /**
+     *
+     */
     protected String woid;
+
+    /**
+     *
+     */
     protected String projectID;
     
+    /**
+     *
+     */
     protected boolean isActive;
     
+    /**
+     *
+     */
     protected String name;
     
     /**
