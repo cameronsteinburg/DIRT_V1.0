@@ -442,7 +442,7 @@ public class CreateProjectGUI_3Controller extends Controller implements Initiali
                         Double blockDbl = lfDbl * blockPerLF;
                         blockF.setText(f.format(blockDbl));
 
-                        TextField servTotal = (TextField) wall.get(27);
+                        TextField servTotal = (TextField) wall.get(wall.size()-1);
                         Double servTotalDbl = rowLabourDbl + blockDbl + baseLabourDbl + baseSupplyDbl;
                         servTotal.setText(f.format(servTotalDbl));
 

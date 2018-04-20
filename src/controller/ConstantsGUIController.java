@@ -159,9 +159,9 @@ public class ConstantsGUIController extends Controller implements Initializable 
             dbs.setmaterials_CrushedRockRetail(Double.parseDouble(field1.getText()));  
             dbs.setmaterials_CrushedRockUnit(Double.parseDouble(field2.getText()));
             dbs.setmaterials_PeaRockRetail(Double.parseDouble(field3.getText()));
-            dbs.setmaterials_RiverRockUnit(Double.parseDouble(field4.getText()));
-            dbs.setmaterials_RiverRockRetail(Double.parseDouble(field5.getText()));
-            dbs.setmaterials_RiverRockUnit(Double.parseDouble(field6.getText()));
+            dbs.setmaterials_PeaRockUnit(Double.parseDouble(field4.getText()));
+            dbs.setmaterials_RiverRockUnit(Double.parseDouble(field5.getText()));
+            dbs.setmaterials_RiverRockRetail(Double.parseDouble(field6.getText()));
             dbs.setmaterials_MulchWesternRedCedarRetail(Double.parseDouble(field7.getText()));
             dbs.setmaterials_MulchWesternRedCedarUnit(Double.parseDouble(field8.getText()));
             dbs.setmaterials_TopSoilPremiumMixRetail(Double.parseDouble(field9.getText()));
@@ -247,7 +247,7 @@ public class ConstantsGUIController extends Controller implements Initializable 
             dbs.setirrigation_ControlWirePer100FeetLabour(Double.parseDouble(field76.getText()));
             
             dbs.setirrigation_ValveBoxMaterial(Double.parseDouble(field77.getText()));
-            dbs.setirrigation_TimerControlLabour(Double.parseDouble(field78.getText()));
+            dbs.setirrigation_ValveBoxLabour(Double.parseDouble(field78.getText()));
             dbs.setirrigation_ControlValveMaterial(Double.parseDouble(field79.getText()));
             dbs.setirrigation_ControlValveLabour(Double.parseDouble(field80.getText()));
             dbs.setirrigation_3QuarterLiningMaterial(Double.parseDouble(field81.getText()));

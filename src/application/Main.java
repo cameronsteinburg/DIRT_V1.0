@@ -1,5 +1,5 @@
 /*
- * @author Kevin Brown 645011, Cameron Steinburg 734972, Matthew MacDonald 728918, Kyle Hendrickson 628344 
+ * @author Kevin Brown 645011, Cameron Steinburg 734972, Matthew MacDonald 728918
  *
  * DIRT - Terms and conditions
 

@@ -14,7 +14,6 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -65,6 +64,9 @@ public class HomePageGUIController extends Controller implements Initializable {
     private boolean viewClientProfileFlag = false; //indicates user has clicked view client in outer gui, after picking from table
     private boolean createClientFlag = false;
 
+    /**
+     *
+     */
     @FXML
     protected BorderPane borderpane = new BorderPane(); //this pane is morphed to hold all inner fram pages, as opposed to changing scenes inside of a scene, which isn't possible
     @FXML
@@ -506,6 +508,10 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /**
      *
+     * @param newList
+     * @param newList
+     * @throws InstantiationException
+     * @throws IllegalAccessException
      */
     public void updateProjectTable(ObservableList<Project> newList) throws InstantiationException, IllegalAccessException {
 
@@ -542,6 +548,10 @@ public class HomePageGUIController extends Controller implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param newList
+     */
     public void updateCompleteProjectTable(ObservableList<Project> newList) {
 
         if (comProjNameCol != null) {
@@ -1228,6 +1238,8 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /**
      *
+     * @throws InstantiationException
+     * @throws IllegalAccessException
      */
     protected void updateTables() throws InstantiationException, IllegalAccessException {
 
