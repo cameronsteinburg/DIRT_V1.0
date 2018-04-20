@@ -1,11 +1,11 @@
-/**
- *
- * This class represents the client entity and communicates with the persistence layer
- */
+
 package entity;
 
 import java.util.List;
 
+/**
+ * This class represents the client entity and communicates with the persistence layer
+ */
 public class Client {
 
     private int clientNum;
@@ -22,15 +22,9 @@ public class Client {
     private boolean isActive; //false if user deleted this entity, true if he hasn't NOT NULL
     private String fullName;
     
-    /**
-     * 
-     */
-    public Client(){
-    
-    }
     
     /**
-     * 
+     * For creating clients in CreateClientGUI and ClientProfileGUI
      * @param clientFirstName
      * @param clientLastName
      * @param company
@@ -54,6 +48,19 @@ public class Client {
         this.fullName = clientFirstName + " " + clientLastName;
     }
     
+    /**
+     * For when creating Clients in JDBC commands
+     * @param clientFirstName
+     * @param clientLastName
+     * @param company
+     * @param description
+     * @param phone1
+     * @param phone2
+     * @param email
+     * @param address
+     * @param isActive
+     * @param clientNum 
+     */
     public Client(String clientFirstName, String clientLastName, String company, String description, String phone1, String phone2, String email, String address, boolean isActive, int clientNum) {
         this.clientFirstName = clientFirstName;
         this.clientLastName = clientLastName;
@@ -68,122 +75,219 @@ public class Client {
         this.fullName = clientFirstName + " " + clientLastName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getFullName(){
         return fullName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getLastName() {
         return clientLastName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getClientFirstName() {
         return clientFirstName;
     }
 
+    /**
+     * 
+     * @param clientFirstName 
+     */
     public void setClientFirstName(String clientFirstName) {
         this.clientFirstName = clientFirstName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean isActive() {
         return isActive;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getFirstName() {
         return clientFirstName;
     }
 
+    /**
+     * 
+     * @param clientName 
+     */
     public void setFirstName(String clientName) {
         this.clientFirstName = clientName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * 
+     * @param description 
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getPhone1() {
         return phone1;
     }
 
+    /**
+     * 
+     * @param phone1 
+     */
     public void setPhone1(String phone1) {
         this.phone1 = phone1;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getPhone2() {
         return phone2;
     }
 
+    /**
+     * 
+     * @param phone2 
+     */
     public void setPhone2(String phone2) {
         this.phone2 = phone2;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * 
+     * @param email 
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * 
+     * @param address 
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public List<Project> getOngoingProjects() {
         return ongoingProjects;
     }
 
+    /**
+     * 
+     * @param ongoingProjects 
+     */
     public void setOngoingProjects(List<Project> ongoingProjects) {
         this.ongoingProjects = ongoingProjects;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public List<Project> getCompletedProjects() {
         return completedProjects;
     }
 
+    /**
+     * 
+     * @param completedProjects 
+     */
     public void setCompletedProjects(List<Project> completedProjects) {
         this.completedProjects = completedProjects;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean getStatus() {
         return isActive;
     }
 
+    /**
+     * 
+     * @param status 
+     */
     public void setStatus(boolean status) {
         this.isActive = status;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getClientLastName() {
         return clientLastName;
     }
 
+    /**
+     * 
+     * @param clientLastName 
+     */
     public void setClientLastName(String clientLastName) {
         this.clientLastName = clientLastName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-
     /**
      * 
-     * @param proj 
+     * @param company 
      */
-    public void projectCompleted(Project proj) {
-
-        this.ongoingProjects.remove(proj);
-        this.completedProjects.add(proj);
+    public void setCompany(String company) {
+        this.company = company;
     }
 }

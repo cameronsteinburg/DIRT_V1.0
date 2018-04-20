@@ -1,14 +1,11 @@
-/**
- *
- *
- * This class represents the project entity and communicates with the persistence layer
- */
 package entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javafx.collections.ObservableList;
 
+/**
+ * This class represents the project entity and communicates with the persistence layer
+ */
 public class Project {
 
     //* nothing gets saved to db until the user pucnhes in all the info to get the the quote production
@@ -48,16 +45,9 @@ public class Project {
 
     private boolean completed;
 
-    /**
-     *
-     * @param isActive
-     */
-    public Project(boolean isActive) {
-        this.isActive = isActive;
-    }
 
     /**
-     * 
+     * For use in CreateProjectGUI_1
      * @param name
      * @param startDate
      * @param endDate
@@ -65,7 +55,6 @@ public class Project {
      * @param address
      * @param isActive 
      */
-    //for new project 1
     public Project(String name, LocalDate startDate, LocalDate endDate, String description, String address, boolean isActive) {
 
         this.projectName = name;
@@ -77,7 +66,7 @@ public class Project {
     }
 
     /**
-     *
+     * For use in JDBCCommands
      * @param projectName
      * @param startDate
      * @param endDate
@@ -95,7 +84,7 @@ public class Project {
     }
 
     /**
-     * 
+     * For use in JDBCCommands
      * @param newName
      * @param newAdd
      * @param newNotes
@@ -119,83 +108,163 @@ public class Project {
         this.client = chosen;
         this.isActive = isActive;
     }
-        
+    
+    /**
+     * 
+     * @param val 
+     */
     public void setCompleted(boolean val){
         this.completed = val;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean getCompleted(){
         return this.completed;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getClientName() {
         return this.clientName;
     }
 
+    /**
+     * 
+     * @param name 
+     */
     public void setClientName(String name) {
         this.clientName = name;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getProjectNum() {
         return projectNum;
     }
 
+    /**
+     * 
+     * @param projectNum 
+     */
     public void setProjectNum(int projectNum) {
         this.projectNum = projectNum;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getProjectName() {
         return projectName;
     }
 
+    /**
+     * 
+     * @param projectName 
+     */
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * 
+     * @param description 
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getSiteAddress() {
         return siteAddress;
     }
 
+    /**
+     * 
+     * @param siteAddress 
+     */
     public void setSiteAddress(String siteAddress) {
         this.siteAddress = siteAddress;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean isIsActive() {
         return isActive;
     }
 
+    /**
+     * 
+     * @param isActive 
+     */
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<WorkOrder> getWorkOrders() {
         return workOrders;
     }
 
+    /**
+     * 
+     * @param workOrders 
+     */
     public void setWorkOrders(ArrayList<WorkOrder> workOrders) {
         this.workOrders = workOrders;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Labourer> getLabourers() {
         return labourers;
     }
 
+    /**
+     * 
+     * @param labourers 
+     */
     public void setLabourers(ArrayList<Labourer> labourers) {
         this.labourers = labourers;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Client getClient() {
         return client;
     }
 
+    /**
+     * 
+     * @param client 
+     */
     public void setClient(Client client) {
         this.client = client;
 
@@ -204,68 +273,131 @@ public class Project {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public LocalDate getStartDate() {
         return startDate;
     }
 
+    /**
+     * 
+     * @param startDate 
+     */
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public LocalDate getEndDate() {
         return endDate;
     }
 
+    /**
+     * 
+     * @param endDate 
+     */
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getClientOwing() {
         return clientOwing;
     }
-
+    
+    /**
+     * 
+     * @param clientOwing 
+     */
     public void setClientOwing(double clientOwing) {
         this.clientOwing = clientOwing;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean isClientPaid() {
         return clientPaid;
     }
 
+    /**
+     * 
+     * @param clientPaid 
+     */
     public void setClientPaid(boolean clientPaid) {
         this.clientPaid = clientPaid;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getAllowanceCost() {
         return allowanceCost;
     }
 
+    /**
+     * 
+     * @param allowanceCost 
+     */
     public void setAllowanceCost(double allowanceCost) {
         this.allowanceCost = allowanceCost;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getExtraneousExpenses() {
         return extraneousExpenses;
     }
 
+    /**
+     * 
+     * @param extraneousExpenses 
+     */
     public void setExtraneousExpenses(double extraneousExpenses) {
         this.extraneousExpenses = extraneousExpenses;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getQuote() {
         return quote;
     }
 
+    /**
+     * 
+     * @param quote 
+     */
     public void setQuote(double quote) {
         this.quote = quote;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getActualCost() {
         return actualCost;
     }
 
+    /**
+     * 
+     * @param actualCost 
+     */
     public void setActualCost(double actualCost) {
         this.actualCost = actualCost;
     }
-
 }

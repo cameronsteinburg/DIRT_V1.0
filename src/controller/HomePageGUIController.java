@@ -183,8 +183,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private ObservableList<Client> clientList;
 
     /**
-     * Search active clients from DB
-     *
+     * When user enters data into the Search Box above the Clients table, updates table with clients with attributes that match the entered data
      * @param event
      */
     @FXML
@@ -269,7 +268,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * Updates data presented in client table
+     * Refreshes client entities represented in the Clients table
      * @param clients
      */
     private void updateClientTable(ObservableList<Client> clients) {
@@ -751,7 +750,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user enters data into the Search Box above the Labourers table, updates table with labourers with attributes that match the entered data
+     * @param event
      */
     @FXML
     private void searchLabourers(ActionEvent event) {
@@ -810,7 +810,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * loads the data of the labourer objects into a table
+     * Updates data presented in Labourers table
+     * @param clients
      */
     private void updateLabourerTable(ObservableList<Labourer> labs) {
 
@@ -839,8 +840,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private boolean constantsFlag = false;
 
     /**
-     * Under File in menu bar, set rates of value that are used repeatedly in
-     * calculations
+     * When user clicks User Constants under Edit in menu bar, allows user to set rates of values that are used repeatedly in calculations
      *
      * @param event
      */
@@ -852,7 +852,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Restore.. button under Database in menu bar, allows them to pick an SQL file of a previously made database backup
      * @param event
      */
     @FXML
@@ -877,7 +877,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Bakcup.. button under Database in menu bar, allows them to pick a windows directory to save a backup script of the database
      * @param event
      */
     @FXML
@@ -901,7 +901,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private boolean tableFlag = false;
 
     /**
-     *
+     * For use when application first starts, updates tables in Ongoing Projects when Main runs
      * @param state
      */
     public void setTableFlag(Boolean state) {
@@ -1114,8 +1114,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * For when the User clicks on the Visual Landscaping logo
-     *
+     * For when the User clicks on the Visual Landscaping logo, takes user back to OngoingProjectsGUI.fxml
      * @param event
      * @throws IOException
      */
@@ -1126,7 +1125,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * Refreshes and builds the data of clients and labourers in tables
+     * Refreshes objects for tables that builds the data of clients, labourers, and projects in respective tables
      *
      * @param root
      */
@@ -1207,8 +1206,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * When user navigates app out of scope of edit/remove/view buttons for any
-     * entity
+     * When user navigates app out of scope of edit/remove/view buttons for any entity
      */
     @FXML
     private void disableButtons() {
@@ -1227,7 +1225,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * Refreshes banner message label object 
      * @param error
      */
     protected void setErrorMessage(Label error) {
@@ -1235,7 +1233,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * Refreshes entities represented in all tables
      * @throws InstantiationException
      * @throws IllegalAccessException
      */
@@ -1249,7 +1247,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     * Loading data into any given page that the HomePageGUIController controls
+     * Code that runs when page loads, only runs once when app is launched, loads table objects and data when Main runsS
      *
      * @param url
      * @param rb

@@ -8,9 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
- *
- * @author 734972
+ * This is the class that controls the page where data of a labourer entity selected by the user can be viewed.
  */
 public class LabourerProfileGUIController extends Controller implements Initializable {
 
@@ -37,7 +35,6 @@ public class LabourerProfileGUIController extends Controller implements Initiali
     @FXML
     private Label nameField;
 
-    private Label errorMessage;
     
     public void setAddressField(String value) {
         this.addressField.setText(value);
@@ -83,12 +80,22 @@ public class LabourerProfileGUIController extends Controller implements Initiali
         this.titleField.setText(value);
     }
 
-    protected void setErrorMessage(Label error) {
-        this.errorMessage = error;
-    }
-
+    /**
+     * Code that runs when page loads, unused in this case
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // nothing to load
+    }
+
+    /**
+     * Inherited from parent class but not needed
+     * @param error 
+     */
+    @Override
+    protected void setErrorMessage(Label error) {
+        //unused
     }
 }
