@@ -42,7 +42,6 @@ import javafx.stage.FileChooser;
 import services.DBServices;
 
 /**
- *
  * This controller handles the actions and data of the outer frame of the Stage,
  * as well as some of the pages loaded via border pane into the inner frame this
  * includes: ViewLabourerGUI.fxml ViewClientGUI.fxml HomePageGUI.fxml
@@ -50,11 +49,11 @@ import services.DBServices;
  *
  * Pages with different controllers but still have data loaded into them while
  * data is still in scope of HomePage (outer data controller is not visible to
- * inner data controller The pages this class provides data for, but is not the
- * controller for, includes: CreateClientProfile.fxml when it is being used to
- * Edit a client as opposed to making a new one CreateLabourerProfile.fxml when
- * it is being used to Edit a labourer as opposed to making a new one
- * ClientProfileGUI.fxml LabourerProfileGUI.fxml
+ * inner data controller. The pages this class provides data for, but is not the
+ * controller for, includes: CreateClient.fxml when it is being used to
+ * Edit a client as opposed to making a new one. CreateLabourer.fxml when
+ * it is being used to Edit a labourer as opposed to making a new one.
+ * ClientProfileGUI.fxml LabourerProfileGUI.fxml CreateProjectGUI.fxml _1, _2, and _3, EditProjectGUI.fxml
  */
 public class HomePageGUIController extends Controller implements Initializable {
 
@@ -83,7 +82,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private Project selectedProject;
 
     /**
-     *
+     * When user clicks New Client button, navigates user to page where the can make new Client entity
      * @param event
      * @throws IOException
      * @throws URISyntaxException
@@ -96,7 +95,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks on List Clients button, navigates to page with list of all active clients
      * @param event
      * @throws IOException
      */
@@ -108,7 +107,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Client Profile button, navigates to page where user can view information on a selected client entity 
      * @param event
      * @throws IOException
      */
@@ -120,7 +119,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Edit Client button, navigates to page where user can edit details of a selected client entity
      * @param event
      */
     @FXML
@@ -131,7 +130,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Remove Client button, sets selected client as inactive and removes it from all views of user
      * @param event
      */
     @FXML
@@ -253,7 +252,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*================================================Controls==============================================*/
     /**
-     *
+     * Gets Client entity user has picked from table
      * @param event
      */
     private void getSelectedClient() {
@@ -270,7 +269,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * Updates data presented in client table
      * @param clients
      */
     private void updateClientTable(ObservableList<Client> clients) {
@@ -310,7 +309,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private Button removeProjectBtn;
 
     /**
-     *
+     * When user clicks List Projects button, navigates to page with table of all available project entities
      * @throws IOException
      */
     @FXML
@@ -321,7 +320,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Edit Project button, navigates user to page where details for users selected project entity can be altered
      * @param event
      */
     @FXML
@@ -332,7 +331,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks New Project button, navigates to page where user can begin process if creating a new project entity
      * @param event
      * @throws IOException
      * @throws URISyntaxException
@@ -344,8 +343,8 @@ public class HomePageGUIController extends Controller implements Initializable {
         navigateTo("/ui/CreateProjectGUI_1.fxml");
     }
 
-    /**
-     *
+     /**
+     * When user clicks Remove Project button, sets selected project as inactive and removes it from all views of user
      * @param event
      */
     @FXML
@@ -406,7 +405,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private ObservableList<Project> compProjList;
 
     /**
-     *
+     * When user enters data into the Search Box above the Completed Projects table, updates table with projects with attributes that match the entered data
      * @param event
      */
     @FXML
@@ -456,7 +455,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user enters data into the Search Box above the Current Projects table, updates table with projects with attributes that match the entered data
      * @param event
      */
     @FXML
@@ -507,8 +506,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
-     * @param newList
+     * Refreshes project entities shown in Current Projects table
      * @param newList
      * @throws InstantiationException
      * @throws IllegalAccessException
@@ -549,7 +547,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * Refreshes project entities shown in Completed Projects table
      * @param newList
      */
     public void updateCompleteProjectTable(ObservableList<Project> newList) {
@@ -589,7 +587,7 @@ public class HomePageGUIController extends Controller implements Initializable {
 
     /*============Controls===============*/
     /**
-     *
+     * Gets project entity selected by user from Current Projects table
      */
     private void getSelectedProject() {
 
@@ -606,7 +604,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * Gets project entity selected by user from Completed Projects table
      */
     private void getSelectedComp() {
 
@@ -630,7 +628,7 @@ public class HomePageGUIController extends Controller implements Initializable {
     private boolean createLabourerFlag = false;
 
     /**
-     *
+     * When user clicks on New Laborer button, navigates to page where user can create a new Labourer entity
      * @param event
      * @throws IOException
      * @throws URISyntaxException
@@ -643,9 +641,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Remove Labourer button, sets selected project as inactive and removes it from all views of user
      * @param event
-     * @throws IOException
      */
     @FXML
     private void removeLabourerAction(ActionEvent event) throws IOException {
@@ -673,8 +670,8 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
-     * @throws IOException
+     * When user clicks Edit Labourer button, navigates user to page where details for users selected project entity can be altered
+     * @param event
      */
     @FXML
     private void editLabourerAction() throws IOException {
@@ -684,7 +681,9 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks Labourer Profile button, navigates to page where user can view information on a selected client entity 
+     * @param event
+     * @throws IOException
      */
     @FXML
     private void viewLabourerProfilePage() throws IOException {
@@ -694,10 +693,9 @@ public class HomePageGUIController extends Controller implements Initializable {
     }
 
     /**
-     *
+     * When user clicks on List Labourers button, navigates to page with list of all active labourers
      * @param event
      * @throws IOException
-     * @throws URISyntaxException
      */
     @FXML
     private void viewLabourersAction(ActionEvent event) throws IOException, URISyntaxException {

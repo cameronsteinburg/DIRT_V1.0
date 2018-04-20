@@ -256,8 +256,6 @@ public class ConstantsGUIController extends Controller implements Initializable 
         dbs.setirrigation_3QuarterLiningMaterial(Double.parseDouble(field81.getText()));
         dbs.setirrigation_3QuarterLiningLabour(Double.parseDouble(field82.getText()));
 
-        System.out.println(saveBtn.getUserData());
-
         errorMessage.setText("Changes to Constants Saved!");
     }
 

@@ -191,12 +191,10 @@ public class EditProjectGUIController extends Controller implements Initializabl
         Parent root = loader.load();
 
         outerPane.setCenter(root);
-       
-        System.out.println(selectedProject.getWorkOrders().get(0).getName());
     }
 
     /**
-     *
+     * sets selected project as either Complete of Incomplete and updates database
      * @param event
      */
     @FXML
@@ -289,7 +287,11 @@ public class EditProjectGUIController extends Controller implements Initializabl
         return this.workOrdersTable;
     }
 
-    
+    /**
+     * Code that runs when page loads, fills dropdown of available Clients and label with currently assigned labourers
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -316,8 +318,6 @@ public class EditProjectGUIController extends Controller implements Initializabl
         this.labTable.setItems(dbs.getLabourersForTable());
 
         this.labTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        System.out.println(this.clientNameField.getText());
 
     }
 }

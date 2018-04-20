@@ -12,9 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 /**
- * 
- * Controls the creating of and editing of client entities for corresponding FXML
- *
+ * This is the class that controls the page where data of a client entity selected by the user can be viewed.
  */
 public class ClientProfileGUIController extends Controller implements Initializable {
 
